@@ -25,7 +25,7 @@
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Sistema de Login</h3>
                     <div class="box">
-                        <form action="login.jsp" method="post" id="loginForm">
+                        <form action="login" method="post" id="loginForm">
                             <div class="field">
                                 <div class="control">
                                     <label for="email">Email:</label>
@@ -38,7 +38,8 @@
                                     <input name="password" class="input is-large" type="password" placeholder="Sua senha">
                                 </div>
                             </div>
-                            <button type="submit" value="Submit" class="button is-block is-link is-large is-fullwidth">Entrar</button><br>
+                            <button type="submit" value="Submit" class="button is-block is-link is-large is-fullwidth">Entrar</button><br/>
+                            <b class='inputError'>${message}</b><br/>
                             <a href="registrar.jsp">Não possui uma conta ainda? Registre-se</a>
                         </form>
                     </div>
@@ -62,11 +63,11 @@
              
             messages: {
                 email: {
-                    required: "Por favor insira um email",
-                    email: "Por favor insira um email válido"
+                    required: "<b class='inputError'>Por favor insira um email</b>",
+                    email: "<b class='inputError'>Por favor insira um email válido</b>"
                 },
                  
-                password: "Por favor insira uma senha"
+                password: "<b class='inputError'>Por favor insira uma senha</b>"
             }
         });
  

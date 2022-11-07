@@ -16,3 +16,7 @@ input {
 p {
   font-weight: 700;
 }
+
+.inputError {
+  color: red;
+}
