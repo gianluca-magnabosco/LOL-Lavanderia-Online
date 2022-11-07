@@ -11,7 +11,7 @@ import java.util.ArrayList;
  
 
 public class UserDAO implements DAO<User> {
-    private static final String VALIDATE_LOGIN_QUERY = "SELECT * FROM Users WHERE email = ? AND senha = ?";
+    private static final String VALIDATE_LOGIN_QUERY = "SELECT * FROM Users WHERE email = ? AND senha = ?;";
     private static final String SEARCH_ONE_QUERY = "SELECT * FROM Users WHERE id = ?;";
     private static final String SEARCH_ALL_QUERY = "SELECT * FROM Users;";
     private static final String INSERT_QUERY = "INSERT INTO Users (cpf, nome, email, endereco, telefone, senha) VALUES (?, ?, ?, ?, ?, ?);";
