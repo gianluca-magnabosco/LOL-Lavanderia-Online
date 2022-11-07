@@ -30,11 +30,11 @@ public class UserDAO implements DAO<User> {
     }
 
     
-    public User validateLogin(String email, String password) throws DAOException {
+    public User validateLogin(String email, String hashedPassword) throws DAOException {
 
         try (PreparedStatement st = con.prepareStatement(VALIDATE_LOGIN_QUERY)) {
             st.setString(1, email);
-            st.setString(2, password);
+            st.setString(2, hashedPassword);
             
             ResultSet rs = st.executeQuery();
             

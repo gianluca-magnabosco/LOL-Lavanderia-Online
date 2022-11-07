@@ -4,6 +4,7 @@ import dao.ConnectionFactory;
 import dao.UserDAO;
 import domain.User;
 import exception.DAOException;
+import hash.HashFunction;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -32,11 +33,13 @@ public class LoginServlet extends HttpServlet {
             dispatcher.forward(request, response);
             return;            
         }
+        
+        String hashedPassword = HashFunction.getHash(password);
                      
         try (ConnectionFactory factory = new ConnectionFactory()) {
             UserDAO dao = new UserDAO(factory.getConnection());
             
-            User user = dao.validateLogin(email, password);
+            User user = dao.validateLogin(email, hashedPassword);
             
             if (user == null) {
                 request.setAttribute("message", errorMessage);

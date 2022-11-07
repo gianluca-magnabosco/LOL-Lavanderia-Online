@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--tela de login-->
+<% 
+    if (session.getAttribute("user") != null) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+        dispatcher.forward(request, response);    
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
