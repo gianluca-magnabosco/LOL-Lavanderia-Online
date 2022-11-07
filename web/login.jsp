@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<!--tela de login-->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -13,19 +19,33 @@
 <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <body>
-    <div style="text-align: center">
-        <h1>Login</h1>
-        <form action="login" method="post" id="loginForm">
-            <label for="email">Email:</label>
-            <input type="email" name="email" size="30" />
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" size="30" />
-            <br>${message}
-            <br><br>           
-            <button type="submit">Login</button>
-        </form>
-    </div>
+    <section class="hero is-success is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Sistema de Login</h3>
+                    <div class="box">
+                        <form action="login.jsp" method="post" id="loginForm">
+                            <div class="field">
+                                <div class="control">
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" class="input is-large" placeholder="Seu e-mail" autofocus="">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <label for="password">Password:</label>
+                                    <input name="password" class="input is-large" type="password" placeholder="Sua senha">
+                                </div>
+                            </div>
+                            <button type="submit" value="Submit" class="button is-block is-link is-large is-fullwidth">Entrar</button><br>
+                            <a href="registrar.jsp">Não possui uma conta ainda? Registre-se</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 <script type="text/javascript">
  
