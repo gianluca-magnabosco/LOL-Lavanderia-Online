@@ -9,9 +9,9 @@
 <body>
     <div style="text-align: center">
         <h1>Página Principal</h1>
-        <b>${user.fullname} (${user.email})</b>
-        <br><br>
-        <a href="/logout">Logout</a>
+        <b>${user.fullName} (${user.email})</b>
+        <br/><br/>
+        <a href="logout">Logout</a>
     </div>
 </body>
 </html>

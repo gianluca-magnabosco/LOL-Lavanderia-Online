@@ -17,7 +17,7 @@
         <h1>Login</h1>
         <form action="login" method="post">
             <label for="email">Email:</label>
-            <input name="email" size="30" />
+            <input type="email" name="email" size="30" />
             <br><br>
             <label for="password">Password:</label>
             <input type="password" name="password" size="30" />
@@ -42,7 +42,7 @@
              
             messages: {
                 email: {
-                    required: "Por favor insita um email",
+                    required: "Por favor insira um email",
                     email: "Por favor insira um email válido"
                 },
                  
