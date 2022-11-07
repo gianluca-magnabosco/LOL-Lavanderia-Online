@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastro</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="registrar.css">
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/registrar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/check_form.js"></script>
     <script type="text/javascript"> 
