@@ -47,6 +47,9 @@ public class ConnectionFactory implements AutoCloseable {
                 System.out.println("Erro fechando a conexão. IGNORADO");
                 e.printStackTrace();
             }
+            finally {
+                con = null;
+            }
         }
     }
     

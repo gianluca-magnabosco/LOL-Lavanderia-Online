@@ -54,10 +54,10 @@ public class LoginServlet extends HttpServlet {
             dispatcher.forward(request, response);            
         }
         catch (DAOException e) {
+            e.printStackTrace();
             request.setAttribute("message", "Erro de banco de dados!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
-            return;
         }        
         
     }
