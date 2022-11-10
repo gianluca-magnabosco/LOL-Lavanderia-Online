@@ -23,14 +23,14 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String errorMessage = "E-mail ou senha inválidos!";    
+        RequestDispatcher loginDispatcher = request.getRequestDispatcher("/login.jsp");
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         if (!email.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}") || !password.matches(".+")) {
             request.setAttribute("message", errorMessage);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
+            loginDispatcher.forward(request, response);
             return;            
         }
         
@@ -43,21 +43,19 @@ public class LoginServlet extends HttpServlet {
             
             if (user == null) {
                 request.setAttribute("message", errorMessage);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-                dispatcher.forward(request, response);
+                loginDispatcher.forward(request, response);
                 return;
             }
             
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-            dispatcher.forward(request, response);            
+            RequestDispatcher homeDispatcher = request.getRequestDispatcher("/home.jsp");
+            homeDispatcher.forward(request, response);            
         }
         catch (DAOException e) {
             e.printStackTrace();
             request.setAttribute("message", "Erro de banco de dados!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
+            loginDispatcher.forward(request, response);
         }        
         
     }
