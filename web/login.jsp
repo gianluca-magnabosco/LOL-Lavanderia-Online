@@ -3,7 +3,7 @@
 <!--tela de login-->
 <% 
     if (session.getAttribute("user") != null) {
-        response.sendRedirect("/home.jsp");
+        response.sendRedirect("home.jsp");
     }
 %>
 <!DOCTYPE html>

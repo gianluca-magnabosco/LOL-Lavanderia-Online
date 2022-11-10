@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <% 
     if (session.getAttribute("user") == null) {
-        response.sendRedirect("/index.html");
+        response.sendRedirect("index.html");
     }
 %>
 <!DOCTYPE html>
