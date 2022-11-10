@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<% 
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("/index.html");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

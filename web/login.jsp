@@ -3,8 +3,7 @@
 <!--tela de login-->
 <% 
     if (session.getAttribute("user") != null) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-        dispatcher.forward(request, response);    
+        response.sendRedirect("/home.jsp");
     }
 %>
 <!DOCTYPE html>

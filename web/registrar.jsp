@@ -1,8 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     if (session.getAttribute("user") != null) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-        dispatcher.forward(request, response);    
+        response.sendRedirect("/home.jsp");
     }
 %>
 <!DOCTYPE html>
