@@ -102,7 +102,7 @@
                       bairro.value = "";
                       localidade.value = "";
                       uf.value = "";
-                      //alert("CEP inexistente"); <-- Esse alert foi pra testar se tava indo e tava, alert é um negocio mto feio pprt
+                      //alert("CEP inexistente"); <-- Esse alert foi pra testar se tava indo e tava, alert é um negocio mto feio pqp
                    
 
                    
