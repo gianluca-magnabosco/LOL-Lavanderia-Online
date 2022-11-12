@@ -4,7 +4,7 @@ import dao.ConnectionFactory;
 import dao.UserDAO;
 import domain.User;
 import exception.DAOException;
-import security.HashFunction;
+import hash.HashFunction;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
