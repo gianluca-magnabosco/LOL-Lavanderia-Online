@@ -54,6 +54,8 @@
             
             i.setAttribute("maxlength", "9");
             if (v.length === 5) i.value += "-";
+            if (v.length === 9) endereco();
+
             
         }
     </script>
@@ -68,6 +70,68 @@
     }
 </script>
 
+<script type="text/javascript"> 
+   function endereco() {
+       
+   
+    
+    var cep = document.getElementById("cep");
+    var url = "http://viacep.com.br/ws/" + cep.value + "/json/";
+    
+    var logradouro = document.getElementById("logradouro");
+    var bairro = document.getElementById("bairro");
+    var localidade = document.getElementById("localidade");
+    var uf = document.getElementById("uf");
+    
+    fetch(url, {method: 'GET'})
+            .then(response => {
+                response.json()
+                 .then(data => {
+                     logradouro.value = data.logradouro;
+                     bairro.value = data.bairro;
+                     uf.value = data.uf;
+                     localidade.value = data.localidade;
+
+                     
+
+                    });
+                
+           })
+                   .catch(err => {
+                      logradouro.value = "";
+                      bairro.value = "";
+                      localidade.value = "";
+                      uf.value = "";
+                      //alert("CEP inexistente"); <-- Esse alert foi pra testar se tava indo e tava, alert é um negocio mto feio pprt
+                   
+
+                   
+                   
+                 
+           });
+                   
+   }
+    
+    
+    
+
+</script> 
+
+<script type="text/javascript">
+    
+    function erroCEP(){ //tentei fazer pegando o "error" = "true" que tava no site usando getElement na funcao de cima ali porem nao deu certo, esse é o unico jeito q achei pra verificar se ta undefined
+        var erroLogradouro = document.getElementById("logradouro").value;       
+        if (erroLogradouro === "undefined") {
+            return;
+   
+        }
+        
+    }
+    
+
+
+</script>
+   
   </head>
   <script
    src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -91,51 +155,51 @@
                       <input type="text" name="nome" class="input is-large"  placeholder="Nome"/><br><br>
                       <input type="email" name="email" class="input is-large" placeholder="E-mail" autofocus=""><br><br>
                       <input oninput="mascara2(this)" onfocus="myFunction()" type="text" class="input is-large" placeholder="Telefone" name="telefone"><br><br>
-                      <input oninput="mascara3(this)" type="text" class="input is-large" placeholder="CEP" name="cep"><br>
+                      <input oninput="mascara3(this)" type="text" class="input is-large" placeholder="CEP" name="cep" id="cep">
                     </div>
-                  </div>
-                    
-                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                  </div>                  
+                      
+                    <div class="field-group">
                         <div class="field is-inline-block-desktop">
                             <div class="control">
-                            <input class="input" type="text" placeholder="Rua"> 
+                                <input class="input" type="text" placeholder="Rua" name="logradouro" id="logradouro" disabled> 
                             </div>
                         </div>
                         
                     
-                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                    <div class="field is-inline-block-desktop">
                         <div class="control">
-                        <input class="input" type="text" placeholder="Número">
+                        <input class="input" type="text" placeholder="Número" name="numero" id="numero">
                         </div>
                     </div>
                     </div> 
                     
-                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                    <div class="field-group">
                         <div class="field is-inline-block-desktop">
                             <div class="control">
-                            <input class="input" type="text" placeholder="Complemento"> 
+                            <input class="input" type="text" placeholder="Estado" name="uf" id="uf" disabled> 
                             </div>
                         </div>
                         
                     
-                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                    <div class="field is-inline-block-desktop">
                         <div class="control">
-                            <input class="input" type="text" placeholder="Bairro">
+                            <input class="input" type="text" placeholder="Bairro" name="bairro" id="bairro" disabled>
                         </div>
                     </div>
                     </div>
                     
-                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                    <div class="field-group">
                         <div class="field is-inline-block-desktop">
                             <div class="control">
-                            <input class="input" type="text" placeholder="Cidade"> 
+                            <input class="input" type="text" placeholder="Cidade" id="localidade" name="localidade" disabled> 
                             </div>
                         </div>
                         
                     
-                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                    <div class="field is-inline-block-desktop">
                         <div class="control">
-                            <input class="input" type="text" placeholder="Estado">
+                            <input class="input" type="text" placeholder="Complemento" id="complemento" name="complemento">
                         </div>
                     </div>
                     </div>
@@ -177,6 +241,7 @@
                 nome: "Por favor insira um Nome",
                 cep: "Por favor insira um CEP",
                 telefone: "Por favor insira um Telefone"
+                    
             }
         });
  
