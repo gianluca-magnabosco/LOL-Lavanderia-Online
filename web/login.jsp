@@ -48,7 +48,11 @@
                                     </div>
                                 </div>
                                 <button type="submit" value="Submit" class="button is-block is-link is-large is-fullwidth">Entrar</button><br/>
-                                <b class='inputError'>${message}</b><br/>
+                                <% 
+                                if (request.getAttribute("message") != null) {
+                                    out.println("<b class='inputError'>" + request.getAttribute("message") + "</b><br/>");
+                                }
+                                %>
                                 Não possui uma conta ainda? <a href="registrar.jsp" style="color: #3273DC;">Registre-se</a>
                             </form>
                         </div>

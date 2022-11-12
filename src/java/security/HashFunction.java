@@ -1,4 +1,4 @@
-package hash;
+package security;
 
 import jakarta.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;

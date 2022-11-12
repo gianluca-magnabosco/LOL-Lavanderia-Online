@@ -36,7 +36,7 @@
                             <p>Cadastre-se</p>
                         </div>
                         <div class="box">
-                            <form method="post" id="registerForm">
+                            <form action="registrar" method="post" id="registerForm">
                                 <div class="field">
                                     <div class="control">
                                         <input type="text" name="nome" class="input is-large"  placeholder="Nome" autofocus=""/><br><br>
@@ -50,7 +50,7 @@
                                 <div class="field-group">
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Rua" name="logradouro" id="logradouro" disabled> 
+                                            <input class="input" type="text" placeholder="Rua" name="logradouro" id="logradouro" readonly> 
                                         </div>
                                     </div>
 
@@ -64,14 +64,14 @@
                                 <div class="field-group">
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Cidade" id="localidade" name="localidade" disabled> 
+                                            <input class="input" type="text" placeholder="Cidade" id="localidade" name="localidade" readonly> 
                                         </div>
                                     </div>
 
 
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Estado" name="uf" id="uf" disabled> 
+                                            <input class="input" type="text" placeholder="Estado" name="uf" id="uf" readonly> 
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                 <div class="field-group">
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Bairro" name="bairro" id="bairro" disabled>
+                                            <input class="input" type="text" placeholder="Bairro" name="bairro" id="bairro" readonly>
                                         </div>
                                     </div>
 
@@ -92,6 +92,12 @@
                                 </div>
 
                                 <button type="submit" class="button is-block is-link is-large is-fullwidth">Registrar</button><br>
+                                <% 
+                                request.setCharacterEncoding("UTF-8");
+                                if (request.getParameter("message") != null) {
+                                    out.println("<b style='color: red'>" + request.getParameter("message") + "</b><br/>");
+                                }
+                                %>
                                 Já possui uma conta? <a href="login.jsp">Faça login</a>
                             </form>
                         </div>
