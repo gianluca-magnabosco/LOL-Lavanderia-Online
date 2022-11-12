@@ -44,6 +44,19 @@
             
         }
     </script>
+    <script type="text/javascript"> 
+        function mascara3(i){
+            var v = i.value;
+            if(isNaN(v[v.length-1])){
+                i.value = v.substring(0, v.length-1);
+                return;
+            }
+            
+            i.setAttribute("maxlength", "9");
+            if (v.length === 5) i.value += "-";
+            
+        }
+    </script>
     <script>
      function myFunction() {
        if ($("input[name='telefone']").val() === '' || $("input[name='telefone']").val() === null){
@@ -54,6 +67,7 @@
        
     }
 </script>
+
   </head>
   <script
    src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -76,12 +90,59 @@
                       <input oninput="mascara(this)" type="text" class="input is-large" placeholder="CPF" name="cpf"><br><br> 
                       <input type="text" name="nome" class="input is-large"  placeholder="Nome"/><br><br>
                       <input type="email" name="email" class="input is-large" placeholder="E-mail" autofocus=""><br><br>
-                      <input type="text" name="endereco" class="input is-large"  placeholder="Endereço"/><br><br>
                       <input oninput="mascara2(this)" onfocus="myFunction()" type="text" class="input is-large" placeholder="Telefone" name="telefone"><br><br>
+                      <input oninput="mascara3(this)" type="text" class="input is-large" placeholder="CEP" name="cep"><br>
                     </div>
                   </div>
+                    
+                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                        <div class="field is-inline-block-desktop">
+                            <div class="control">
+                            <input class="input" type="text" placeholder="Rua"> 
+                            </div>
+                        </div>
+                        
+                    
+                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                        <div class="control">
+                        <input class="input" type="text" placeholder="Número">
+                        </div>
+                    </div>
+                    </div> 
+                    
+                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                        <div class="field is-inline-block-desktop">
+                            <div class="control">
+                            <input class="input" type="text" placeholder="Complemento"> 
+                            </div>
+                        </div>
+                        
+                    
+                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Bairro">
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div class="field-group" id="esconde" id="esconde" style="display: none;">
+                        <div class="field is-inline-block-desktop">
+                            <div class="control">
+                            <input class="input" type="text" placeholder="Cidade"> 
+                            </div>
+                        </div>
+                        
+                    
+                    <div class="field is-inline-block-desktop" id="esconde" id="esconde" style="display: none;">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Estado">
+                        </div>
+                    </div>
+                    </div>
+                    
                     <button type="submit" class="button is-block is-link is-large is-fullwidth">Registrar</button><br>
                     <a href="login.jsp">Voltar à tela de login</a>
+                    
                 </form>
               </div>
             </div>
@@ -101,10 +162,9 @@
          
                 cpf: "required",
                 nome: "required",
-                endereco: "required",
+                cep: "required",
                 telefone: "required"
                 
-
             },
              
             messages: {
@@ -115,7 +175,7 @@
                  
                 cpf: "Por favor insira um CPF",
                 nome: "Por favor insira um Nome",
-                endereco: "Por favor insira um Endereco",
+                cep: "Por favor insira um CEP",
                 telefone: "Por favor insira um Telefone"
             }
         });
