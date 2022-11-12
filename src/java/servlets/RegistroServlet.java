@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.net.URLEncoder;
 import security.HashFunction;
 import security.RandomPasswordGenerator;
+import util.MailService;
 
 
 @WebServlet(name = "RegistroServlet", urlPatterns = {"/registrar"})
@@ -26,29 +27,53 @@ public class RegistroServlet extends HttpServlet {
         }
         
         
+        
+        
+        
+        
+        // TODO: CHECAR SE USUÁRIO JÁ TEM CONTA (FAZER QUERY NO BANCO DE DADOS -> criar metodo no userdao pra buscar por email)!!!!!!!!!!!
+        if (userInDatabase(request.getParameter("email"))) {
+            String errorMessage = URLEncoder.encode("Você já está cadastrado no sistema, realize o <a href='login.jsp'>login</a>", "UTF-8");
+            response.sendRedirect("registrar.jsp?message=" + errorMessage);
+            return;
+        }
+        
+        
+        
+        
         String userPassword = RandomPasswordGenerator.getRandomPassword(16);
-        sendEmail(request.getParameter("email"), userPassword);
-        // TODO: enviar email com senha do usuário
-        
-        
-        
-        
         
         String hashedUserPassword = HashFunction.getHash(userPassword);
-        // fazer adição no banco -> tabela de endereço: cep, logradouro, número, cidade (pesquisar por nome e adicionar por id), bairro, complemento
-        //                       -> tabela de usuario: nome, cpf, email, telefone, senha, tipo de usuario (cliente sempre), id do endereço ^^^^^^^^^
+        // TODO: fazer adição no banco -> 1- tabela de endereço: cep, logradouro, número, cidade (pesquisar por nome e adicionar por id), bairro, complemento
+        //                             -> 2- tabela de usuario: nome, cpf, email, telefone, senha, tipo de usuario (cliente sempre), id do endereço ^^^^^^^^^
         
         
         
-        // criar pagina de confirmação de cadastro e redirecionar pra ela abaixo
+        
+        
+        
+        
+        MailService.sendUserPasswordEmail(request.getParameter("email"), userPassword);
+        
+        // TODO: criar pagina de confirmação de cadastro e redirecionar pra ela abaixo
         response.sendRedirect("login.jsp");
     }
     
     
     
-    private void sendEmail(String email, String userPassword) {
+    
+    
+    private boolean userInDatabase(String userEmail) {
         // TODO
+        return false;
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     
