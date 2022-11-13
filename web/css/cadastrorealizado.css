@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'flama-condensed';
+    font-weight: 100;
+    src: url('http://assets.vervewine.com/fonts/FlamaCond-Medium.eot');
+}
+
+@font-face {
+    font-family: 'Muli';
+    font-weight: 100;
+    src: url('http://assets.vervewine.com/fonts/muli-regular.eot');
+}
+
+.address-description a {
+    color: #000000;
+    text-decoration: none;
+}
+
+body {
+    margin-top: 0; 
+    margin-bottom: 0; 
+    margin-right: 0; 
+    margin-left: 0; 
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0px; 
+    background-color: #e1e5e8;
+}
+
+#maincenter {
+    width: 100%; 
+    table-layout: fixed; 
+    -webkit-text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+    background-color: #e1e5e8;
+}
+
+#maindiv {
+    max-width: 600px; 
+    margin-top: 0; 
+    margin-bottom: 0; 
+    margin-right: auto; 
+    margin-left: auto;
+}
+
+#maintable {
+    border-spacing: 0;
+    font-family: 'Muli', Arial, sans-serif;
+    color: #333333; 
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+#logo {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    height: 143px;
+    vertical-align: middle;
+}
+
+#logoimg {
+    border-width: 0px;
+    width: 250px; 
+    height: 160px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#centerbox {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    background-color: #ffffff;
+}
+
+#boxcontent {
+    border-spacing: 0;
+    width: 100%;
+}
+
+#emailsentimg {
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    vertical-align: middle;
+}
+
+#emailimg {
+    border-width: 0px;
+    margin-top: 30px;
+    width: 250px;
+    height: 162px;
+}
+
+#textbox {
+    padding-bottom: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: left;
+}
+
+#toptext {
+    margin: 0;
+    text-align: center;
+    font-family: 'flama-condensed', 'Arial Narrow', Arial;
+    font-weight: 100;
+    font-size: 30px;
+    margin-bottom: 26px;
+}
+
+#bottomtext {
+    font-family: 'Muli', 'Arial Narrow', Arial;
+    margin: 0;
+    text-align: center;
+    max-width: 320px;
+    color: #a1a8ad;
+    line-height: 24px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+#buttonimg {
+    border-width: 0px;
+    margin-top: 25px; 
+    margin-left: 12px;
+    margin-bottom: 40px; 
+    width: 251px; 
+    height: 60px;
+}
+
+#pagefooter {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#emailfooter {
+    font-family: 'Muli', Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+    color: #a1a8ad;
+    line-height: 23px;
+}
+
+#emailfooter a {
+    color: #a1a8ad;
+    text-decoration: underline;
+}
+
+#addressfooter {
+    font-family: 'Muli', Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    font-size: 15px;
+    color: #a1a8ad;
+    line-height: 23px;
+}
+
+.address {
+    white-space: nowrap;
+}

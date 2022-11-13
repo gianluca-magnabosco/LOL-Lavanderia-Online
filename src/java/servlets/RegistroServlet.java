@@ -26,13 +26,15 @@ public class RegistroServlet extends HttpServlet {
             return;
         }
         
+        String userEmail = request.getParameter("email");
+        
         
         
         
         
         
         // TODO: CHECAR SE USUÁRIO JÁ TEM CONTA (FAZER QUERY NO BANCO DE DADOS -> criar metodo no userdao pra buscar por email)!!!!!!!!!!!
-        if (userInDatabase(request.getParameter("email"))) {
+        if (checkIfUserIsInDatabase(userEmail)) {
             String errorMessage = URLEncoder.encode("Você já está cadastrado no sistema, realize o <a href='login.jsp'>login</a>", "UTF-8");
             response.sendRedirect("registrar.jsp?message=" + errorMessage);
             return;
@@ -53,17 +55,18 @@ public class RegistroServlet extends HttpServlet {
         
         
         
-        MailService.sendUserPasswordEmail(request.getParameter("email"), userPassword);
+        MailService.sendUserPasswordEmail(userEmail, userPassword);
         
         // TODO: criar pagina de confirmação de cadastro e redirecionar pra ela abaixo
-        response.sendRedirect("login.jsp");
+        String userEmailParameter = URLEncoder.encode(userEmail, "UTF-8");
+        response.sendRedirect("cadastrorealizado.jsp?email = " + userEmailParameter);
     }
     
     
     
     
     
-    private boolean userInDatabase(String userEmail) {
+    private boolean checkIfUserIsInDatabase(String userEmail) {
         // TODO
         return false;
     }
@@ -78,53 +81,53 @@ public class RegistroServlet extends HttpServlet {
     
     
     private boolean validateFields(HttpServletRequest request) {
-        String nome = request.getParameter("nome");
-        if (nome == null || !nome.matches(".+")) {
+        String userNome = request.getParameter("nome");
+        if (userNome == null || !userNome.matches(".+")) {
             return false;
         }
         
-        String cpf = request.getParameter("cpf");
-        if (cpf == null || !validateCpf(cpf)) {
+        String userCPF = request.getParameter("cpf");
+        if (userCPF == null || !validateCpf(userCPF)) {
             return false;
         }
         
-        String email = request.getParameter("email");
-        if (email == null || !email.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}")) {
+        String userEmail = request.getParameter("email");
+        if (userEmail == null || !userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}")) {
             return false;
         }
         
-        String telefone = request.getParameter("telefone");
-        if (telefone == null || !telefone.matches("\\(\\d{2}\\)\\s\\d{5}-\\d{4}")) {
+        String userPhoneNumber = request.getParameter("telefone");
+        if (userPhoneNumber == null || !userPhoneNumber.matches("\\(\\d{2}\\)\\s\\d{5}-\\d{4}")) {
             return false;
         }
         
-        String cep = request.getParameter("cep");
-        if (cep == null || !cep.matches("\\d{5}-\\d{3}")) {
+        String userAddressCEP = request.getParameter("cep");
+        if (userAddressCEP == null || !userAddressCEP.matches("\\d{5}-\\d{3}")) {
             return false;
         }
         
-        String logradouro = request.getParameter("logradouro");
-        if (logradouro == null || !logradouro.matches(".+")) {
+        String userAddressLogradouro = request.getParameter("logradouro");
+        if (userAddressLogradouro == null || !userAddressLogradouro.matches(".+")) {
             return false;
         }
         
-        String numero = request.getParameter("numero");
-        if (numero == null || !numero.matches("\\d+")) {
+        String userAddressNumero = request.getParameter("numero");
+        if (userAddressNumero == null || !userAddressNumero.matches("\\d+")) {
             return false;
         }
         
-        String cidade = request.getParameter("localidade");
-        if (cidade == null || !cidade.matches(".+")) {
+        String userAddressCidade = request.getParameter("localidade");
+        if (userAddressCidade == null || !userAddressCidade.matches(".+")) {
             return false;
         }
         
-        String estado = request.getParameter("uf");
-        if (estado == null || !estado.matches("[a-zA-Z]{2}")) {
+        String userAddressEstado = request.getParameter("uf");
+        if (userAddressEstado == null || !userAddressEstado.matches("[a-zA-Z]{2}")) {
             return false;
         }
         
-        String bairro = request.getParameter("bairro");
-        if (bairro == null || !bairro.matches(".+")) {
+        String userAddressBairro = request.getParameter("bairro");
+        if (userAddressBairro == null || !userAddressBairro.matches(".+")) {
             return false;
         }  
 

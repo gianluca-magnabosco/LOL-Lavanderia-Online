@@ -10,7 +10,7 @@
               href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
               crossorigin="anonymous">
-        
+        <script type="text/javascript" src="js/landingPage.js"></script>
         <style>
         .mySlides {display: none;}
         img{vertical-align: middle;}
@@ -103,27 +103,7 @@
         </div>
         
         <script type="text/javascript">
-            var i = 0;
-            var images = [];
-            var slideTime = 5000; // 3 seconds
-
-            images[0] = 'images/back-teste3.jpg';
-            images[1] = 'images/back-teste2.jpg';
-            images[2] = 'images/back-teste1.jpg';
-
-            function changePicture() {
-                document.getElementById('container-banner').style.backgroundImage = "url(" + images[i] + ")";
-
-                if (i < images.length - 1) {
-                    i++;
-                } else {
-                    i = 0;
-                }
-                setTimeout(changePicture, slideTime);
-            }
-
             window.onload = changePicture;
-
         </script>
 
     </body>

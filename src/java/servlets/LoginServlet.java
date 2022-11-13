@@ -25,21 +25,21 @@ public class LoginServlet extends HttpServlet {
         String errorMessage = "E-mail ou senha inválidos!";    
         RequestDispatcher loginDispatcher = request.getRequestDispatcher("/login.jsp");
         
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String userEmail = request.getParameter("email");
+        String userPassword = request.getParameter("password");
         
-        if (!email.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}") || !password.matches(".+")) {
+        if (!userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}") || !userPassword.matches(".+")) {
             request.setAttribute("message", errorMessage);
             loginDispatcher.forward(request, response);
             return;            
         }
         
-        String hashedPassword = HashFunction.getHash(password);
+        String hashedUserPassword = HashFunction.getHash(userPassword);
                      
         try (ConnectionFactory factory = new ConnectionFactory()) {
             UserDAO dao = new UserDAO(factory.getConnection());
             
-            User user = dao.validateLogin(email, hashedPassword);
+            User user = dao.validateLogin(userEmail, hashedUserPassword);
             
             if (user == null) {
                 request.setAttribute("message", errorMessage);
