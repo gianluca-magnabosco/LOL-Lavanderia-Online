@@ -57,9 +57,8 @@ public class RegistroServlet extends HttpServlet {
         
         MailService.sendUserPasswordEmail(userEmail, userPassword);
         
-        // TODO: criar pagina de confirmação de cadastro e redirecionar pra ela abaixo
         String userEmailParameter = URLEncoder.encode(userEmail, "UTF-8");
-        response.sendRedirect("cadastrorealizado.jsp?email = " + userEmailParameter);
+        response.sendRedirect("cadastrorealizado.jsp?email=" + userEmailParameter);
     }
     
     
