@@ -14,7 +14,7 @@ import java.util.Properties;
 public class MailService {
     
     private static final String EMAIL_ADDRESS = "lol_lavanderia_online@outlook.com";
-    private static final String EMAIL_PASSWORD = "senhalegal123";
+    private static final String S3NH4_DO_EMAIL = "senhalegal123";
     private static final String SMTP_SERVER = "smtp-mail.outlook.com";
     
     public static void sendUserPasswordEmail(String userEmail, String userPassword) {
@@ -29,7 +29,7 @@ public class MailService {
         Session session = Session.getInstance(properties, new Authenticator() {
            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-               return new PasswordAuthentication(EMAIL_ADDRESS, EMAIL_PASSWORD);
+               return new PasswordAuthentication(EMAIL_ADDRESS, S3NH4_DO_EMAIL);
            }
         });
         

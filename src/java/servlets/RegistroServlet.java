@@ -1,5 +1,13 @@
 package servlets;
 
+import dao.CidadeDAO;
+import dao.ConnectionFactory;
+import dao.EnderecoDAO;
+import dao.UserDAO;
+import domain.Cidade;
+import domain.Endereco;
+import domain.User;
+import exception.DAOException;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,6 +27,7 @@ public class RegistroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setCharacterEncoding("UTF-8");
         
         if (!validateFields(request)) {
             String errorMessage = URLEncoder.encode("Algum dado inserido é inválido!", "UTF-8");
@@ -26,32 +35,69 @@ public class RegistroServlet extends HttpServlet {
             return;
         }
         
+        
         String userEmail = request.getParameter("email");
-        
-        
-        
-        
-        
-        
-        // TODO: CHECAR SE USUÁRIO JÁ TEM CONTA (FAZER QUERY NO BANCO DE DADOS -> criar metodo no userdao pra buscar por email)!!!!!!!!!!!
-        if (checkIfUserIsInDatabase(userEmail)) {
+
+        if (isUserInDatabase(userEmail)) {
             String errorMessage = URLEncoder.encode("Você já está cadastrado no sistema, realize o <a href='login.jsp'>login</a>", "UTF-8");
             response.sendRedirect("registrar.jsp?message=" + errorMessage);
             return;
         }
         
         
+        int idEndereco = 0;
+        
+        try (ConnectionFactory factory = new ConnectionFactory()) {
+            CidadeDAO cidadeDao = new CidadeDAO(factory.getConnection());
+            
+            Cidade cidade = cidadeDao.search(capitalizeCidade(request.getParameter("localidade")));
+            
+            if (cidade == null) {
+                String errorMessage = URLEncoder.encode("Cidade não encontrada!", "UTF-8");
+                response.sendRedirect("registrar.jsp?message=" + errorMessage);
+                return;                
+            }
+            
+            Endereco endereco = new Endereco();
+            endereco.setCidade(cidade);
+            endereco.setCep(request.getParameter("cep").replace("-", ""));
+            endereco.setLogradouro(request.getParameter("logradouro"));
+            endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+            endereco.setComplemento(request.getParameter("complemento"));
+            endereco.setBairro(request.getParameter("bairro"));
+            
+            EnderecoDAO enderecoDao = new EnderecoDAO(factory.getConnection());
+            enderecoDao.insert(endereco);
+            
+            idEndereco = enderecoDao.getCurrentId();
+        }
+        catch (DAOException e) {
+            System.out.println("### ERRO DE DAO: " + e.getMessage());
+            e.printStackTrace();
+        }       
+        
         
         
         String userPassword = RandomPasswordGenerator.getRandomPassword(16);
-        
         String hashedUserPassword = HashFunction.getHash(userPassword);
-        // TODO: fazer adição no banco -> 1- tabela de endereço: cep, logradouro, número, cidade (pesquisar por nome e adicionar por id), bairro, complemento
-        //                             -> 2- tabela de usuario: nome, cpf, email, telefone, senha, tipo de usuario (cliente sempre), id do endereço ^^^^^^^^^
         
-        
-        
-        
+        try (ConnectionFactory factory = new ConnectionFactory()) {
+            User user = new User();
+            user.setIdEndereco(idEndereco);
+            user.setCpf(request.getParameter("cpf").replaceAll("\\.", "").replace("-", ""));
+            user.setFullName(request.getParameter("nome"));
+            user.setEmail(userEmail);
+            user.setPhoneNumber(request.getParameter("telefone"));
+            user.setPassword(hashedUserPassword);
+            user.setRole("Cliente");
+            
+            UserDAO userDao = new UserDAO(factory.getConnection());
+            userDao.insert(user);
+        }
+        catch (DAOException e) {
+            System.out.println("### ERRO DE DAO: " + e.getMessage());
+            e.printStackTrace();
+        }         
         
         
         
@@ -63,20 +109,32 @@ public class RegistroServlet extends HttpServlet {
     
     
     
-    
-    
-    private boolean checkIfUserIsInDatabase(String userEmail) {
-        // TODO
+    private boolean isUserInDatabase(String userEmail) {
+        try (ConnectionFactory factory = new ConnectionFactory()) {
+            UserDAO dao = new UserDAO(factory.getConnection());
+            
+            User user = dao.search(userEmail);
+            
+            if (user != null) {
+                return true;
+            }       
+        }
+        catch (DAOException e) {
+            e.printStackTrace();
+        }     
+        
         return false;
     }
     
     
-    
-    
-    
-    
-    
-    
+    private String capitalizeCidade(String cidade) {
+        String cidadeAtual = "";
+        for (String word : cidade.toLowerCase().split("\\s+")) {
+            cidadeAtual += word.replaceFirst(".",word.substring(0, 1).toUpperCase()) + " ";
+        }
+
+        return cidadeAtual.substring(0, cidadeAtual.length() - 1);
+    }
     
     
     private boolean validateFields(HttpServletRequest request) {

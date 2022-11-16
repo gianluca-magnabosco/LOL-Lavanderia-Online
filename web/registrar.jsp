@@ -50,7 +50,7 @@
                                 <div class="field-group">
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Rua" name="logradouro" id="logradouro" readonly> 
+                                            <input class="input" type="text" placeholder="Rua" name="logradouro" id="logradouro"> 
                                         </div>
                                     </div>
 
@@ -79,7 +79,7 @@
                                 <div class="field-group">
                                     <div class="field is-inline-block-desktop">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Bairro" name="bairro" id="bairro" readonly>
+                                            <input class="input" type="text" placeholder="Bairro" name="bairro" id="bairro">
                                         </div>
                                     </div>
 

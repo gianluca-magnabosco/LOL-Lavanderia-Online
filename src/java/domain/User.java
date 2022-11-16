@@ -4,35 +4,38 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private int id;
+    private int idEndereco;
     private String cpf;
     private String fullName;
     private String email;
-    private String password;
-    private String address;
     private String phoneNumber;
-
+    private String password;
+    private String role;
+    
     
     public User() {
         
     }
     
-    public User(String cpf, String fullName, String email, String password, String address, String phoneNumber) {
+    
+    public User(String cpf, String fullName, String email, String phoneNumber, String password, String role) {
         this.cpf = cpf;
         this.fullName = fullName;
         this.email = email;
-        this.password = password;
-        this.address = address;
         this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.role = role;
     }
     
-    public User(int id, String cpf, String fullName, String email, String password, String address, String phoneNumber) {
+    public User(int id, int addressId, String cpf, String fullName, String email, String phoneNumber, String password, String role) {
         this.id = id;
+        this.idEndereco = addressId;
         this.cpf = cpf;
         this.fullName = fullName;
         this.email = email;
-        this.password = password;
-        this.address = address;
         this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.role = role;
     }
     
     
@@ -42,6 +45,14 @@ public class User implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getIdEndereco() {
+        return this.idEndereco;
+    }
+    
+    public void setIdEndereco(int addressId) {
+        this.idEndereco = addressId;
     }
     
     public String getCpf() {
@@ -68,6 +79,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+    
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
     public String getPassword() {
         return this.password;
     }
@@ -76,20 +95,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public String getRole() {
+        return this.role;
     }
     
-    public String getPhoneNumber() {
-        return this.phoneNumber;
+    public void setRole(String role) {
+        this.role = role;
     }
-    
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
- 
+     
 }
