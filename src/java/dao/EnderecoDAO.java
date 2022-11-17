@@ -14,9 +14,9 @@ import java.util.List;
 
 
 public class EnderecoDAO implements DAO<Endereco> {
-    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT en.id_endereco, en.cep, en.logradouro, en.numero, en.complemento, en.bairro, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado) WHERE id_endereco = ?;";
-    private static final String SEARCH_ALL_QUERY = "SELECT en.id_endereco, en.cep, en.logradouro, en.numero, en.complemento, en.bairro, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado);";
-    private static final String INSERT_QUERY = "INSERT INTO tb_endereco (id_cidade, cep, logradouro, numero, complemento, bairro) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado) WHERE id_endereco = ?;";
+    private static final String SEARCH_ALL_QUERY = "SELECT en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado);";
+    private static final String INSERT_QUERY = "INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco) VALUES (?, ?, ?, ?, ?, ?);";
     
     private int currentId;
     
@@ -62,11 +62,11 @@ public class EnderecoDAO implements DAO<Endereco> {
                     Endereco endereco = new Endereco();
                     endereco.setId(rs.getInt("id_endereco"));
                     endereco.setCidade(cidade);
-                    endereco.setCep(rs.getString("cep"));
-                    endereco.setLogradouro(rs.getString("logradouro"));
-                    endereco.setNumero(rs.getInt("numero"));
-                    endereco.setComplemento(rs.getString("complemento"));
-                    endereco.setBairro(rs.getString("bairro"));
+                    endereco.setCep(rs.getString("cep_endereco"));
+                    endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                    endereco.setNumero(rs.getInt("numero_endereco"));
+                    endereco.setComplemento(rs.getString("complemento_endereco"));
+                    endereco.setBairro(rs.getString("bairro_endereco"));
 
                     return endereco;
                 }
@@ -101,11 +101,11 @@ public class EnderecoDAO implements DAO<Endereco> {
                 Endereco endereco = new Endereco();
                 endereco.setId(rs.getInt("id_endereco"));
                 endereco.setCidade(cidade);
-                endereco.setCep(rs.getString("cep"));
-                endereco.setLogradouro(rs.getString("logradouro"));
-                endereco.setNumero(rs.getInt("numero"));
-                endereco.setComplemento(rs.getString("complemento"));
-                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCep(rs.getString("cep_endereco"));
+                endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                endereco.setNumero(rs.getInt("numero_endereco"));
+                endereco.setComplemento(rs.getString("complemento_endereco"));
+                endereco.setBairro(rs.getString("bairro_endereco"));
                 
                 list.add(endereco);
             }

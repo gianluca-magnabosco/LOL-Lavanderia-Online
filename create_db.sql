@@ -21,12 +21,12 @@ CREATE TABLE tb_cidade (
 CREATE TABLE tb_endereco (
   id_endereco SERIAL PRIMARY KEY,
   id_cidade INTEGER NOT NULL,
-  cep CHAR(8) NOT NULL,
-  logradouro VARCHAR(255) NOT NULL,
-  numero INTEGER NOT NULL,
-  complemento VARCHAR(255),
-  bairro VARCHAR(255) NOT NULL,
-  CONSTRAINT fk_cidade_en FOREIGN KEY (id_cidade) REFERENCES tb_cidade(id_cidade)
+  cep_endereco CHAR(8) NOT NULL,
+  logradouro_endereco VARCHAR(255) NOT NULL,
+  numero_endereco INTEGER NOT NULL,
+  complemento_endereco VARCHAR(255),
+  bairro_endereco VARCHAR(255) NOT NULL,
+  CONSTRAINT fk_cidade_en FOREIGN KEY (id_cidade) REFERENCES tb_cidade (id_cidade)
 );
 
 CREATE TABLE tb_pedido (
@@ -48,7 +48,7 @@ CREATE TABLE tb_user (
   cpf_user CHAR(11) NOT NULL UNIQUE,
   nome_user VARCHAR(255) NOT NULL,
   email_user VARCHAR(255) NOT NULL UNIQUE,
-  telefone_user VARCHAR(30) NOT NULL,
+  telefone_user CHAR(11) NOT NULL,
   senha_user CHAR(64) NOT NULL,
   tipo_user VARCHAR(20) NOT NULL,
   CONSTRAINT fk_endereco_u FOREIGN KEY (id_endereco) REFERENCES tb_endereco (id_endereco)
@@ -74,7 +74,6 @@ CREATE TABLE pedido_has_item(
   CONSTRAINT fk_item_p FOREIGN KEY (id_item) REFERENCES tb_item (id_item)
 );
 
-INSERT INTO tb_user (endereco_user, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user) VALUES ('1','12332112345', 'Testôncíò Testônildo da Silva', 'teste@teste.ufpr.br', '+5541694209420', '289160db0d9f39f9ae1754c4ec9c16f90b50e32e09c5fb5481ae642b3d3d1a36', 'cliente');
 
 INSERT INTO tb_estado (id_estado, nome_estado, uf_estado) VALUES
 (1, 'Acre', 'AC'),
