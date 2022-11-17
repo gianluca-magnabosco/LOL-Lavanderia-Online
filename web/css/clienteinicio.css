@@ -1,0 +1,94 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Open Sans";
+}
+
+html,body{
+        height: 100%;
+
+}
+
+@font-face{
+        font-family: "Open Sans";
+	src:url(../fonts/OpenSans-Light.ttf);
+	
+}
+
+.header{
+	width: 100%;
+	height: 92px;
+	background-color: #3FA4AF;
+        border-bottom: 3px solid black;
+        text-align: center;
+        display: flex;
+}
+
+.images-header{
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.botao-header{
+    margin: 20px 20px 0 0;
+}
+
+.icone{
+    height: 100px;
+    width: 170px;
+}
+
+.nome{
+    width: 250px;
+    height: 140px;
+    margin-top: -30px;
+    margin-left: -80px;
+}
+
+hr.gradient {
+  height: 3px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 8, 96, 1) 0%,
+    rgba(9, 9, 121, 1) 21%,
+    rgba(6, 84, 170, 1) 51%,
+    rgba(0, 255, 113, 1) 100%
+  );
+  margin-top: -33px;
+}
+
+.display-4{
+    text-align: center;
+}
+
+#botao-sucesso{
+   display: flex;
+   margin: 20px auto;
+}
+
+.pedidos-aberto{
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+.clear{
+	clear: both;
+}
+
+
+.footer{
+	padding: 20px 0;
+	border-top: 3px solid black;
+	text-align: center;
+	color: black;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+  
+}
+
