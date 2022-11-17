@@ -39,18 +39,21 @@ public class RegistroServlet extends HttpServlet {
         String userEmail = request.getParameter("email");
 
         if (isUserInDatabase(userEmail)) {
-            String errorMessage = URLEncoder.encode("Você já está cadastrado no sistema, realize o <a href='login.jsp'>login</a>", "UTF-8");
+            String errorMessage = URLEncoder.encode("Você já está cadastrado no sistema, "
+                    + "realize o <a href='login.jsp'>login</a>", "UTF-8");
             response.sendRedirect("registrar.jsp?message=" + errorMessage);
             return;
         }
         
         
-        int idEndereco = 0;
+        Endereco endereco = new Endereco();
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             CidadeDAO cidadeDao = new CidadeDAO(factory.getConnection());
             
-            Cidade cidade = cidadeDao.search(capitalizeCidade(request.getParameter("localidade")));
+            Cidade cidade = cidadeDao.search(
+                    capitalizeCidade(request.getParameter("localidade"))
+            );
             
             if (cidade == null) {
                 String errorMessage = URLEncoder.encode("Cidade não encontrada!", "UTF-8");
@@ -58,9 +61,9 @@ public class RegistroServlet extends HttpServlet {
                 return;                
             }
             
-            Endereco endereco = new Endereco();
             endereco.setCidade(cidade);
-            endereco.setCep(request.getParameter("cep").replace("-", ""));
+            endereco.setCep(request.getParameter("cep")
+                    .replace("-", ""));
             endereco.setLogradouro(request.getParameter("logradouro"));
             endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
             endereco.setComplemento(request.getParameter("complemento"));
@@ -69,7 +72,7 @@ public class RegistroServlet extends HttpServlet {
             EnderecoDAO enderecoDao = new EnderecoDAO(factory.getConnection());
             enderecoDao.insert(endereco);
             
-            idEndereco = enderecoDao.getCurrentId();
+            endereco.setId(enderecoDao.getCurrentId());
         }
         catch (DAOException e) {
             System.out.println("### ERRO DE DAO: " + e.getMessage());
@@ -83,11 +86,17 @@ public class RegistroServlet extends HttpServlet {
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             User user = new User();
-            user.setIdEndereco(idEndereco);
-            user.setCpf(request.getParameter("cpf").replaceAll("\\.", "").replace("-", ""));
+            user.setEndereco(endereco);
+            user.setCpf(request.getParameter("cpf")
+                    .replaceAll("\\.", "")
+                    .replace("-", ""));
             user.setFullName(request.getParameter("nome"));
             user.setEmail(userEmail);
-            user.setPhoneNumber(request.getParameter("telefone"));
+            user.setPhoneNumber(request.getParameter("telefone")
+                    .replace("(", "")
+                    .replace(")", "")
+                    .replaceAll("\\s", "")
+                    .replace("-", ""));
             user.setPassword(hashedUserPassword);
             user.setRole("Cliente");
             
@@ -130,7 +139,8 @@ public class RegistroServlet extends HttpServlet {
     private String capitalizeCidade(String cidade) {
         String cidadeAtual = "";
         for (String word : cidade.toLowerCase().split("\\s+")) {
-            cidadeAtual += word.replaceFirst(".",word.substring(0, 1).toUpperCase()) + " ";
+            cidadeAtual += word.replaceFirst(".",
+                    word.substring(0, 1).toUpperCase()) + " ";
         }
 
         return cidadeAtual.substring(0, cidadeAtual.length() - 1);
@@ -149,42 +159,50 @@ public class RegistroServlet extends HttpServlet {
         }
         
         String userEmail = request.getParameter("email");
-        if (userEmail == null || !userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}")) {
+        if (userEmail == null
+                || !userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}")) {
             return false;
         }
         
         String userPhoneNumber = request.getParameter("telefone");
-        if (userPhoneNumber == null || !userPhoneNumber.matches("\\(\\d{2}\\)\\s\\d{5}-\\d{4}")) {
+        if (userPhoneNumber == null
+                || !userPhoneNumber.matches("\\(\\d{2}\\)\\s\\d{5}-\\d{4}")) {
             return false;
         }
         
         String userAddressCEP = request.getParameter("cep");
-        if (userAddressCEP == null || !userAddressCEP.matches("\\d{5}-\\d{3}")) {
+        if (userAddressCEP == null
+                || !userAddressCEP.matches("\\d{5}-\\d{3}")) {
             return false;
         }
         
         String userAddressLogradouro = request.getParameter("logradouro");
-        if (userAddressLogradouro == null || !userAddressLogradouro.matches(".+")) {
+        if (userAddressLogradouro == null
+                || !userAddressLogradouro.matches(".+")) {
             return false;
         }
         
         String userAddressNumero = request.getParameter("numero");
-        if (userAddressNumero == null || !userAddressNumero.matches("\\d+")) {
+        if (userAddressNumero == null
+                || !userAddressNumero.matches("\\d+")) {
             return false;
         }
         
         String userAddressCidade = request.getParameter("localidade");
-        if (userAddressCidade == null || !userAddressCidade.matches(".+")) {
+        if (userAddressCidade == null
+                || !userAddressCidade.matches(".+")) {
             return false;
         }
         
         String userAddressEstado = request.getParameter("uf");
-        if (userAddressEstado == null || !userAddressEstado.matches("[a-zA-Z]{2}")) {
+        if (userAddressEstado == null
+                || !userAddressEstado.matches("[a-zA-Z]{2}")) {
             return false;
         }
         
         String userAddressBairro = request.getParameter("bairro");
-        if (userAddressBairro == null || !userAddressBairro.matches(".+")) {
+        if (userAddressBairro == null
+                || !userAddressBairro.matches(".+")) {
             return false;
         }  
 
@@ -197,7 +215,8 @@ public class RegistroServlet extends HttpServlet {
             return false;
         }
         
-        cpf = cpf.replace(".", "").replace("-", "");
+        cpf = cpf.replace(".", "")
+                .replace("-", "");
         
         int soma = 0;
 

@@ -48,6 +48,11 @@ public class Endereco implements Serializable {
     }
     
     
+    public Endereco(int id) {
+        this.id = id;
+    }
+    
+    
     public int getId() {
         return this.id;
     }

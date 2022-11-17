@@ -78,8 +78,8 @@
                                 <center>
                                     <p id="emailfooter">
                                         Caso tenha alguma dúvida ou problema, envie um e-mail para:
-                                        <a href="mailto:lol_lavanderia_online@outlook.com" target="_blank">
-                                            lol_lavanderia_online@outlook.com
+                                        <a href="mailto:lol_lavanderia-online@outlook.com" target="_blank">
+                                            lol_lavanderia-online@outlook.com
                                         </a>
                                     </p>
 

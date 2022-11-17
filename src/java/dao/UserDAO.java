@@ -1,5 +1,8 @@
 package dao;
 
+import domain.Cidade;
+import domain.Endereco;
+import domain.Estado;
 import java.util.List;
 import domain.User;
 import exception.DAOException;
@@ -11,10 +14,10 @@ import java.util.ArrayList;
  
 
 public class UserDAO implements DAO<User> {
-    private static final String VALIDATE_LOGIN_QUERY = "SELECT id_user, id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user FROM tb_user WHERE email_user = ? AND senha_user = ?;";
-    private static final String SEARCH_ONE_QUERY = "SELECT id_user, id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user FROM tb_user WHERE id_user = ?;";
-    private static final String SEARCH_ONE_BY_EMAIL_QUERY = "SELECT id_user, id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user FROM tb_user WHERE email_user = ?;";
-    private static final String SEARCH_ALL_QUERY = "SELECT id_user, id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user FROM tb_user;";
+    private static final String VALIDATE_LOGIN_QUERY = "SELECT u.id_user, u.cpf_user, u.nome_user, u.email_user, u.telefone_user, u.senha_user, u.tipo_user, en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_user u JOIN tb_endereco en ON (u.id_endereco = en.id_endereco) JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (es.id_estado = c.id_estado) WHERE u.email_user = ? AND u.senha_user = ?;";
+    private static final String SEARCH_ONE_QUERY = "SELECT u.id_user, u.cpf_user, u.nome_user, u.email_user, u.telefone_user, u.senha_user, u.tipo_user, en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_user u JOIN tb_endereco en ON (u.id_endereco = en.id_endereco) JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (es.id_estado = c.id_estado) WHERE u.id_user = ?;";
+    private static final String SEARCH_ONE_BY_EMAIL_QUERY = "SELECT u.id_user, u.cpf_user, u.nome_user, u.email_user, u.telefone_user, u.senha_user, u.tipo_user, en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_user u JOIN tb_endereco en ON (u.id_endereco = en.id_endereco) JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (es.id_estado = c.id_estado) WHERE u.email_user = ?;";
+    private static final String SEARCH_ALL_QUERY = "SELECT u.id_user, u.cpf_user, u.nome_user, u.email_user, u.telefone_user, u.senha_user, u.tipo_user, en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_user u JOIN tb_endereco en ON (u.id_endereco = en.id_endereco) JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (es.id_estado = c.id_estado);";
     private static final String INSERT_QUERY = "INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_QUERY = "UPDATE tb_user SET cpf_user = ?, nome_user = ?, email_user = ?, telefone_user = ?, senha_user = ?, tipo_user = ? WHERE id_user = ?;";
     private static final String DELETE_QUERY = "DELETE FROM tb_user WHERE id_user = ? AND id_endereco = ? AND cpf_user = ? AND nome_user = ? AND email_user = ? AND telefone_user = ? AND senha_user = ? AND tipo_user = ?;";
@@ -41,9 +44,28 @@ public class UserDAO implements DAO<User> {
             try (ResultSet rs = st.executeQuery()) {
 
                 while (rs.next()) {
+                    Estado estado = new Estado();
+                    estado.setId(rs.getInt("id_estado"));
+                    estado.setNome(rs.getString("nome_estado"));
+                    estado.setUf(rs.getString("uf_estado"));
+                    
+                    Cidade cidade = new Cidade();
+                    cidade.setId(rs.getInt("id_cidade"));
+                    cidade.setNome(rs.getString("nome_cidade"));
+                    cidade.setEstado(estado);
+                    
+                    Endereco endereco = new Endereco();
+                    endereco.setId(rs.getInt("id_endereco"));
+                    endereco.setCep(rs.getString("cep_endereco"));
+                    endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                    endereco.setNumero(rs.getInt("numero_endereco"));
+                    endereco.setComplemento(rs.getString("complemento_endereco"));
+                    endereco.setBairro(rs.getString("bairro_endereco"));
+                    endereco.setCidade(cidade);
+                    
                     User user = new User();
                     user.setId(rs.getInt("id_user"));
-                    user.setIdEndereco(rs.getInt("id_endereco"));
+                    user.setEndereco(endereco);
                     user.setCpf(rs.getString("cpf_user"));
                     user.setFullName(rs.getString("nome_user"));
                     user.setEmail(rs.getString("email_user"));
@@ -72,9 +94,28 @@ public class UserDAO implements DAO<User> {
             try (ResultSet rs = st.executeQuery()) {
             
                 while (rs.next()) {
+                    Estado estado = new Estado();
+                    estado.setId(rs.getInt("id_estado"));
+                    estado.setNome(rs.getString("nome_estado"));
+                    estado.setUf(rs.getString("uf_estado"));
+                    
+                    Cidade cidade = new Cidade();
+                    cidade.setId(rs.getInt("id_cidade"));
+                    cidade.setNome(rs.getString("nome_cidade"));
+                    cidade.setEstado(estado);
+                    
+                    Endereco endereco = new Endereco();
+                    endereco.setId(rs.getInt("id_endereco"));
+                    endereco.setCep(rs.getString("cep_endereco"));
+                    endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                    endereco.setNumero(rs.getInt("numero_endereco"));
+                    endereco.setComplemento(rs.getString("complemento_endereco"));
+                    endereco.setBairro(rs.getString("bairro_endereco"));
+                    endereco.setCidade(cidade);
+                    
                     User user = new User();
                     user.setId(rs.getInt("id_user"));
-                    user.setIdEndereco(rs.getInt("id_endereco"));
+                    user.setEndereco(endereco);
                     user.setCpf(rs.getString("cpf_user"));
                     user.setFullName(rs.getString("nome_user"));
                     user.setEmail(rs.getString("email_user"));
@@ -101,9 +142,28 @@ public class UserDAO implements DAO<User> {
             try (ResultSet rs = st.executeQuery()) {
             
                 while (rs.next()) {
+                    Estado estado = new Estado();
+                    estado.setId(rs.getInt("id_estado"));
+                    estado.setNome(rs.getString("nome_estado"));
+                    estado.setUf(rs.getString("uf_estado"));
+                    
+                    Cidade cidade = new Cidade();
+                    cidade.setId(rs.getInt("id_cidade"));
+                    cidade.setNome(rs.getString("nome_cidade"));
+                    cidade.setEstado(estado);
+                    
+                    Endereco endereco = new Endereco();
+                    endereco.setId(rs.getInt("id_endereco"));
+                    endereco.setCep(rs.getString("cep_endereco"));
+                    endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                    endereco.setNumero(rs.getInt("numero_endereco"));
+                    endereco.setComplemento(rs.getString("complemento_endereco"));
+                    endereco.setBairro(rs.getString("bairro_endereco"));
+                    endereco.setCidade(cidade);
+                    
                     User user = new User();
                     user.setId(rs.getInt("id_user"));
-                    user.setIdEndereco(rs.getInt("id_endereco"));
+                    user.setEndereco(endereco);
                     user.setCpf(rs.getString("cpf_user"));
                     user.setFullName(rs.getString("nome_user"));
                     user.setEmail(rs.getString("email_user"));
@@ -130,9 +190,28 @@ public class UserDAO implements DAO<User> {
                 ResultSet rs = st.executeQuery()) {
             
             while (rs.next()) {
+                Estado estado = new Estado();
+                estado.setId(rs.getInt("id_estado"));
+                estado.setNome(rs.getString("nome_estado"));
+                estado.setUf(rs.getString("uf_estado"));
+
+                Cidade cidade = new Cidade();
+                cidade.setId(rs.getInt("id_cidade"));
+                cidade.setNome(rs.getString("nome_cidade"));
+                cidade.setEstado(estado);
+
+                Endereco endereco = new Endereco();
+                endereco.setId(rs.getInt("id_endereco"));
+                endereco.setCep(rs.getString("cep_endereco"));
+                endereco.setLogradouro(rs.getString("logradouro_endereco"));
+                endereco.setNumero(rs.getInt("numero_endereco"));
+                endereco.setComplemento(rs.getString("complemento_endereco"));
+                endereco.setBairro(rs.getString("bairro_endereco"));
+                endereco.setCidade(cidade);
+
                 User user = new User();
                 user.setId(rs.getInt("id_user"));
-                user.setIdEndereco(rs.getInt("id_endereco"));
+                user.setEndereco(endereco);
                 user.setCpf(rs.getString("cpf_user"));
                 user.setFullName(rs.getString("nome_user"));
                 user.setEmail(rs.getString("email_user"));
@@ -154,7 +233,7 @@ public class UserDAO implements DAO<User> {
     @Override
     public void insert(User user) throws DAOException {
         try (PreparedStatement st = con.prepareStatement(INSERT_QUERY)) { 
-            st.setInt(1, user.getIdEndereco());
+            st.setInt(1, user.getEndereco().getId());
             st.setString(2, user.getCpf());
             st.setString(3, user.getFullName());
             st.setString(4, user.getEmail());
@@ -195,7 +274,7 @@ public class UserDAO implements DAO<User> {
     public void delete(User user) throws DAOException {
         try (PreparedStatement st = con.prepareStatement(DELETE_QUERY)) {
             st.setInt(1, user.getId());
-            st.setInt(2, user.getIdEndereco());
+            st.setInt(2, user.getEndereco().getId());
             st.setString(3, user.getCpf());
             st.setString(4, user.getFullName());
             st.setString(5, user.getEmail());

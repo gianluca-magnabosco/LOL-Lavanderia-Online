@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private int id;
-    private int idEndereco;
+    private Endereco endereco;
     private String cpf;
     private String fullName;
     private String email;
@@ -27,9 +27,9 @@ public class User implements Serializable {
         this.role = role;
     }
     
-    public User(int id, int addressId, String cpf, String fullName, String email, String phoneNumber, String password, String role) {
+    public User(int id, Endereco endereco, String cpf, String fullName, String email, String phoneNumber, String password, String role) {
         this.id = id;
-        this.idEndereco = addressId;
+        this.endereco = endereco;
         this.cpf = cpf;
         this.fullName = fullName;
         this.email = email;
@@ -47,12 +47,12 @@ public class User implements Serializable {
         this.id = id;
     }
     
-    public int getIdEndereco() {
-        return this.idEndereco;
+    public Endereco getEndereco() {
+        return this.endereco;
     }
     
-    public void setIdEndereco(int addressId) {
-        this.idEndereco = addressId;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
     
     public String getCpf() {
