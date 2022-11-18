@@ -49,8 +49,15 @@ public class LoginServlet extends HttpServlet {
             
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            RequestDispatcher homeDispatcher = request.getRequestDispatcher("/home.jsp");
-            homeDispatcher.forward(request, response);            
+            if (user.getRole().equals("Cliente")) {
+                RequestDispatcher clientHomeDispatcher = request.getRequestDispatcher("/clienteinicio.jsp");
+                clientHomeDispatcher.forward(request, response);    
+                return;
+            }
+            
+            RequestDispatcher funcionarioHomeDispatcher = request.getRequestDispatcher("/home.jsp");
+            funcionarioHomeDispatcher.forward(request, response);              
+            
         }
         catch (DAOException e) {
             e.printStackTrace();
