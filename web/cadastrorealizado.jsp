@@ -41,12 +41,14 @@
 
                                                     <p id="bottomtext">
                                                         Um e-mail com sua senha foi enviado para 
-                                                        <% 
-                                                            String userEmail = request.getParameter("email");
-                                                            if (userEmail != null) { 
-                                                                out.println("<b>" + userEmail + "</b><br/>");
-                                                            } 
-                                                        %>
+                                                        <% if (request.getParameter("email") != null) { %>
+                                                            <jsp:useBean id="e" class="domain.User">
+                                                                <jsp:setProperty name="e" property="email"/>
+                                                                <b>
+                                                                    <jsp:getProperty name="e" property="email"/>
+                                                                </b><br/>
+                                                            </jsp:useBean>
+                                                        <% } %>
                                                         Certifique-se de checar sua pasta de spam.
                                                     </p>
                                                     
@@ -78,8 +80,9 @@
                                 <center>
                                     <p id="emailfooter">
                                         Caso tenha alguma dúvida ou problema, envie um e-mail para:
-                                        <a href="mailto:lol_lavanderia-online@outlook.com" target="_blank">
-                                            lol_lavanderia-online@outlook.com
+                                        <jsp:useBean id="configuracao" class="beans.ConfigBean" scope="application"/>
+                                        <a href="mailto:<jsp:getProperty name="configuracao" property="email"/>" target="_blank">
+                                            <jsp:getProperty name="configuracao" property="email"/>
                                         </a>
                                     </p>
 
