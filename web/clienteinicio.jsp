@@ -14,10 +14,9 @@
         <title>Área do Cliente</title>
         <link rel="stylesheet" type="text/css" href="css/clienteinicio.css">
         <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+             >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
     </head>
     <body>
         <header class="header">
@@ -51,16 +50,79 @@
         <hr class="gradient">
         <h3 class="pedidos-aberto">Pedidos em aberto:</h3>
 
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
-        <p>Pedidos serão mostrados aqui</p>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </th>
+                                    <th>Pedido #</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Feito em</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                            <a href="logout"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-13487</td>
+                                    <td><span class="badge badge-danger">Aguardando retirada</span></td>
+                                    <td>$200.00</td>
+                                    <td>Hoje, 13:40</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                           <a href="logout"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-13453</td>
+                                    <td><span class="badge badge-danger">Aguardando retirada</span></td>
+                                    <td>$255.50</td>
+                                    <td>Ontem, 17:59</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-13498</td>
+                                    <td><span class="badge badge-warning">Roupas na lavanderia</span></td>
+                                    <td>$57.10</td>
+                                    <td>16/11/2022, 15:42</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-16499</td>
+                                    <td><span class="badge badge-info">Em processo de entrega</span></td>
+                                    <td>$560.79</td>
+                                    <td>17/11/2022, 20:45</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         
    
 

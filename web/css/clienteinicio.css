@@ -82,7 +82,8 @@ hr.gradient {
 
 .pedidos-aberto{
     margin-top: 30px;
-    margin-left: 25px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .clear{
@@ -190,4 +191,66 @@ hr.gradient {
 .hamburger-menu{
     color: black;
     
+}
+
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+body {
+  font-family: Assistant, sans-serif;
+}
+
+.cell-1 {
+  border-collapse: separate;
+  border-spacing: 0 4em;
+  background: #fff;
+  border: 1px solid black;
+  background-color: #dddcdc;
+  background-clip: padding-box;
+
+}
+
+thead {
+  background: #43AEBA;
+  border: 1px solid black;
+  color:black;
+}
+
+
+.toggle-btn {
+  width: 40px;
+  height: 21px;
+  background: grey;
+  border-radius: 50px;
+  padding: 3px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s 0.1s ease-in-out;
+  -moz-transition: all 0.3s 0.1s ease-in-out;
+  -o-transition: all 0.3s 0.1s ease-in-out;
+  transition: all 0.3s 0.1s ease-in-out;
+}
+
+.toggle-btn > .inner-circle {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s 0.1s ease-in-out;
+  -moz-transition: all 0.3s 0.1s ease-in-out;
+  -o-transition: all 0.3s 0.1s ease-in-out;
+  transition: all 0.3s 0.1s ease-in-out;
+}
+
+.toggle-btn.active {
+  background: blue !important;
+}
+
+.toggle-btn.active > .inner-circle {
+  margin-left: 19px;
+}
+
+.pedidos{
+    border: 3px solid black;
+}
+
+.table{
+    width: 100%;
 }
