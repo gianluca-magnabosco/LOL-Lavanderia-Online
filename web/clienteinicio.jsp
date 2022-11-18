@@ -28,11 +28,11 @@
                 </label>
 
                 <ul class="menu__box">
-                    <li><a class="menu__item" href="index.html">Home</a></li>
+                    <li><a class="menu__item" href="clienteinicio.jsp">Home</a></li>
                     <li><a class="menu__item" href="#">Lista de pedidos</a></li>
                     <li><a class="menu__item" href="#">Consulte seu pedido</a></li>
                     <a class="menu__item" href="#"><button id="btn-pedido" class="btn btn-lg">Fazer um pedido</button></a>
-                    <a href="#"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
+                    <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
 
                 </ul>
             </div>  
@@ -123,7 +123,8 @@
       <a
         class="btn btn-primary btn-floating m-1"
         style="background-color: #333333;"
-        href="#!"
+        href="https://github.com/gianluca-magnabosco/LOL-Lavanderia-Online/"
+        target="_blank"
         role="button"
         ><i class="fab fa-github"></i
       ></a>

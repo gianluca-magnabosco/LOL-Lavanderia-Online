@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="field">
                                     <div class="control">
-                                        <label for="password">Password:</label>
+                                        <label for="password">Senha:</label>
                                         <input name="password" class="input is-large" type="password" placeholder="Sua senha">
                                     </div>
                                 </div>

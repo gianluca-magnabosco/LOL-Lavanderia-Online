@@ -50,13 +50,13 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             if (user.getRole().equals("Cliente")) {
-                RequestDispatcher clientHomeDispatcher = request.getRequestDispatcher("/clienteinicio.jsp");
-                clientHomeDispatcher.forward(request, response);    
+                response.sendRedirect("clienteinicio.jsp");
                 return;
             }
             
-            RequestDispatcher funcionarioHomeDispatcher = request.getRequestDispatcher("/home.jsp");
-            funcionarioHomeDispatcher.forward(request, response);              
+            
+            // aqui vai o sendRedirect pra pagina de funcionário
+            response.sendRedirect("home.jsp");
             
         }
         catch (DAOException e) {
