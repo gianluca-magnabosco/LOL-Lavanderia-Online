@@ -43,11 +43,11 @@ html,body{
 .header{
 	width: 100%;
 	height: 92px;
+        border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
 	background-color: #3FA4AF;
         border-bottom: 3px solid black;
         text-align: center;
 }
-
 
 #container-banner{
 	width: 100%;
@@ -72,6 +72,7 @@ html,body{
 	border: 8px solid #ccc;
 	background-clip: padding-box;
 	border-color: rgba(120, 120, 120, 0.5);
+        
 
 
 }
@@ -88,6 +89,7 @@ html,body{
 	background-color: #99E0E8;
 	text-align: center;
         border-top: 3px solid black;
+        border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
 }
 
 .container2 p{
@@ -160,15 +162,8 @@ html,body{
 	text-align: justify;
 }
 
-.footer{
-	/*clear: both;*/
-	padding: 20px 0;
-	border-top: 3px solid black;
-	text-align: center;
-	color: #888;
-}
-
-.footer p{
-	margin-top: 8px;
+#footerzera{
+    border-top: 3px solid black;
+    border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
 }
 
