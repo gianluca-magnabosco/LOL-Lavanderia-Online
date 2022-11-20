@@ -1,0 +1,268 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Open Sans";
+}
+
+html,body{
+        height: 100%;
+
+}
+
+@font-face{
+        font-family: "Open Sans";
+	src:url(../fonts/OpenSans-Light.ttf);
+	
+}
+
+.header{
+	width: 100%;
+	height: 92px;
+        border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+	background-image: linear-gradient(to right, #9EE8F0, #55DEED, #43AEBA, #486A6E);
+        border-bottom: 3px solid black;
+        text-align: center;
+        display: flex;
+            top:0;
+    left: 0;
+    position: fixed;
+}
+
+.images-header{
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.botao-header{
+    margin: 20px 20px 0 0;
+}
+
+.icone{
+    height: 100px;
+    width: 170px;
+}
+
+.nome{
+    width: 250px;
+    height: 140px;
+    margin-top: -30px;
+    margin-left: -80px;
+}
+
+.content{
+    padding-top: 92px;
+}
+hr.gradient {
+  height: 3px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 8, 96, 1) 0%,
+    rgba(9, 9, 121, 1) 21%,
+    rgba(6, 84, 170, 1) 51%,
+    rgba(0, 255, 113, 1) 100%
+  );
+  margin-top: -33px;
+}
+
+
+
+.display-4{
+    text-align: center;
+}
+
+#botao-sucesso{
+   display: flex;
+   margin: 20px auto;
+}
+
+.pedidos-aberto{
+    margin-top: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clear{
+	clear: both;
+}
+
+#btn-pedido{
+    background-color: #3FA4AF;
+}
+
+#botao-logout{
+    margin-top: 560px;
+
+}
+
+
+.footer{
+	padding: 20px 0;
+	border-top: 3px solid black;
+	text-align: center;
+	color: black;
+        bottom: 0;
+        width: 100%;
+        background-color: #6DF7EA;
+  
+}
+
+#footerzera{
+    border-top: 3px solid black;
+    border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.menu__btn {
+  position: fixed;
+  top: 44px;
+  left: 30px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition-duration: .25s;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu__box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu__item:hover {
+  background-color: #CFD8DC;
+}
+
+.hamburger-menu{
+    color: black;
+    
+}
+
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+body {
+  font-family: Assistant, sans-serif;
+}
+
+.cell-1 {
+  border-collapse: separate;
+  border-spacing: 0 4em;
+  background: #fff;
+  border: 1px solid black;
+  background-color: #dddcdc;
+  background-clip: padding-box;
+
+}
+
+thead {
+  background: #43AEBA;
+  border: 1px solid black;
+  color:black;
+}
+
+
+.toggle-btn {
+  width: 40px;
+  height: 21px;
+  background: grey;
+  border-radius: 50px;
+  padding: 3px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s 0.1s ease-in-out;
+  -moz-transition: all 0.3s 0.1s ease-in-out;
+  -o-transition: all 0.3s 0.1s ease-in-out;
+  transition: all 0.3s 0.1s ease-in-out;
+}
+
+.toggle-btn > .inner-circle {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s 0.1s ease-in-out;
+  -moz-transition: all 0.3s 0.1s ease-in-out;
+  -o-transition: all 0.3s 0.1s ease-in-out;
+  transition: all 0.3s 0.1s ease-in-out;
+}
+
+.toggle-btn.active {
+  background: blue !important;
+}
+
+.toggle-btn.active > .inner-circle {
+  margin-left: 19px;
+}
+
+.pedidos{
+    border: 3px solid black;
+}
+
+.table{
+    width: 100%;
+}
+
+.column {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.row-one {
+	padding-top: 13px;
+}
+form .field {
+	margin: auto;
+	max-width: 740px;
+}
