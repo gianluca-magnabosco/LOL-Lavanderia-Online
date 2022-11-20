@@ -30,7 +30,7 @@
                     <li><a class="menu__item" href="clienteinicio.jsp">Home</a></li>
                     <li><a class="menu__item" href="#">Lista de pedidos</a></li>
                     <li><a class="menu__item" href="#">Consulte seu pedido</a></li>
-                    <a class="menu__item" href="#"><button id="btn-pedido" class="btn btn-lg">Fazer um pedido</button></a>
+                    <a class="menu__item" href="realizarpedido.jsp"><button id="btn-pedido" class="btn btn-lg">Fazer um pedido</button></a>
                     <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
 
                 </ul>
@@ -45,7 +45,7 @@
 
         <div class="jumbotron">
             <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-            <button id="botao-sucesso" class="btn btn-success btn-lg" href="#" role="button">Realizar pedido!</button>
+            <a href="realizarpedido.jsp"><button id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button></a>
         </div>
         <hr class="gradient">
         <h3 class="pedidos-aberto">Pedidos em aberto:</h3>

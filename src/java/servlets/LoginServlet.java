@@ -54,10 +54,7 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
             
-            
-            // aqui vai o sendRedirect pra pagina de funcionário
-            response.sendRedirect("home.jsp");
-            
+            response.sendRedirect("funcionarioinicio.jsp");
         }
         catch (DAOException e) {
             e.printStackTrace();
