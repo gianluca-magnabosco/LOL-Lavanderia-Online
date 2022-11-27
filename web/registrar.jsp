@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
-    if (session.getAttribute("user") != null) {
+    if (session.getAttribute("login") != null) {
         response.sendRedirect("home.jsp");
     }
 %>

@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.LoginBean;
 import dao.ConnectionFactory;
 import dao.UserDAO;
 import domain.User;
@@ -47,8 +48,13 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
             
+            LoginBean login = new LoginBean();
+            login.setId(user.getId());
+            login.setNome(user.getFullName());
+            login.setEmail(user.getEmail());
+            
             HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+            session.setAttribute("login", login);
             if (user.getRole().equals("Cliente")) {
                 response.sendRedirect("clienteinicio.jsp");
                 return;
