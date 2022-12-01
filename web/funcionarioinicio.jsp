@@ -28,7 +28,7 @@
 
                 <ul class="menu__box">
                     <li><a class="menu__item" href="funcionarioinicio.jsp">Visualizar Pedidos</a></li>
-                    <li><a class="menu__item" href="relatorios.jsp">Relatórios</a></li> <%-- nao consegui fazer dropdown com o menu box (sou burro) --%>
+                    <li><a class="menu__item" href="#">Relatórios</a></li> <%-- nao consegui fazer dropdown com o menu box (sou burro) --%>
                     <li><a class="menu__item" href="#">Manutenção de Roupa</a></li>
                     <li><a class="menu__item" href="#">Manutenção de Funcionários</a></li>
                     <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
@@ -54,42 +54,123 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">
-                                            <div class="inner-circle"></div>
-                                        </div>
-                                    </th>
                                     <th>Pedido #</th>
                                     <th>Status</th>
                                     <th>Total</th>
-                                    <th>Feito em &darr;</th>
+                                    <th>Feito em &darr;</th> 
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table-body">
                                 <tr class="cell-1">
-                                    <td class="text-center">
-                                            <a href="logout"><button class="btn btn-success btn-sm">Retirado</button></a>
-                                            <div class="inner-circle"></div>
-                                        </div>
-                                    </td>
                                     <td>#SO-13487</td>
-                                    <td><span class="badge badge-warning">Aguardando retirada</span></td>
-                                    <td>$200.00</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$200.00</td>
                                     <td>Hoje, 13:40</td>
-                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                                <tr class="cell-1">
                                     <td class="text-center">
-                                           <a href="logout"><button class="btn btn-success btn-sm">Retirado</button></a>
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
                                             <div class="inner-circle"></div>
                                         </div>
-                                    </td>
-                                    <td>#SO-13453</td>
-                                    <td><span class="badge badge-warning">Aguardando retirada</span></td>
-                                    <td>$255.50</td>
-                                    <td>Ontem, 17:59</td>
-                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                    <td><i class="text-black-50"></i></td>
                                 </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13453</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$255.50</td>
+                                    <td>Ontem, 17:59</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13412</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$123.50</td>
+                                    <td>29/11/2022, 07:45</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13409</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$99.00</td>
+                                    <td>28/11/2022, 17:55</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13405</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$23.50</td>
+                                    <td>28/11/2022, 15:56</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13401</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$76.00</td>
+                                    <td>27/11/2022, 22:17</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13399</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$34.00</td>
+                                    <td>27/11/2022, 17:01</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13381</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$44.50</td>
+                                    <td>27/11/2022, 13:41</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
+                                <tr class="cell-1">
+                                    <td>#SO-13355</td>
+                                    <td><span class="badge badge-warning">Em aberto</span></td>
+                                    <td>R$189.90</td>
+                                    <td>26/11/2022, 18:54</td>
+                                    <td class="text-center">
+                                           <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
