@@ -1,8 +1,9 @@
 <%-- 
-    Document   : clienteinicio
-    Created on : 16 de nov. de 2022, 21:33:43
-    Author     : gfbat
+    Document   : relatorios
+    Created on : 30 de nov. de 2022, 20:54:52
+    Author     : gealb
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +12,8 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Área do Funcionario</title>
-        <link rel="stylesheet" type="text/css" href="css/funcionarioinicio.css">
+        <title>Relatórios em PDF</title>
+        <link rel="stylesheet" type="text/css" href="css/relatorios.css">
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
              >
@@ -28,7 +29,7 @@
 
                 <ul class="menu__box">
                     <li><a class="menu__item" href="funcionarioinicio.jsp">Visualizar Pedidos</a></li>
-                    <li><a class="menu__item" href="relatorios.jsp">Relatórios</a></li> <%-- nao consegui fazer dropdown com o menu box (sou burro) --%>
+                    <li><a class="menu__item" href="#">Relatórios</a></li> <%-- nao consegui fazer dropdown com o menu box (sou burro) --%>
                     <li><a class="menu__item" href="#">Manutenção de Roupa</a></li>
                     <li><a class="menu__item" href="#">Manutenção de Funcionários</a></li>
                     <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
@@ -44,61 +45,28 @@
         <div class="content">
 
  
-        <h3 class="pedidos-aberto">Pedidos em aberto:</h3>
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
-                <div class="rounded">
-                    <div class="table-responsive table-borderless">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                            <div class="inner-circle"></div>
-                                        </div>
-                                    </th>
-                                    <th>Pedido #</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
-                                    <th>Feito em &darr;</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-body">
-                                <tr class="cell-1">
-                                    <td class="text-center">
-                                            <a href="logout"><button class="btn btn-success btn-sm">Retirado</button></a>
-                                            <div class="inner-circle"></div>
-                                        </div>
-                                    </td>
-                                    <td>#SO-13487</td>
-                                    <td><span class="badge badge-warning">Aguardando retirada</span></td>
-                                    <td>$200.00</td>
-                                    <td>Hoje, 13:40</td>
-                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                                <tr class="cell-1">
-                                    <td class="text-center">
-                                           <a href="logout"><button class="btn btn-success btn-sm">Retirado</button></a>
-                                            <div class="inner-circle"></div>
-                                        </div>
-                                    </td>
-                                    <td>#SO-13453</td>
-                                    <td><span class="badge badge-warning">Aguardando retirada</span></td>
-                                    <td>$255.50</td>
-                                    <td>Ontem, 17:59</td>
-                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
         
-   
+        <h2 class="pedidos-aberto">Área de Geração de Relatórios</h2>
+        <h4 class="pedidos-aberto">Clique no relatório que deseja baixar!</h4><br>
+        <div class="botoesRelatorio">
+          <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de receitas em PDF</button></a><br><br>
+          <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de clientes em PDF</button></a><br><br>
+          <a href="#"><button id="botaoS" class="btn btn-info btn-sm">Gerar relatório de clientes fiéis em PDF</button></a><br><br>
+          <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de pedidos em PDF</button></a><br><br>
+        
+          <style>
+              #botao{
+                  padding: 50px 110px 50px 110px;
+              }
+              #botaoS{
+                  padding: 50px 110px 50px 80px;
+              }
+          </style>
+        
+        </div>                         
+    </div>
 
         <div class="clear"></div>
         
