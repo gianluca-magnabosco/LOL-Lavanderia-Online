@@ -27,6 +27,7 @@ html,body{
             top:0;
     left: 0;
     position: fixed;
+    z-index: 99; 
 }
 
 .images-header{
@@ -203,14 +204,14 @@ body {
   border-spacing: 0 4em;
   background: #fff;
   border: 1px solid black;
-  background-color: #dddcdc;
+  background-color: #9EE8F0;
   background-clip: padding-box;
 
 }
 
 thead {
-  background: #43AEBA;
-  border: 1px solid black;
+  background-color: red;
+  border: 3px solid black;
   color:black;
 }
 
@@ -253,6 +254,11 @@ thead {
 
 .table{
     width: 100%;
+    height: 600px;
+    border: 2px solid black;
+    text-align: center;
+    align-content: center;
+    align-items: center;
 }
 
 .column {
@@ -266,3 +272,136 @@ form .field {
 	margin: auto;
 	max-width: 740px;
 }
+
+.container{
+   
+}
+
+.pic {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-top: 20px;
+    
+}
+
+.alinhamento{
+    margin-top:40px;
+}
+
+.table thead {
+    background-color: #9EE8F0;
+    height: 40px;
+    text-align: center;
+}
+
+.table thead th {
+    font-size: 24px;
+}
+
+.table tbody td input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: 50px;
+    background-color: #eee;
+    position: relative;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container .table-wrap {
+
+    margin-top: -20px;
+    overflow-x: auto;
+}
+
+.container .table-wrap::-webkit-scrollbar {
+    height: 5px;
+}
+
+.container .table-wrap::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #5D7ECD, #0C91E6);
+}
+
+.table>:not(caption)>*>* {
+    padding: 2rem 0.5rem;
+}
+
+.input {
+    width: 30px;
+    height: 30px;
+    margin-top: 40px;
+    color: black;
+    font-weight: 600;
+    outline: none;
+    padding: 8px;
+}
+
+::placeholder {
+    color: black;
+    font-weight: 600;
+}
+
+.table tbody td input[type="checkbox"]:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    content: "\f00c";
+    color: #fff;
+    font-size: 15px;
+    display: none
+}
+
+.table tbody td input[type="checkbox"]:checked,
+.table tbody td input[type="checkbox"]:checked:hover {
+    background-color: #21cf95;
+}
+
+.table tbody td input[type="checkbox"]:checked::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table tbody td input[type="checkbox"]:hover {
+    background-color: #ddd;
+}
+
+.table tbody td {
+    padding: 30px;
+    margin: 0;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.table tbody td .fa-times {
+    color: #D32F2F;
+}
+
+
+.text-muted {
+    font-size: 12.5px;
+}
+
+.table tbody tr td:nth-of-type(3) {
+    min-width: 320px;
+}
+
+@media(min-width: 992px) {
+    .container .table-wrap {
+        overflow: hidden;
+    }
+}
+
+.resultado{
+    align-content: center;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
+
+

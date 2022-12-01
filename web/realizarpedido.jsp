@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Realizar Pedido</title>
-        <link rel="stylesheet" type="text/css" href="css/clienteinicio.css">
+        <link rel="stylesheet" type="text/css" href="css/realizarpedido.css">
         <link rel="stylesheet" href="css/bulma.min.css" />
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -30,7 +30,7 @@
                 <ul class="menu__box">
                     <li><a class="menu__item" href="clienteinicio.jsp">Home</a></li>
                     <li><a class="menu__item" href="#">Lista de pedidos</a></li>
-                    <li><a class="menu__item" href="#">Consulte seu pedido</a></li>
+                    <li><a class="menu__item" href="consultarpedido.jsp">Consulte seu pedido</a></li>
                     <a class="menu__item" href="#"><button id="btn-pedido" class="btn btn-lg">Fazer um pedido</button></a>
                     <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
 
@@ -63,55 +63,166 @@
           </div>
         </div>
       </div>
-      <div class="title">Pedido</div>
-      <form id="register-form">
-          <div class="columns row-one">
-            <div class="column">
-              <label class="label" for="firstName">Nome</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Nome" name="firstName"/>
-              </div>
-            </div>
-            
-             <div class="column">
-              <label class="label" for="lastName">Sobrenome</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Sobrenome" name="lastName"/>
-              </div>
-            </div>
-          </div>
+      <div class="container">
+        <div class="table-wrap">
+            <table class="table justify-content-center"">
+                <thead>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>Peça</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Prazo</th>
+                    <th>Total</th>
+                    <th>&nbsp;</th>
+                </thead>
+                <tbody>
+                    <tr class="align-middle alert border-bottom" role="alert">
+                        <td>
+                            <input type="checkbox" id="check">
+                        </td>
+                        <td class="text-center">
+                            <img class="pic"
+                                src="images/item-1.png"
+                                alt="">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                                <p class="m-0 fw-bold">Tênis</p>
+                                <p class="m-0 text-muted">Modelos cano baixo</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">$20.99</div>
+                            </div>
+                        </td>
+                        <td class="d-">
+                            <input class="input" type="text" placeholder="2">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">3 dias</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">A calcular</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="align-middle alert border-bottom" role="alert">
+                        <td>
+                            <input type="checkbox" id="check">
+                        </td>
+                        <td class="text-center">
+                            <img class="pic"
+                                src="images/item-2.png"
+                                alt="">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                                <p class="m-0 fw-bold">Moletom</p>
+                                <p class="m-0 text-muted">Lavagem especial para algodão</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">$16.99</div>
+                            </div>
+                        </td>
+                        <td class="d-">
+                            <input class="input" type="text" placeholder="2">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">2 dias</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">A calcular</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="align-middle alert border-bottom" role="alert">
+                        <td>
+                            <input type="checkbox" id="check">
+                        </td>
+                        <td class="text-center">
+                            <img class="pic"
+                                src="images/item-3.png"
+                                alt="">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                                <p class="m-0 fw-bold">Calça</p>
+                                <p class="m-0 text-muted">Calças jeans</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">$10.99</div>
+                            </div>
+                        </td>
+                        <td class="d-">
+                            <input class="input" type="text" placeholder="2">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">1 dia</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">A calcular</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="align-middle alert border-bottom" role="alert">
+                        <td>
+                            <input type="checkbox" id="check">
+                        </td>
+                        <td class="text-center">
+                            <img class="pic"
+                                src="images/item-4.png"
+                                alt="">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                                <p class="m-0 fw-bold">Camiseta</p>
+                                <p class="m-0 text-muted">Camisetas comuns</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">$6.99</div>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="input" type="text" placeholder="2">
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">1 dias</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="alinhamento">
+                            <div class="fw-600">A calcular</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
           
-          <div class="columns row-one">
-            <div class="column">
-              <label class="label" for="firstName">Quantas peças de roupas serão no total?</label>
-              <div class="control">
-                <input class="input" type="number" placeholder="Número de peças" name="peças"/>
-              </div>
-            </div>
-            
-              <div class="column">
-              <label class="label" for="lastName">Dia para retirarmos as suas roupas?</label>
-              <div class="control">
-                <input class="input" type="date" placeholder="Last Name" name="dia"/>
-              </div>
-            </div>
-          
-          </div>
-
-          <div class="columns row-one">
-            <div class="column">
-              <label class="label" for="descricao">Descrição das peças</label>
-              <div class="control">
-                <textarea class="textarea" placeholder="" rows="10"></textarea>
-              </div>
-            </div>
-          </div>
-          
-        <div>
+        <div class="resultado">
             <h1 class="display-3">Seu pedido deu um total de: R$ </h1>
         </div>
           
-          <div class="field is-grouped">
+          <div class="field is-grouped justify-content-center"">
             <div class="control">
               <button class="btn btn-danger btn-lg">Recusar</button>
             </div>
