@@ -29,7 +29,7 @@
                 <ul class="menu__box">
                     <li><a class="menu__item" href="clienteinicio.jsp">Home</a></li>
                     <li><a class="menu__item" href="#">Lista de pedidos</a></li>
-                    <li><a class="menu__item" href="#">Consulte seu pedido</a></li>
+                    <li><a class="menu__item" href="consultarpedido.jsp">Consulte seu pedido</a></li>
                     <a class="menu__item" href="realizarpedido.jsp"><button id="btn-pedido" class="btn btn-lg">Fazer um pedido</button></a>
                     <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
 

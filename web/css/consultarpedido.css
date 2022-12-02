@@ -1,0 +1,227 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Open Sans";
+}
+
+html,body{
+        height: 100%;
+
+}
+
+@font-face{
+        font-family: "Open Sans";
+	src:url(../fonts/OpenSans-Light.ttf);
+	
+}
+
+.header{
+	width: 100%;
+	height: 92px;
+        border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+	background-image: linear-gradient(to right, #9EE8F0, #55DEED, #43AEBA, #486A6E);
+        border-bottom: 3px solid black;
+        text-align: center;
+        display: flex;
+            top:0;
+    left: 0;
+    position: fixed;
+    z-index: 99; 
+}
+
+.images-header{
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.content{
+    padding-top: 92px;
+}
+
+.botao-header{
+    margin: 20px 20px 0 0;
+}
+
+.titulo{
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+.icone{
+    height: 100px;
+    width: 170px;
+}
+
+.nome{
+    width: 250px;
+    height: 140px;
+    margin-top: -30px;
+    margin-left: -80px;
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.menu__btn {
+  position: fixed;
+  top: 44px;
+  left: 30px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition-duration: .25s;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu__box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu__item:hover {
+  background-color: #CFD8DC;
+}
+
+.hamburger-menu{
+    color: black;
+    
+}
+
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+body {
+  font-family: Assistant, sans-serif;
+}
+
+#btn-pedido{
+    background-color: #3FA4AF;
+}
+
+#botao-logout{
+    margin-top: 560px;
+
+}
+
+.footer{
+	padding: 20px 0;
+	border-top: 3px solid black;
+	text-align: center;
+	color: black;
+        bottom: 0;
+        width: 100%;
+        background-color: #6DF7EA;
+  
+}
+
+#footerzera{
+    border-top: 3px solid black;
+    border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+    
+}
+
+.single{
+	float: left;
+	margin-right: -4px;
+	width: 33.3%;
+	padding: 30px;
+}
+
+.single img{
+	width: 70px;
+}
+
+.single p{
+	display: inline-block;
+	padding: 10px 25px;
+	text-align: justify;
+}
+
+.section1{
+	padding: 90px 0;
+}
+
+.section1 h2{
+	text-align: center;
+	color: #40A7B3;
+	font-weight: normal;
+        font-size: 50px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+}
+
+.section1 h3{
+    color: #40A7B3;
+    font-size: 40px;
+
+}
+
+.section{
+	margin-top: 40px;
+}
+
+.section{
+	text-align: center;
+}
+
+.clear{
+	clear: both;
+}
+
+.center{
+	width: 1200px;
+	margin: 0 auto;
+}
