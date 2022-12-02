@@ -45,23 +45,22 @@
 
                                 <div class="mb-2">
                                     <label for="nomeRoupa" class="form-label">Nome da Roupa</label>
-                                    <input type="text" class="form-control" id="nomeRoupa">
+                                    <input type="text" class="form-control" placeholder="Insira o nome da peça de roupa" id="nomeRoupa">
                                 </div>
 
                                 <label for="precoRoupa" class="form-label">Preço</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon3">R$</span>
-                                    <input type="number" class="form-control" id="precoRoupa" aria-describedby="basic-addon3">
+                                <div class="input-group mb-3"> 
+                                    <input type="text" oninput="precoMask(this)" placeholder="Insira o custo da lavagem da peça" class="form-control" id="precoRoupa" aria-describedby="basic-addon3">
                                 </div>
 
                                 <div class="mb-2">
                                     <label for="prazoRoupa" class="form-label">Prazo de Entrega Estimado</label>
-                                    <input type="number" class="form-control" id="prazoRoupa">
+                                    <input type="text" min="0" oninput="prazoMask(this)" placeholder="Insira o prazo estimado para lavagem" class="form-control" id="prazoRoupa">
                                 </div>
 
                                 <div class="mb-2">
                                     <label for="fotoRoupa" class="form-label">Foto</label>
-                                    <input type="file" class="form-control p-1" id="fotoRoupa">
+                                    <input type="file" class="form-control p-1" id="fotoRoupa" accept="image/*">
                                 </div>
 
                                 <div class="field is-grouped justify-content-center""> 
@@ -80,6 +79,8 @@
         </div>
         
         <%@ include file="footer.jsp" %>
-  
+        
+        <script type="text/javascript" src="js/cadastrarroupa.js"></script>
+        
     </body>
 </html>
