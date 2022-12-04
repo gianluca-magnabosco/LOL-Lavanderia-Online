@@ -41,7 +41,6 @@
                                 <div class="field is-grouped">
                                     <div class="control"></div>
                                     <div class="control">
-                                      </button>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +212,7 @@
                                 <button class="btn btn-danger btn-lg">Recusar</button>
                             </div>
                             <div class="control">
-                                <button class="btn btn-success btn-lg" type="submit">Aceitar</button>
+                                <a href="clienteinicio.jsp?pedido=true"><button class="btn btn-success btn-lg" type="submit">Aceitar</button></a>
                             </div>
                         </div>
                     </div>

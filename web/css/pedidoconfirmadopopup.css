@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Muli';
+    font-weight: 100;
+    src: url('http://assets.vervewine.com/fonts/muli-regular.eot');
+}    
+
+#overlay {
+    opacity: 1;
+    display: block;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5); 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1000;
+}
+
+#content {
+    position: fixed; 
+    top: 30%; 
+    left: 50%; 
+    margin-left: -275px; 
+    width: 550px; 
+    height: 400px; 
+    padding: 20px; 
+    border-radius: 15px; 
+    background-color: #fff; 
+    color: #000;
+}
+
+#centertext {
+    padding-top: 20px;
+}
+
+h2 {
+    font-family: 'Muli', Arial, sans-serif;
+}
+
+#checkmark {
+    width: 200px;
+    height: 200px;
+}
+
+#numeropedido {
+    font-family: 'Muli', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #e1e5e8;
+    width: 200px;
+}
+
+#numerotext {
+    font-family: 'Muli', Arial, sans-serif;
+}
+
+#close {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+}
