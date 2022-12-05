@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <header class="header">
     <div class="hamburger-menu">
         <input id="menu__toggle" type="checkbox" />
