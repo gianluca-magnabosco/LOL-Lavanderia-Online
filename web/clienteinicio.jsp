@@ -63,6 +63,7 @@
                                         <tr class="cell-1">
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>
                                             <td>#SO-13487</td>
@@ -74,8 +75,10 @@
 
                                         <tr class="cell-1">
                                             <td class="text-center">
-                                                   <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
-                                                    <div class="inner-circle"></div>
+                                                  
+                                                <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> 
+                                                <div class="inner-circle"></div>
                                                 </div>
                                             </td>
                                             <td>#SO-13453</td>

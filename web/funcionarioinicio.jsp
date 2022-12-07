@@ -50,7 +50,8 @@
                                             <td>R$200.00</td>
                                             <td>Hoje, 13:40</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -61,7 +62,8 @@
                                             <td>R$255.50</td>
                                             <td>Ontem, 17:59</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -72,7 +74,8 @@
                                             <td>R$123.50</td>
                                             <td>29/11/2022, 07:45</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -83,7 +86,8 @@
                                             <td>R$99.00</td>
                                             <td>28/11/2022, 17:55</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -94,7 +98,8 @@
                                             <td>R$23.50</td>
                                             <td>28/11/2022, 15:56</td>
                                             <td class="text-center">
-                                                   <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                   <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                   <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                    <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -105,7 +110,8 @@
                                             <td>R$76.00</td>
                                             <td>27/11/2022, 22:17</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -116,7 +122,8 @@
                                             <td>R$34.00</td>
                                             <td>27/11/2022, 17:01</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -127,7 +134,8 @@
                                             <td>R$44.50</td>
                                             <td>27/11/2022, 13:41</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
@@ -139,6 +147,7 @@
                                             <td>26/11/2022, 18:54</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
+                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
                                                 <div class="inner-circle"></div>
                                             <td><i class="text-black-50"></i></td>
                                         </tr>
