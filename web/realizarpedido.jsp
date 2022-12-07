@@ -63,9 +63,12 @@
                                     <tbody>
                                         <tr class="align-middle alert border-bottom" role="alert">
                                             <td>
+                                                <div class="alinhamento">
                                                 <input type="checkbox" id="check">
+                                                </div>
                                             </td>
                                             <td class="text-center">
+                                                
                                                 <img class="pic"
                                                     src="images/item-1.png"
                                                     alt="">
@@ -97,12 +100,16 @@
                                         </tr>
                                         <tr class="align-middle alert border-bottom" role="alert">
                                             <td>
+                                                <div class="alinhamento">
                                                 <input type="checkbox" id="check">
+                                                </div>
                                             </td>
                                             <td class="text-center">
+                                           
                                                 <img class="pic"
                                                     src="images/item-2.png"
                                                     alt="">
+                                          
                                             </td>
                                             <td>
                                                 <div class="alinhamento">
@@ -130,13 +137,20 @@
                                             </td>
                                         </tr>
                                         <tr class="align-middle alert border-bottom" role="alert">
+                                       
                                             <td>
+                                                <div class="alinhamento">
                                                 <input type="checkbox" id="check">
+                                                   </div>
                                             </td>
+                                         
                                             <td class="text-center">
+                                                <div class="alinhamento">
+                                                    
                                                 <img class="pic"
                                                     src="images/item-3.png"
                                                     alt="">
+                                                </div>
                                             </td>
                                             <td>
                                                 <div class="alinhamento">
@@ -165,12 +179,18 @@
                                         </tr>
                                         <tr class="align-middle alert border-bottom" role="alert">
                                             <td>
+                                               
+                                                <div class="alinhamento">
                                                 <input type="checkbox" id="check">
+                                                 </div>
                                             </td>
+                                           
                                             <td class="text-center">
+                                                <div class="reversoali">
                                                 <img class="pic"
                                                     src="images/item-4.png"
                                                     alt="">
+                                                </div>
                                             </td>
                                             <td>
                                                 <div class="alinhamento">

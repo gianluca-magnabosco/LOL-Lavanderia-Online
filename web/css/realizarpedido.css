@@ -273,20 +273,17 @@ form .field {
 	max-width: 740px;
 }
 
-.container{
-   
-}
 
 .pic {
     width: 80px;
-    height: 80px;
+    height: 100px;
     object-fit: contain;
-    margin-top: 20px;
     
 }
 
 .alinhamento{
     margin-top:40px;
+    padding-left: 10px;
 }
 
 .table thead {
@@ -303,11 +300,11 @@ form .field {
     appearance: none;
     width: 20px;
     height: 20px;
-    margin-top: 50px;
     background-color: #eee;
     position: relative;
     border-radius: 3px;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .container .table-wrap {
@@ -329,14 +326,17 @@ form .field {
     padding: 2rem 0.5rem;
 }
 
-.input {
-    width: 30px;
-    height: 30px;
-    margin-top: 40px;
+.table tbody td input[type="number"] {
+    margin-top: 36px;
     color: black;
     font-weight: 600;
-    outline: none;
     padding: 8px;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    appearance: none;
 }
 
 ::placeholder {
@@ -372,7 +372,7 @@ form .field {
 }
 
 .table tbody td {
-    padding: 30px;
+    padding: 50px;
     margin: 0;
     font-size: 14.5px;
     font-weight: 600;
@@ -405,3 +405,6 @@ form .field {
 }
 
 
+.reversoali{
+    margin-top: 35px;
+}
