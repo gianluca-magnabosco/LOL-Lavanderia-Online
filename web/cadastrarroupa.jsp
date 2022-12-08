@@ -17,6 +17,15 @@
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
+        </script>     
+        <script type="text/javascript" src="js/cadastrarroupa.js"></script>
     </head>
     
     <body>
@@ -40,30 +49,37 @@
                         </div>
 
                         <div class="container">
-                            <form class="border rounded p-3">
+                            <form class="border rounded p-3" action="cadastrarroupa" method="post" id="formulario">
 
                                 <div class="mb-2">
                                     <label for="nomeRoupa" class="form-label">Nome da Roupa</label>
-                                    <input type="text" class="form-control" placeholder="Insira o nome da peça de roupa" id="nomeRoupa">
+                                    <div class="control">
+                                        <input type="text" class="form-control input" placeholder="Insira o nome da peça de roupa" name="nome" id="nome">
+                                    </div>
                                 </div>
-
-                                <label for="precoRoupa" class="form-label">Preço</label>
-                                <div class="input-group mb-3"> 
-                                    <input type="text" oninput="precoMask(this)" placeholder="Insira o custo da lavagem da peça" class="form-control" id="precoRoupa" aria-describedby="basic-addon3">
-                                </div>
+                                    
+                                <div class="mb-2">
+                                    <label for="precoRoupa" class="form-label">Preço</label>
+                                    <div class="control">
+                                        <input type="text" oninput="precoMask(this)" name="preco" placeholder="Insira o custo da lavagem da peça" class="form-control input" id="preco">
+                                    </div>
+                                </div>    
 
                                 <div class="mb-2">
                                     <label for="prazoRoupa" class="form-label">Prazo de Entrega Estimado</label>
-                                    <input type="text" min="0" oninput="prazoMask(this)" placeholder="Insira o prazo estimado para lavagem" class="form-control" id="prazoRoupa">
+                                    <div class="control">
+                                        <input type="text" name="prazo" oninput="prazoMask(this)" placeholder="Insira o prazo estimado para lavagem" class="form-control input" id="prazo">
+                                    </div>
                                 </div>
                                 
-                                <div class="input-group mb-2" style="margin-top: 20px;">
+                                <div class="input-group mb-4" style="margin-top: 20px;">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Foto da peça</span>
+                                        <span class="input-group-text">Foto</span>
                                     </div>
+
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="fotoRoupa" accept="image/*">
-                                        <label class="custom-file-label" for="fotoRoupa">Insira o arquivo</label>
+                                        <input type="file" class="custom-file-input input" id="foto" name="foto" accept="image/*">
+                                        <label class="custom-file-label" for="fotoRoupa">Insira uma foto da peça de roupa</label>
                                     </div>
                                 </div>
 
@@ -84,7 +100,50 @@
         
         <%@ include file="footer.jsp" %>    
         
-        <script type="text/javascript" src="js/cadastrarroupa.js"></script>
-        
     </body>
+    
+    <script type="text/javascript">
+
+        function validatePrazo(value) {
+            return value.match(/\d+\sdia\(s\)/);
+        }
+
+        function validateFormulario() {
+            $("#formulario").validate({
+                rules: {
+                    nome: "required",
+
+                    preco: "required",
+
+                    prazo: {
+                        required: true,
+                        prazoValido: true
+                    },
+
+                    foto: "required"
+                },
+
+                messages: {
+                    nome: "<b style='color: red'>Por favor insira um nome</b>",
+
+                    preco: "<b style='color: red'>Por favor insira um preço</b>",
+
+                    prazo: {
+                        required: "<b style='color: red'>Por favor insira um prazo</b>",
+                        prazoValido: "<b style='color: red'>Por favor insira um prazo válido</b>"
+                    },
+
+                    foto: "<b style='color: red; display: block; margin-top: 100px;'>Por favor insira uma foto da peça de roupa</b>"
+                }
+            });
+        }
+
+
+        $(document).ready(validateFormulario());
+
+        $.validator.addMethod("prazoValido", function(value, element, param) {
+            return validatePrazo(value);
+        });
+    </script>
+    
 </html>

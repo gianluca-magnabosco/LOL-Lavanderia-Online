@@ -28,7 +28,7 @@
             <div class="container mt-3">
 
                 <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Ex: #921999" aria-label="Search" aria-describedby="search-addon" />
+                    <input type="search" class="form-control rounded" placeholder="Ex: #921999" aria-label="Search" aria-describedby="search-addon"/>
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">Pesquisar</button>
                 </div> 
 

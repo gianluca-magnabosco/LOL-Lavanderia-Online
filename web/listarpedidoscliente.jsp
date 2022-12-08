@@ -101,7 +101,7 @@
                                             <td class="text-center">
                                                 <div class="inner-circle"></div>
                                             </td>
-                                            <td>#SO-13493</td>
+                                            <td>#SO-13492</td>
                                             <td><span class="badge badge-info">AGUARDANDO PAGAMENTO</span></td>
                                             <td>R$ 15,34</td>
                                             <td>23/11/2022, 19:33</td>
