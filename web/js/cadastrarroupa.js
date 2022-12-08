@@ -39,16 +39,3 @@ function precoMask(element) {
 
     element.value = 'R$ ' + result;
 }
-
-
-
-
-$(document).ready(validateFormulario());
-
-$.validator.addMethod("precoValido", function(value, element, param) {
-    return validatePreco(value);
-});
-
-$.validator.addMethod("prazoValido", function(value, element, param) {
-    return validatePrazo(value);
-});
