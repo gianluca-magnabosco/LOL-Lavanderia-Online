@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<header class="header">
+<header class="header" style="z-index: 1;">
     <div class="hamburger-menu">
         <input id="menu__toggle" type="checkbox" />
         <label class="menu__btn" for="menu__toggle">
@@ -8,7 +8,7 @@
 
         <ul class="menu__box">
             <li><a class="menu__item" href="funcionarioinicio.jsp">Home</a></li>
-            <li><a class="menu__item" href="#">Visualizar Pedidos</a></li>
+            <li><a class="menu__item" href="listarpedidosfuncionario.jsp">Visualizar Pedidos</a></li>
             <li><a class="menu__item" href="relatorios.jsp">Relatórios</a></li>
             <li><a class="menu__item" href="cadastrarroupa.jsp">Manutenção de Roupa</a></li>
             <li><a class="menu__item" href="#">Manutenção de Funcionários</a></li>

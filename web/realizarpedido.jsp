@@ -9,19 +9,17 @@
         <link rel="stylesheet" type="text/css" href="css/realizarpedido.css">
         <link rel="stylesheet" href="css/bulma.min.css" />
         <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">  
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        >
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
+        </script>
     </head>
-    
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
-    </script>
     
     <body>
         <%@ include file="headercliente.jsp" %>
@@ -226,13 +224,17 @@
                             <h1 class="display-3">Seu pedido deu um total de: <span id="totalAmount"></span></h1>
                             <h1 class="display-3">O prazo estimado é de: <span id="finalDeadLine"></span></h1>
                         </div>
-
+                        
+                        <div class="field is-grouped justify-content-center">
+                            <p id="errormsg" style="color: red;"></p>
+                        </div>
+                        
                         <div class="field is-grouped justify-content-center">
                             <div class="control">
-                                <button class="btn btn-danger btn-lg">Recusar</button>
+                                <button class="btn btn-success btn-lg" id="aceitar" type="button">Aceitar</button>
                             </div>
                             <div class="control">
-                                <a href="clienteinicio.jsp?pedido=true"><button class="btn btn-success btn-lg" type="submit">Aceitar</button></a>
+                                <button class="btn btn-danger btn-lg">Rejeitar</button>
                             </div>
                         </div>
                     </div>
@@ -241,6 +243,32 @@
         </div>
         
         <%@ include file="footer.jsp" %>
+        
+        <script type="text/javascript">
+            $("#aceitar").on("click", function() {
+                $("#errormsg").text("");
+                var check = 0;
+                if ($("input:checkbox:checked").length > 0) {
+                    $("input:checkbox:checked").each(function() {
+                        currentAmount = $(this).closest('tr').find('input[type=number]').val();
+                        if (currentAmount == 0) {
+                            check++;
+                            return;
+                        }
+                    });
+                    
+                    if (check > 0) {
+                        $("#errormsg").text("Algum item selecionado está com quantidade 0!");
+                        return;
+                    }
+                    
+                    location.href = "clienteinicio.jsp?pedido=true";
+                    return;
+                }
+                
+                $("#errormsg").text("Selecione ao menos um item!");
+            });
+        </script>
         
         <script type="text/javascript" src="js/realizarpedido.js"></script>
     </body>

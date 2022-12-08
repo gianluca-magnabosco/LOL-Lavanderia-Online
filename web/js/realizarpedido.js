@@ -31,4 +31,5 @@ $("body").on("click keydown keyup", function() {
     
     $("#totalAmount").text("R$ " + String(total).replaceAll(".", ","));
     $("#finalDeadLine").text(deadLine + " dia(s)");
-})
+});
+

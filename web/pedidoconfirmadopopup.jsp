@@ -14,5 +14,5 @@
         </center>
     </div>
 </div>
-<script type="text/javascript" src="js/pedidoconfirmadopopup.js"></script>
+<script type="text/javascript" src="js/popuphandler.js"></script>
 

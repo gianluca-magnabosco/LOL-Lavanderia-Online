@@ -12,9 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Consultar Pedido</title>
-        <link rel="stylesheet" type="text/css" href="css/consultarpedido.css">
-        <link rel="stylesheet" href="css/bulma.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/consultarpedido.css"/>
+        <link rel="stylesheet" href="css/bulma.min.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     
@@ -53,15 +53,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>Camisa</td>
-                                                <td>$7.99</td>
-                                                <td>$24.98</td>
+                                                <td>R$ 7,99</td>
+                                                <td>R$ 24,98</td>
                                                 <td>3 dias</td>
                                                 <td>Aguardando retirada</td>
                                             </tr>
                                             <tr>
                                                 <td>Tênis</td>
-                                                <td>$16.99</td>
-                                                <td>$24.98</td>
+                                                <td>R$ 16,99</td>
+                                                <td>R$ 24,98</td>
                                                 <td>3 dias</td>
                                                 <td>Aguardando retirada</td>
                                             </tr>

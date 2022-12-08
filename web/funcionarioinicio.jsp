@@ -14,9 +14,8 @@
         <title>Área do Funcionario</title>
         <link rel="stylesheet" type="text/css" href="css/funcionarioinicio.css">
         <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        >   
     </head>
     
     <body>
@@ -28,130 +27,170 @@
 
             <div class="container mt-5">
                 <div class="d-flex justify-content-center row">
-                    <div class="col-md-10">
+                    <div class="col-md-10" style="z-index: 0;">
                         <div class="rounded">
                             <div class="table-responsive table-borderless">
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </th>
                                             <th>Pedido #</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Feito em</th> 
                                             <th></th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody class="table-body">
-                                        <tr class="cell-1">
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13478</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 560,79</td>
+                                            <td>10/11/2022, 20:45</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                       
+
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13479</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 478,36</td>
+                                            <td>12/11/2022, 08:55</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                         
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13480</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 32,78</td>
+                                            <td>13/11/2022, 19:55</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                         
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13481</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 24,35</td>
+                                            <td>14/11/2022, 11:37</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                         
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13482</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 15,90</td>
+                                            <td>14/11/2022, 14:15</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                         
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13483</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 312,66</td>
+                                            <td>15/11/2022, 12:25</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                           
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13484</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 74,01</td>
+                                            <td>15/11/2022, 18:32</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                         
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td class="text-center">
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                            <td>#SO-13485</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 57,10</td>
+                                            <td>16/11/2022, 15:42</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
+                                        </tr>                                        
+                                        
+                                        <tr class="cell-1 aberto">
+                                            <td></td>
+                                            <td>#SO-13486</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 255,50</td>
+                                            <td>19/11/2022, 17:59</td>
+                                            <td class="text-center">
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> 
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                        </tr>                                       
+
+                                        <tr class="cell-1 aberto">
+                                            <td></td>
                                             <td>#SO-13487</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$200.00</td>
-                                            <td>Hoje, 13:40</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 200,00</td>
+                                            <td>21/11/2022, 13:40</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
+                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
                                                 <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
+                                            </td>
                                         </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13453</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$255.50</td>
-                                            <td>Ontem, 17:59</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13412</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$123.50</td>
-                                            <td>29/11/2022, 07:45</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13409</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$99.00</td>
-                                            <td>28/11/2022, 17:55</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13405</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$23.50</td>
-                                            <td>28/11/2022, 15:56</td>
-                                            <td class="text-center">
-                                                   <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                   <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                   <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13401</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$76.00</td>
-                                            <td>27/11/2022, 22:17</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13399</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$34.00</td>
-                                            <td>27/11/2022, 17:01</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13381</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$44.50</td>
-                                            <td>27/11/2022, 13:41</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a> 
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td>#SO-13355</td>
-                                            <td><span class="badge badge-warning">Em aberto</span></td>
-                                            <td>R$189.90</td>
-                                            <td>26/11/2022, 18:54</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Recolher pedido</button></a>
-                                                <a href="dadosPedidofuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> <br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>

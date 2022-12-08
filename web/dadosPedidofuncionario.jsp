@@ -23,53 +23,50 @@
             
         <div class="content">
 
-           
-           
             <div class="container mt-3">
 
-           
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Pedido #1234</h3>
-                            </div>
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Pedido #1234</h3>
+                        </div>
 
-                            <div class="modal-body">
-                                <div class="table-wrap">
-                                    <table class="table justify-content-center"">
-                                        <thead>
-                                            <th>Itens</th>
-                                            <th>Preço Indv.</th>
-                                            <th>Preço Total</th>
-                                            <th>Prazo</th>
-                                            <th>Situação</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Camisa</td>
-                                                <td>$7.99</td>
-                                                <td>$24.98</td>
-                                                <td>3 dias</td>
-                                                <td>Aguardando retirada</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tênis</td>
-                                                <td>$16.99</td>
-                                                <td>$24.98</td>
-                                                <td>3 dias</td>
-                                                <td>Aguardando retirada</td>
-                                            </tr>
- 
-                                         <a href="funcionarioinicio.jsp"><button class="btn btn-danger btn-sm">Voltar</button></a>
-                               
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>  
-            </div>
-        </div>    
+                        <div class="modal-body">
+                            <div class="table-wrap">
+                                <table class="table justify-content-center"">
+                                    <thead>
+                                        <th>Itens</th>
+                                        <th>Preço Indv.</th>
+                                        <th>Preço Total</th>
+                                        <th>Prazo</th>
+                                        <th>Situação</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Camisa</td>
+                                            <td>R$ 7,99</td>
+                                            <td>R$ 24,98</td>
+                                            <td>3 dias</td>
+                                            <td>Aguardando retirada</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tênis</td>
+                                            <td>R$ 16,99</td>
+                                            <td>R$ 24,98</td>
+                                            <td>3 dias</td>
+                                            <td>Aguardando retirada</td>
+                                        </tr>
 
+                                    <a href="funcionarioinicio.jsp"><button class="btn btn-danger btn-sm">Voltar</button></a>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>    
+        </div>
   
         <%@ include file="footer.jsp" %>
               

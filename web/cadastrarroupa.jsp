@@ -15,9 +15,8 @@
         <link rel="stylesheet" type="text/css" href="css/realizarpedido.css">
         <link rel="stylesheet" href="css/bulma.min.css" />
         <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        >
     </head>
     
     <body>
@@ -57,10 +56,15 @@
                                     <label for="prazoRoupa" class="form-label">Prazo de Entrega Estimado</label>
                                     <input type="text" min="0" oninput="prazoMask(this)" placeholder="Insira o prazo estimado para lavagem" class="form-control" id="prazoRoupa">
                                 </div>
-
-                                <div class="mb-2">
-                                    <label for="fotoRoupa" class="form-label">Foto</label>
-                                    <input type="file" class="form-control p-1" id="fotoRoupa" accept="image/*">
+                                
+                                <div class="input-group mb-2" style="margin-top: 20px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Foto da peça</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="fotoRoupa" accept="image/*">
+                                        <label class="custom-file-label" for="fotoRoupa">Insira o arquivo</label>
+                                    </div>
                                 </div>
 
                                 <div class="field is-grouped justify-content-center""> 
@@ -78,7 +82,7 @@
             </div>
         </div>
         
-        <%@ include file="footer.jsp" %>
+        <%@ include file="footer.jsp" %>    
         
         <script type="text/javascript" src="js/cadastrarroupa.js"></script>
         

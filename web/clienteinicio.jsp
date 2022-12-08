@@ -15,9 +15,8 @@
         <link rel="stylesheet" type="text/css" href="css/clienteinicio.css">
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
-        <script
+             >     
+        <script type="text/javascript"
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
@@ -34,22 +33,21 @@
             
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-                <a href="realizarpedido.jsp"><button id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button></a>
+                <button onclick="location.href='realizarpedido.jsp'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
             <hr class="gradient">
-            <h3 class="pedidos-aberto">Pedidos em aberto:</h3>
+            <h3 class="pedidos-aberto">Seus pedidos em aberto:</h3>
 
             <div class="container mt-5">
                 <div class="d-flex justify-content-center row">
-                    <div class="col-md-10">
+                    <div class="col-md-10" style="z-index: 0;">
                         <div class="rounded">
                             <div class="table-responsive table-borderless">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th class="text-center">
-                                                    <div class="inner-circle"></div>
-                                                </div>
+                                                <div class="inner-circle"></div>
                                             </th>
                                             <th>Pedido #</th>
                                             <th>Status</th>
@@ -61,53 +59,59 @@
 
                                     <tbody class="table-body">
                                         <tr class="cell-1">
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
-                                                <div class="inner-circle"></div>
-                                            </td>
+                                            <td></td>
                                             <td>#SO-13487</td>
-                                            <td><span class="badge badge-danger">Aguardando retirada</span></td>
-                                            <td>$200.00</td>
-                                            <td>Hoje, 13:40</td>
-                                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                        </tr>
-
-                                        <tr class="cell-1">
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 200,00</td>
+                                            <td>21/11/2022, 13:40</td>
                                             <td class="text-center">
-                                                  
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
                                                 <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="cell-1">
+                                            <td></td>
+                                            <td>#SO-13486</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 255,50</td>
+                                            <td>19/11/2022, 17:59</td>
+                                            <td class="text-center">
                                                 <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> 
+                                                <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
                                                 <div class="inner-circle"></div>
-                                                </div>
                                             </td>
-                                            <td>#SO-13453</td>
-                                            <td><span class="badge badge-danger">Aguardando retirada</span></td>
-                                            <td>$255.50</td>
-                                            <td>Ontem, 17:59</td>
-                                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                         </tr>
 
                                         <tr class="cell-1">
                                             <td class="text-center">
                                                 <div class="inner-circle"></div>
                                             </td>
-                                            <td>#SO-13498</td>
-                                            <td><span class="badge badge-warning">Roupas na lavanderia</span></td>
-                                            <td>$57.10</td>
+                                            <td>#SO-13485</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 57,10</td>
                                             <td>16/11/2022, 15:42</td>
-                                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                            <td class="text-center">
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
                                         </tr>
 
                                         <tr class="cell-1">
                                             <td class="text-center">
                                                 <div class="inner-circle"></div>
                                             </td>
-                                            <td>#SO-16499</td>
-                                            <td><span class="badge badge-info">Em processo de entrega</span></td>
-                                            <td>$560.79</td>
-                                            <td>17/11/2022, 20:45</td>
-                                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                            <td>#SO-13478</td>
+                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
+                                            <td>R$ 560,79</td>
+                                            <td>10/11/2022, 20:45</td>
+                                            <td class="text-center">
+                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <a href="#"><button class="btn btn-danger btn-sm">Cancelar</button></a>
+                                                <div class="inner-circle"></div>
+                                            </td>    
                                         </tr>
                                     </tbody>
                                 </table>
