@@ -31,6 +31,14 @@
     <body>
         <%@ include file="headerfuncionario.jsp" %>
         
+        <% if (request.getParameter("aceitar") != null) { %>
+            <%@ include file="aceitarpopup.jsp" %>
+        <% } %>  
+        
+        <% if (request.getParameter("recusar") != null) { %>
+            <%@ include file="cancelarpopup.jsp" %>
+        <% } %>          
+        
         <div class="content">
             <hr class="gradient">
 
@@ -85,10 +93,10 @@
 
                                 <div class="field is-grouped justify-content-center""> 
                                     <div class="control">
-                                        <button class="btn btn-danger btn-lg">Cancelar</button>
+                                        <button class="btn btn-danger btn-lg" id="recusar">Cancelar</button>
                                     </div>
                                     <div class="control">
-                                        <button class="btn btn-success btn-lg" type="submit">Cadastrar</button>
+                                        <button class="btn btn-success btn-lg" type="submit" id="aceitar">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
@@ -135,15 +143,38 @@
 
                     foto: "<b style='color: red; display: block; margin-top: 100px;'>Por favor insira uma foto da peça de roupa</b>"
                 }
+                
+
+                    
             });
+  
         }
 
-
+                    
         $(document).ready(validateFormulario());
 
         $.validator.addMethod("prazoValido", function(value, element, param) {
             return validatePrazo(value);
         });
     </script>
+      
+        
+        <script type="text/javascript">
+            $("#aceitar").on("click", function() {               
+                    location.href = "cadastrarroupa.jsp?aceitar=true";
+                    return;
+                }
+                
+            );
+        </script>   
+        
+        <script type="text/javascript">
+            $("#recusar").on("click", function() {               
+                    location.href = "cadastrarroupa.jsp?recusar=true";
+                    return;
+                }
+                
+            );
+        </script>         
     
 </html>

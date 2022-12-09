@@ -24,6 +24,14 @@
     <body>
         <%@ include file="headercliente.jsp" %>
         
+        <% if (request.getParameter("aceitar") != null) { %>
+            <%@ include file="aceitarpopup.jsp" %>
+        <% } %>  
+        
+        <% if (request.getParameter("recusar") != null) { %>
+            <%@ include file="cancelarpopup.jsp" %>
+        <% } %>         
+        
         <div class="content">
 
             <div class="jumbotron">
@@ -234,7 +242,7 @@
                                 <button class="btn btn-success btn-lg" id="aceitar" type="button">Aceitar</button>
                             </div>
                             <div class="control">
-                                <button class="btn btn-danger btn-lg">Rejeitar</button>
+                                <button class="btn btn-danger btn-lg" id="recusar">Rejeitar</button>
                             </div>
                         </div>
                     </div>
@@ -262,13 +270,22 @@
                         return;
                     }
                     
-                    location.href = "clienteinicio.jsp?pedido=true";
+                    location.href = "realizarpedido.jsp?aceitar=true";
                     return;
                 }
                 
                 $("#errormsg").text("Selecione ao menos um item!");
             });
         </script>
+        
+        <script type="text/javascript">
+            $("#recusar").on("click", function() {               
+                    location.href = "realizarpedido.jsp?recusar=true";
+                    return;
+                }
+                
+            );
+        </script>        
         
         <script type="text/javascript" src="js/realizarpedido.js"></script>
     </body>

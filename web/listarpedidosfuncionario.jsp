@@ -31,6 +31,14 @@
     <body>
         <%@ include file="headerfuncionario.jsp" %>
         
+        <% if (request.getParameter("consultar") != null) { %>
+            <%@ include file="consultarpopup.jsp" %>
+        <% } %>         
+
+        <% if (request.getParameter("aceitar") != null) { %>
+            <%@ include file="aceitarpopup.jsp" %>
+        <% } %> 
+        
         <div class="content">
             
             <h2 class="pedidos-aberto" style="margin-top: 50px;">Histórico de pedidos:</h2>
@@ -99,7 +107,7 @@
                                             <td>R$ 83,49</td>
                                             <td class="data">01/11/2022, 22:55</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -113,7 +121,7 @@
                                             <td>R$ 145,44</td>
                                             <td class="data">02/11/2022, 15:35</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -127,7 +135,7 @@
                                             <td>R$ 153,25</td>
                                             <td class="data">03/11/2022, 01:35</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -141,7 +149,7 @@
                                             <td>R$ 69,13</td>
                                             <td class="data">03/11/2022, 02:56</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>
@@ -155,7 +163,7 @@
                                             <td>R$ 12,50</td>
                                             <td class="data">04/11/2022, 03:17</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -169,7 +177,7 @@
                                             <td>R$ 1955,32</td>
                                             <td class="data">05/11/2022, 06:33</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -184,7 +192,7 @@
                                             <td class="data">10/11/2022, 20:45</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                       
@@ -199,7 +207,7 @@
                                             <td class="data">12/11/2022, 08:55</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -214,7 +222,7 @@
                                             <td class="data">13/11/2022, 19:55</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -229,7 +237,7 @@
                                             <td class="data">14/11/2022, 11:37</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -244,7 +252,7 @@
                                             <td class="data">14/11/2022, 14:15</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -259,7 +267,7 @@
                                             <td class="data">15/11/2022, 12:25</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                           
@@ -274,7 +282,7 @@
                                             <td class="data">15/11/2022, 18:32</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -289,7 +297,7 @@
                                             <td class="data">16/11/2022, 15:42</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -302,7 +310,7 @@
                                             <td class="data">19/11/2022, 17:59</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a> 
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a> 
                                                 <div class="inner-circle"></div>
                                             </td>
                                         </tr>                                       
@@ -315,7 +323,7 @@
                                             <td class="data">21/11/2022, 13:40</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>
                                         </tr>
@@ -330,7 +338,7 @@
                                             <td class="data">21/11/2022, 16:20</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Finalizar pedido</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -345,7 +353,7 @@
                                             <td class="data">22/11/2022, 11:13</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Finalizar pedido</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -360,7 +368,7 @@
                                             <td class="data">22/11/2022, 13:37</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar lavagem</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -375,7 +383,7 @@
                                             <td class="data">23/11/2022, 17:55</td>
                                             <td class="text-center">
                                                 <a href="#"><button class="btn btn-success btn-sm">Confirmar lavagem</button></a>
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -389,7 +397,7 @@
                                             <td>R$ 15,34</td>
                                             <td class="data">23/11/2022, 19:33</td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>   
@@ -403,7 +411,7 @@
                                             <td>R$ 87,84</td>
                                             <td class="data diadehoje"></td>
                                             <td class="text-center">
-                                                <a href="dadosPedido.jsp"><button class="btn btn-info btn-sm">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -425,6 +433,25 @@
         <script type="text/javascript" src="js/listarpedidosfuncionario.js"></script>
         
         <%@ include file="footer.jsp" %>
+        
+        <script type="text/javascript">
+          var buttons = document.getElementsByClassName('btn btn-info btn-sm');
+          for(var i=0; i<buttons.length; i++){
+              buttons[i].addEventListener("click", function(){ location.href="listarpedidosfuncionario.jsp?consultar=true"; return;})
+                                             }
+                                             
+            
+        </script>  
+        
+        <script type="text/javascript">
+          var buttons = document.getElementsByClassName('btn btn-success btn-sm');
+          for(var i=0; i<buttons.length; i++){
+              buttons[i].addEventListener("click", function(){ location.href="listarpedidosfuncionario.jsp?aceitar=true"; return;})
+                                             }
+                                             
+            
+        </script>
+        
     </body>
     
 </html>
