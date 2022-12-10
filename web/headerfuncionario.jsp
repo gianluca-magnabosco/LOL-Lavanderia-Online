@@ -10,8 +10,10 @@
             <li><a class="menu__item" href="funcionarioinicio.jsp">Home</a></li>
             <li><a class="menu__item" href="listarpedidosfuncionario.jsp">Visualizar Pedidos</a></li>
             <li><a class="menu__item" href="relatorios.jsp">Relatórios</a></li>
-            <li><a class="menu__item" href="cadastrarroupa.jsp">Manutenção de Roupa</a></li>
-            <li><a class="menu__item" href="manutencaoFuncionario.jsp">Manutenção de Funcionários</a></li>
+            <li><a class="menu__item" href="cadastrarRoupa.jsp">Cadastrar Roupas</a></li>
+            <li><a class="menu__item" href="listarRoupa.jsp">Lista de Roupas</a></li>
+            <li><a class="menu__item" href="cadastrarFuncionario.jsp">Cadastro de Funcionários</a></li>
+            <li><a class="menu__item" href="listarFuncionario.jsp">Lista de Funcionários</a></li>
             <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg" style="margin-top: 130%">Logout</button></a>
         </ul>
     </div>  

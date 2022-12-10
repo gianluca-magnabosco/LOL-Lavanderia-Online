@@ -11,12 +11,12 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cadastrar Peça de Roupa</title>
-        <link rel="stylesheet" type="text/css" href="css/realizarpedido.css">
-        <link rel="stylesheet" href="css/bulma.min.css" />
+        <title>Manutenção de Peça de Roupa</title>
+            <link rel="stylesheet" type="text/css" href="css/funcionarioinicio.css">
         <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        >
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+             >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -32,40 +32,29 @@
         <%@ include file="headerfuncionario.jsp" %>
         
         <% if (request.getParameter("aceitar") != null) { %>
-            <%@ include file="aceitarpopup.jsp" %>
+            <%@ include file="aceitarRoupaPopup.jsp" %>
         <% } %>  
         
         <% if (request.getParameter("recusar") != null) { %>
             <%@ include file="cancelarpopup.jsp" %>
-        <% } %>          
+        <% } %>
         
         <div class="content">
-            <hr class="gradient">
 
-            <div id="app">
-                <div class="section">
-                    <div class="container">
-                        <div class="media is-pulled-right">
-                            <div class="media-content">
-                                <div class="field is-grouped">
-                                    <div class="control"></div>
-                                    <div class="control">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h3 class="pedidos-aberto">Cadastro de Peça de Roupa</h3>
 
+            <div class="container mt-5">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-10">
                         <div class="container">
                             <form class="border rounded p-3" action="cadastrarroupa" method="post" id="formulario">
-
                                 <div class="mb-2">
                                     <label for="nomeRoupa" class="form-label">Nome da Roupa</label>
                                     <div class="control">
                                         <input type="text" class="form-control input" placeholder="Insira o nome da peça de roupa" name="nome" id="nome">
                                     </div>
                                 </div>
-                                    
+
                                 <div class="mb-2">
                                     <label for="precoRoupa" class="form-label">Preço</label>
                                     <div class="control">
@@ -79,7 +68,7 @@
                                         <input type="text" name="prazo" oninput="prazoMask(this)" placeholder="Insira o prazo estimado para lavagem" class="form-control input" id="prazo">
                                     </div>
                                 </div>
-                                
+
                                 <div class="input-group mb-4" style="margin-top: 20px;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Foto</span>
@@ -91,23 +80,23 @@
                                     </div>
                                 </div>
 
-                                <div class="field is-grouped justify-content-center""> 
+                                <div class="field is-grouped justify-content-center"> 
                                     <div class="control">
                                         <button class="btn btn-danger btn-lg" id="recusar">Cancelar</button>
-                                    </div>
-                                    <div class="control">
                                         <button class="btn btn-success btn-lg" type="submit" id="aceitar">Cadastrar</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            <div class="clear"></div>
+            <br/>
         </div>
-        
-        <%@ include file="footer.jsp" %>    
-        
+        <%@ include file="footer.jsp" %>       
     </body>
     
     <script type="text/javascript">
@@ -156,25 +145,26 @@
         $.validator.addMethod("prazoValido", function(value, element, param) {
             return validatePrazo(value);
         });
-    </script>
-      
+    </script>       
+          
         
         <script type="text/javascript">
+            
             $("#aceitar").on("click", function() {               
-                    location.href = "cadastrarroupa.jsp?aceitar=true";
+                    location.href = "cadastrarRoupa.jsp?aceitar=true";
                     return;
                 }
                 
             );
+            
         </script>   
         
         <script type="text/javascript">
             $("#recusar").on("click", function() {               
-                    location.href = "cadastrarroupa.jsp?recusar=true";
+                    location.href = "cadastrarRoupa.jsp?recusar=true";
                     return;
                 }
                 
-            );
-        </script>         
-    
+            ); 
+        </script>  
 </html>

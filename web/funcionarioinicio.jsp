@@ -32,8 +32,8 @@
 
         <% if (request.getParameter("aceitar") != null) { %>
             <%@ include file="aceitarpopup.jsp" %>
-        <% } %>         
-        
+        <% } %>  
+
         <div class="content">
 
             <h3 class="pedidos-aberto">Pedidos em aberto:</h3>
