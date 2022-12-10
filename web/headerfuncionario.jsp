@@ -7,8 +7,8 @@
         </label>
 
         <ul class="menu__box">
-            <li><a class="menu__item" href="funcionarioinicio.jsp">Home</a></li>
-            <li><a class="menu__item" href="listarpedidosfuncionario.jsp">Visualizar Pedidos</a></li>
+            <li><a class="menu__item" href="funcionarioInicio.jsp">Home</a></li>
+            <li><a class="menu__item" href="listarPedidosFuncionario.jsp">Visualizar Pedidos</a></li>
             <li><a class="menu__item" href="relatorios.jsp">Relatórios</a></li>
             <li><a class="menu__item" href="cadastrarRoupa.jsp">Cadastrar Roupas</a></li>
             <li><a class="menu__item" href="listarRoupa.jsp">Lista de Roupas</a></li>

@@ -12,9 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cadastro</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-        <link rel="stylesheet" href="css/bulma.min.css" />
+        <link rel="stylesheet" href="css/bulma.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/registrar.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/registrar.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -39,10 +38,10 @@
                             <form action="registrar" method="post" id="registerForm">
                                 <div class="field">
                                     <div class="control">
-                                        <input type="text" name="nome" class="input is-large"  placeholder="Nome" autofocus=""/><br><br>
-                                        <input oninput="cpfMask(this)" type="text" class="input is-large" placeholder="CPF" name="cpf"><br><br> 
-                                        <input type="email" name="email" class="input is-large" placeholder="E-mail"><br><br>
-                                        <input oninput="phoneNumberMask(this)" type="text" class="input is-large" placeholder="Telefone" name="telefone"><br><br>
+                                        <input type="text" name="nome" class="input is-large" placeholder="Nome" autofocus=""/><br/><br/>
+                                        <input oninput="cpfMask(this)" type="text" class="input is-large" placeholder="CPF" name="cpf"><br/><br/> 
+                                        <input type="email" name="email" class="input is-large" placeholder="E-mail"><br/><br/>
+                                        <input oninput="phoneNumberMask(this)" type="text" class="input is-large" placeholder="Telefone" name="telefone"><br/><br/>
                                         <input oninput="cepMask(this)" type="text" class="input is-large" placeholder="CEP" name="cep" id="cep">
                                     </div>
                                 </div>                  
@@ -90,8 +89,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <button type="submit" class="button is-block is-link is-large is-fullwidth">Registrar</button><br>
+                                <br/>
+                                <button type="submit" class="button is-block is-link is-large is-fullwidth">Registrar</button><br/>
                                 <% 
                                 request.setCharacterEncoding("UTF-8");
                                 if (request.getParameter("message") != null) {

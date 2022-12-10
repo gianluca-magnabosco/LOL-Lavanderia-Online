@@ -10,28 +10,28 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sistema de Login</title>
+        <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-        <link rel="stylesheet" href="css/bulma.min.css" />
+        <link rel="stylesheet" href="css/bulma.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <script type="text/javascript" src="js/login.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
+        </script>
     </head>
-    
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous">
-    </script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
-    </script>
     
     <body>
         <section class="hero is-success is-fullheight">
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <div class="column is-4 is-offset-4">
-                        <h3 class="title has-text-grey">Sistema de Login</h3>
+                    <div class="column is-4 is-offset-4" style="padding-top: 0px;">
+                        <img src="images/logo-icone.png"/>
+                        <h3 class="title has-text-grey">Login</h3>
                         <div class="box">
                             <form action="login" method="post" id="loginForm">
                                 <div class="field">

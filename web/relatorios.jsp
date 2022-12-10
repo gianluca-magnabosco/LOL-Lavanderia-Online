@@ -14,29 +14,29 @@
         <title>Relatórios em PDF</title>
         <link rel="stylesheet" type="text/css" href="css/relatorios.css">
         <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        >   
     </head>
     
     <body>
-        <%@ include file="headerfuncionario.jsp" %>
+        <%@ include file="headerFuncionario.jsp" %>
         
         <div class="content">
             <div class="container mt-5">
                 <h2 class="pedidos-aberto">Área de Geração de Relatórios</h2>
-                <h4 class="pedidos-aberto">Clique no relatório que deseja baixar!</h4><br>
+                <h4 class="pedidos-aberto">Clique no relatório que deseja baixar!</h4><br/>
                 <div class="botoesRelatorio">
-                    <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de receitas em PDF</button></a><br><br>
-                    <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de clientes em PDF</button></a><br><br>
-                    <a href="#"><button id="botaoS" class="btn btn-info btn-sm">Gerar relatório de clientes fiéis em PDF</button></a><br><br>
-                    <a href="#"><button id="botao" class="btn btn-info btn-sm">Gerar relatório de pedidos em PDF</button></a><br><br>
+                    <a href="#"><button class="btn btn-info btn-sm botao">Gerar relatório de receitas em PDF</button></a><br/><br/>
+                    <a href="#"><button class="btn btn-info btn-sm botao">Gerar relatório de clientes em PDF</button></a><br/><br/>
+                    <a href="#"><button id="botaoS" class="btn btn-info btn-sm">Gerar relatório de clientes fiéis em PDF</button></a><br/><br/>
+                    <a href="#"><button class="btn btn-info btn-sm botao">Gerar relatório de pedidos em PDF</button></a><br/><br/>
 
                     <style>
-                        #botao{
+                        .botao {
                             padding: 50px 110px 50px 110px;
                         }
-                        #botaoS{
+                        
+                        #botaoS {
                             padding: 50px 110px 50px 80px;
                         }
                     </style>

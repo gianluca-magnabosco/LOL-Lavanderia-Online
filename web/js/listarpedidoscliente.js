@@ -1,4 +1,3 @@
-
 $(".btn-group .btn").on("click", filterByStatus);  
 $(document).ready(filterByStatus);
 
@@ -12,12 +11,29 @@ function filterByStatus() {
     }
     
     if (inputValue == "todos") {
-        $("table tbody tr").fadeIn();
+        $(".table-responsive table tbody tr").fadeIn();
         return;
     }
 
     var target = $("table tr[class='cell-1 " + inputValue + "']");
-    $("table tbody tr").fadeOut("fast").promise().done(function () {
+    $(".table-responsive table tbody tr").fadeOut("fast").promise().done(function () {
         target.fadeIn("fast");
     });    
 }
+
+
+$(".cancelar").on("click", function() {
+    $("#overlay.cancelarOverlay").toggle();
+});
+
+$(".confirmar").on("click", function() {
+    $("#overlay.cancelarOverlay").toggle();
+});
+
+$(".consultar").on("click", function() {
+    $("#overlay.consultarOverlay").toggle();
+});
+
+$(".pagar").on("click", function() {
+    $("#overlay.pagarOverlay").toggle();
+});

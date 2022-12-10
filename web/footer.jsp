@@ -67,5 +67,16 @@
     </div>
 </footer>
 
+<style>
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+</style>
 <!-- #9EE8F0, #55DEED, #43AEBA, #486A6E -->
 <!-- #2548B0,#0088F0,#77C3FF, #2FED2F, #4DFF52 -->

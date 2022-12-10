@@ -11,16 +11,15 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Área do Funcionario</title>
+        <title>Manutenção de Funcionários</title>
         <link rel="stylesheet" type="text/css" href="css/funcionarioinicio.css">
         <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-             >
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">      
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        > 
     </head>
     
     <body>
-        <%@ include file="headerfuncionario.jsp" %>
+        <%@ include file="headerFuncionario.jsp" %>
         
         <div class="content">
 
@@ -30,7 +29,7 @@
                 <div class="d-flex justify-content-center row">
                     <div class="col-md-10">
       
-                                 <div class="container">
+                        <div class="container">
                             <form class="border rounded p-3">
                                 <h4>Cadastrar novo Funcionário</h4>
                                 <div class="mb-2">
@@ -64,37 +63,31 @@
                               
                         
                         <h3 class="pedidos-aberto">Funcionários já cadastrados:</h3>
-                           <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody class="table-body">
-                                        <tr class="cell-1">
-                                            <td>Geovanna Alberti Correia de Freitas</td>
-                                            <td class="text-center">
-                                                <a href="#"><button class="btn btn-danger btn-sm">Excluir</button></a> 
-                                                <a href="consultarFuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
-                                                <div class="inner-circle"></div>
-                                            <td><i class="text-black-50"></i></td>
-                                        </tr>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                                    </tbody>
-                                </table>      
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    <td>Geovanna Alberti Correia de Freitas</td>
+                                    <td class="text-center">
+                                        <a href="#"><button class="btn btn-danger btn-sm">Excluir</button></a> 
+                                        <a href="consultarFuncionario.jsp"><button class="btn btn-info btn-sm">Consultar</button></a><br>
+                                        <div class="inner-circle"></div>
+                                    <td><i class="text-black-50"></i></td>
+                                </tr>
+
+                            </tbody>
+                        </table>      
                     </div>
-        
-           
-        
+                </div>
+            </div>
+            
             <div class="clear"></div>
 
             <br/>

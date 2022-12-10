@@ -42,7 +42,7 @@ h2 {
     height: 200px;
 }
 
-#numeropedido {
+.botao {
     font-family: 'Muli', Arial, sans-serif;
     font-weight: 600;
     width: 200px;

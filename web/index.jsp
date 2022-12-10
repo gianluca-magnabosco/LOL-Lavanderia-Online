@@ -1,54 +1,74 @@
-<%-- 
-    Document   : consultarpedido
-    Created on : 1 de dez. de 2022, 19:06:43
-    Author     : gfbat
---%>
-
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Consultar Pedido</title>
-        <link rel="stylesheet" type="text/css" href="css/clienteinicio.css"/>
-        <link rel="stylesheet" type="text/css" href="css/consultarpedido.css"/>
-        <link rel="stylesheet" href="css/bulma.min.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
-        <script type="text/javascript"
+        <title>LOL - Lavanderia On-line</title>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" type="text/css" href="css/landing.css">
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        >
+        <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
-        </script> 
-    </head>
+        </script>
+        <script type="text/javascript" src="js/landingPage.js"></script>
+        <style>
+            .mySlides {
+                display: none;
+            }
+            img {
+                vertical-align: middle;
+            }
+        </style>
+    </head> 
     
     <body>
-        <%@ include file="headerCliente.jsp" %>
-        
-        <%@ include file="consultarPopup.jsp" %>
-        
-        <div class="content">
-
-            <p class="titulo">Digite aqui o número <br/> do seu pedido!</p>
-           
-            <div class="container mt-3">
-                <div class="input-group">
-                    <input type="search" class="form-control rounded searchbar" placeholder="Ex: #SO-32269"/>
-                    <button type="button" class="btn btn-outline-primary consultar">Pesquisar</button>
-                </div> 
-                
-                <b id="errorMsg" style="color: red;"></b>
+        <div class="header">
+            <div class="center">
+                <img class="icone" src="images/logo-icone.png" alt="Ícone da LOL">
+                <img class="nome" src="images/logo-nome.png" alt="Lavanderia On-Line" title="Lavanderia On-Line">
             </div>
-        </div>    
+        </div>
 
-        
+        <div class="container-banner" id="container-banner">
+            <div class="center"></div>
+            <div class="fakeform">
+                <h2>Faça o seu login:</h2>
+                <a href="login.jsp">
+                    <button type="button" class="btn btn-info btn-lg">Login!</button>
+                </a>
+                <h2>Faça o seu cadastro:</h2>
+                <a href="registrar.jsp">
+                    <button type="button" class="btn btn-info btn-lg">Cadastro!</button>
+                </a>
+            </div>
+        </div>	
+
+        <div class="container2">
+            <div class="center">
+                <h2 class="boldasso">Um novo jeito de lavar suas roupas!</h2>
+                <p>
+                    A LOL cuida das suas roupas com aquele carinho de mãe sem você precisar pagar a mais por isso, 
+                    juntando a qualidade com inovação para fornecer um serviço que ninguém faz igual! Qual o
+                    motivo de sair da sua casa ou pior: lavar própria roupa quando de maneira fácil, rápida e prática
+                    você pode fazer isso sem sair do seu conforto! A LOL busca e entrega suas roupas diretamente em sua casa, vem com a LOL!
+                </p>
+            </div>
+
+            <div class="arrow"></div>
+        </div>
+
         <div class="section1">
             <div class="center">
-                <h2>Ainda não fez um pedido? Veja os principais motivos <br/> para pedir com a gente!</h2>
+                <h2>Inovação + Facilidade</h2>
 
                 <div class="section">
-
                     <div class="single">
                         <div>
                             <img src="images/entregador.png" alt="Entregador">
@@ -92,15 +112,15 @@
                     </div>
                     
                     <div class="clear"></div>
-                    
                 </div>
             </div>
         </div>
-              
+            
         <%@ include file="footer.jsp" %>
-           
+        
+        <script type="text/javascript">
+            $(document).ready(changePicture());
+        </script>
+
     </body>
-    
-    <script type="text/javascript" src="js/consultarPedido.js"></script>
-    
 </html>

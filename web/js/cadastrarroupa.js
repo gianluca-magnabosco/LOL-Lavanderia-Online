@@ -1,29 +1,4 @@
 
-function prazoMask(element) {
-    var currentNumber = element.value[element.value.length - 1];
-    var string = element.value.substring(0, element.value.search(/\s/));
-    
-    if (isNaN(currentNumber)) {
-        if (element.value[element.value.length - 1] != ")") {
-            string = string.substring(0, string.length - 1);
-            element.value = string + " dia(s)";
-        }
-        return;
-    }
-    
-    if (element.value[0] == "0") {
-        element.value = Math.abs(currentNumber);
-        element.value += " dia(s)";
-        return;
-    }
-    
-    string += currentNumber;
-    
-    element.value = string;
-    element.value += " dia(s)";
-}
-
-
 function precoMask(element) {
     if (isNaN(element.value[element.value.length -1])) {
         element.value = element.value.substring(0, element.value.length - 1);
@@ -39,3 +14,4 @@ function precoMask(element) {
 
     element.value = 'R$ ' + result;
 }
+

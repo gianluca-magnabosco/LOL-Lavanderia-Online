@@ -25,19 +25,15 @@
         <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     </head>
     
     <body>
-        <%@ include file="headerfuncionario.jsp" %>
+        <%@ include file="headerFuncionario.jsp" %>
         
-        <% if (request.getParameter("consultar") != null) { %>
-            <%@ include file="consultarpopup.jsp" %>
-        <% } %>         
+        <%@ include file="consultarPopup.jsp" %>      
 
-        <% if (request.getParameter("aceitar") != null) { %>
-            <%@ include file="aceitarpopup.jsp" %>
-        <% } %> 
+        <%@ include file="aceitarPopup.jsp" %>
         
         <div class="content">
             
@@ -78,7 +74,6 @@
                 
                 
                 <div class="d-flex justify-content-center row">
-
                     <div class="col-md-11" style="z-index: 0;">
                         <div class="rounded">
                             <div class="table-responsive table-borderless">
@@ -107,7 +102,7 @@
                                             <td>R$ 83,49</td>
                                             <td class="data">01/11/2022, 22:55</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -121,7 +116,7 @@
                                             <td>R$ 145,44</td>
                                             <td class="data">02/11/2022, 15:35</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -135,7 +130,7 @@
                                             <td>R$ 153,25</td>
                                             <td class="data">03/11/2022, 01:35</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -149,7 +144,7 @@
                                             <td>R$ 69,13</td>
                                             <td class="data">03/11/2022, 02:56</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>
@@ -163,7 +158,7 @@
                                             <td>R$ 12,50</td>
                                             <td class="data">04/11/2022, 03:17</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -177,7 +172,7 @@
                                             <td>R$ 1955,32</td>
                                             <td class="data">05/11/2022, 06:33</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -191,8 +186,8 @@
                                             <td>R$ 560,79</td>
                                             <td class="data">10/11/2022, 20:45</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                       
@@ -206,8 +201,8 @@
                                             <td>R$ 478,36</td>
                                             <td class="data">12/11/2022, 08:55</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -221,8 +216,8 @@
                                             <td>R$ 32,78</td>
                                             <td class="data">13/11/2022, 19:55</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -236,8 +231,8 @@
                                             <td>R$ 24,35</td>
                                             <td class="data">14/11/2022, 11:37</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -251,8 +246,8 @@
                                             <td>R$ 15,90</td>
                                             <td class="data">14/11/2022, 14:15</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -266,8 +261,8 @@
                                             <td>R$ 312,66</td>
                                             <td class="data">15/11/2022, 12:25</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                           
@@ -281,8 +276,8 @@
                                             <td>R$ 74,01</td>
                                             <td class="data">15/11/2022, 18:32</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                         
@@ -296,8 +291,8 @@
                                             <td>R$ 57,10</td>
                                             <td class="data">16/11/2022, 15:42</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>                                        
@@ -309,8 +304,8 @@
                                             <td>R$ 255,50</td>
                                             <td class="data">19/11/2022, 17:59</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a> 
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>
                                         </tr>                                       
@@ -322,8 +317,8 @@
                                             <td>R$ 200,00</td>
                                             <td class="data">21/11/2022, 13:40</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar recolhimento</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>
                                         </tr>
@@ -337,8 +332,8 @@
                                             <td>R$ 283,50</td>
                                             <td class="data">21/11/2022, 16:20</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Finalizar pedido</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Finalizar pedido</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -352,8 +347,8 @@
                                             <td>R$ 355,15</td>
                                             <td class="data">22/11/2022, 11:13</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Finalizar pedido</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Finalizar pedido</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -367,8 +362,8 @@
                                             <td>R$ 28,00</td>
                                             <td class="data">22/11/2022, 13:37</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar lavagem</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar lavagem</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -382,8 +377,8 @@
                                             <td>R$ 135,22</td>
                                             <td class="data">23/11/2022, 17:55</td>
                                             <td class="text-center">
-                                                <a href="#"><button class="btn btn-success btn-sm">Confirmar lavagem</button></a>
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-success btn-sm confirmar">Confirmar lavagem</button>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr> 
@@ -397,7 +392,7 @@
                                             <td>R$ 15,34</td>
                                             <td class="data">23/11/2022, 19:33</td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>   
@@ -411,7 +406,7 @@
                                             <td>R$ 87,84</td>
                                             <td class="data diadehoje"></td>
                                             <td class="text-center">
-                                                <button class="btn btn-info btn-sm" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
                                                 <div class="inner-circle"></div>
                                             </td>    
                                         </tr>  
@@ -430,27 +425,15 @@
         
         </div>   
         
-        <script type="text/javascript" src="js/listarpedidosfuncionario.js"></script>
-        
         <%@ include file="footer.jsp" %>
         
-        <script type="text/javascript">
-          var buttons = document.getElementsByClassName('btn btn-info btn-sm');
-          for(var i=0; i<buttons.length; i++){
-              buttons[i].addEventListener("click", function(){ location.href="listarpedidosfuncionario.jsp?consultar=true"; return;})
-                                             }
-                                             
-            
-        </script>  
+        <script type="text/javascript" src="js/listarPedidosFuncionario.js"></script>
         
         <script type="text/javascript">
-          var buttons = document.getElementsByClassName('btn btn-success btn-sm');
-          for(var i=0; i<buttons.length; i++){
-              buttons[i].addEventListener("click", function(){ location.href="listarpedidosfuncionario.jsp?aceitar=true"; return;})
-                                             }
-                                             
-            
-        </script>
+            $(".aceitar").on("click", function() {
+                $("#overlay.aceitarOverlay").toggle();
+            });
+        </script>  
         
     </body>
     

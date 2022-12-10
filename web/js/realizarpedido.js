@@ -1,3 +1,41 @@
+$("#aceitar").on("click", function() {
+    $("#errormsg").text("");
+    var check = 0;
+    if ($("input:checkbox:checked").length > 0) {
+        $("input:checkbox:checked").each(function() {
+            currentAmount = $(this).closest('tr').find('input[type=number]').val();
+            if (currentAmount == 0) {
+                check++;
+                return;
+            }
+        });
+
+        if (check > 0) {
+            $("#errormsg").text("Algum item selecionado está com quantidade 0!");
+            return;
+        }
+
+        $("#overlay.aceitarOverlay").toggle();
+        return;
+    }
+
+    $("#errormsg").text("Selecione ao menos um item!");
+});
+
+$("#recusar").on("click", function() {               
+        $("#overlay.cancelarOverlay").toggle();
+    }
+);
+
+$(".cancelar").on("click", function() {
+    $("#overlay.cancelarOverlay").toggle();
+});
+
+$(".confirmar").on("click", function() {
+    location.href="clienteInicio.jsp";
+});
+
+
 
 $("body").on("click keydown keyup", function() {
     var total = 0;

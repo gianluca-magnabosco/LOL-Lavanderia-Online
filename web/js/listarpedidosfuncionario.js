@@ -1,3 +1,12 @@
+$(".confirmar").on("click", function() {
+    $("#overlay.aceitarOverlay").toggle();
+});
+
+$(".consultar").on("click", function() {
+    $("#overlay.consultarOverlay").toggle();
+});
+
+
 $(".diadehoje").text(moment().format("DD/MM/YYYY") + ", 18:21");
 
 var dateList = [];
@@ -16,7 +25,7 @@ $(function() {
             var dataInicio = new Date(moment(start.format("DD/MM/YYYY"), "DD/MM/YYYY"));
             var dataFim = new Date(moment(end.format("DD/MM/YYYY"), "DD/MM/YYYY"));
 
-            $("table tbody tr").fadeOut("fast");
+            $(".table-responsive table tbody tr").fadeOut("fast");
 
             var i = 0;
             dateList.forEach(date => {
@@ -36,11 +45,11 @@ $('#dateRange').on("keypress paste", function() {
 });
 
 $("#todos").on("click", function() {
-    $("table tbody tr").fadeIn();
+    $(".table-responsive table tbody tr").fadeIn();
 });
 
 $("#hoje").on("click", function() {
-    $("table tbody tr").fadeOut("fast");
+    $(".table-responsive table tbody tr").fadeOut("fast");
     var i = 0;
     dateList.forEach(date => {
         if (date.getTime() === new Date(moment().startOf("day")).getTime()) {
