@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 throw new DAOException("Usuário inválido!");
             }
+            
         } catch (DAOException e) {
             e.printStackTrace();
             RequestDispatcher loginDispatcher = request.getRequestDispatcher("/login.jsp");

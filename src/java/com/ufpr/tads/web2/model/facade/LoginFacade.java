@@ -32,6 +32,7 @@ public class LoginFacade {
             login.setId(user.getId());
             login.setNome(user.getFullName());
             login.setEmail(user.getEmail());
+            login.setRole(user.getRole());
             
             return user;
         }

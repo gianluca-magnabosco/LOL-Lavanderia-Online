@@ -7,6 +7,7 @@ public class LoginBean implements Serializable {
     private int id;
     private String nome;
     private String email;
+    private String role;
     
     public LoginBean() {
         
@@ -35,5 +36,13 @@ public class LoginBean implements Serializable {
     
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getRole() {
+        return this.role;
+    }
+    
+    public void setRole(String role) {
+        this.role = role;
     }
 }
