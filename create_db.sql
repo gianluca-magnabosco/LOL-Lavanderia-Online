@@ -54,7 +54,6 @@ CREATE TABLE tb_user (
   CONSTRAINT fk_endereco_u FOREIGN KEY (id_endereco) REFERENCES tb_endereco (id_endereco)
 );
 
-
 CREATE TABLE user_has_pedido (
   id_user INTEGER NOT NULL,
   id_pedido INTEGER NOT NULL,
@@ -69,6 +68,7 @@ CREATE TABLE user_has_pedido (
 CREATE TABLE pedido_has_item(
   id_pedido INTEGER NOT NULL,
   id_item INTEGER NOT NULL,
+  qtd_item INTEGER NOT NULL,
   CONSTRAINT pk_phi PRIMARY KEY (id_pedido, id_item),
   CONSTRAINT fk_pedido_i FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido),
   CONSTRAINT fk_item_p FOREIGN KEY (id_item) REFERENCES tb_item (id_item)
