@@ -165,6 +165,34 @@ public List<Pedido> listarPedidos() throws DAOException {
     }
   }
 
+  public List<Item> listarItensPedido(int idPedido) throws DAOException {
+    List<Item> itens = new ArrayList<>();
+
+    try {
+        stmt = con.prepareStatement(
+            "SELECT i.id_item, i.descricao_item, i.preco_uni, i.tempo, i.imagem_item " +
+            "FROM tb_item i " +
+            "INNER JOIN pedido_has_item phi ON i.id_item = phi.id_item " +
+            "WHERE phi.id_pedido = ?"
+        );
+        stmt.setInt(1, idPedido);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Item item = new Item();
+            item.setId(rs.getInt("id_item"));
+            item.setDescricao(rs.getString("descricao_item"));
+            item.setPrecoUni(rs.getDouble("preco_uni"));
+            item.setTempo(rs.getInt("tempo"));
+            item.setImagem(rs.getString("imagem_item"));
+            itens.add(item);
+        }
+    } catch (SQLException e) {
+        throw new DAOException(e);
+    } 
+    return itens;
+}
+
 @Override
 public void insert(Pedido pedido) throws DAOException {
     String sql = "INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido) VALUES (?, ?, ?)";
