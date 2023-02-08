@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,14 +42,14 @@
 
                                                     <p id="bottomtext">
                                                         Um e-mail com sua senha foi enviado para 
-                                                        <% if (request.getParameter("email") != null) { %>
-                                                            <jsp:useBean id="e" class="com.ufpr.tads.web2.model.domain.User">
-                                                                <jsp:setProperty name="e" property="email"/>
+                                                        <c:if test="${not empty param.email}">
+                                                            <jsp:useBean id="user" class="com.ufpr.tads.web2.model.domain.User">
+                                                                <jsp:setProperty name="user" property="email"/>
                                                                 <b>
-                                                                    <jsp:getProperty name="e" property="email"/>
+                                                                    ${user.email}
                                                                 </b><br/>
-                                                            </jsp:useBean>
-                                                        <% } %>
+                                                            </jsp:useBean>                                                            
+                                                        </c:if>
                                                         Certifique-se de checar sua pasta de spam.
                                                     </p>
                                                     
@@ -80,10 +81,7 @@
                                 <center>
                                     <p id="emailfooter">
                                         Caso tenha alguma dúvida ou problema, envie um e-mail para:
-                                        <jsp:useBean id="configuracao" class="com.ufpr.tads.web2.model.beans.ConfigBean" scope="application"/>
-                                        <a href="mailto:<jsp:getProperty name="configuracao" property="email"/>" target="_blank">
-                                            <jsp:getProperty name="configuracao" property="email"/>
-                                        </a>
+                                        <a href="mailto:${configuracao.email}" target="_blank">${configuracao.email}</a>
                                     </p>
 
                                     <p id="addressfooter">

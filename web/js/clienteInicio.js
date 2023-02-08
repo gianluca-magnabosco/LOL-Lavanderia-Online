@@ -1,11 +1,13 @@
-$(".cancelar").on("click", function() {
+/*
+$(".cancelar").on("click", () => {
     $("#overlay.cancelarOverlay").toggle();
 });
 
-$(".confirmar").on("click", function() {
+$(".confirmar").on("click", () => {
     $("#overlay.cancelarOverlay").toggle();
 });
 
-$(".consultar").on("click", function() {
+$(".consultar").on("click", () => {
     $("#overlay.consultarOverlay").toggle();
 });
+*/

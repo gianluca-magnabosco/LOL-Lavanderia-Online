@@ -1,8 +1,8 @@
-$("#aceitar").on("click", function() {
+$("#aceitar").on("click", () => {
     $("#errormsg").text("");
-    var check = 0;
+    let check = 0;
     if ($("input:checkbox:checked").length > 0) {
-        $("input:checkbox:checked").each(function() {
+        $("input:checkbox:checked").each(() => {
             currentAmount = $(this).closest('tr').find('input[type=number]').val();
             if (currentAmount == 0) {
                 check++;
@@ -22,26 +22,26 @@ $("#aceitar").on("click", function() {
     $("#errormsg").text("Selecione ao menos um item!");
 });
 
-$("#recusar").on("click", function() {               
+$("#recusar").on("click", () => {               
         $("#overlay.cancelarOverlay").toggle();
     }
 );
 
-$(".cancelar").on("click", function() {
+$(".cancelar").on("click", () => {
     $("#overlay.cancelarOverlay").toggle();
 });
 
-$(".confirmar").on("click", function() {
+$(".confirmar").on("click", () => {
     location.href="clienteInicio.jsp";
 });
 
 
 
-$("body").on("click keydown keyup", function() {
-    var total = 0;
-    var deadLine = 0;
-    var deadLines = [];
-    $("input:checkbox").each(function() {
+$("body").on("click keydown keyup", () => {
+    let total = 0;
+    let deadLine = 0;
+    let deadLines = [];
+    $("input:checkbox").each(() => {
         if (!$(this).is(':checked')) {
             $(this).closest('tr').find('.result').text("R$ 0,00");
             return;
@@ -51,7 +51,7 @@ $("body").on("click keydown keyup", function() {
         if (currentAmount == 0) {
             return;
         }
-        var currentTotal = (currentPrice * currentAmount);
+        let currentTotal = (currentPrice * currentAmount);
         total += currentTotal;
         currentTotal = currentTotal.toFixed(2);
         currentTotal = String(currentTotal).replaceAll(".", ",");
@@ -59,6 +59,7 @@ $("body").on("click keydown keyup", function() {
         
         $(this).closest('tr').find('.result').text("R$ " + currentTotal);
     });
+    
     deadLine = deadLines.reduce((a, b) => Math.max(a, b), -Infinity);
     if (deadLine === -Infinity) {
         deadLine = 0;

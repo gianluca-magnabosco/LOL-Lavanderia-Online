@@ -1,6 +1,8 @@
 package com.ufpr.tads.web2.model.facade;
 
 import com.ufpr.tads.web2.exception.DAOException;
+import com.ufpr.tads.web2.exception.EmailInvalidoException;
+import com.ufpr.tads.web2.exception.UsuarioOuSenhaInvalidosException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.model.dao.ConnectionFactory;
 import com.ufpr.tads.web2.model.dao.UserDAO;
@@ -13,9 +15,9 @@ import com.ufpr.tads.web2.security.HashFunction;
  */
 public class LoginFacade {
     
-    public static User login(String userEmail, String userPassword, LoginBean login) {
+    public static User login(String userEmail, String userPassword, LoginBean login) throws UsuarioOuSenhaInvalidosException, EmailInvalidoException {
         if (!userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}") || !userPassword.matches(".+")) {
-            return null;            
+            throw new EmailInvalidoException("O e-mail inserido é invalido!");          
         }
         
         String hashedUserPassword = HashFunction.getHash(userPassword);
@@ -25,8 +27,8 @@ public class LoginFacade {
             
             User user = dao.validateLogin(userEmail, hashedUserPassword);
             
-            if (user.getFullName() == null) {
-                return null;
+            if (user == null) {
+                throw new UsuarioOuSenhaInvalidosException("E-mail ou senha incorretos!");
             }
             
             login.setId(user.getId());
@@ -38,7 +40,7 @@ public class LoginFacade {
         }
         catch (DAOException e) {
             e.printStackTrace();
-        }        
+        }     
         
         return null;
     }

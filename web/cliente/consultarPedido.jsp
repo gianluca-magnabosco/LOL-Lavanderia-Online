@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,9 +25,15 @@
     </head>
     
     <body>
-        <%@ include file="header.jsp" %>
         
-        <%@ include file="../popup/consultar.jsp" %>
+        <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
+            <c:redirect url="/login.jsp">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
+        
+        
+        <%@ include file="header.jsp" %>
         
         <div class="content">
 
@@ -34,7 +41,7 @@
            
             <div class="container mt-3">
                 <div class="input-group">
-                    <input type="search" class="form-control rounded searchbar" placeholder="Ex: #SO-32269"/>
+                    <input type="search" class="form-control rounded searchbar" placeholder="Ex: #LOL-32269"/>
                     <button type="button" class="btn btn-outline-primary consultar">Pesquisar</button>
                 </div> 
                 

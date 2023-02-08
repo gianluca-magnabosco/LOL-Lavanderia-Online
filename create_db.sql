@@ -32,14 +32,16 @@ CREATE TABLE tb_endereco (
 CREATE TABLE tb_pedido (
   id_pedido SERIAL PRIMARY KEY,
   descricao_pedido VARCHAR(255) NOT NULL,
-  orcamento_pedido INTEGER NOT NULL
+  orcamento_pedido NUMERIC(10, 2) NOT NULL,
+  tempo_pedido INTEGER NOT NULL
 );
 
 CREATE TABLE tb_item (
   id_item SERIAL PRIMARY KEY,
   descricao_item VARCHAR(255) NOT NULL,
-  preco_uni INTEGER NOT NULL,
-  tempo INTEGER NOT NULL
+  preco_uni NUMERIC(10, 2) NOT NULL,
+  tempo INTEGER NOT NULL,
+  imagem_item VARCHAR(255)
 );
 
 CREATE TABLE tb_user (
@@ -65,7 +67,7 @@ CREATE TABLE user_has_pedido (
   CONSTRAINT fk_pedido_u FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido)
 );
 
-CREATE TABLE pedido_has_item(
+CREATE TABLE pedido_has_item (
   id_pedido INTEGER NOT NULL,
   id_item INTEGER NOT NULL,
   qtd_item INTEGER NOT NULL,

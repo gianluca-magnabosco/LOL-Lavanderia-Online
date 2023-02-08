@@ -1,5 +1,5 @@
-function cpfMask(cpfField){
-    var text = cpfField.value;
+const cpfMask = cpfField => {
+    let text = cpfField.value;
     if(isNaN(text[text.length-1])){
         cpfField.value = text.substring(0, text.length-1);
         return;
@@ -11,11 +11,12 @@ function cpfMask(cpfField){
     if (text.length === 8 && text[7] !== ".") cpfField.value = text.substring(0, 7) + "." + text.substring(7, 8);
     if (text.length === 11) cpfField.value += "-";
     if (text.length === 12 && text[11] !== "-") cpfField.value = text.substring(0, 11) + "-" + text.substring(11, 12);
-}
+};
 
 
-function phoneNumberMask(phoneNumberField){
-    var text = phoneNumberField.value;
+
+const phoneNumberMask = phoneNumberField => {
+    let text = phoneNumberField.value;
     if(isNaN(text[text.length-1])){
         phoneNumberField.value = text.substring(0, text.length-1);
         return;
@@ -27,11 +28,12 @@ function phoneNumberMask(phoneNumberField){
     if (text.length === 4 && text[3] !== ")") phoneNumberField.value = text.substring(0, 3) + ") " + text.substring(3, 4);
     if (text.length === 10) phoneNumberField.value += "-";
     if (text.length === 11 && text[10] !== "-") phoneNumberField.value = text.substring(0, 10) + "-" + text.substring(10, 11);
-}
+};
 
 
-function cepMask(cepField){
-    var text = cepField.value;
+
+const cepMask = cepField => {
+    let text = cepField.value;
     if(isNaN(text[text.length-1])){
         cepField.value = text.substring(0, text.length-1);
         return;
@@ -41,18 +43,19 @@ function cepMask(cepField){
     if (text.length === 5) cepField.value += "-";
     if (text.length === 6 && text[5] !== "-") cepField.value = text.substring(0, 5) + "-" + text.substring(5, 6);
     if (text.length === 9) getEndereco();
-}
+};
 
 
-function getEndereco() {
+
+const getEndereco = () => {
     
-    var cep = document.getElementById("cep");
-    var url = "http://viacep.com.br/ws/" + cep.value + "/json/";
+    let cep = document.getElementById("cep");
+    let url = "http://viacep.com.br/ws/" + cep.value + "/json/";
 
-    var logradouro = document.getElementById("logradouro");
-    var bairro = document.getElementById("bairro");
-    var cidade = document.getElementById("localidade");
-    var uf = document.getElementById("uf");
+    let logradouro = document.getElementById("logradouro");
+    let bairro = document.getElementById("bairro");
+    let cidade = document.getElementById("localidade");
+    let uf = document.getElementById("uf");
 
     if (!cep.value.match(/\d{5}-\d{3}/)) {
         logradouro.value = "";
@@ -79,11 +82,11 @@ function getEndereco() {
                     cidade.value = data.localidade;
                 });
             });
-    }
+};
 
 
 
-function validateForm() {
+const validateForm = () => {
     $("#registerForm").validate({
         rules: {
             email: {
@@ -143,16 +146,18 @@ function validateForm() {
             }
         }
     });
-}
+};
 
 
-function validateNumber(value) {
+
+const validateNumber = value => {
     return value.match(/\d+/);
-}
+};
 
 
-function validateCEP(value) {
-    var uf = document.getElementById("uf");
+
+const validateCEP = value => {
+    let uf = document.getElementById("uf");
     
     getEndereco();
     
@@ -161,15 +166,17 @@ function validateCEP(value) {
     }
     
     return true;
-}
+};
 
 
-function validatePhoneNumber(value) {
+
+const validatePhoneNumber = value => {
     return value.match(/\(\d{2}\)\s\d{5}-\d{4}/);
-}
+};
 
 
-function validateCPF(value) {
+
+const validateCPF = value => {
     if (!value.match(/\d{3}\.\d{3}\.\d{3}-\d{2}/)) {
         return false;
     }
@@ -189,4 +196,4 @@ function validateCPF(value) {
     }
 
     return true;
-}
+};

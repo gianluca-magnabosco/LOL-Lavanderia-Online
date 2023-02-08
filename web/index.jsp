@@ -141,15 +141,6 @@
 
                     <a
                       class="btn btn-primary btn-floating m-1"
-                      style="background-color: #dd4b39;"
-                      href="#!"
-                      role="button"
-                    >
-                        <i class="fab fa-google"></i>
-                    </a>
-
-                    <a
-                      class="btn btn-primary btn-floating m-1"
                       style="background-color: #ac2bac;"
                       href="#!"
                       role="button"
@@ -179,8 +170,12 @@
             </div>
 
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2022 Copyright:
-                <a class="text-white" href="#">LOL - Lavanderia On-line</a>
+                © 2023 Copyright:
+                <a class="text-white" href="index.jsp">LOL - Lavanderia On-line</a>
+                <br/>
+                <p>
+                    Em caso de problemas contactar o administrador: <a href="mailto:${configuracao.email}">${configuracao.email}</a>
+                </p>
             </div>
         </footer>
         

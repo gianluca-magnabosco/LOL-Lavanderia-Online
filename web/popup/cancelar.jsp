@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="../css/cancelarpopup.css">
-<div id="overlay" class="cancelarOverlay" style="display: none;">
+<div id="overlay" class="cancelarOverlay">
     <div id="content">
         <center id="centertext">
             <img id="close" src="../images/icons8-close-28.png"/>
@@ -10,6 +10,13 @@
                 <img id="checkmark" src="../images/cancelar.gif" alt="Pedido confirmado"/>
                 <p><button class="btn btn-success btn-sm botao confirmar" id="numeropedido">Sim</button></p>
                 <p><button class="btn btn-danger btn-sm botao cancelar" id="numeropedido" type="button">Voltar</button></p>
+                <script>
+                    <c:if test"${not empty param.id}>
+                        $(".confirmar").on("click", () => {
+                            <jsp:forward page="PedidoServlet?action=cancelar&id=${param.id}"/>
+                        });
+                    </c:if>
+                </script>
             </div>
         </center>
     </div>

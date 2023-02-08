@@ -1,9 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 
-    if (session.getAttribute("login") != null) {
-        response.sendRedirect("home.jsp");
-    }
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +10,6 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/bulma.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/login.css">
-        <script type="text/javascript" src="js/login.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -23,9 +18,22 @@
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
         </script>
+        <script type="text/javascript" src="js/login.js"></script>
     </head>
     
     <body>
+        
+        <c:if test="${not empty sessionScope.login}">
+            <c:choose>
+                <c:when test="${login.role == \"Cliente\"}">
+                    <c:redirect url="cliente/inicio.jsp"/>
+                </c:when>
+                <c:otherwise>
+                    <c:redirect url="funcionario/inicio.jsp"/>
+                </c:otherwise>
+            </c:choose>
+        </c:if>
+        
         <section class="hero is-success is-fullheight">
             <div class="hero-body">
                 <div class="container has-text-centered">
@@ -47,11 +55,9 @@
                                     </div>
                                 </div>
                                 <button type="submit" value="Submit" class="button is-block is-link is-large is-fullwidth">Entrar</button><br/>
-                                <% 
-                                if (request.getAttribute("message") != null) {
-                                    out.println("<b class='inputError'>" + request.getAttribute("message") + "</b><br/>");
-                                }
-                                %>
+                                
+                                <b class="inputError">${message}${param.message}</b><br/>
+                                
                                 Não possui uma conta ainda? <a href="registrar.jsp" style="color: #3273DC;">Registre-se</a>
                             </form>
                         </div>

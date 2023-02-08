@@ -1,19 +1,23 @@
-$(".consultar").on("click", function() {
+$(".consultar").on("click", () => {
     console.log($(".searchbar").val());
-    if (!$(".searchbar").val().match(/#SO\-\d{6}/)) {
+    if (!$(".searchbar").val().match(/#LOL\-\d+/)) {
         $("#errorMsg").text("Insira um número de pedido válido!");
         return;
     }
     
+    <c:import url="/popup/consultar.jsp" charEncoding="UTF-8">
+        <c:param name="id" value="${pedido.id}"/>
+    </c:import>
+                                                
     $("#errorMsg").text("");
     $("#overlay.consultarOverlay").toggle();
 });
 
-$(".searchbar").on("keypress", function(event) {
-    var length = $(this).val().length;
+$(".searchbar").on("keypress", event => {
+    let length = $(this).val().length;
     
     if (length < 4) {
-        $(this).val("#SO-");
+        $(this).val("#LOL-");
     } else if (length > 9) {
         event.preventDefault();
     }

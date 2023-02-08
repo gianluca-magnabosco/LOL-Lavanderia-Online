@@ -1,12 +1,12 @@
-var i = 0;
-var images = [];
-var slideTime = 5000; 
+let i = 0;
+let images = [];
+let slideTime = 5000; 
 
 images[0] = 'images/back-teste3.jpg';
 images[1] = 'images/back-teste2.jpg';
 images[2] = 'images/back-teste1.jpg';
 
-function changePicture() {
+const changePicture = () => {
     document.getElementById('container-banner').style.backgroundImage = "url(" + images[i] + ")";
 
     if (i < images.length - 1) {
@@ -15,4 +15,4 @@ function changePicture() {
         i = 0;
     }
     setTimeout(changePicture, slideTime);
-}
+};

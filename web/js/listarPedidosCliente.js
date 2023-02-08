@@ -1,8 +1,8 @@
 $(".btn-group .btn").on("click", filterByStatus);  
 $(document).ready(filterByStatus);
 
-function filterByStatus() {
-    var inputValue;
+const filterByStatus = () => {
+    let inputValue;
     
     if ($(this).is(document)) {
         inputValue = $(this).find(".content input:checked").val();
@@ -15,25 +15,28 @@ function filterByStatus() {
         return;
     }
 
-    var target = $("table tr[class='cell-1 " + inputValue + "']");
-    $(".table-responsive table tbody tr").fadeOut("fast").promise().done(function () {
+    let target = $("table tr[class='cell-1 " + inputValue + "']");
+    $(".table-responsive table tbody tr").fadeOut("fast").promise().done(() => {
         target.fadeIn("fast");
     });    
-}
+};
 
 
-$(".cancelar").on("click", function() {
+/*
+$(".cancelar").on("click", () => {
     $("#overlay.cancelarOverlay").toggle();
 });
 
-$(".confirmar").on("click", function() {
+$(".confirmar").on("click", () => {
     $("#overlay.cancelarOverlay").toggle();
 });
 
-$(".consultar").on("click", function() {
+$(".consultar").on("click", () => {
     $("#overlay.consultarOverlay").toggle();
 });
 
-$(".pagar").on("click", function() {
+$(".pagar").on("click", () => {
     $("#overlay.pagarOverlay").toggle();
 });
+
+*/

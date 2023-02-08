@@ -55,6 +55,7 @@ public class RegistroServlet extends HttpServlet {
         
         String userEmailParameter = URLEncoder.encode(userEmail, "UTF-8");
         response.sendRedirect("cliente/cadastroRealizado.jsp?email=" + userEmailParameter);
+        return;
     }
     
 }

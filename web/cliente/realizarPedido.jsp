@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +23,13 @@
     </head>
     
     <body>
+        
+        <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
+            <c:redirect url="/login.jsp">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
+        
         <%@ include file="header.jsp" %>
         
         <%@ include file="../popup/aceitar.jsp" %>
@@ -63,195 +71,54 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr class="align-middle alert border-bottom" role="alert">
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <input type="checkbox" id="check">
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="text-center">
-                                                <img class="pic" src="../images/item-1.png" alt="">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <p class="m-0 fw-bold">Tênis</p>
-                                                    <p class="m-0 text-muted">Modelos cano baixo</p>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="preco">R$20,99</span>
+                                        <c:forEach var="item" items="itens">
+                                            <tr class="align-middle alert border-bottom" role="alert">
+                                                <td>
+                                                    <div class="alinhamento">
+                                                        <input type="checkbox" id="check">
                                                     </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="d-">
-                                                <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="prazo">3 dia(s)</span>
+                                                </td>
+
+                                                <td class="text-center">
+                                                    <img class="pic" src="../${item.imagem}" alt="">
+                                                </td>
+
+                                                <td>
+                                                    <div class="alinhamento">
+                                                        <p class="m-0 fw-bold">${item.descricao}</p>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="result">R$ 0,00</span>
+                                                </td>
+
+                                                <td>
+                                                    <div class="alinhamento">
+                                                        <div class="fw-600">
+                                                            <span class="preco">R$ ${item.preco}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr class="align-middle alert border-bottom" role="alert">
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <input type="checkbox" id="check">
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="text-center">
-                                                <img class="pic" src="../images/item-2.png" alt="">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <p class="m-0 fw-bold">Moletom</p>
-                                                    <p class="m-0 text-muted">Lavagem especial para algodão</p>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600" class="preco">
-                                                        <span class="preco">R$16,99</span>
+                                                </td>
+
+                                                <td class="d-">
+                                                    <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
+                                                </td>
+
+                                                <td>
+                                                    <div class="alinhamento">
+                                                        <div class="fw-600">
+                                                            <span class="prazo">${item.tempo} dia(s)</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="d-">
-                                                <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="prazo">2 dia(s)</span>
+                                                </td>
+
+                                                <td>
+                                                    <div class="alinhamento">
+                                                        <div class="fw-600">
+                                                            <span class="result">R$ 0,00</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="result">R$ 0,00</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr class="align-middle alert border-bottom" role="alert">
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <input type="checkbox" id="check">
-                                                </div>
-                                            </td>
-                                         
-                                            <td class="text-center">
-                                                <div class="alinhamento">
-                                                    <img class="pic" src="../images/item-3.png" alt="">
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <p class="m-0 fw-bold">Calça</p>
-                                                    <p class="m-0 text-muted">Calças jeans</p>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600" class="preco">
-                                                        <span class="preco">R$10,99</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="d-">
-                                                <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="prazo">1 dia(s)</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600"><span class="result">R$ 0,00</span></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr class="align-middle alert border-bottom" role="alert">
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <input type="checkbox" id="check">
-                                                </div>
-                                            </td>
-                                           
-                                            <td class="text-center">
-                                                <div class="reversoali">
-                                                    <img class="pic" src="../images/item-4.png" alt="">
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <p class="m-0 fw-bold">Camiseta</p>
-                                                    <p class="m-0 text-muted">Camisetas comuns</p>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600" class="preco">
-                                                        <span class="preco">R$6,99</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="prazo">1 dia(s)</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td>
-                                                <div class="alinhamento">
-                                                    <div class="fw-600">
-                                                        <span class="result">R$ 0,00</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                      
                                     </tbody>
                                 </table>
                             </div>
@@ -285,8 +152,8 @@
         <script type="text/javascript" src="../js/realizarPedido.js"></script>
         
         <script type="text/javascript">
-            $(".aceitar").on("click", function() {
-                location.href="inicio.jsp?pedido=true";
+            $(".aceitar").on("click", () => {
+                location.href="PedidoServlet?action=realizarpedido";
             });
         </script>
         

@@ -1,6 +1,5 @@
 
-
-function validateForm() {
+const validateForm = () => {
     $("#loginForm").validate({
         rules: {
             email: {
@@ -20,4 +19,4 @@ function validateForm() {
             password: "<b class='inputError'>Por favor insira uma senha</b>"
         }
     });
-}
+};

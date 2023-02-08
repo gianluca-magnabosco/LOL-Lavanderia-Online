@@ -1,20 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 
-    if (session.getAttribute("login") != null) {
-        response.sendRedirect("home.jsp");
-    }
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/bulma.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/registrar.css">
-        <script type="text/javascript" src="js/registrar.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -23,10 +18,24 @@
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
         </script>
+        <link rel="stylesheet" type="text/css" href="css/registrar.css">
+        <script type="text/javascript" src="js/registrar.js"></script>
     </head>
     
     
     <body>
+        
+        <c:if test="${not empty sessionScope.login}">
+            <c:choose>
+                <c:when test="${login.role == \"Cliente\"}">
+                    <c:redirect url="cliente/inicio.jsp"/>
+                </c:when>
+                <c:otherwise>
+                    <c:redirect url="funcionario/inicio.jsp"/>
+                </c:otherwise>
+            </c:choose>
+        </c:if>
+        
         <section class="hero is-sucess is-fullheight">
             <div class="hero-body">
                 <div class="container has-text-centered">
@@ -91,12 +100,9 @@
                                 </div>
                                 <br/>
                                 <button type="submit" class="button is-block is-link is-large is-fullwidth">Registrar</button><br/>
-                                <% 
-                                request.setCharacterEncoding("UTF-8");
-                                if (request.getParameter("message") != null) {
-                                    out.println("<b style='color: red'>" + request.getParameter("message") + "</b><br/>");
-                                }
-                                %>
+                                
+                                <b style="color: red"><c:out value="${param.message}"/></b><br/>
+
                                 Já possui uma conta? <a href="login.jsp">Faça login</a>
                             </form>
                         </div>
@@ -109,16 +115,16 @@
     <script type="text/javascript">
         $(document).ready(validateForm());
         
-        $.validator.addMethod("cpfValido", function(value, element, param) {
+        $.validator.addMethod("cpfValido", (value, element, param) => {
             return validateCPF(value);
         });
-        $.validator.addMethod("cepValido", function(value, element, param) {
+        $.validator.addMethod("cepValido", (value, element, param) => {
             return validateCEP(value);
         });
-        $.validator.addMethod("telefoneValido", function(value, element, param) {
+        $.validator.addMethod("telefoneValido", (value, element, param) => {
             return validatePhoneNumber(value);
         });
-        $.validator.addMethod("numeroValido", function(value, element, param) {
+        $.validator.addMethod("numeroValido", (value, element, param) => {
             return validateNumber(value);
         });
     </script>

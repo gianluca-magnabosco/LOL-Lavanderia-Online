@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,16 +25,19 @@
     </head>
     
     <body>
+        
+        <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
+            <c:redirect url="/login.jsp">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
+        
         <%@ include file="header.jsp" %>
         
-        <%@ include file="../popup/cancelar.jsp" %>
-        
-        <%@ include file="../popup/consultar.jsp" %>
-        
-        <% if (request.getParameter("pedido") != null) { %>
+        <c:if test="${not empty param.pedido}">
             <%@ include file="../popup/pedidoConfirmado.jsp" %>
-        <% } %>
-        
+        </c:if>
+
         
         <div class="content">
             
@@ -64,61 +68,35 @@
                                     </thead>
 
                                     <tbody class="table-body">
-                                        <tr class="cell-1">
-                                            <td></td>
-                                            <td>#SO-13487</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 200,00</td>
-                                            <td>21/11/2022, 13:40</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" id="bt1" type="button" value="button1">Consultar</button></a>
-                                                <button class="btn btn-danger btn-sm cancelar" id="btn1" type="button" value="button1">Cancelar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td></td>
-                                            <td>#SO-13486</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 255,50</td>
-                                            <td>19/11/2022, 17:59</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" id="bt2" type="button" value="button2">Consultar</button></a> 
-                                                <button class="btn btn-danger btn-sm cancelar" id="btn2" type="button" value="button2">Cancelar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13485</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 57,10</td>
-                                            <td>16/11/2022, 15:42</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" id="bt3" type="button" value="button3">Consultar</button></a>
-                                                <button class="btn btn-danger btn-sm cancelar" id="btn3" type="button" value="button3">Cancelar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>
-
-                                        <tr class="cell-1">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13478</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 560,79</td>
-                                            <td>10/11/2022, 20:45</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" id="bt4" type="button" value="button4">Consultar</button></a>
-                                                <button class="btn btn-danger btn-sm cancelar" id="btn4" type="button" value="button4">Cancelar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>
+                                        
+                                        <c:forEach var="pedido" items="${pedidos}">
+                                            <tr class="cell-1">
+                                                <td></td>
+                                                <td>#LOL-${pedido.id}</td>
+                                                <td><span class="badge badge-warning">${pedido.status}</span></td>
+                                                <td>${pedido.orcamento}</td>
+                                                <td>${pedido.dataInicio}</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}" id="bt1" type="button" value="button1">Consultar</button></a>
+                                                    <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}" id="btn1" type="button" value="button1">Cancelar</button>
+                                                    <div class="inner-circle"></div>
+                                                </td>
+                                            </tr>
+                                            
+                                            <script>
+                                                $(".consultar${pedido.id}").on("click", () => {
+                                                    <c:import url="/popup/consultar.jsp" charEncoding="UTF-8">
+                                                        <c:param name="id" value="${pedido.id}"/>
+                                                    </c:import>
+                                                });
+                                                
+                                                $(".cancelar${pedido.id}").on("click", () => {
+                                                    <c:import url="/popup/cancelar.jsp" charEncoding="UTF-8">
+                                                        <c:param name="id" value="${pedido.id}"/>
+                                                    </c:import>
+                                                });
+                                            </script>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -128,7 +106,6 @@
             </div>
 
             <div class="clear"></div>
-
             <br/>
         
         </div>
@@ -136,7 +113,6 @@
         <%@ include file="../footer.jsp" %>
         
         <script type="text/javascript" src="../js/clienteInicio.js"></script>
-
     </body>     
     
 </html>

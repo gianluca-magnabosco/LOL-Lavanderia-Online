@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="../css/pagarpopup.css">
-<div id="overlay" class="pagarOverlay" style="display: none;">
+<div id="overlay" class="pagarOverlay">
     <div id="content">
         <center id="centertext">
             <img id="close" src="../images/icons8-close-28.png"/>
@@ -18,9 +18,14 @@
                         <input type="text" class="checkout-input checkout-cvc" placeholder="CVC">
                     </p>
                     <p>
-                        <input type="button" value="Pagar" class="checkout-btn pagar">
+                        <input type="button" value="Pagar" class="checkout-btn pagar pagamento">
                     </p>
-                </form>                   
+                </form>   
+                <script>
+                    $(".pagamento").on("click", () => {
+                        <jsp:forward page="PedidoServlet?action=pagar&id=${param.id}"/>
+                    });
+                </script>                
             </div>
         </center>
     </div>

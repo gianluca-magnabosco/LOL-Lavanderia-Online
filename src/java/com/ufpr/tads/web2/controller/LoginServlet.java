@@ -1,5 +1,6 @@
 package com.ufpr.tads.web2.controller;
 
+import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DAOException;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -25,25 +26,26 @@ public class LoginServlet extends HttpServlet {
         String userPassword = request.getParameter("password");
         
         LoginBean login = new LoginBean();
-        User user = new User();
         
         try {
-            user = LoginFacade.login(userEmail, userPassword, login);
+            User user = LoginFacade.login(userEmail, userPassword, login);
             
             if (user == null) {
-                throw new DAOException("Usuário inválido!");
+                throw new DAOException("E-mail ou senha incorretos!");
             }
             
-        } catch (DAOException e) {
+        } catch (AppException e) {
             e.printStackTrace();
             RequestDispatcher loginDispatcher = request.getRequestDispatcher("/login.jsp");
-            request.setAttribute("message", "E-mail ou senha inválidos!");
+            request.setAttribute("message", e.getMessage());
             loginDispatcher.forward(request, response);
+            return;
         }
+        
         
         HttpSession session = request.getSession();
         session.setAttribute("login", login);
-        if (user.getRole().equals("Cliente")) {
+        if (login.getRole().equals("Cliente")) {
             response.sendRedirect("cliente/inicio.jsp");
             return;
         }
