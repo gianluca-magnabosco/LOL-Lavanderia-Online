@@ -1,5 +1,5 @@
 --Peças de Roupa
-INSERT INTO tb_item (descricao_item, preco_uni, tempo, imagem_item) VALUES
+INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES
 ('Calça', 9.75, 3, 'images/calca.png'),
 ('Camisa', 8.25, 2, 'images/camisa.png'),
 ('Camiseta', 6.00, 2, 'images/camiseta.png'),

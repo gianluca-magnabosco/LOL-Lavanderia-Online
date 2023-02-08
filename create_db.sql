@@ -40,7 +40,7 @@ CREATE TABLE tb_item (
   id_item SERIAL PRIMARY KEY,
   descricao_item VARCHAR(255) NOT NULL,
   preco_uni NUMERIC(10, 2) NOT NULL,
-  tempo INTEGER NOT NULL,
+  tempo_item INTEGER NOT NULL,
   imagem_item VARCHAR(255)
 );
 
