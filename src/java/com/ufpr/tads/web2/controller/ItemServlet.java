@@ -28,34 +28,42 @@ public class ItemServlet extends HttpServlet {
                     request.setAttribute("items", items);
                     request.getRequestDispatcher("listarRoupa.jsp").forward(request, response);
                     break;
+
                 case "insert":
-                    Item item = new Item();
-                    item.setNome(request.getParameter("nome"));
-                    item.setPreco(Double.parseDouble(request.getParameter("preco")));
-                    item.setTempo(Integer.parseInt(request.getParameter("tempo")));
-                    item.setImagem(request.getParameter("imagem"));
-                    ItemFacade.inserirItem(item);
-                    response.sendRedirect("ItemServlet?action=list");
-                    break;
+		            String nome = request.getParameter("nome");
+		            String preco = request.getParameter("preco");
+		            String tempo = request.getParameter("tempo");
+		            String imagem = request.getParameter("imagem");
+		            ItemFacade.inserirItem(nome, preco, tempo, imagem);
+		            response.sendRedirect("listarRoupa.jsp");
+		            break;
+
                 case "update":
-                    item = new Item();
-                    item.setId(Integer.parseInt(request.getParameter("id")));
-                    item.setNome(request.getParameter("Nome"));
-                    item.setPreco(Double.parseDouble(request.getParameter("preco")));
-                    item.setTempo(Integer.parseInt(request.getParameter("tempo")));
-                    item.setImagem(request.getParameter("imagem"));
-                    ItemFacade.atualizarItem(item);
-                    response.sendRedirect("ItemServlet?action=list");
+                    String id = request.getParameter("id");
+                    String nome = request.getParameter("nome");
+                    String preco = request.getParameter("preco");
+                    String tempo = request.getParameter("tempo");
+                    String imagem = request.getParameter("imagem");                    
+                    ItemFacade.atualizarItem(id, nome, preco, tempo, imagem);
+                    response.sendRedirect("listarRoupa.jsp");
                     break;
+
                 case "delete":
-                    int id = Integer.parseInt(request.getParameter("id"));
+                    String id = request.getParameter("id");
                     ItemFacade.deletarItem(id);
-                    response.sendRedirect("ItemServlet?action=list");
+                    response.sendRedirect("listarRoupa.jsp");
                     break;
+
                 default:
                     break;
             }
         } catch (NumberFormatException e) {
             throw new AppException("Valor inválido para número", e);
-        } catch (DAOException e)
+        } catch (DAOException e){
+
+        } catch (AppException e) {
+            e.printStackTrace();
+            response.sendRedirect("/listarroupa.jsp?message=" + e.getMessage());
+            return;
+        }
 

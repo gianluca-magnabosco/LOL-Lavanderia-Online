@@ -1,26 +1,40 @@
 package com.ufpr.tads.web2.model.facade;
 
 import java.util.ArrayList;
-import java.util.List;
+import com.ufpr.tads.web2.exception.DAOException;
+import com.ufpr.tads.web2.model.dao.ItemDAO;
 import com.ufpr.tads.web2.model.domain.Item;
-import com.ufpr.tads.web2.dao.ItemDAO;
+import java.util.List;
 
 public class ItemFacade {
-    private ItemDAO itemDAO = new ItemDAO();
 
-    public List<Item> listarItems() {
-        return itemDAO.listarItems();
-    }
+private ItemDAO ItemDAO = new ItemDAO();
 
-    public void inserirItem(Item Item) {
-        itemDAO.inserirItem(Item);
-    }
+public List<Item> listItems() throws DAOException {
+    return ItemDAO.listItems();
+}
 
-    public void atualizarItem(Item Item) {
-        itemDAO.atualizarItem(Item);
-    }
+public void inserirItem(String nome, String preco, String tempo, String imagem) throws DAOException {
+    Item item = new Item();
+    item.setNome(request.getParameter("nome"));
+    item.setPreco(Double.parseDouble(request.getParameter("preco")));
+    item.setTempo(Integer.parseInt(request.getParameter("tempo")));
+    item.setImagem(request.getParameter("imagem"));;
+    ItemDAO.inserirItem(item);
+}
 
-    public void deletarItem(int id) {
-        itemDAO.deletarItem(id);
-    }
+public void atualizarItem(String id, String nome, String preco, String tempo, String imagem) throws DAOException {
+    Item item = new Item();
+    item.setId(Integer.parseInt(id));
+    item.setNome(request.getParameter("nome"));
+    item.setPreco(Double.parseDouble(request.getParameter("preco")));
+    item.setTempo(Integer.parseInt(request.getParameter("tempo")));
+    item.setImagem(request.getParameter("imagem"));;
+    ItemDAO.atualizarItem(item);
+}
+
+public void deletarItem(String id) throws DAOException {
+    ItemDAO.deletartem(Integer.parseInt(id));
+}
+
 }
