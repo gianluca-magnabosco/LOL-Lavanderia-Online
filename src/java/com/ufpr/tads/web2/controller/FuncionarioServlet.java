@@ -2,40 +2,70 @@ package com.ufpr.tads.web2.controller;
 import java.io.IOException;
 import java.util.List;
 
+import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import com.ufpr.tads.web2.model.domain.Funcionario;
+import com.ufpr.tads.web2.model.dao.funcionarioDAO;
+import com.ufpr.tads.web2.exception.AppException;
+import com.ufpr.tads.web2.exception.DAOException;
 
-@WebServlet(name = "FuncionarioServlet", urlPatterns = {"/funcionario"})
 public class FuncionarioServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String action = request.getParameter("action");
-        
         switch (action) {
-            case "cadastrar":
-                // Direciona para a JSP de cadastro de funcionários
-                request.getRequestDispatcher("cadastrarFuncionario.jsp").forward(request, response);
+            case "inserir":
+            String nomeUser = request.getParameter("nomeUser");
+            String dataNascimento = request.getParameter("dataNascimento");
+            String emailUser = request.getParameter("emailUser");
+            String senhaUser = request.getParameter("senhaUser");
+            FuncionarioFacade.cadastrarFuncionario(nomeUser, dataNascimento, emailUser, senhaUser);
+            request.getRequestDispatcher("listarFuncionario.jsp").forward(request, response);
+            break;
+            case "atualizar":
+            String nomeUser = request.getParameter("nomeUser");
+            String dataNascimento = request.getParameter("dataNascimento");
+            String emailUser = request.getParameter("emailUser");
+            String senhaUser = request.getParameter("senhaUser");
+            FuncionarioFacade.atualizarFuncionario(nomeUser, dataNascimento, emailUser, senhaUser);
+            request.getRequestDispatcher("listarFuncionario.jsp").forward(request, response);
+            break;
+            case "excluir":
+            String idUser = request.getParameter("senhaUser");
+            FuncionarioFacade.excluirFuncionario(idUser);
+            request.getRequestDispatcher("listarFuncionario.jsp").forward(request, response);
                 break;
             case "consultar":
-                // Direciona para a JSP de consulta de funcionários
-                request.getRequestDispatcher("consultarFuncionario.jsp").forward(request, response);
+            String idUser = request.getParameter("idUser");
+            FuncionarioFacade.buscarFuncionarioPorId(idUser);
+            request.getRequestDispatcher("consultarFuncionario.jsp").forward(request, response);
                 break;
             case "listar":
-                // Chama o método de listagem de funcionários e armazena em uma lista
-                List<User> funcionarios = FuncionarioFacade.listarFuncionarios();
-                // Adiciona a lista de funcionários na requisição
-                request.setAttribute("funcionarios", funcionarios);
-                // Direciona para a JSP de listagem de funcionários
-                request.getRequestDispatcher("listarFuncionarios.jsp").forward(request, response);
+            FuncionarioFacade.listarFuncionarios();
+            request.getRequestDispatcher("listarFuncionario.jsp").forward(request, response);
                 break;
             default:
-                // Em caso de ação inválida, envia uma mensagem de erro
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Ação inválida");
                 break;
         }
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
 }
