@@ -59,7 +59,8 @@ CREATE TABLE tb_funcionario (
   id_user SERIAL PRIMARY KEY,
   nome_user VARCHAR(255) NOT NULL,
   email_user VARCHAR(255) NOT NULL UNIQUE,
-  senha_user CHAR(64) NOT NULL
+  senha_user CHAR(64) NOT NULL,
+  data_nascimento DATE NOT NULL 
 );
 
 CREATE TABLE user_has_pedido (
