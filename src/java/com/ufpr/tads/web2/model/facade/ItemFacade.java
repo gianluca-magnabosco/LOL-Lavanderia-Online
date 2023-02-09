@@ -6,21 +6,21 @@ import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.dao.ItemDAO;
 
 public class ItemFacade {
-    private ItemDAO ItemDAO = new ItemDAO();
+    private ItemDAO itemDAO = new ItemDAO();
 
     public List<Item> listarItems() {
-        return ItemDAO.listarItems();
+        return itemDAO.listarItems();
     }
 
     public void inserirItem(Item Item) {
-        ItemDAO.inserirItem(Item);
+        itemDAO.inserirItem(Item);
     }
 
     public void atualizarItem(Item Item) {
-        ItemDAO.atualizarItem(Item);
+        itemDAO.atualizarItem(Item);
     }
 
     public void deletarItem(int id) {
-        ItemDAO.deletarItem(id);
+        itemDAO.deletarItem(id);
     }
 }

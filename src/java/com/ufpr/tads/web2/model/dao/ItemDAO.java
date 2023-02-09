@@ -11,12 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDAO {
-    private Connection connection;
+    private Connection connection = null;
   
-    public ItemDAO(Connection connection) {
-      this.connection = connection;
-    }
+    public ItemDAO(Connection connection) throws DAOException {
+        if (con == null) {
+            throw new DAOException("Conexão nula ao criar ItemDAO.");
+        }
+        
+        this.connection = connection;
+    } 
 
+    @Override
     public List<Item> listarItems() throws DAOException{
        List<Item> itens = new ArrayList<>();
     String sql = "SELECT * FROM item";
@@ -25,7 +30,7 @@ public class ItemDAO {
       while (resultSet.next()) {
         Item item = new Item();
         item.setId(resultSet.getInt("id"));
-        item.setDescricao(resultSet.getString("descricao"));
+        item.setNome(resultSet.getString("nome"));
         item.setPreco(resultSet.getDouble("preco"));
         item.setTempo(resultSet.getInt("tempo"));
         item.setImagem(resultSet.getString("imagem"));
@@ -36,9 +41,9 @@ public class ItemDAO {
   }
 
     public void inserirItem(Item Item) throws DAOException{
-        String sql = "INSERT INTO item (descricao, preco, tempo, imagem) values (?,?,?,?)";
+        String sql = "INSERT INTO item (nome, preco, tempo, imagem) values (?,?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-          statement.setString(1, item.getDescricao());
+          statement.setString(1, item.getNome());
           statement.setDouble(2, item.getPreco());
           statement.setInt(3, item.getTempo());
           statement.setString(4, item.getImagem());
@@ -47,9 +52,9 @@ public class ItemDAO {
       }
 
     public void atualizarItem(Item Item) throws DAOException{
-        String sql = "UPDATE item SET descricao = ?, preco = ?, tempo = ?, imagem = ? WHERE id = ?";
+        String sql = "UPDATE item SET nome = ?, preco = ?, tempo = ?, imagem = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-          statement.setString(1, item.getDescricao());
+          statement.setString(1, item.getNome());
           statement.setDouble(2, item.getPreco());
           statement.setInt(3, item.getTempo());
           statement.setString(4, item.getImagem());

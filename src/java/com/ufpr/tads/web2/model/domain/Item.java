@@ -10,7 +10,7 @@ import java.util.List;
 public class Item implements Serializable {
     
     private int id;
-    private String descricao;
+    private String nome;
     private double preco;
     private int tempo;
     private String imagem;
@@ -22,9 +22,9 @@ public class Item implements Serializable {
     }
     
 
-    public Item(int id, String descricao, double preco, int tempo, String imagem, List<PedidoHasItem> pedidoHasItemList) {
+    public Item(int id, String nome, double preco, int tempo, String imagem, List<PedidoHasItem> pedidoHasItemList) {
         this.id = id;
-        this.descricao = descricao;
+        this.nome = nome;
         this.preco = preco;
         this.tempo = tempo;
         this.imagem = imagem;
@@ -40,12 +40,12 @@ public class Item implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public double getPreco() {
