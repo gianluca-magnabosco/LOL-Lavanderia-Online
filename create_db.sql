@@ -52,8 +52,14 @@ CREATE TABLE tb_user (
   email_user VARCHAR(255) NOT NULL UNIQUE,
   telefone_user CHAR(11) NOT NULL,
   senha_user CHAR(64) NOT NULL,
-  tipo_user VARCHAR(20) NOT NULL,
   CONSTRAINT fk_endereco_u FOREIGN KEY (id_endereco) REFERENCES tb_endereco (id_endereco)
+);
+
+CREATE TABLE tb_funcionario (
+  id_user SERIAL PRIMARY KEY,
+  nome_user VARCHAR(255) NOT NULL,
+  email_user VARCHAR(255) NOT NULL UNIQUE,
+  senha_user CHAR(64) NOT NULL
 );
 
 CREATE TABLE user_has_pedido (
