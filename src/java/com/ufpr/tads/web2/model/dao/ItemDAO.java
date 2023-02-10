@@ -43,7 +43,7 @@ public void atualizar(Item item) throws DAOException {
       statement.setString(1, item.getTempoItem());
       statement.setString(2, item.getDescricaoItem());
       statement.setDouble(3, item.getPrecoItem());
-      statement.setDouble(3, item.getImagemItem());
+      statement.setDouble(4, item.getImagemItem());
       statement.setInt(5, item.getIdItem());
       statement.executeUpdate();
     } catch (SQLException e) {
