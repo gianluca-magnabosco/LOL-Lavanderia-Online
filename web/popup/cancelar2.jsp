@@ -11,7 +11,7 @@
                 <p><button class="btn btn-success btn-sm botao confirmar" id="numeropedido">Sim</button></p>
                 <p><button class="btn btn-danger btn-sm botao cancelar" id="numeropedido" type="button">Voltar</button></p>
                 <script>
-                    <c:if test"${not empty param.id}>
+                    <c:if test"${not empty pedido.id}>
                         $(".confirmar").on("click", () => {
                             location.href="<c:url value='/pedido?action=cancelar$id=${pedido.id}'/>";
                         });
