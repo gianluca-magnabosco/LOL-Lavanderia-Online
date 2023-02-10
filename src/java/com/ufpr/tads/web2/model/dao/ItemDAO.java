@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDAO implements DAO<Item> {
-    private static final String INSERT_QUERY = "INSERT INTO tb_item (nome_item, descricao_item, preco_item) VALUES (?, ?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE tb_item SET nome_item = ?, descricao_item = ?, preco_item = ? WHERE id_item = ?";
+    private static final String INSERT_QUERY = "INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE_QUERY = "UPDATE tb_item SET descricao_item = ?, preco_uni = ?, tempo_item = ?, imagem_item = ? WHERE id_item = ?";
     private static final String DELETE_QUERY = "DELETE FROM tb_item WHERE id_item = ?";
-    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT nome_item, descricao_item, preco_item FROM tb_item WHERE id_item = ?";
-    private static final String LIST_QUERY = "SELECT nome_item, descricao_item, preco_item FROM tb_item";
+    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT descricao_item, preco_uni FROM tb_item WHERE id_item = ?";
+    private static final String LIST_QUERY = "SELECT descricao_item, preco_uni FROM tb_item";
 
     private Connection connection = null;
 
@@ -28,9 +28,10 @@ public class ItemDAO implements DAO<Item> {
     @Override
     public void inserir(Item item) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
-            statement.setString(1, item.getNomeItem());
+            statement.setString(1, item.getTempoItem());
             statement.setString(2, item.getDescricaoItem());
             statement.setDouble(3, item.getPrecoItem());
+            statement.setDouble(4, item.getImagemItem());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException("Erro ao inserir item " + INSERT_QUERY, e);
@@ -39,10 +40,11 @@ public class ItemDAO implements DAO<Item> {
 
 public void atualizar(Item item) throws DAOException {
     try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-      statement.setString(1, item.getNome());
-      statement.setString(2, item.getDescricao());
-      statement.setDouble(3, item.getPreco());
-      statement.setInt(4, item.getId());
+      statement.setString(1, item.getTempoItem());
+      statement.setString(2, item.getDescricaoItem());
+      statement.setDouble(3, item.getPrecoItem());
+      statement.setDouble(3, item.getImagemItem());
+      statement.setInt(5, item.getIdItem());
       statement.executeUpdate();
     } catch (SQLException e) {
       throw new DAOException("Erro ao atualizar item" + UPDATE_QUERY, e);
@@ -65,10 +67,9 @@ public void atualizar(Item item) throws DAOException {
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next()) {
         item = new Item();
-        item.setId(resultSet.getInt("id"));
-        item.setNome(resultSet.getString("nome"));
-        item.setDescricao(resultSet.getString("descricao"));
-        item.setPreco(resultSet.getDouble("preco"));
+        item.setId(resultSet.getInt("id_item"));
+        item.setDescricao(resultSet.getString("descricao_item"));
+        item.setPreco(resultSet.getDouble("preco_item"));
       }
     } catch (SQLException e) {
       throw new DAOException("Erro ao buscar item por ID" + SEARCH_ONE_BY_ID_QUERY, e);
@@ -82,10 +83,9 @@ public void atualizar(Item item) throws DAOException {
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next()) {
         Item item = new Item();
-        item.setId(resultSet.getInt("id"));
-        item.setNome(resultSet.getString("nome"));
-        item.setDescricao(resultSet.getString("descricao"));
-        item.setPreco(resultSet.getDouble("preco"));
+        item.setId(resultSet.getInt("id_item"));
+        item.setDescricao(resultSet.getString("descricao_item"));
+        item.setPreco(resultSet.getDouble("preco_item"));
         itens.add(item);
       }
     } catch (SQLException e) {
