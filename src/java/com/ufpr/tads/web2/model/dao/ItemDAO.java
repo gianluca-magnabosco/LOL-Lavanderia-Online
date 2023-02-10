@@ -28,7 +28,7 @@ public class ItemDAO implements DAO<Item> {
     @Override
     public void inserir(Item item) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
-            statement.setString(1, item.getTempoItem());
+            statement.setInt(1, item.getTempoItem());
             statement.setString(2, item.getDescricaoItem());
             statement.setDouble(3, item.getPrecoItem());
             statement.setString(4, item.getImagemItem());
@@ -40,7 +40,7 @@ public class ItemDAO implements DAO<Item> {
 
 public void atualizar(Item item) throws DAOException {
     try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-      statement.setString(1, item.getTempoItem());
+      statement.setItem(1, item.getTempoItem());
       statement.setString(2, item.getDescricaoItem());
       statement.setDouble(3, item.getPrecoItem());
       statement.setString(4, item.getImagemItem());
