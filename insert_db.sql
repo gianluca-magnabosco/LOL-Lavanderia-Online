@@ -10,18 +10,12 @@ INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES
 --Funcionários
 
 --Maria
-INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
-VALUES (3292, '80240210', 'Avenida República Argentina', 824, 'Ap 169', 'Água Verde');
-
-INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user)
-VALUES (1, '83517401013', 'Maria', 'maria@lol.com', '41128445541', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Funcionario');
+INSERT INTO tb_funcionario (id_funcionario, nome_funcionario, email_funcionario, senha_funcionario, data_nascimento)
+VALUES (1, 'Maria', 'maria@lol.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '1970-04-20');
 
 --Mário
-INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, bairro_endereco)
-VALUES (3292, '82400000', 'Avenida Manoel Ribas', 5630, 'Santa Felicidade');
-
-INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user)
-VALUES (2, '76540845014', 'Mário', 'mario@lol.com', '41805359911', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Funcionario');
+INSERT INTO tb_funcionario (id_funcionario, nome_funcionario, email_funcionario, senha_funcionario, data_nascimento)
+VALUES (2, 'Mário', 'mario@lol.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '1965-06-13');
 
 --Clientes
 
@@ -29,22 +23,22 @@ VALUES (2, '76540845014', 'Mário', 'mario@lol.com', '41805359911', '5994471abb0
 INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
 VALUES (3464, '83326000', 'Avenida Jacob Macanhan', 2795, '', 'Jardim Cláudia');
 
-INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user)
-VALUES (3, '26242320010', 'João', 'joao@lol.com', '41206221988', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Cliente');
+INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
+VALUES (1, '26242320010', 'João', 'joao@lol.com', '41206221988', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
 
 --José
 INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
-VALUES (3464, '83321000', 'Avenida Iraí', 438, '', 'Weissópolis');
+VALUES (3464, '83321000', 'Avenida Iraí', 438, 'AP 169', 'Weissópolis');
 
-INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user)
-VALUES (4, '88298368932', 'José', 'jose@lol.com', '41374623828', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Cliente');
+INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
+VALUES (2, '88298368932', 'José', 'jose@lol.com', '41374623828', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
 
 --Joana
 INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
 VALUES (3464, '83323000', 'Avenida Camilo di Lelliss', 689, '', 'Centro');
 
-INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user, tipo_user)
-VALUES (5, '92645693083', 'Joana', 'joana@lol.com', '41811053030', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Cliente');
+INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
+VALUES (3, '92645693083', 'Joana', 'joana@lol.com', '41811053030', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
 
 --Pedidos
 

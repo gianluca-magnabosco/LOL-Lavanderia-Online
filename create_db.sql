@@ -56,10 +56,10 @@ CREATE TABLE tb_user (
 );
 
 CREATE TABLE tb_funcionario (
-  id_user SERIAL PRIMARY KEY,
-  nome_user VARCHAR(255) NOT NULL,
-  email_user VARCHAR(255) NOT NULL UNIQUE,
-  senha_user CHAR(64) NOT NULL,
+  id_funcionario SERIAL PRIMARY KEY,
+  nome_funcionario VARCHAR(255) NOT NULL,
+  email_funcionario VARCHAR(255) NOT NULL UNIQUE,
+  senha_funcionario CHAR(64) NOT NULL,
   data_nascimento DATE NOT NULL 
 );
 

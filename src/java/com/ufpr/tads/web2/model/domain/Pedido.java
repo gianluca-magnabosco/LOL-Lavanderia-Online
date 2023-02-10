@@ -1,6 +1,7 @@
 package com.ufpr.tads.web2.model.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,60 +15,34 @@ public class Pedido implements Serializable {
     private String descricao;
     private double orcamento;
     private int tempo;
-    private List<UserHasPedido> userHasPedidoList;
-    private List<PedidoHasItem> pedidoHasItemList;
-    private List<Item> itens;
+    private List<ItemPedido> itens;
     private User user;
+    private String status;
+    private Date dataInicio;
 
     
     public Pedido() {
         
     }
 
-    
-    public Pedido(int id, String descricao, double orcamento, int tempo, List<UserHasPedido> userHasPedidoList, List<PedidoHasItem> pedidoHasItemList, List<Item> itens, User user) {
+    public Pedido(int id, String descricao, double orcamento, int tempo, List<ItemPedido> itens, User user, String status, Date dataInicio) {
         this.id = id;
         this.descricao = descricao;
         this.orcamento = orcamento;
         this.tempo = tempo;
-        this.userHasPedidoList = userHasPedidoList;
-        this.pedidoHasItemList = pedidoHasItemList;
         this.itens = itens;
         this.user = user;
+        this.status = status;
+        this.dataInicio = dataInicio;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-    
-    
-    
-
-    
-    public void addItem(Item item) {
-        this.itens.add(item);
-    }
-    
-    public List<Item> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<Item> itens) {
-        this.itens = itens;
-    }
-
-    
     
     public int getId() {
         return id;
     }
 
-    public void setId(int idPedido) {
-        this.id = idPedido;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -94,21 +69,42 @@ public class Pedido implements Serializable {
         this.tempo = tempo;
     }
 
-    public List<UserHasPedido> getUserHasPedidoList() {
-        return userHasPedidoList;
+    public List<ItemPedido> getItens() {
+        return itens;
     }
 
-    public void setUserHasPedidoList(List<UserHasPedido> userHasPedidoList) {
-        this.userHasPedidoList = userHasPedidoList;
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+    
+    public void addItem(ItemPedido item) {
+        this.itens.add(item);
     }
 
-    public List<PedidoHasItem> getPedidoHasItemList() {
-        return pedidoHasItemList;
+    public User getUser() {
+        return user;
     }
 
-    public void setPedidoHasItemList(List<PedidoHasItem> pedidoHasItemList) {
-        this.pedidoHasItemList = pedidoHasItemList;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+    
   
     
 }

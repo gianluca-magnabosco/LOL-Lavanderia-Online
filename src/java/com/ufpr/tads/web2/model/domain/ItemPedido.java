@@ -1,33 +1,29 @@
 package com.ufpr.tads.web2.model.domain;
 
-import java.io.Serializable;
-
 /**
  *
  * @author Gian
  */
-public class Item implements Serializable {
-    
+public class ItemPedido {
     private int id;
     private String nome;
     private double preco;
     private int tempo;
-    private String imagem;
+    private int quantidade;
     
-    public Item() {
+    
+    public ItemPedido() {
         
     }
-    
 
-    public Item(int id, String nome, double preco, int tempo, String imagem) {
+    public ItemPedido(int id, String nome, double preco, int tempo, int quantidade) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.tempo = tempo;
-        this.imagem = imagem;
+        this.quantidade = quantidade;
     }
-    
-    
+
     public int getId() {
         return id;
     }
@@ -60,12 +56,12 @@ public class Item implements Serializable {
         this.tempo = tempo;
     }
 
-    public String getImagem() {
-        return imagem;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
-
+    
 }

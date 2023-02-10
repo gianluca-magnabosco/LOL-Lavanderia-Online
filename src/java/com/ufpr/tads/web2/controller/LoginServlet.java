@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import com.ufpr.tads.web2.model.beans.LoginBean;
-import com.ufpr.tads.web2.model.domain.User;
 import com.ufpr.tads.web2.model.facade.LoginFacade;
 
 
@@ -25,12 +24,12 @@ public class LoginServlet extends HttpServlet {
         String userEmail = request.getParameter("email");
         String userPassword = request.getParameter("password");
         
-        LoginBean login = new LoginBean();
+        LoginBean login = null;
         
         try {
-            User user = LoginFacade.login(userEmail, userPassword, login);
+            login = LoginFacade.login(userEmail, userPassword);
             
-            if (user == null) {
+            if (login == null) {
                 throw new DAOException("E-mail ou senha incorretos!");
             }
             
@@ -45,13 +44,16 @@ public class LoginServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         session.setAttribute("login", login);
+        
         if (login.getRole().equals("Cliente")) {
             response.sendRedirect("cliente/inicio.jsp");
             return;
         }
-
-        response.sendRedirect("funcionario/inicio.jsp");
-        return;
+        
+        if (login.getRole().equals("Funcionario")) {
+            response.sendRedirect("funcionario/inicio.jsp");
+            return;
+        }
     }
 
 }

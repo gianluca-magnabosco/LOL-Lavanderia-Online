@@ -10,7 +10,6 @@ public class User implements Serializable {
     private String email;
     private String phoneNumber;
     private String password;
-    private String role;
     
     
     public User() {
@@ -18,16 +17,15 @@ public class User implements Serializable {
     }
     
     
-    public User(String cpf, String fullName, String email, String phoneNumber, String password, String role) {
+    public User(String cpf, String fullName, String email, String phoneNumber, String password) {
         this.cpf = cpf;
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.role = role;
     }
     
-    public User(int id, Endereco endereco, String cpf, String fullName, String email, String phoneNumber, String password, String role) {
+    public User(int id, Endereco endereco, String cpf, String fullName, String email, String phoneNumber, String password) {
         this.id = id;
         this.endereco = endereco;
         this.cpf = cpf;
@@ -35,7 +33,6 @@ public class User implements Serializable {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.role = role;
     }
     
     
@@ -95,12 +92,5 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getRole() {
-        return this.role;
-    }
-    
-    public void setRole(String role) {
-        this.role = role;
-    }
      
 }

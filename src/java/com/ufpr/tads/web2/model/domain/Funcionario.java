@@ -1,75 +1,68 @@
 package com.ufpr.tads.web2.model.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
-    public class Funcionario implements Serializable {
-        private int idUser;
-        private String nomeUser;
-        private String emailUser;
-        private String senhaUser;
-        private Date dataNascimento;
+public class Funcionario implements Serializable {
+    private int id;
+    private String nome;
+    private String email;
+    private String senha;
+    private Date dataNascimento;
     
-    public Funcionario(){
+        
+    public Funcionario() {
 
     }
 
-    public Funcionario(Integer idUser, String nomeUser, String emailUser, String senhaUser, Date dataNascimento){
-        this.idUser = idUser;
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
-        this.senhaUser = senhaUser;
+    public Funcionario(int id, String nome, String email, String senha, Date dataNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
         this.dataNascimento = dataNascimento;
     }
-        
 
-        public class Funcionario {
-  
-            private Integer idUser;
-            private String nomeUser;
-            private String emailUser;
-            private String senhaUser;
-            private Date dataNascimento;
-            
-            public Funcionario() {}
-            
-            public Integer getIdUser() {
-              return idUser;
-            }
-            
-            public void setIdUser(Integer idUser) {
-              this.idUser = idUser;
-            }
-            
-            public String getNomeUser() {
-              return nomeUser;
-            }
-            
-            public void setNomeUser(String nomeUser) {
-              this.nomeUser = nomeUser;
-            }
-            
-            public String getEmailUser() {
-              return emailUser;
-            }
-            
-            public void setEmailUser(String emailUser) {
-              this.emailUser = emailUser;
-            }
-            
-            public String getSenhaUser() {
-              return senhaUser;
-            }
-            
-            public void setSenhaUser(String senhaUser) {
-              this.senhaUser = senhaUser;
-            }
+    
+    public int getId() {
+        return id;
+    }
 
-            public Date getDataNascimento(){
-                return dataNascimento;
-            }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-            public void setDataNascimento(Date dataNascimento){
-                this.dataNascimento = dataNascimento;
-            }
-          }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+}
           

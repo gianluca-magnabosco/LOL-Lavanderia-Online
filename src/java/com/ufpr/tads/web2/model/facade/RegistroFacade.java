@@ -202,7 +202,6 @@ public class RegistroFacade {
                     .replace("-", ""));
             
             user.setPassword(hashedUserPassword);
-            user.setRole("Cliente");
             
             UserDAO userDao = new UserDAO(factory.getConnection());
             userDao.insert(user);
