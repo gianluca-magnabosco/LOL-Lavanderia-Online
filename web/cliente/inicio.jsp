@@ -29,15 +29,15 @@
         <fmt:setLocale value="pt_BR"/>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
-            <c:redirect url="/login.jsp">
+            <c:redirect url="/login">
                 <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
             </c:redirect>
         </c:if>
         
-        <%@ include file="header.jsp" %>
+        <c:import url="header.jsp"/>
         
         <c:if test="${not empty param.pedido}">
-            <%@ include file="/popup/pedidoConfirmado.jsp" %>
+            <c:import url="/popup/pedidoConfirmado.jsp"/>
         </c:if>
 
         
@@ -45,7 +45,7 @@
             
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-                <button onclick="location.href='pedido?action=formPedido'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
+                <button onclick="location.href='<c:url value='/pedido?action=formPedido'/>'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
             <hr class="gradient">
             <h3 class="pedidos-aberto">Seus pedidos em aberto:</h3>
@@ -71,9 +71,7 @@
 
                                     <tbody class="table-body">
                                         
-
                                         <c:forEach var="pedido" items="${pedidos}">
-                                            
                                             <tr class="cell-1">
                                                 <td></td>
                                                 <td>#LOL-${pedido.id}</td>
@@ -89,13 +87,13 @@
                                             
                                             <script>
                                                 $(".consultar${pedido.id}").on("click", () => {
-                                                    location.href="pedido?action=consultar&id=${pedido.id}";
+                                                    location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
                                                 });
                                                 
                                                 $(".cancelar${pedido.id}").on("click", () => {
                                                     // fazer popup de confirmação
                                                     // redirecionar assim:
-                                                    //location.href="pedido?action=cancelar$id=${pedido.id}";
+                                                    //location.href="<c:url value='/pedido?action=cancelar$id=${pedido.id}'/>";
                                                 });
                                             </script>
                                         </c:forEach>
@@ -112,7 +110,7 @@
         
         </div>
         
-        <%@ include file="/footer.jsp" %>
+        <c:import url="/footer.jsp"/>
         
         <script type="text/javascript" src="<c:url value='/js/clienteInicio.js'/>"></script>
     </body>     

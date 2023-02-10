@@ -49,7 +49,7 @@ public class RegistroServlet extends HttpServlet {
             
         } catch (AppException e) {
             String errorMessage = URLEncoder.encode(e.getMessage(), "UTF-8");
-            response.sendRedirect("registrar.jsp?message=" + errorMessage);
+            response.sendRedirect("/registrar?message=" + errorMessage);
             return;
         }
         
@@ -58,4 +58,12 @@ public class RegistroServlet extends HttpServlet {
         return;
     }
     
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        request.getRequestDispatcher("/registrar.jsp").forward(request, response);
+        return;
+    }
 }

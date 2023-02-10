@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,8 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Realizar Pedido</title>
-        <link rel="stylesheet" type="text/css" href="../css/realizarpedido.css">
-        <link rel="stylesheet" href="../css/bulma.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/realizarpedido.css'/>">
+        <link rel="stylesheet" href="<c:url value='/css/bulma.min.css'/>"/>
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
@@ -23,18 +24,19 @@
     </head>
     
     <body>
+        <fmt:setLocale value="pt_BR"/>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
-            <c:redirect url="/login.jsp">
+            <c:redirect url="/login">
                 <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
             </c:redirect>
         </c:if>
         
-        <%@ include file="header.jsp" %>
+        <c:import url="header.jsp"/>
         
-        <%@ include file="../popup/aceitar.jsp" %>
+        <c:import url="/popup/aceitar.jsp"/>
  
-        <%@ include file="../popup/cancelar.jsp" %>
+        <c:import url="/popup/cancelar.jsp"/>
         
         <div class="content">
 
@@ -80,19 +82,19 @@
                                                 </td>
 
                                                 <td class="text-center">
-                                                    <img class="pic" src="../${item.imagem}" alt="">
+                                                    <img class="pic" src="/${item.imagem}" alt="">
                                                 </td>
 
                                                 <td>
                                                     <div class="alinhamento">
-                                                        <p class="m-0 fw-bold">${item.descricao}</p>
+                                                        <p class="m-0 fw-bold">${item.nome}</p>
                                                     </div>
                                                 </td>
 
                                                 <td>
                                                     <div class="alinhamento">
                                                         <div class="fw-600">
-                                                            <span class="preco">R$ ${item.preco}</span>
+                                                            <span class="preco"><fmt:formatNumber value="${item.preco}" type="currency"/></span>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -112,7 +114,7 @@
                                                 <td>
                                                     <div class="alinhamento">
                                                         <div class="fw-600">
-                                                            <span class="result">R$ 0,00</span>
+                                                            <span class="result"><fmt:formatNumber value='0.00' type="currency"/></span>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -147,13 +149,13 @@
             </div>
         </div>
         
-        <%@ include file="../footer.jsp" %>
+        <c:import url="/footer.jsp"/>
         
-        <script type="text/javascript" src="../js/realizarPedido.js"></script>
+        <script type="text/javascript" src="<c:url value='/js/realizarPedido.js'/>"></script>
         
         <script type="text/javascript">
             $(".aceitar").on("click", () => {
-                location.href="pedido?action=realizar";
+                location.href="<c:url value='/pedido?action=realizar'/>";
             });
         </script>
         

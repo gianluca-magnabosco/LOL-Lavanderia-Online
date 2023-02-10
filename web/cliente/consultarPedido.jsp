@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Consultar Pedido</title>
         <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>"/>
-        <link rel="stylesheet" type="text/css" href="<c:url value='css/consultarpedido.css'/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/consultarpedido.css'/>"/>
         <link rel="stylesheet" href="<c:url value='/css/bulma.min.css'/>"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
         <script type="text/javascript"
@@ -33,7 +33,7 @@
         </c:if>
         
         
-        <%@ include file="header.jsp" %>
+        <c:import url="header.jsp"/>
         
         <div class="content">
 
@@ -105,7 +105,7 @@
             </div>
         </div>
               
-        <%@ include file="../footer.jsp" %>
+        <c:import url="/footer.jsp"/>
            
     </body>
     

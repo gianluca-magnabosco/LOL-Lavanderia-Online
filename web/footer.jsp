@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <footer id="footerzera" class="bg-light text-center text-white">
     <div class="container p-4 pb-0">
 
@@ -54,7 +55,7 @@
 
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2023 Copyright:
-        <a class="text-white" href="index.jsp">LOL - Lavanderia On-line</a>
+        <a class="text-white" href="<c:url value='/index'/>">LOL - Lavanderia On-line</a>
         <br/>
         <p>
             Em caso de problemas contactar o administrador: <a href="mailto:${configuracao.email}" target="_blank">${configuracao.email}</a>

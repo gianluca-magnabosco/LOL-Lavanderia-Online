@@ -8,11 +8,11 @@
         </label>
 
         <ul class="menu__box">
-            <li><a class="menu__item" href="pedido?action=inicio">Home</a></li>
-            <li><a class="menu__item" href="pedido?action=listar">Visualizar Pedidos</a></li>
-            <li><a class="menu__item" href="pedido?action=pesquisar">Consulte seu Pedido</a></li>
-            <a class="menu__item" href="pedido?action=realizar"><button id="btn-pedido" class="btn btn-lg">Fazer um Pedido</button></a>
-            <a href="logout"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
+            <li><a class="menu__item" href="<c:url value='/pedido?action=inicio'/>">Home</a></li>
+            <li><a class="menu__item" href="<c:url value='/pedido?action=listar'/>">Visualizar Pedidos</a></li>
+            <li><a class="menu__item" href="<c:url value='/pedido?action=pesquisar'/>">Consulte seu Pedido</a></li>
+            <a class="menu__item" href="<c:url value='/pedido?action=realizar'/>"><button id="btn-pedido" class="btn btn-lg">Fazer um Pedido</button></a>
+            <a href="<c:url value='/logout'/>"><button id="botao-logout" class="btn btn-danger btn-lg">Logout</button></a>
         </ul>
     </div>  
     <div class="images-header">

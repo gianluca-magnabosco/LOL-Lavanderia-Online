@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>LOL - Lavanderia On-line</title>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <link rel="stylesheet" type="text/css" href="css/landing.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='css/landing.css'/>">
         <link rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -17,7 +18,7 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
-        <script type="text/javascript" src="js/landingPage.js"></script>
+        <script type="text/javascript" src="<c:url value='js/landingPage.js'/>"></script>
         <style>
             .mySlides {
                 display: none;
@@ -31,8 +32,8 @@
     <body>
         <div class="header">
             <div class="center">
-                <img class="icone" src="images/logo-icone.png" alt="Ícone da LOL">
-                <img class="nome" src="images/logo-nome.png" alt="Lavanderia On-Line" title="Lavanderia On-Line">
+                <img class="icone" src="<c:url value='images/logo-icone.png'/>" alt="Ícone da LOL">
+                <img class="nome" src="<c:url value='images/logo-nome.png'/>" alt="Lavanderia On-Line" title="Lavanderia On-Line">
             </div>
         </div>
 
@@ -40,11 +41,11 @@
             <div class="center"></div>
             <div class="fakeform">
                 <h2>Faça o seu login:</h2>
-                <a href="login.jsp">
+                <a href="<c:url value='/login'/>">
                     <button type="button" class="btn btn-info btn-lg">Login!</button>
                 </a>
                 <h2>Faça o seu cadastro:</h2>
-                <a href="registrar.jsp">
+                <a href="<c:url value='/registrar'/>">
                     <button type="button" class="btn btn-info btn-lg">Cadastro!</button>
                 </a>
             </div>
@@ -71,7 +72,7 @@
                 <div class="section">
                     <div class="single">
                         <div>
-                            <img src="images/entregador.png" alt="Entregador">
+                            <img src="<c:url value='images/entregador.png'/>" alt="Entregador">
                         </div>
                         
                         <div class="text-single">
@@ -85,7 +86,7 @@
 
                     <div class="single">
                         <div>
-                            <img src="images/wash.png" alt="Máquina de lavar">
+                            <img src="<c:url value='images/wash.png'/>" alt="Máquina de lavar">
                         </div>
                         
                         <div class="text-single">
@@ -99,7 +100,7 @@
 
                     <div class="single">
                         <div>
-                            <img src="images/desconto.png" alt="Desconto">
+                            <img src="<c:url value='images/desconto.png'/>" alt="Desconto">
                         </div>
                         
                         <div class="text-single">
@@ -171,7 +172,7 @@
 
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2023 Copyright:
-                <a class="text-white" href="index.jsp">LOL - Lavanderia On-line</a>
+                <a class="text-white" href="<c:url value='/index'/>">LOL - Lavanderia On-line</a>
                 <br/>
                 <p>
                     Em caso de problemas contactar o administrador: <a href="mailto:${configuracao.email}">${configuracao.email}</a>

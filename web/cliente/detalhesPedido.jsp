@@ -7,7 +7,7 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Consultar Pedido</title>
+        <title>Detalhes do Pedido #LOL-${param.id}</title>
         <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>"/>
         <link rel="stylesheet" href="<c:url value='/css/bulma.min.css'/>"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
@@ -22,7 +22,13 @@
     <body>
         <fmt:setLocale value="pt_BR"/>
         
-        <%@ include file="header.jsp" %>
+        <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
+        
+        <c:import url="header.jsp"/>
 
         <div id="content">
             <center id="centertext" style="padding-top: 0px;">
@@ -66,7 +72,7 @@
             </center>
         </div>
                         
-        <%@ include file="../footer.jsp" %>
+        <c:import url="/footer.jsp"/>
        
     </body>
 </html>

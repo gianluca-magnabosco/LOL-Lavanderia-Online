@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-        <link rel="stylesheet" href="css/bulma.min.css"/>
+        <link rel="stylesheet" href="<c:url value='/css/bulma.min.css'/>"/>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -18,22 +18,15 @@
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
         </script>
-        <link rel="stylesheet" type="text/css" href="css/registrar.css">
-        <script type="text/javascript" src="js/registrar.js"></script>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/registrar.css'/>">
+        <script type="text/javascript" src="<c:url value='/js/registrar.js'/>"></script>
     </head>
     
     
     <body>
         
         <c:if test="${not empty sessionScope.login}">
-            <c:choose>
-                <c:when test="${login.role == \"Cliente\"}">
-                    <c:redirect url="cliente/inicio.jsp"/>
-                </c:when>
-                <c:otherwise>
-                    <c:redirect url="funcionario/inicio.jsp"/>
-                </c:otherwise>
-            </c:choose>
+            <c:redirect url="pedido?action=inicio"/>
         </c:if>
         
         <section class="hero is-sucess is-fullheight">
@@ -44,7 +37,7 @@
                             <p>Cadastre-se</p>
                         </div>
                         <div class="box">
-                            <form action="registrar" method="post" id="registerForm">
+                            <form action="<c:url value='/registrar'/>" method="post" id="registerForm">
                                 <div class="field">
                                     <div class="control">
                                         <input type="text" name="nome" class="input is-large" placeholder="Nome" autofocus=""/><br/><br/>
@@ -103,7 +96,7 @@
                                 
                                 <b style="color: red"><c:out value="${param.message}"/></b><br/>
 
-                                Já possui uma conta? <a href="login.jsp">Faça login</a>
+                                Já possui uma conta? <a href="<c:url value='/login'/>">Faça login</a>
                             </form>
                         </div>
                     </div>

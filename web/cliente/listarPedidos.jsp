@@ -31,19 +31,19 @@
         <fmt:setLocale value="pt_BR"/>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
-            <c:redirect url="/login.jsp">
+            <c:redirect url="/login">
                 <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
             </c:redirect>
         </c:if>
         
-        <%@ include file="header.jsp" %>
+        <c:import url="header.jsp"/>
 
         
         <div class="content">
             
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-                <button onclick="location.href='pedido?action=formPedido'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
+                <button onclick="location.href='<c:url value='pedido?action=formPedido'/>'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
             <hr class="gradient">
             <h2 class="pedidos-aberto" style="margin-top: 50px;">Seus pedidos:</h2>
@@ -156,7 +156,7 @@
                                                             <button class="btn btn-success btn-sm pagar pagar${pedido.id}">Pagar</button></a>
                                                             <script>
                                                                 $(".pagar${pedido.id}").on("click", () => {
-
+                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -164,7 +164,7 @@
                                                             <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}">Cancelar</button>
                                                             <script>
                                                                 $(".cancelar${pedido.id}").on("click", () => {
-
+                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -174,7 +174,7 @@
                                                     <div class="inner-circle"></div>
                                                     <script>
                                                         $(".consultar${pedido.id}").on("click", () => {
-                                                            location.href="pedido?action=consultar&id=${pedido.id}";
+                                                            location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
                                                         });
                                                     </script>
                                                 </td>    
@@ -197,7 +197,7 @@
         
         <script type="text/javascript" defer src="<c:url value='/js/listarPedidosCliente.js'/>"></script>
         
-        <%@ include file="../footer.jsp" %>
+        <c:import url="/footer.jsp"/>
                 
     </body>
     
