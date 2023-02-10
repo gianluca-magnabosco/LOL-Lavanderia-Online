@@ -1,6 +1,7 @@
 package com.ufpr.tads.web2.model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class Pedido implements Serializable {
 
     
     public Pedido() {
-        
+        this.itens = new ArrayList<>();
     }
 
     public Pedido(int id, String descricao, double orcamento, int tempo, List<ItemPedido> itens, User user, String status, Date dataInicio) {
@@ -34,6 +35,7 @@ public class Pedido implements Serializable {
         this.user = user;
         this.status = status;
         this.dataInicio = dataInicio;
+        this.itens = new ArrayList<>();
     }
 
     

@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Área do Cliente</title>
-        <link rel="stylesheet" type="text/css" href="../css/clienteinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >     
@@ -35,7 +35,7 @@
         <%@ include file="header.jsp" %>
         
         <c:if test="${not empty param.pedido}">
-            <%@ include file="../popup/pedidoConfirmado.jsp" %>
+            <%@ include file="/popup/pedidoConfirmado.jsp" %>
         </c:if>
 
         
@@ -43,7 +43,7 @@
             
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-                <button onclick="location.href='realizarPedido.jsp'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
+                <button onclick="location.href='pedido?action=formPedido'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
             <hr class="gradient">
             <h3 class="pedidos-aberto">Seus pedidos em aberto:</h3>
@@ -85,15 +85,13 @@
                                             
                                             <script>
                                                 $(".consultar${pedido.id}").on("click", () => {
-                                                    <c:import url="/popup/consultar.jsp" charEncoding="UTF-8">
-                                                        <c:param name="id" value="${pedido.id}"/>
-                                                    </c:import>
+                                                    location.href="pedido?action=consultar&id=${pedido.id}";
                                                 });
                                                 
                                                 $(".cancelar${pedido.id}").on("click", () => {
-                                                    <c:import url="/popup/cancelar.jsp" charEncoding="UTF-8">
-                                                        <c:param name="id" value="${pedido.id}"/>
-                                                    </c:import>
+                                                    // fazer popup de confirmação
+                                                    // redirecionar assim:
+                                                    //location.href="pedido?action=cancelar$id=${pedido.id}";
                                                 });
                                             </script>
                                         </c:forEach>
@@ -110,9 +108,9 @@
         
         </div>
         
-        <%@ include file="../footer.jsp" %>
+        <%@ include file="/footer.jsp" %>
         
-        <script type="text/javascript" src="../js/clienteInicio.js"></script>
+        <script type="text/javascript" src="<c:url value='/js/clienteInicio.js'/>"></script>
     </body>     
     
 </html>

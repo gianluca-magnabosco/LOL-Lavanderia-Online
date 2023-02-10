@@ -34,7 +34,7 @@ public class LoginFacade {
             FuncionarioDAO funcionarioDao = new FuncionarioDAO(factory.getConnection());
 
             Funcionario funcionario = funcionarioDao.validateLogin(userEmail, hashedUserPassword);
-
+            
             if (user == null && funcionario == null) {
                 throw new UsuarioOuSenhaInvalidosException("E-mail ou senha incorretos!");
             }

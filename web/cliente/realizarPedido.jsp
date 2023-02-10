@@ -153,7 +153,7 @@
         
         <script type="text/javascript">
             $(".aceitar").on("click", () => {
-                location.href="PedidoServlet?action=realizarpedido";
+                location.href="pedido?action=realizar";
             });
         </script>
         

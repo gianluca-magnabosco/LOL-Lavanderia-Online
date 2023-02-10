@@ -5,15 +5,16 @@ $(".consultar").on("click", () => {
         return;
     }
     
-    <c:import url="/popup/consultar.jsp" charEncoding="UTF-8">
-        <c:param name="id" value="${pedido.id}"/>
-    </c:import>
-                                                
-    $("#errorMsg").text("");
-    $("#overlay.consultarOverlay").toggle();
+    let id = $(".searchbar").val().replace(/#LOL\-/, "");
+    
+    id = parseInt(id);
+    
+    location.href="pedido?action=consultar&id=" + id;
 });
 
-$(".searchbar").on("keypress", event => {
+
+$(".searchbar").on("keypress", function(event) {
+        
     let length = $(this).val().length;
     
     if (length < 4) {

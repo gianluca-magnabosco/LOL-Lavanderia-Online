@@ -68,7 +68,8 @@ CREATE TABLE user_has_pedido (
   id_pedido INTEGER NOT NULL,
   status VARCHAR(255) NOT NULL,
   data_inicio DATE NOT NULL,
-  data_fim DATE NOT NULL,
+  data_fim DATE,
+  data_pagamento DATE,
   CONSTRAINT pk_uhp PRIMARY KEY (id_user, id_pedido),
   CONSTRAINT fk_user_p FOREIGN KEY (id_user) REFERENCES tb_user (id_user),
   CONSTRAINT fk_pedido_u FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido)

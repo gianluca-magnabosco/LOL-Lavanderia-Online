@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.model.facade.ItemFacade;
 import com.ufpr.tads.web2.util.Validacao;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 
@@ -20,6 +21,12 @@ public class ItemServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, DadoInvalidoException {
+        
+        HttpSession session = request.getSession();
+        
+        if (session.getAttribute("login") == null) {
+            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado");
+        }
         
         String action = request.getParameter("action");
         
@@ -72,7 +79,7 @@ public class ItemServlet extends HttpServlet {
                 }
 
                 default -> {
-                    throw new DadoInvalidoException("É necessário enviar um parametro action!");
+                    throw new DadoInvalidoException("É necessário enviar um parametro action válido!");
                 }
             }
         } catch (AppException e) {

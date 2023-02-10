@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -20,6 +21,12 @@ public class FuncionarioServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, DadoInvalidoException {
+        
+        HttpSession session = request.getSession();
+        
+        if (session.getAttribute("login") == null) {
+            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado");
+        }
         
         String action = request.getParameter("action");
         

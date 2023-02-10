@@ -13,9 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Consultar Pedido</title>
-        <link rel="stylesheet" type="text/css" href="../css/clienteinicio.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/consultarpedido.css"/>
-        <link rel="stylesheet" href="../css/bulma.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value='css/consultarpedido.css'/>"/>
+        <link rel="stylesheet" href="<c:url value='/css/bulma.min.css'/>"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
         <script type="text/javascript"
             src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -46,6 +46,7 @@
                 </div> 
                 
                 <b id="errorMsg" style="color: red;"></b>
+                <b id="message" style="color: red;">${message}</b>
             </div>
         </div>    
 
@@ -58,7 +59,7 @@
 
                     <div class="single">
                         <div>
-                            <img src="../images/entregador.png" alt="Entregador">
+                            <img src="<c:url value='/images/entregador.png'/>" alt="Entregador">
                         </div>
                         
                         <div class="text-single">
@@ -72,7 +73,7 @@
 
                     <div class="single">
                         <div>
-                            <img src="../images/wash.png" alt="Máquina de lavar">
+                            <img src="<c:url value='/images/wash.png'/>" alt="Máquina de lavar">
                         </div>
                         
                         <div class="text-single">
@@ -86,7 +87,7 @@
 
                     <div class="single">
                         <div>
-                            <img src="../images/desconto.png" alt="Desconto">
+                            <img src="<c:url value='/images/desconto.png'/>" alt="Desconto">
                         </div>
                         
                         <div class="text-single">
@@ -108,6 +109,6 @@
            
     </body>
     
-    <script type="text/javascript" src="../js/consultarPedido.js"></script>
+    <script type="text/javascript" defer src="<c:url value='/js/consultarPedido.js'/>"></script>
     
 </html>

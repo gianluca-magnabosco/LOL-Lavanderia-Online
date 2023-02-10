@@ -43,7 +43,7 @@ public class Validacao {
 
     
     public static void validarVazio(String valor, String errorMessage) throws DadoInvalidoException {
-        if (valor == null || !valor.matches("\\.+")) {
+        if (valor == null || !valor.matches(".+")) {
             throw new DadoInvalidoException(errorMessage);
         }
     }

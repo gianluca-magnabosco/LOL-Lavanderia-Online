@@ -11,11 +11,11 @@ INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES
 
 --Maria
 INSERT INTO tb_funcionario (id_funcionario, nome_funcionario, email_funcionario, senha_funcionario, data_nascimento)
-VALUES (1, 'Maria', 'maria@lol.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '1970-04-20');
+VALUES (1, 'Maria', 'maria@lol.com', '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', '1970-04-20');
 
 --Mário
 INSERT INTO tb_funcionario (id_funcionario, nome_funcionario, email_funcionario, senha_funcionario, data_nascimento)
-VALUES (2, 'Mário', 'mario@lol.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '1965-06-13');
+VALUES (2, 'Mário', 'mario@lol.com', '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', '1965-06-13');
 
 --Clientes
 
@@ -24,21 +24,21 @@ INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_en
 VALUES (3464, '83326000', 'Avenida Jacob Macanhan', 2795, '', 'Jardim Cláudia');
 
 INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
-VALUES (1, '26242320010', 'João', 'joao@lol.com', '41206221988', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
+VALUES (1, '26242320010', 'João', 'joao@lol.com', '41206221988', '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251');
 
 --José
 INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
 VALUES (3464, '83321000', 'Avenida Iraí', 438, 'AP 169', 'Weissópolis');
 
 INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
-VALUES (2, '88298368932', 'José', 'jose@lol.com', '41374623828', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
+VALUES (2, '88298368932', 'José', 'jose@lol.com', '41374623828', '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251');
 
 --Joana
 INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco)
 VALUES (3464, '83323000', 'Avenida Camilo di Lelliss', 689, '', 'Centro');
 
 INSERT INTO tb_user (id_endereco, cpf_user, nome_user, email_user, telefone_user, senha_user)
-VALUES (3, '92645693083', 'Joana', 'joana@lol.com', '41811053030', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
+VALUES (3, '92645693083', 'Joana', 'joana@lol.com', '41811053030', '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251');
 
 --Pedidos
 
@@ -83,20 +83,20 @@ INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES
 
 --2 Abertos
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim) VALUES
-(3, 1, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 4)),
-(3, 2, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
+(1, 1, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 4)),
+(1, 2, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
 --Rejeitado
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (3, 3, 'REJEITADO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
+VALUES (1, 3, 'REJEITADO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
 --Cancelado
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (3, 4, 'CANCELADO', (SELECT CAST(now() as DATE) - 4), (SELECT CAST(now() as DATE) - 1));
+VALUES (1, 4, 'CANCELADO', (SELECT CAST(now() as DATE) - 4), (SELECT CAST(now() as DATE) - 1));
 --Recolhido
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (3, 5, 'RECOLHIDO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
+VALUES (1, 5, 'RECOLHIDO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
 --Finalizado
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (3, 6, 'FINALIZADO', (SELECT CAST(now() as DATE) - 3), (SELECT CAST(now() as DATE)));
+VALUES (1, 6, 'FINALIZADO', (SELECT CAST(now() as DATE) - 3), (SELECT CAST(now() as DATE)));
 
 --José
 
@@ -133,17 +133,17 @@ INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES
 
 --1 Em Aberto
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (4, 7, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 4));
+VALUES (2, 7, 'EM ABERTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 4));
 -- Aguardando Pagamento
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (4, 8, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
+VALUES (2, 8, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
 --Pago
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (4, 9, 'PAGO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
+VALUES (2, 9, 'PAGO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
 --Finalizado
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim) VALUES
-(4, 10, 'FINALIZADO', (SELECT CAST(now() as DATE) - 4), (SELECT CAST(now() as DATE) - 1)),
-(4, 11, 'FINALIZADO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
+(2, 10, 'FINALIZADO', (SELECT CAST(now() as DATE) - 4), (SELECT CAST(now() as DATE) - 1)),
+(2, 11, 'FINALIZADO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
 
 --Joana
 --12
@@ -179,14 +179,14 @@ INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES
 
 --Recolhido
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (5, 12, 'RECOLHIDO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
+VALUES (3, 12, 'RECOLHIDO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 1));
 --2 Aguardando Pagamento
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim) VALUES
-(5, 13, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3)),
-(5, 14, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
+(3, 13, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3)),
+(3, 14, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
 --Pago
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (5, 15, 'PAGO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
+VALUES (3, 15, 'PAGO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));
 --Finalizado
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
-VALUES (5, 16, 'FINALIZADO', (SELECT CAST(now() as DATE) - 3), (SELECT CAST(now() as DATE)));
+VALUES (3, 16, 'FINALIZADO', (SELECT CAST(now() as DATE) - 3), (SELECT CAST(now() as DATE)));

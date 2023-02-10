@@ -24,14 +24,7 @@
     <body>
         
         <c:if test="${not empty sessionScope.login}">
-            <c:choose>
-                <c:when test="${login.role == \"Cliente\"}">
-                    <c:redirect url="cliente/inicio.jsp"/>
-                </c:when>
-                <c:otherwise>
-                    <c:redirect url="funcionario/inicio.jsp"/>
-                </c:otherwise>
-            </c:choose>
+            <c:redirect url="pedido?action=inicio"/>
         </c:if>
         
         <section class="hero is-success is-fullheight">
