@@ -14,19 +14,19 @@ public List<Item> listItems() throws DAOException {
     return ItemDAO.listItems();
 }
 
-public void inserirItem(String nome, String preco, String tempo, String imagem) throws DAOException {
+public void inserirItem(String descricao, String preco, String tempo, String imagem) throws DAOException {
     Item item = new Item();
-    item.setNome(request.getParameter("nome"));
+    item.setDescricao(request.getParameter("descricao"));
     item.setPreco(Double.parseDouble(request.getParameter("preco")));
     item.setTempo(Integer.parseInt(request.getParameter("tempo")));
     item.setImagem(request.getParameter("imagem"));;
     ItemDAO.inserirItem(item);
 }
 
-public void atualizarItem(String id, String nome, String preco, String tempo, String imagem) throws DAOException {
+public void atualizarItem(String id, String descricao, String preco, String tempo, String imagem) throws DAOException {
     Item item = new Item();
     item.setId(Integer.parseInt(id));
-    item.setNome(request.getParameter("nome"));
+    item.setDescricao(request.getParameter("descricao"));
     item.setPreco(Double.parseDouble(request.getParameter("preco")));
     item.setTempo(Integer.parseInt(request.getParameter("tempo")));
     item.setImagem(request.getParameter("imagem"));;

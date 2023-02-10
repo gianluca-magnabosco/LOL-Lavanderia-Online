@@ -30,21 +30,21 @@ public class ItemServlet extends HttpServlet {
                     break;
 
                 case "insert":
-		            String nome = request.getParameter("nome");
+		            String descricao = request.getParameter("descricao");
 		            String preco = request.getParameter("preco");
 		            String tempo = request.getParameter("tempo");
 		            String imagem = request.getParameter("imagem");
-		            ItemFacade.inserirItem(nome, preco, tempo, imagem);
+		            ItemFacade.inserirItem(descricao, preco, tempo, imagem);
 		            response.sendRedirect("listarRoupa.jsp");
 		            break;
 
                 case "update":
                     String id = request.getParameter("id");
-                    String nome = request.getParameter("nome");
+                    String descricao = request.getParameter("descricao");
                     String preco = request.getParameter("preco");
                     String tempo = request.getParameter("tempo");
                     String imagem = request.getParameter("imagem");                    
-                    ItemFacade.atualizarItem(id, nome, preco, tempo, imagem);
+                    ItemFacade.atualizarItem(id, descricao, preco, tempo, imagem);
                     response.sendRedirect("listarRoupa.jsp");
                     break;
 
