@@ -27,7 +27,7 @@
     <body>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
-            <c:redirect url="/login.jsp">
+            <c:redirect url="/login">
                 <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
             </c:redirect>
         </c:if>

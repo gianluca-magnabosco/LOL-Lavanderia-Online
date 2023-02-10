@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,6 +20,7 @@
     </head>
     
     <body>
+        <fmt:setLocale value="pt_BR"/>
         
         <%@ include file="header.jsp" %>
 
@@ -43,8 +45,8 @@
                                         <tr>
                                             <td>${item.nome}</td>
                                             <td>${item.quantidade}</td>
-                                            <td>R$ ${item.preco}</td>
-                                            <td>R$ ${item.preco * item.quantidade}</td>
+                                            <td><fmt:formatNumber value="${item.preco}" type="currency"/></td>
+                                            <td><fmt:formatNumber value="${item.preco * item.quantidade}" type="currency"/></td>
                                             <td>${item.tempo} dias</td>
                                             <td>${pedido.status}</td>
                                         </tr>
@@ -54,7 +56,7 @@
                         </table>
 
                         <div class="border">
-                            <h5 class="mt-2">Total: R$ ${pedido.orcamento}</h5>
+                            <h5 class="mt-2">Total: <fmt:formatNumber value="${pedido.orcamento}" type="currency"/></h5>
                         </div>
                         <div class="border">
                             <h5 class="mt-2">Prazo: ${pedido.tempo} dias</h5>

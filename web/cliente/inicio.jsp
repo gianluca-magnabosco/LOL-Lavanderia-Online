@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,6 +26,7 @@
     </head>
     
     <body>
+        <fmt:setLocale value="pt_BR"/>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
             <c:redirect url="/login.jsp">
@@ -69,13 +71,15 @@
 
                                     <tbody class="table-body">
                                         
+
                                         <c:forEach var="pedido" items="${pedidos}">
+                                            
                                             <tr class="cell-1">
                                                 <td></td>
                                                 <td>#LOL-${pedido.id}</td>
                                                 <td><span class="badge badge-warning">${pedido.status}</span></td>
-                                                <td>${pedido.orcamento}</td>
-                                                <td>${pedido.dataInicio}</td>
+                                                <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
+                                                <td><fmt:formatDate value="${pedido.dataInicio}"/></td>
                                                 <td class="text-center">
                                                     <button class="btn btn-info btn-sm consultar consultar${pedido.id}" id="bt1" type="button" value="button1">Consultar</button></a>
                                                     <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}" id="btn1" type="button" value="button1">Cancelar</button>

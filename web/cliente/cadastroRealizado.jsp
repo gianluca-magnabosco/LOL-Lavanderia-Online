@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastro realizado com sucesso!</title>
-        <link rel="stylesheet" type="text/css" href="../css/cadastrorealizado.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/cadastrorealizado.css'/>">
     </head>
 
     <body>
@@ -18,8 +18,8 @@
                         
                         <tr>
                             <td align="center" id="logo">
-                                <a href="../index.jsp">
-                                    <img id="logoimg" alt="Lavanderia On-Line" src="../images/logo-icone.png">
+                                <a href="<c:url value='/index'/>">
+                                    <img id="logoimg" alt="Lavanderia On-Line" src="<c:url value='/images/logo-icone.png'/>">
                                 </a>
                             </td>
                         </tr>
@@ -30,7 +30,7 @@
                                     <tbody>
                                         <tr>
                                             <td align="center" id="emailsentimg">
-                                                <img id="emailimg" alt="Cadastro confirmado" src="../images/email-sent.png">
+                                                <img id="emailimg" alt="Cadastro confirmado" src="<c:url value='/images/email-sent.png'/>">
                                             </td>
                                         </tr>
                                         <tr>
@@ -42,19 +42,15 @@
 
                                                     <p id="bottomtext">
                                                         Um e-mail com sua senha foi enviado para 
-                                                        <c:if test="${not empty param.email}">
-                                                            <jsp:useBean id="user" class="com.ufpr.tads.web2.model.domain.User">
-                                                                <jsp:setProperty name="user" property="email"/>
-                                                                <b>
-                                                                    ${user.email}
-                                                                </b><br/>
-                                                            </jsp:useBean>                                                            
-                                                        </c:if>
+                                                        <b>
+                                                            ${param.email}
+                                                        </b>
+                                                        <br/>
                                                         Certifique-se de checar sua pasta de spam.
                                                     </p>
                                                     
-                                                    <a href="../login.jsp">
-                                                        <img id="buttonimg" alt="Faça login" src="../images/login-button.png">
+                                                    <a href="<c:url value='/login'/>">
+                                                        <img id="buttonimg" alt="Faça login" src="<c:url value='/images/login-button.png'/>">
                                                     </a>
                                                 </center>
                                             </td>

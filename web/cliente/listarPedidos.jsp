@@ -7,6 +7,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,6 +27,8 @@
     </head>
     
     <body>
+        
+        <fmt:setLocale value="pt_BR"/>
         
         <c:if test="${empty sessionScope.login or login.role == \"Funcionario\"}">
             <c:redirect url="/login.jsp">
@@ -145,8 +148,8 @@
                                                         <td><span class="badge badge-success">${pedido.status}</span></td>
                                                     </c:when>
                                                 </c:choose>
-                                                <td>R$ ${pedido.orcamento}</td>
-                                                <td>${pedido.dataInicio}</td>
+                                                <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
+                                                <td><fmt:formatDate value="${pedido.dataInicio}"/></td>
                                                 <td class="text-center">
                                                     <c:choose>
                                                         <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
