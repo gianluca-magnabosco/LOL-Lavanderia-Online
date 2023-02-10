@@ -43,9 +43,9 @@ public class PedidoDAO implements DAO<Pedido> {
                 "JOIN pedido_has_item phi ON p.id_pedido = phi.id_pedido " + 
                 "JOIN tb_item i ON phi.id_item = i.id_item " + 
                 "JOIN user_has_pedido uhp ON p.id_pedido = uhp.id_pedido " + 
-                "JOIN tb_user u ON uhp.id_user = u.id_user " + 
+                "JOIN tb_user u ON uhp.id_user = u.id_user " +
                 "WHERE u.id_user = ? " +
-                "ORDER BY uhp.data_inicio DESC;";
+                "ORDER BY uhp.data_inicio DESC, p.id_pedido ASC;";
     
     private static final String SEARCH_QUERY = "SELECT p.id_pedido, p.descricao_pedido, p.orcamento_pedido, p.tempo_pedido, " + 
                 "i.id_item, i.descricao_item, i.preco_uni, i.tempo_item, " + 
@@ -68,7 +68,7 @@ public class PedidoDAO implements DAO<Pedido> {
                 "JOIN user_has_pedido uhp ON p.id_pedido = uhp.id_pedido " + 
                 "JOIN tb_user u ON uhp.id_user = u.id_user " +
                 "WHERE uhp.status = 'EM ABERTO' AND u.id_user = ? " +
-                "ORDER BY uhp.data_inicio DESC;";
+                "ORDER BY uhp.data_inicio DESC, p.id_pedido ASC;";
  
     private static final String SEARCH_ALL_EM_ABERTO_QUERY = "SELECT p.id_pedido, p.descricao_pedido, p.orcamento_pedido, p.tempo_pedido, " + 
                 "i.id_item, i.descricao_item, i.preco_uni, i.tempo_item, " + 
@@ -295,6 +295,8 @@ public class PedidoDAO implements DAO<Pedido> {
                     item.setQuantidade(rs.getInt("qtd_item"));
                     pedido.addItem(item);
                 }
+                
+                pedidos.add(pedido);
             }
             
         } catch (SQLException e) {
@@ -351,9 +353,6 @@ public class PedidoDAO implements DAO<Pedido> {
                     item.setTempo(rs.getInt("tempo_item"));
                     item.setQuantidade(rs.getInt("qtd_item"));
                     pedido.addItem(item);
-                                        
-                    System.out.println(item.getNome());
-                    System.out.println(pedido.getDescricao());
                 }
                 
                 pedidos.add(pedido);

@@ -1,7 +1,4 @@
-$(".btn-group .btn").on("click", filterByStatus);  
-$(document).ready(filterByStatus);
-
-const filterByStatus = () => {
+function filterByStatus() {
     let inputValue;
     
     if ($(this).is(document)) {
@@ -22,21 +19,6 @@ const filterByStatus = () => {
 };
 
 
-/*
-$(".cancelar").on("click", () => {
-    $("#overlay.cancelarOverlay").toggle();
-});
+$(document).ready(filterByStatus);
+$(".btn-group .btn").on("click", filterByStatus);  
 
-$(".confirmar").on("click", () => {
-    $("#overlay.cancelarOverlay").toggle();
-});
-
-$(".consultar").on("click", () => {
-    $("#overlay.consultarOverlay").toggle();
-});
-
-$(".pagar").on("click", () => {
-    $("#overlay.pagarOverlay").toggle();
-});
-
-*/

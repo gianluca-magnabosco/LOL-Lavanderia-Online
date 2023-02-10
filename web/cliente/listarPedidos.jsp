@@ -14,7 +14,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Lista de Pedidos</title>
-        <link rel="stylesheet" type="text/css" href="../css/clienteinicio.css">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >     
@@ -23,6 +22,7 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>">
     </head>
     
     <body>
@@ -40,7 +40,7 @@
             
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
-                <button onclick="location.href='realizarPedido.jsp'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
+                <button onclick="location.href='pedido?action=formPedido'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
             <hr class="gradient">
             <h2 class="pedidos-aberto" style="margin-top: 50px;">Seus pedidos:</h2>
@@ -153,9 +153,7 @@
                                                             <button class="btn btn-success btn-sm pagar pagar${pedido.id}">Pagar</button></a>
                                                             <script>
                                                                 $(".pagar${pedido.id}").on("click", () => {
-                                                                    <c:import url="/popup/pagar.jsp" charEncoding="UTF-8">
-                                                                        <c:param name="id" value="${pedido.id}"/>
-                                                                    </c:import>
+
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -163,9 +161,7 @@
                                                             <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}">Cancelar</button>
                                                             <script>
                                                                 $(".cancelar${pedido.id}").on("click", () => {
-                                                                    <c:import url="/popup/cancelar.jsp" charEncoding="UTF-8">
-                                                                        <c:param name="id" value="${pedido.id}"/>
-                                                                    </c:import>
+
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -175,9 +171,7 @@
                                                     <div class="inner-circle"></div>
                                                     <script>
                                                         $(".consultar${pedido.id}").on("click", () => {
-                                                            <c:import url="/popup/consultar.jsp" charEncoding="UTF-8">
-                                                                <c:param name="id" value="${pedido.id}"/>
-                                                            </c:import>
+                                                            location.href="pedido?action=consultar&id=${pedido.id}";
                                                         });
                                                     </script>
                                                 </td>    
@@ -198,7 +192,7 @@
         
         </div>   
         
-        <script type="text/javascript" src="../js/listarPedidosCliente.js"></script>
+        <script type="text/javascript" defer src="<c:url value='/js/listarPedidosCliente.js'/>"></script>
         
         <%@ include file="../footer.jsp" %>
                 
