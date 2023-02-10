@@ -13,7 +13,7 @@
                 <script>
                     <c:if test"${not empty param.id}>
                         $(".confirmar").on("click", () => {
-                            <jsp:forward page="PedidoServlet?action=cancelar&id=${param.id}"/>
+                            location.href="<c:url value='/pedido?action=cancelar$id=${pedido.id}'/>";
                         });
                     </c:if>
                 </script>
@@ -21,9 +21,5 @@
         </center>
     </div>
 </div>
+
 <script type="text/javascript" src="../js/cancelarPopup.js"></script>
-
-
-
-
-
