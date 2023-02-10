@@ -31,7 +31,7 @@ public class ItemDAO implements DAO<Item> {
             statement.setString(1, item.getTempoItem());
             statement.setString(2, item.getDescricaoItem());
             statement.setDouble(3, item.getPrecoItem());
-            statement.setDouble(4, item.getImagemItem());
+            statement.setString(4, item.getImagemItem());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException("Erro ao inserir item " + INSERT_QUERY, e);
@@ -43,7 +43,7 @@ public void atualizar(Item item) throws DAOException {
       statement.setString(1, item.getTempoItem());
       statement.setString(2, item.getDescricaoItem());
       statement.setDouble(3, item.getPrecoItem());
-      statement.setDouble(4, item.getImagemItem());
+      statement.setString(4, item.getImagemItem());
       statement.setInt(5, item.getIdItem());
       statement.executeUpdate();
     } catch (SQLException e) {
