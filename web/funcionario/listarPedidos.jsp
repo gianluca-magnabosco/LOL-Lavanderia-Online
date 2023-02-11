@@ -4,8 +4,10 @@
     Author     : Gian
 --%>
 
-
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Lista de Pedidos</title>
-        <link rel="stylesheet" type="text/css" href="../css/clienteinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/clienteinicio.css'/>">
         <script type="text/javascript"
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -29,11 +31,18 @@
     </head>
     
     <body>
-        <%@ include file="header.jsp" %>
+        <fmt:setLocale value="pt_BR"/>
         
-        <%@ include file="../popup/consultar.jsp" %>      
+        <c:if test="${empty sessionScope.login or login.role == \"Cliente\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de funcionario para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
+        
+        <c:import url="header.jsp"/>
 
-        <%@ include file="../popup/aceitar.jsp" %>
+        <c:import url="/popup/aceitar.jsp"/>
+        
         
         <div class="content">
             
@@ -92,325 +101,84 @@
                                     </thead>
 
                                     <tbody class="table-body">
-
-                                        <tr class="cell-1 finalizado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13472</td>
-                                            <td><span class="badge badge-success">FINALIZADO</span></td>
-                                            <td>R$ 83,49</td>
-                                            <td class="data">01/11/2022, 22:55</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 finalizado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13473</td>
-                                            <td><span class="badge badge-success">FINALIZADO</span></td>
-                                            <td>R$ 145,44</td>
-                                            <td class="data">02/11/2022, 15:35</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                        
-
-                                        <tr class="cell-1 cancelado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13474</td>
-                                            <td><span class="badge badge-danger">CANCELADO</span></td>
-                                            <td>R$ 153,25</td>
-                                            <td class="data">03/11/2022, 01:35</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                        
-                                        
-                                        <tr class="cell-1 cancelado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13475</td>
-                                            <td><span class="badge badge-danger">CANCELADO</span></td>
-                                            <td>R$ 69,13</td>
-                                            <td class="data">03/11/2022, 02:56</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>
-
-                                        <tr class="cell-1 rejeitado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13476</td>
-                                            <td><span class="badge badge-danger" style="background-color: #8B0000;">REJEITADO</span></td>
-                                            <td>R$ 12,50</td>
-                                            <td class="data">04/11/2022, 03:17</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 rejeitado">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13477</td>
-                                            <td><span class="badge badge-danger" style="background-color: #8B0000;">REJEITADO</span></td>
-                                            <td>R$ 1955,32</td>
-                                            <td class="data">05/11/2022, 06:33</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr> 
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13478</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 560,79</td>
-                                            <td class="data">10/11/2022, 20:45</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                       
-
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13479</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 478,36</td>
-                                            <td class="data">12/11/2022, 08:55</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13480</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 32,78</td>
-                                            <td class="data">13/11/2022, 19:55</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13481</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 24,35</td>
-                                            <td class="data">14/11/2022, 11:37</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13482</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 15,90</td>
-                                            <td class="data">14/11/2022, 14:15</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13483</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 312,66</td>
-                                            <td class="data">15/11/2022, 12:25</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                           
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13484</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 74,01</td>
-                                            <td class="data">15/11/2022, 18:32</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                         
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13485</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 57,10</td>
-                                            <td class="data">16/11/2022, 15:42</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>                                        
-                                        
-                                        <tr class="cell-1 aberto">
-                                            <td></td>
-                                            <td>#SO-13486</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 255,50</td>
-                                            <td class="data">19/11/2022, 17:59</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                        </tr>                                       
-
-                                        <tr class="cell-1 aberto">
-                                            <td></td>
-                                            <td>#SO-13487</td>
-                                            <td><span class="badge badge-warning">EM ABERTO</span></td>
-                                            <td>R$ 200,00</td>
-                                            <td class="data">21/11/2022, 13:40</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar recolhimento</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="cell-1 pago">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13488</td>
-                                            <td><span class="badge badge-secondary" style="background-color: #F28C28">PAGO</span></td>
-                                            <td>R$ 283,50</td>
-                                            <td class="data">21/11/2022, 16:20</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Finalizar pedido</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr> 
-
-                                        <tr class="cell-1 pago">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13489</td>
-                                            <td><span class="badge badge-secondary" style="background-color: #F28C28">PAGO</span></td>
-                                            <td>R$ 355,15</td>
-                                            <td class="data">22/11/2022, 11:13</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Finalizar pedido</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>  
-
-                                        <tr class="cell-1 recolhido">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13490</td>
-                                            <td><span class="badge badge-secondary">RECOLHIDO</span></td>
-                                            <td>R$ 28,00</td>
-                                            <td class="data">22/11/2022, 13:37</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar lavagem</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>  
-                                        
-                                        <tr class="cell-1 recolhido">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13491</td>
-                                            <td><span class="badge badge-secondary">RECOLHIDO</span></td>
-                                            <td>R$ 135,22</td>
-                                            <td class="data">23/11/2022, 17:55</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-success btn-sm confirmar">Confirmar lavagem</button>
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr> 
-
-                                        <tr class="cell-1 aguardando">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13492</td>
-                                            <td><span class="badge badge-info">AGUARDANDO PAGAMENTO</span></td>
-                                            <td>R$ 15,34</td>
-                                            <td class="data">23/11/2022, 19:33</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>   
-                                        
-                                        <tr class="cell-1 aguardando">
-                                            <td class="text-center">
-                                                <div class="inner-circle"></div>
-                                            </td>
-                                            <td>#SO-13493</td>
-                                            <td><span class="badge badge-info">AGUARDANDO PAGAMENTO</span></td>
-                                            <td>R$ 87,84</td>
-                                            <td class="data diadehoje"></td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm consultar" type="button">Consultar</button>
-                                                <div class="inner-circle"></div>
-                                            </td>    
-                                        </tr>  
-                                        
+                                        <c:forEach var="pedido" items="${pedidos}">
+                                            <c:choose>
+                                                <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
+                                                    <tr class="cell-1 aguardando">
+                                                </c:when>
+                                                <c:when test="${pedido.status == \"EM ABERTO\"}">
+                                                    <tr class="cell-1 aberto">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <tr class="cell-1 ${fn:toLowerCase(pedido.status)}">
+                                                </c:otherwise>
+                                            </c:choose>
+                                                <td class="text-center">
+                                                    <div class="inner-circle"></div>
+                                                </td>
+                                                <td>#LOL-${pedido.id}</td>
+                                                <c:choose>
+                                                    <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
+                                                        <td><span class="badge badge-info">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"RECOLHIDO\"}">
+                                                        <td><span class="badge badge-secondary">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"PAGO\"}">
+                                                        <td><span class="badge badge-secondary" style="background-color: #F28C28">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"EM ABERTO\"}">
+                                                        <td><span class="badge badge-warning">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"REJEITADO\"}">
+                                                        <td><span class="badge badge-danger" style="background-color: #8B0000;">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"CANCELADO\"}">
+                                                        <td><span class="badge badge-danger">${pedido.status}</span></td>
+                                                    </c:when>
+                                                    <c:when test="${pedido.status == \"FINALIZADO\"}">
+                                                        <td><span class="badge badge-success">${pedido.status}</span></td>
+                                                    </c:when>
+                                                </c:choose>
+                                                <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
+                                                <td class="data"><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
+                                                    <c:choose>
+                                                        <c:when test="${pedido.status == \"EM ABERTO\"}">
+                                                            <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar Recolhimento</button>
+                                                            <script>
+                                                                $(".confirmar${pedido.id}").on("click", () => {
+                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                });
+                                                            </script>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"PAGO\"}">
+                                                            <button class="btn btn-success btn-sm finalizar finalizar${pedido.id}">Finalizar Pedido</button></a>
+                                                            <script>
+                                                                $(".finalizar${pedido.id}").on("click", () => {
+                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                });
+                                                            </script>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"RECOLHIDO\"}">
+                                                            <button class="btn btn-success btn-sm confirmarRecolhimento confirmarRecolhimento${pedido.id}">Confirmar Lavagem</button></a>
+                                                            <script>
+                                                                $(".confirmarRecolhimento${pedido.id}").on("click", () => {
+                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                });
+                                                            </script>
+                                                        </c:when>
+                                                    </c:choose>
+                                                    <div class="inner-circle"></div>
+                                                    <script>
+                                                        $(".consultar${pedido.id}").on("click", () => {
+                                                            location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
+                                                        });
+                                                    </script>
+                                                </td>    
+                                            </tr>   
+                                        </c:forEach>                    
                                     </tbody>
                                 </table>
                             </div>
@@ -425,9 +193,9 @@
         
         </div>   
         
-        <%@ include file="../footer.jsp" %>
+        <c:import url="/footer.jsp"/>
         
-        <script type="text/javascript" src="../js/listarPedidosFuncionario.js"></script>
+        <script type="text/javascript" src="<c:url value='/js/listarPedidosFuncionario.js'/>"></script>
         
         <script type="text/javascript">
             $(".aceitar").on("click", function() {

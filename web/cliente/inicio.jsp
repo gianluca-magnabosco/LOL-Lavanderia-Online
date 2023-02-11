@@ -74,10 +74,10 @@
                                                 <td>#LOL-${pedido.id}</td>
                                                 <td><span class="badge badge-warning">${pedido.status}</span></td>
                                                 <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                <td><fmt:formatDate value="${pedido.dataInicio}"/></td>
+                                                <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
                                                 <td class="text-center">
                                                     <button class="btn btn-info btn-sm consultar consultar${pedido.id}" id="bt1" type="button" value="button1">Consultar</button></a>
-                                                    <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}" id="btn1" type="button" value="button1">Cancelar</button>
+                                                    <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}" id="btn1" type="button" value="button1">Cancelar Pedido</button>
                                                     <div class="inner-circle"></div>
                                                 </td>
                                             </tr>
@@ -89,7 +89,7 @@
                                                 
                                                 $(".cancelar${pedido.id}").on("click", () => {
                                                     // ajeitar isso aqui
-                                                    // location.href = "<c:url value='/popup/cancelar2.jsp?id=${pedido.id}'/>";
+                                                    // location.href = "<c:url value='/popup/cancelar.jsp?id=${pedido.id}'/>";
                                                 });
                                             </script>
                                         </c:forEach>

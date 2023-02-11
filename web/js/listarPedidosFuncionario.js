@@ -6,9 +6,6 @@ $(".consultar").on("click", function() {
     $("#overlay.consultarOverlay").toggle();
 });
 
-
-$(".diadehoje").text(moment().format("DD/MM/YYYY") + ", 18:21");
-
 var dateList = [];
 var elements = [];
 
