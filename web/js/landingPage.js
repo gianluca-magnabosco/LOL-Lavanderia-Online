@@ -16,3 +16,5 @@ const changePicture = () => {
     }
     setTimeout(changePicture, slideTime);
 };
+
+$(document).ready(changePicture());

@@ -13,7 +13,7 @@ public class StartupServlet extends HttpServlet {
 
     public void init(ServletConfig config) throws ServletException {
         ConfigBean conf = new ConfigBean();
-        conf.setEmail("lol_lavanderia_online-reborn@outlook.com");
+        conf.setEmail("lol_lavanderiaonline@outlook.com");
         
         ServletContext ctx = config.getServletContext();
         ctx.setAttribute("configuracao", conf);

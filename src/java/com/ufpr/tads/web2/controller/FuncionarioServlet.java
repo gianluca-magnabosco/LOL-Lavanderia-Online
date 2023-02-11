@@ -33,7 +33,7 @@ public class FuncionarioServlet extends HttpServlet {
         
         try {
             
-            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
+            Validacao.validarVazio(action, "Eh necessario enviar um parametro action!");
             
             switch (action) {
                 case "listar" -> {
@@ -100,7 +100,7 @@ public class FuncionarioServlet extends HttpServlet {
                 }
 
                 default -> {
-                    throw new DadoInvalidoException("É necessário enviar um parametro action!");
+                    throw new DadoInvalidoException("Eh necessario enviar um parametro action!");
                 }
             }
         } catch (AppException e) {

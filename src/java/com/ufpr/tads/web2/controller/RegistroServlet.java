@@ -49,7 +49,7 @@ public class RegistroServlet extends HttpServlet {
             
         } catch (AppException e) {
             String errorMessage = URLEncoder.encode(e.getMessage(), "UTF-8");
-            response.sendRedirect("/registrar?message=" + errorMessage);
+            response.sendRedirect("registrar?message=" + errorMessage);
             return;
         }
         

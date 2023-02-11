@@ -105,83 +105,85 @@
 
                                     <tbody class="table-body">
                                         <c:forEach var="pedido" items="${pedidos}">
-                                            <c:choose>
-                                                <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
-                                                    <tr class="cell-1 aguardando">
-                                                </c:when>
-                                                <c:when test="${pedido.status == \"EM ABERTO\"}">
-                                                    <tr class="cell-1 aberto">
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <tr class="cell-1 ${fn:toLowerCase(pedido.status)}">
-                                                </c:otherwise>
-                                            </c:choose>
-                                                <td class="text-center">
-                                                    <div class="inner-circle"></div>
-                                                </td>
-                                                <td>#LOL-${pedido.id}</td>
+                                            <c:if test="${not empty pedido}">
                                                 <c:choose>
                                                     <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
-                                                        <td><span class="badge badge-info">${pedido.status}</span></td>
-                                                    </c:when>
-                                                    <c:when test="${pedido.status == \"RECOLHIDO\"}">
-                                                        <td><span class="badge badge-secondary">${pedido.status}</span></td>
-                                                    </c:when>
-                                                    <c:when test="${pedido.status == \"PAGO\"}">
-                                                        <td><span class="badge badge-secondary" style="background-color: #F28C28">${pedido.status}</span></td>
+                                                        <tr class="cell-1 aguardando">
                                                     </c:when>
                                                     <c:when test="${pedido.status == \"EM ABERTO\"}">
-                                                        <td><span class="badge badge-warning">${pedido.status}</span></td>
+                                                        <tr class="cell-1 aberto">
                                                     </c:when>
-                                                    <c:when test="${pedido.status == \"REJEITADO\"}">
-                                                        <td><span class="badge badge-danger" style="background-color: #8B0000;">${pedido.status}</span></td>
-                                                    </c:when>
-                                                    <c:when test="${pedido.status == \"CANCELADO\"}">
-                                                        <td><span class="badge badge-danger">${pedido.status}</span></td>
-                                                    </c:when>
-                                                    <c:when test="${pedido.status == \"FINALIZADO\"}">
-                                                        <td><span class="badge badge-success">${pedido.status}</span></td>
-                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <tr class="cell-1 ${fn:toLowerCase(pedido.status)}">
+                                                    </c:otherwise>
                                                 </c:choose>
-                                                <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                <td class="data"><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
+                                                    <td class="text-center">
+                                                        <div class="inner-circle"></div>
+                                                    </td>
+                                                    <td>#LOL-${pedido.id}</td>
                                                     <c:choose>
-                                                        <c:when test="${pedido.status == \"EM ABERTO\"}">
-                                                            <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar Recolhimento</button>
-                                                            <script>
-                                                                $(".confirmar${pedido.id}").on("click", () => {
-                                                                    location.href="<c:url value='pedido?action=recolher&id=${pedido.id}'/>";
-                                                                });
-                                                            </script>
-                                                        </c:when>
-                                                        <c:when test="${pedido.status == \"PAGO\"}">
-                                                            <button class="btn btn-success btn-sm finalizar finalizar${pedido.id}">Finalizar Pedido</button></a>
-                                                            <script>
-                                                                $(".finalizar${pedido.id}").on("click", () => {
-                                                                    location.href="<c:url value='pedido?action=finalizar&id=${pedido.id}'/>";
-                                                                });
-                                                            </script>
+                                                        <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
+                                                            <td><span class="badge badge-info">${pedido.status}</span></td>
                                                         </c:when>
                                                         <c:when test="${pedido.status == \"RECOLHIDO\"}">
-                                                            <button class="btn btn-success btn-sm confirmarLavagem confirmarLavagem${pedido.id}">Confirmar Lavagem</button></a>
-                                                            <script>
-                                                                $(".confirmarLavagem${pedido.id}").on("click", () => {
-                                                                    location.href="<c:url value='pedido?action=confirmar&id=${pedido.id}'/>";
-                                                                });
-                                                            </script>
+                                                            <td><span class="badge badge-secondary">${pedido.status}</span></td>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"PAGO\"}">
+                                                            <td><span class="badge badge-secondary" style="background-color: #F28C28">${pedido.status}</span></td>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"EM ABERTO\"}">
+                                                            <td><span class="badge badge-warning">${pedido.status}</span></td>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"REJEITADO\"}">
+                                                            <td><span class="badge badge-danger" style="background-color: #8B0000;">${pedido.status}</span></td>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"CANCELADO\"}">
+                                                            <td><span class="badge badge-danger">${pedido.status}</span></td>
+                                                        </c:when>
+                                                        <c:when test="${pedido.status == \"FINALIZADO\"}">
+                                                            <td><span class="badge badge-success">${pedido.status}</span></td>
                                                         </c:when>
                                                     </c:choose>
-                                                    <div class="inner-circle"></div>
-                                                    <script>
-                                                        $(".consultar${pedido.id}").on("click", () => {
-                                                            location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
-                                                        });
-                                                    </script>
-                                                </td>    
-                                            </tr>   
-                                        </c:forEach>                    
+                                                    <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
+                                                    <td class="data"><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
+                                                        <c:choose>
+                                                            <c:when test="${pedido.status == \"EM ABERTO\"}">
+                                                                <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar Recolhimento</button>
+                                                                <script>
+                                                                    $(".confirmar${pedido.id}").on("click", () => {
+                                                                        location.href="<c:url value='pedido?action=recolher&id=${pedido.id}'/>";
+                                                                    });
+                                                                </script>
+                                                            </c:when>
+                                                            <c:when test="${pedido.status == \"PAGO\"}">
+                                                                <button class="btn btn-success btn-sm finalizar finalizar${pedido.id}">Finalizar Pedido</button></a>
+                                                                <script>
+                                                                    $(".finalizar${pedido.id}").on("click", () => {
+                                                                        location.href="<c:url value='pedido?action=finalizar&id=${pedido.id}'/>";
+                                                                    });
+                                                                </script>
+                                                            </c:when>
+                                                            <c:when test="${pedido.status == \"RECOLHIDO\"}">
+                                                                <button class="btn btn-success btn-sm confirmarLavagem confirmarLavagem${pedido.id}">Confirmar Lavagem</button></a>
+                                                                <script>
+                                                                    $(".confirmarLavagem${pedido.id}").on("click", () => {
+                                                                        location.href="<c:url value='pedido?action=confirmar&id=${pedido.id}'/>";
+                                                                    });
+                                                                </script>
+                                                            </c:when>
+                                                        </c:choose>
+                                                        <div class="inner-circle"></div>
+                                                        <script>
+                                                            $(".consultar${pedido.id}").on("click", () => {
+                                                                location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
+                                                            });
+                                                        </script>
+                                                    </td>    
+                                                </tr>   
+                                            </c:if>
+                                        </c:forEach>  
                                     </tbody>
                                 </table>
                             </div>

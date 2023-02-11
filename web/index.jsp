@@ -18,15 +18,6 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
-        <script type="text/javascript" src="<c:url value='js/landingPage.js'/>"></script>
-        <style>
-            .mySlides {
-                display: none;
-            }
-            img {
-                vertical-align: middle;
-            }
-        </style>
     </head> 
     
     <body>
@@ -121,50 +112,23 @@
             <div class="container p-4 pb-0">
 
                 <section class="mb-4">
-                    <a
-                      class="btn btn-primary btn-floating m-1"
-                      style="background-color: #3b5998;"
-                      href="#!"
-                      role="button"
-                    >
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#" role="button">
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-
-                    <a
-                      class="btn btn-primary btn-floating m-1"
-                      style="background-color: #55acee;"
-                      href="#!"
-                      role="button"
-                    >
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#" role="button">
                         <i class="fab fa-twitter"></i>
                     </a>
 
-                    <a
-                      class="btn btn-primary btn-floating m-1"
-                      style="background-color: #ac2bac;"
-                      href="#!"
-                      role="button"
-                    >
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac;" href="#" role="button">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a
-                      class="btn btn-primary btn-floating m-1"
-                      style="background-color: #0082ca;"
-                      href="#!"
-                      role="button"
-                    >
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca;" href="#" role="button">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
 
-                    <a
-                      class="btn btn-primary btn-floating m-1"
-                      style="background-color: #333333;"
-                      href="https://github.com/gianluca-magnabosco/LOL-Lavanderia-Online/"
-                      target="_blank"
-                      role="button"
-                    >
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #333333;" href="https://github.com/gianluca-magnabosco/LOL-Lavanderia-Online/" target="_blank" role="button">
                         <i class="fab fa-github"></i>
                     </a>
                 </section>
@@ -180,8 +144,8 @@
             </div>
         </footer>
         
-        <script type="text/javascript">
-            $(document).ready(changePicture());
+        <script>
+            <c:import url='js/landingPage.js'/>
         </script>
 
     </body>

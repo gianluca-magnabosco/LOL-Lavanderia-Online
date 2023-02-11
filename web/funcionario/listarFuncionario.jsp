@@ -36,6 +36,12 @@
         <c:import url="header.jsp"/>
 
         <div class="content">
+            <c:if test="${not empty param.message}">
+                <div class="d-flex align-items-center">
+                    <h4 class="mx-auto mt-5" style="color: red; font-weight: 1000">${param.message}</h4>
+                </div>
+            </c:if>
+            
             <div class="container mt-5">
                 <h3 class="pedidos-aberto">Funcionários já cadastrados:</h3>
                 <div class="table-responsive table-borderless mt-4">
@@ -51,16 +57,18 @@
 
                         <tbody class="table-body">
                             <c:forEach var="funcionario" items="${funcionarios}">
-                                <tr class="cell-1">
-                                    <td>${funcionario.nome}</td>
-                                    <td>${funcionario.email}</td>
-                                    <td><fmt:formatDate value="${funcionario.dataNascimento}" pattern="dd/MM/yyyy"/></td>
-                                    <td class="text-center">
-                                        <a href="<c:url value='/funcionarioController?action=formFuncionario&id=${funcionario.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                        <a href="<c:url value='/funcionarioController?action=delete&id=${funcionario.id}'/>"><button class="btn btn-danger btn-sm remover">Excluir</button></a>
-                                        <div class="inner-circle"></div>
-                                    </td>
-                                </tr>
+                                <c:if test="${not empty funcionario}">
+                                    <tr class="cell-1">
+                                        <td>${funcionario.nome}</td>
+                                        <td>${funcionario.email}</td>
+                                        <td><fmt:formatDate value="${funcionario.dataNascimento}" pattern="dd/MM/yyyy"/></td>
+                                        <td class="text-center">
+                                            <a href="<c:url value='/funcionarioController?action=formFuncionario&id=${funcionario.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
+                                            <a href="<c:url value='/funcionarioController?action=delete&id=${funcionario.id}'/>"><button class="btn btn-danger btn-sm remover">Excluir</button></a>
+                                            <div class="inner-circle"></div>
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
                         </tbody>
                     </table>  

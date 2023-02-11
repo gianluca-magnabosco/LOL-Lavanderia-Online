@@ -1,8 +1,8 @@
 *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Open Sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
 }
 
 html,body{
@@ -166,5 +166,13 @@ html,body{
 #footerzera{
     border-top: 3px solid black;
     border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+}
+
+
+.mySlides {
+    display: none;
+}
+img {
+    vertical-align: middle;
 }
 

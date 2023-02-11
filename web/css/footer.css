@@ -1,0 +1,33 @@
+.facebook {
+    background-color: #3b5998;
+} 
+
+.twitter {
+    background-color: #55acee;
+}
+
+.instagram {
+    background-color: #ac2bac;
+}
+
+.linkedin {
+    background-color: #0082ca;
+}
+
+.github {
+    background-color: #333333;
+}
+
+.footerText {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}

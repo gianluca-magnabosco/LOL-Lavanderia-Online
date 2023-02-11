@@ -60,33 +60,35 @@
                                     </thead>
                                     
                                     <tbody class="table-body">
-                                        
                                         <c:forEach var="pedido" items="${pedidos}">
-                                            <tr class="cell-1 aberto">
-                                                <td class="text-center">
-                                                    <div class="inner-circle"></div>
-                                                </td>
-                                                <td>#LOL-${pedido.id}</td>
-                                                <td><span class="badge badge-warning">${pedido.status}</span></td>
-                                                <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}" type="button">Consultar</button>
-                                                    <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar recolhimento</button>
-                                                    <div class="inner-circle"></div>
-                                                </td>    
-                                            </tr> 
-                                            
-                                            <script>
-                                                $(".consultar${pedido.id}").on("click", () => {
-                                                    location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
-                                                });
-                                                
-                                                $(".confirmar${pedido.id}").on("click", () => {
-                                                    location.href = "<c:url value='/pedido?action=recolher&id=${pedido.id}'/>";
-                                                });
-                                            </script>
+                                            <c:if test="${not empty pedido}">
+                                                <tr class="cell-1 aberto">
+                                                    <td class="text-center">
+                                                        <div class="inner-circle"></div>
+                                                    </td>
+                                                    <td>#LOL-${pedido.id}</td>
+                                                    <td><span class="badge badge-warning">${pedido.status}</span></td>
+                                                    <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
+                                                    <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-info btn-sm consultar consultar${pedido.id}" type="button">Consultar</button>
+                                                        <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar recolhimento</button>
+                                                        <div class="inner-circle"></div>
+                                                    </td>    
+                                                </tr> 
+
+                                                <script>
+                                                    $(".consultar${pedido.id}").on("click", () => {
+                                                        location.href="<c:url value='/pedido?action=consultar&id=${pedido.id}'/>";
+                                                    });
+
+                                                    $(".confirmar${pedido.id}").on("click", () => {
+                                                        location.href = "<c:url value='/pedido?action=recolher&id=${pedido.id}'/>";
+                                                    });
+                                                </script>
+                                            </c:if>
                                         </c:forEach>
+                                        
                                     </tbody>
                                 </table>
                             </div>

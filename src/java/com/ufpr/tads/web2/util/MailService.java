@@ -18,8 +18,8 @@ import java.util.Properties;
  */
 public class MailService {
     
-    private static final String END3R3C0_D0_3M41L = "lol_lavanderia_online-reborn@outlook.com";
-    private static final String S3NH4_D0_3M41L = "senhamuitolegal123";
+    private static final String END3R3C0_D0_3M41L = "lol_lavanderiaonline@outlook.com";
+    private static final String S3NH4_D0_3M41L = "senhalegal123";
     private static final String SMTP_SERVER = "smtp-mail.outlook.com";
     
     public static void sendUserPasswordEmail(String userEmail, String userPassword) throws ErroAoEnviarEmailException {

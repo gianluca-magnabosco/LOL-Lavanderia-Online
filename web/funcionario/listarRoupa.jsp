@@ -36,6 +36,13 @@
         <c:import url="header.jsp"/>
         
         <div class="content">
+            
+            <c:if test="${not empty param.message}">
+                <div class="d-flex align-items-center">
+                    <h4 class="mx-auto mt-5" style="color: red; font-weight: 1000">${param.message}</h4>
+                </div>
+            </c:if>
+            
             <div class="container mt-5">
                 <h3 class="pedidos-aberto">Roupas já cadastradas:</h3>
                 <div class="table-responsive table-borderless mt-4">
@@ -52,17 +59,19 @@
 
                         <tbody class="table-body">
                             <c:forEach var="roupa" items="${roupas}">
-                                <tr class="cell-1">
-                                    <td>${roupa.nome}</td>
-                                    <td><fmt:formatNumber value="${roupa.preco}" type="currency"/></td>
-                                    <td>${roupa.tempo} dia(s)</td>
-                                    <td><img src="<c:url value='${roupa.imagem}'/>" width="42" height="42"></td>
-                                    <td class="text-center">
-                                        <a href="<c:url value='/roupa?action=formRoupa&id=${roupa.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                        <a href="<c:url value='/roupa?action=delete&id=${roupa.id}'/>"><button class="btn btn-danger btn-sm remover">Remover</button></a>
-                                        <div class="inner-circle"></div>
-                                    </td>
-                                </tr>
+                                <c:if test="${not empty roupa}">
+                                    <tr class="cell-1">
+                                        <td>${roupa.nome}</td>
+                                        <td><fmt:formatNumber value="${roupa.preco}" type="currency"/></td>
+                                        <td>${roupa.tempo} dia(s)</td>
+                                        <td><img src="<c:url value='${roupa.imagem}'/>" width="42" height="42"></td>
+                                        <td class="text-center">
+                                            <a href="<c:url value='/roupa?action=formRoupa&id=${roupa.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
+                                            <a href="<c:url value='/roupa?action=delete&id=${roupa.id}'/>"><button class="btn btn-danger btn-sm remover">Remover</button></a>
+                                            <div class="inner-circle"></div>
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
                         </tbody>
                     </table>

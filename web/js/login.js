@@ -1,4 +1,3 @@
-
 const validateForm = () => {
     $("#loginForm").validate({
         rules: {
@@ -20,3 +19,7 @@ const validateForm = () => {
         }
     });
 };
+
+$(document).ready(validateForm());
+        
+        

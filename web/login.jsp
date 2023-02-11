@@ -18,7 +18,6 @@
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
         </script>
-        <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
     </head>
     
     <body>
@@ -61,8 +60,8 @@
         </section>
     </body>
     
-    <script type="text/javascript">
-        $(document).ready(validateForm());
+    <script>
+        <c:import url='/js/login.js'/>
     </script>
     
 </html>

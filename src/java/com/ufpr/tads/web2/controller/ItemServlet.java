@@ -36,7 +36,7 @@ public class ItemServlet extends HttpServlet {
 
         try {
             
-            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
+            Validacao.validarVazio(action, "Eh necessario enviar um parametro action!");
             
             switch (action) {
                 case "listar" -> {
@@ -95,7 +95,7 @@ public class ItemServlet extends HttpServlet {
                 }
 
                 default -> {
-                    throw new DadoInvalidoException("É necessário enviar um parametro action válido!");
+                    throw new DadoInvalidoException("Eh necessario enviar um parametro action valido!");
                 }
             }
         } catch (AppException e) {

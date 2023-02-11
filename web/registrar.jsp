@@ -40,7 +40,7 @@
                             <form action="<c:url value='/registrar'/>" method="post" id="registerForm">
                                 <div class="field">
                                     <div class="control">
-                                        <input type="text" name="nome" class="input is-large" placeholder="Nome" autofocus=""/><br/><br/>
+                                        <input type="text" name="nome" class="input is-large" placeholder="Nome" autofocus/><br/><br/>
                                         <input oninput="cpfMask(this)" type="text" class="input is-large" placeholder="CPF" name="cpf"><br/><br/> 
                                         <input type="email" name="email" class="input is-large" placeholder="E-mail"><br/><br/>
                                         <input oninput="phoneNumberMask(this)" type="text" class="input is-large" placeholder="Telefone" name="telefone"><br/><br/>
@@ -111,12 +111,15 @@
         $.validator.addMethod("cpfValido", (value, element, param) => {
             return validateCPF(value);
         });
+        
         $.validator.addMethod("cepValido", (value, element, param) => {
             return validateCEP(value);
         });
+        
         $.validator.addMethod("telefoneValido", (value, element, param) => {
             return validatePhoneNumber(value);
         });
+        
         $.validator.addMethod("numeroValido", (value, element, param) => {
             return validateNumber(value);
         });
