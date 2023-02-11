@@ -39,7 +39,6 @@
         <c:if test="${not empty param.pedido}">
             <c:import url="/popup/pedidoConfirmado.jsp"/>
         </c:if>
-
         
         <div class="content">
             
@@ -49,7 +48,6 @@
             </div>
             <hr class="gradient">
             <h3 class="pedidos-aberto">Seus pedidos em aberto:</h3>
-
             <div class="container mt-5">
                 <div class="d-flex justify-content-center row">
                     <div class="col-md-10" style="z-index: 0;">
@@ -68,7 +66,6 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-
                                     <tbody class="table-body">
                                         
                                         <c:forEach var="pedido" items="${pedidos}">
@@ -91,9 +88,7 @@
                                                 });
                                                 
                                                 $(".cancelar${pedido.id}").on("click", () => {
-                                                    // fazer popup de confirmação
-                                                    // redirecionar assim:
-                                                    //location.href="<c:url value='/pedido?action=cancelar$id=${pedido.id}'/>";
+                                                    location.href = "<c:url value='/popup/cancelar2.jsp?id=${pedido.id}'/>";
                                                 });
                                             </script>
                                         </c:forEach>
@@ -104,7 +99,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="clear"></div>
             <br/>
         
@@ -116,4 +110,3 @@
     </body>     
     
 </html>
-
