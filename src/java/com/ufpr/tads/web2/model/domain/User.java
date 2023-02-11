@@ -17,6 +17,11 @@ public class User implements Serializable {
     }
     
     
+    public User(int id) {
+        this.id = id;
+    }
+    
+    
     public User(String cpf, String fullName, String email, String phoneNumber, String password) {
         this.cpf = cpf;
         this.fullName = fullName;

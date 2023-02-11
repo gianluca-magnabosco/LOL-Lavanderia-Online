@@ -17,11 +17,16 @@ public class PedidoDAO implements DAO<Pedido> {
     
     
     private static final String INSERT_QUERY = "INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido) VALUES (?, ?, ?);";
-    private static final String SEARCH_ID = "SELECT id_pedido FROM tb_pedido ORDER BY id_pedido DESC LIMIT 1;";
     private static final String INSERT_UHP_QUERY = "INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio) VALUES (?, ?, ?, ?);";
     private static final String INSERT_PHI_QUERY = "INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES (?, ?, ?);";
     
     private static final String UPDATE_STATUS_QUERY = "UPDATE user_has_pedido SET status = ? WHERE id_pedido = ?;";
+
+    private static final String TERMINAR_PEDIDO_QUERY = "UPDATE user_has_pedido SET status = ?, data_fim = now() WHERE id_pedido = ?;";
+    
+    private static final String PAGAR_PEDIDO_QUERY = "UPDATE user_has_pedido SET status = 'PAGO', data_pagamento = now() WHERE id_pedido = ?;";
+    
+    private static final String SEARCH_ID = "SELECT id_pedido FROM tb_pedido ORDER BY id_pedido DESC LIMIT 1;";
     
     private static final String SEARCH_BY_ID_QUERY = "SELECT p.id_pedido, p.descricao_pedido, p.orcamento_pedido, p.tempo_pedido, " + 
                 "i.id_item, i.descricao_item, i.preco_uni, i.tempo_item, " + 
@@ -80,10 +85,7 @@ public class PedidoDAO implements DAO<Pedido> {
                 "JOIN tb_user u ON uhp.id_user = u.id_user" +
                 "WHERE uhp.status = 'EM ABERTO' " +
                 "ORDER BY uhp.data_inicio ASC;";
-    
-    private static final String TERMINAR_PEDIDO_QUERY = "UPDATE user_has_pedido SET status = ?, data_fim = now() WHERE id_pedido = ?;";
-    
-    private static final String PAGAR_PEDIDO_QUERY = "UPDATE user_has_pedido SET status = 'PAGO', data_pagamento = now() WHERE id_pedido = ?;";
+
     
     
     
@@ -112,19 +114,18 @@ public class PedidoDAO implements DAO<Pedido> {
             throw new DAOException("Erro ao inserir pedido: " + INSERT_QUERY , e);
         }
         
+        
         try (PreparedStatement st = con.prepareStatement(SEARCH_ID);
                 ResultSet rs = st.executeQuery()) {  
-            int id = 0;
-            st.setInt(1, id);
             
             while (rs.next()) {
-
                 pedido.setId(rs.getInt("id_pedido"));
             }
 
         } catch (SQLException e) {
             throw new DAOException("Erro ao inserir pedido: " + SEARCH_ID , e);
         }
+        
         
         try (PreparedStatement st = con.prepareStatement(INSERT_UHP_QUERY)) {
             st.setInt(1, pedido.getUser().getId());

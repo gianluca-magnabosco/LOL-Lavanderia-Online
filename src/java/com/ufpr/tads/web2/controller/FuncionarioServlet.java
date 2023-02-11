@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 
-@WebServlet(name = "FuncionarioServlet", urlPatterns = {"/funcionario"})
+@WebServlet(name = "FuncionarioServlet", urlPatterns = {"/funcionarioController"})
 public class FuncionarioServlet extends HttpServlet {
 
 

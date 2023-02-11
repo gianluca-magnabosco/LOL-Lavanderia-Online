@@ -4,9 +4,8 @@ import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.exception.PermissaoNegadaException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
-import com.ufpr.tads.web2.model.domain.ItemPedido;
+import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.model.domain.Pedido;
-import com.ufpr.tads.web2.model.domain.User;
 import com.ufpr.tads.web2.model.facade.PedidoFacade;
 import com.ufpr.tads.web2.util.Validacao;
 import java.io.IOException;
@@ -16,10 +15,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,11 +35,13 @@ public class PedidoServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         
-        Validacao.validarVazio(action, "É necessário enviar um parametro action!");
-        
-        LoginBean login = (LoginBean) session.getAttribute("login");
 
         try {
+            
+            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
+
+            LoginBean login = (LoginBean) session.getAttribute("login");
+            
             switch (action) {
                 case "inicio" -> {
                     if (login.getRole().equals("Cliente")) {
@@ -93,6 +90,11 @@ public class PedidoServlet extends HttpServlet {
                 }
                 
                 case "formPedido" -> {
+                    
+                    List<Item> itens = PedidoFacade.formPedido();
+                    
+                    request.setAttribute("itens", itens);
+                    
                     request.getRequestDispatcher("cliente/realizarPedido.jsp").forward(request, response); 
                     return;
                 }
@@ -100,15 +102,17 @@ public class PedidoServlet extends HttpServlet {
                 case "realizar" -> {
                     if (login.getRole().equals("Cliente")) {
                         
+                        // descrição vai ter que ser um concatenado de (item + " " + quantidade, item + " " + quantidade, ...)
+                        // precisa pegar cada item e sua quantidade
+                        // precisa pegar o prazo total
+                        // precisa pegar o total do pedido (orcamento)
                         //REALMENTE PEGAR OS DADOS DO FORM
                         String descricao = request.getParameter("descricao");
-                        double orcamento = parseDouble(request.getParameter("orcamento"));
-                        int tempo = parseInt(request.getParameter("tempo"));
-                        List<ItemPedido> itens = new ArrayList<>();
-                        User user = new User(); 
-                        Date dataInicio = new Date();
+                        String orcamento = request.getParameter("orcamento");
+                        String tempo = request.getParameter("tempo");
+                        int idUser = login.getId();
                         
-                        PedidoFacade.insert(descricao, orcamento, tempo, itens, user,dataInicio);
+                        PedidoFacade.insert(descricao, orcamento, tempo, idUser);
 
                         response.sendRedirect("pedido?action=listar");
                         return;
@@ -227,7 +231,7 @@ public class PedidoServlet extends HttpServlet {
                 
             }
         } catch (AppException e) {
-            e.printStackTrace();
+            response.sendRedirect("pedido?action=listar&message=" + e.getMessage());
             return;
         }
     }

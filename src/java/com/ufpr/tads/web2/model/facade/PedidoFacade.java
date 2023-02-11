@@ -4,7 +4,9 @@ import com.ufpr.tads.web2.exception.DAOException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.exception.StatusIncompativelException;
 import com.ufpr.tads.web2.model.dao.ConnectionFactory;
+import com.ufpr.tads.web2.model.dao.ItemDAO;
 import com.ufpr.tads.web2.model.dao.PedidoDAO;
+import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.model.domain.ItemPedido;
 import com.ufpr.tads.web2.model.domain.Pedido;
 import com.ufpr.tads.web2.model.domain.User;
@@ -72,16 +74,17 @@ public class PedidoFacade {
     }
     
     
-    public static void insert(String descricao, double orcamento, int tempo, List<ItemPedido> itens, User user, Date dataInicio) throws DAOException { 
-        
+    public static void insert(String descricao, String orcamento, String tempo, int idUser) throws DAOException { 
+        // fazer validações
         Pedido pedido = new Pedido();
         pedido.setDescricao(descricao);
-        pedido.setOrcamento(orcamento);
-        pedido.setTempo(tempo);
-        pedido.setItens(itens);
-        pedido.setUser(user);
-        pedido.setDataInicio(dataInicio);
+        pedido.setOrcamento(Double.parseDouble(orcamento));
+        pedido.setTempo(Integer.parseInt(tempo));
+        pedido.setUser(new User(idUser));
+        pedido.setDataInicio(new Date());
         pedido.setStatus("EM ABERTO");
+        
+        // RECEBER ITENS E ADICIONAR 
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -175,6 +178,15 @@ public class PedidoFacade {
             }
             
             dao.terminarPedido(Integer.parseInt(id), "FINALIZADO");
+        }
+    }
+
+    
+    public static List<Item> formPedido() throws DAOException {
+        try (ConnectionFactory factory = new ConnectionFactory()) {
+            ItemDAO dao = new ItemDAO(factory.getConnection());
+            
+            return dao.searchAll();
         }
     }
 

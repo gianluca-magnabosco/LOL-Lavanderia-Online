@@ -88,7 +88,8 @@
                                                 });
                                                 
                                                 $(".cancelar${pedido.id}").on("click", () => {
-                                                    location.href = "<c:url value='/popup/cancelar2.jsp?id=${pedido.id}'/>";
+                                                    // ajeitar isso aqui
+                                                    // location.href = "<c:url value='/popup/cancelar2.jsp?id=${pedido.id}'/>";
                                                 });
                                             </script>
                                         </c:forEach>

@@ -13,7 +13,7 @@
                 <script>
                     <c:if test"${not empty param.id}>
                         $(".confirmar").on("click", () => {
-                            <jsp:forward page="PedidoServlet?action=cancelar&id=${param.id}"/>
+                            <jsp:forward page="pedido?action=cancelar&id=${param.id}"/>
                         });
                     </c:if>
                 </script>
