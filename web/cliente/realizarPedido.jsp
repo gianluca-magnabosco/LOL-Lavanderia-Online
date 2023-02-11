@@ -60,7 +60,7 @@
 
                         <div class="container">
                             <div class="table-wrap">
-                                <table class="table justify-content-center"">
+                                <table class="table justify-content-center">
                                     <thead>
                                         <th>&nbsp;</th>
                                         <th>&nbsp;</th>

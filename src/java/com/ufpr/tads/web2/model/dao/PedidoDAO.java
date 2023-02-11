@@ -10,15 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class PedidoDAO implements DAO<Pedido> {
     
     
     private static final String INSERT_QUERY = "INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido) VALUES (?, ?, ?);";
+    private static final String SEARCH_ID = "SELECT id_pedido FROM tb_pedido ORDER BY id_pedido DESC LIMIT 1;";
     private static final String INSERT_UHP_QUERY = "INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio) VALUES (?, ?, ?, ?);";
     private static final String INSERT_PHI_QUERY = "INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES (?, ?, ?);";
     
@@ -113,6 +112,19 @@ public class PedidoDAO implements DAO<Pedido> {
             throw new DAOException("Erro ao inserir pedido: " + INSERT_QUERY , e);
         }
         
+        try (PreparedStatement st = con.prepareStatement(SEARCH_ID);
+                ResultSet rs = st.executeQuery()) {  
+            int id = 0;
+            st.setInt(1, id);
+            
+            while (rs.next()) {
+
+                pedido.setId(rs.getInt("id_pedido"));
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException("Erro ao inserir pedido: " + SEARCH_ID , e);
+        }
         
         try (PreparedStatement st = con.prepareStatement(INSERT_UHP_QUERY)) {
             st.setInt(1, pedido.getUser().getId());

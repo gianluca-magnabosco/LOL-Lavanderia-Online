@@ -4,7 +4,9 @@ import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.exception.PermissaoNegadaException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
+import com.ufpr.tads.web2.model.domain.ItemPedido;
 import com.ufpr.tads.web2.model.domain.Pedido;
+import com.ufpr.tads.web2.model.domain.User;
 import com.ufpr.tads.web2.model.facade.PedidoFacade;
 import com.ufpr.tads.web2.util.Validacao;
 import java.io.IOException;
@@ -14,6 +16,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -93,11 +99,16 @@ public class PedidoServlet extends HttpServlet {
                 
                 case "realizar" -> {
                     if (login.getRole().equals("Cliente")) {
-                        String escolha = request.getParameter("escolha");
-
-                        // pegar parametros certinho (ver como)
-
-                        PedidoFacade.insert(escolha); // passar os outros parametros
+                        
+                        //REALMENTE PEGAR OS DADOS DO FORM
+                        String descricao = request.getParameter("descricao");
+                        double orcamento = parseDouble(request.getParameter("orcamento"));
+                        int tempo = parseInt(request.getParameter("tempo"));
+                        List<ItemPedido> itens = new ArrayList<>();
+                        User user = new User(); 
+                        Date dataInicio = new Date();
+                        
+                        PedidoFacade.insert(descricao, orcamento, tempo, itens, user,dataInicio);
 
                         response.sendRedirect("pedido?action=listar");
                         return;

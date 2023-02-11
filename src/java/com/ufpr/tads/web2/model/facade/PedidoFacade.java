@@ -5,8 +5,11 @@ import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.exception.StatusIncompativelException;
 import com.ufpr.tads.web2.model.dao.ConnectionFactory;
 import com.ufpr.tads.web2.model.dao.PedidoDAO;
+import com.ufpr.tads.web2.model.domain.ItemPedido;
 import com.ufpr.tads.web2.model.domain.Pedido;
+import com.ufpr.tads.web2.model.domain.User;
 import com.ufpr.tads.web2.util.Validacao;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,11 +72,22 @@ public class PedidoFacade {
     }
     
     
-    public static void insert(String escolha) { /////// adicionar parametros
-        /////////// FAZER
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static void insert(String descricao, double orcamento, int tempo, List<ItemPedido> itens, User user, Date dataInicio) throws DAOException { 
+        
+        Pedido pedido = new Pedido();
+        pedido.setDescricao(descricao);
+        pedido.setOrcamento(orcamento);
+        pedido.setTempo(tempo);
+        pedido.setItens(itens);
+        pedido.setUser(user);
+        pedido.setDataInicio(dataInicio);
+        pedido.setStatus("EM ABERTO");
+        
+        try (ConnectionFactory factory = new ConnectionFactory()) {
+            PedidoDAO dao = new PedidoDAO(factory.getConnection());
+            dao.insert(pedido);
+        }  
     }
-
     
     public static void cancelar(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
         
