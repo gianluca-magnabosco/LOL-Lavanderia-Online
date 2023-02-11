@@ -87,7 +87,7 @@
 
                                                 <td>
                                                     <div class="alinhamento">
-                                                        <p class="m-0 fw-bold">${item.nome}</p>
+                                                        <p id="itemName" class="m-0 fw-bold">${item.nome}</p>
                                                     </div>
                                                 </td>
 
@@ -100,7 +100,7 @@
                                                 </td>
 
                                                 <td class="d-">
-                                                    <input class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
+                                                    <input id="itemQuantidade" class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
                                                 </td>
 
                                                 <td>
@@ -161,7 +161,7 @@
                         currentAmount = $(this).closest('tr').find('input[type=number]').val();
                         if (currentAmount == 0) {
                             check++;
-                            return;
+                            return;  
                         }
                     });
 

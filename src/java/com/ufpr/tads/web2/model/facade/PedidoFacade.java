@@ -74,7 +74,7 @@ public class PedidoFacade {
     }
     
     
-    public static void insert(String descricao, String orcamento, String tempo, int idUser) throws DAOException { 
+    public static void insert(String descricao, String orcamento, String tempo, List<ItemPedido> itens, int idUser) throws DAOException { 
         // fazer validações
         Pedido pedido = new Pedido();
         pedido.setDescricao(descricao);
@@ -82,6 +82,7 @@ public class PedidoFacade {
         pedido.setTempo(Integer.parseInt(tempo));
         pedido.setUser(new User(idUser));
         pedido.setDataInicio(new Date());
+        pedido.setItens(itens);
         pedido.setStatus("EM ABERTO");
         
         // RECEBER ITENS E ADICIONAR 
