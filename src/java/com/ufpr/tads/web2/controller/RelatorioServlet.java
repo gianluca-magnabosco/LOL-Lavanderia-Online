@@ -1,6 +1,6 @@
 package com.ufpr.tads.web2.controller;
 
-import com.ufpr.tads.web2.exception.DadoInvalidoException;
+import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.util.Validacao;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -25,7 +25,7 @@ public class RelatorioServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         try {
-            Validacao.validarVazio(action, "Deve ser inserido um parâmetro de action!");
+            Validacao.validarVazio(action, "Deve ser inserido um parametro de action!");
             
             switch (action) {
                 
@@ -49,9 +49,14 @@ public class RelatorioServlet extends HttpServlet {
                 case "pedidos" -> {
                     
                 }
+                
+                default -> {
+                    response.sendRedirect("relatorio?action=redirect&message=" + "Deve ser inserido um parametro de action valido!");
+                    return;
+                }
             }
-        } catch (DadoInvalidoException e) {
-            response.sendRedirect("pedido?action=listar&message=" + e.getMessage());
+        } catch (AppException e) {
+            response.sendRedirect("relatorio?action=redirect&message=" + e.getMessage());
             return;
         }
     }

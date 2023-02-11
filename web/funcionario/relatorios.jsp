@@ -29,7 +29,15 @@
         
         <c:import url="header.jsp"/>
         
+        
         <div class="content">
+            
+            <c:if test="${not empty param.message}">
+                <div class="d-flex align-items-center">
+                    <h4 class="mx-auto mt-5" style="color: red; font-weight: 1000">${param.message}</h4>
+                </div>
+            </c:if>
+            
             <div class="container mt-5">
                 <h2 class="pedidos-aberto">Área de Geração de Relatórios</h2>
                 <h4 class="pedidos-aberto">Clique no relatório que deseja baixar!</h4><br/>

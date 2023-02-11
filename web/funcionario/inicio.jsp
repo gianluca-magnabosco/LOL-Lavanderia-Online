@@ -36,8 +36,6 @@
         
         <c:import url="header.jsp"/>
 
-        <c:import url="/popup/aceitar.jsp"/>
-
         <div class="content">
 
             <h3 class="pedidos-aberto">Pedidos em aberto:</h3>
@@ -85,8 +83,7 @@
                                                 });
                                                 
                                                 $(".confirmar${pedido.id}").on("click", () => {
-                                                    // ajeitar isso aqui
-                                                    // location.href = "<c:url value='/popup/aceitar.jsp?id=${pedido.id}'/>";
+                                                    location.href = "<c:url value='/pedido?action=recolher&id=${pedido.id}'/>";
                                                 });
                                             </script>
                                         </c:forEach>
@@ -105,14 +102,6 @@
         </div>
         
         <c:import url="/footer.jsp"/>
-        
-        <script type="text/javascript" src="<c:url value='/js/funcionarioInicio.js'/>"</script>          
-        
-        <script type="text/javascript">
-            $(".aceitar").on("click", function() {
-                $("#overlay.aceitarOverlay").toggle();
-            });
-        </script>        
-        
+
     </body>
 </html>

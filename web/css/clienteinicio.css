@@ -6,25 +6,23 @@
 }
 
 html,body{
-        height: 100%;
-
+    height: 100%;
 }
 
 @font-face{
-        font-family: "Open Sans";
-	src:url(../fonts/OpenSans-Light.ttf);
-	
+    font-family: "Open Sans";
+    src:url(../fonts/OpenSans-Light.ttf);
 }
 
 .header{
-	width: 100%;
-	height: 92px;
-        border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
-	background-image: linear-gradient(to right, #9EE8F0, #55DEED, #43AEBA, #486A6E);
-        border-bottom: 3px solid black;
-        text-align: center;
-        display: flex;
-            top:0;
+    width: 100%;
+    height: 92px;
+    border-image: linear-gradient(to right, #0d0860, #090979, #0654aa, #00ff71) 1;
+    background-image: linear-gradient(to right, #9EE8F0, #55DEED, #43AEBA, #486A6E);
+    border-bottom: 3px solid black;
+    text-align: center;
+    display: flex;
+    top:0;
     left: 0;
     position: fixed;
 }

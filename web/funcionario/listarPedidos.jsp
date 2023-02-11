@@ -40,11 +40,14 @@
         </c:if>
         
         <c:import url="header.jsp"/>
-
-        <c:import url="/popup/aceitar.jsp"/>
-        
-        
+ 
         <div class="content">
+            
+            <c:if test="${not empty param.message}">
+                <div class="d-flex align-items-center">
+                    <h4 class="mx-auto mt-5" style="color: red; font-weight: 1000">${param.message}</h4>
+                </div>
+            </c:if>
             
             <h2 class="pedidos-aberto" style="margin-top: 50px;">Histórico de pedidos:</h2>
 
@@ -149,7 +152,7 @@
                                                             <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar Recolhimento</button>
                                                             <script>
                                                                 $(".confirmar${pedido.id}").on("click", () => {
-                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                    location.href="<c:url value='pedido?action=recolher&id=${pedido.id}'/>";
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -157,15 +160,15 @@
                                                             <button class="btn btn-success btn-sm finalizar finalizar${pedido.id}">Finalizar Pedido</button></a>
                                                             <script>
                                                                 $(".finalizar${pedido.id}").on("click", () => {
-                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                    location.href="<c:url value='pedido?action=finalizar&id=${pedido.id}'/>";
                                                                 });
                                                             </script>
                                                         </c:when>
                                                         <c:when test="${pedido.status == \"RECOLHIDO\"}">
-                                                            <button class="btn btn-success btn-sm confirmarRecolhimento confirmarRecolhimento${pedido.id}">Confirmar Lavagem</button></a>
+                                                            <button class="btn btn-success btn-sm confirmarLavagem confirmarLavagem${pedido.id}">Confirmar Lavagem</button></a>
                                                             <script>
-                                                                $(".confirmarRecolhimento${pedido.id}").on("click", () => {
-                                                                    // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                $(".confirmarLavagem${pedido.id}").on("click", () => {
+                                                                    location.href="<c:url value='pedido?action=confirmar&id=${pedido.id}'/>";
                                                                 });
                                                             </script>
                                                         </c:when>
@@ -196,12 +199,6 @@
         <c:import url="/footer.jsp"/>
         
         <script type="text/javascript" src="<c:url value='/js/listarPedidosFuncionario.js'/>"></script>
-        
-        <script type="text/javascript">
-            $(".aceitar").on("click", function() {
-                $("#overlay.aceitarOverlay").toggle();
-            });
-        </script>  
         
     </body>
     
