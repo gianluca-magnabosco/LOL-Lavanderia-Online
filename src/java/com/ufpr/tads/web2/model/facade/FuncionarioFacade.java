@@ -63,6 +63,7 @@ public class FuncionarioFacade {
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             Funcionario funcionario = new Funcionario();
+            funcionario.setId(Integer.parseInt(id));
             funcionario.setNome(nome);
             funcionario.setDataNascimento(data);
             funcionario.setEmail(email);

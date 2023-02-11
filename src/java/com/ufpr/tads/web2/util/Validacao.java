@@ -57,7 +57,7 @@ public class Validacao {
     
     
     public static void validarData(String data, String errorMessage) throws DataInvalidaException {
-        if (data == null || !data.matches("\\d{2}\\d{2}\\d{4}")) {
+        if (data == null || !data.matches("\\d{2}/\\d{2}/\\d{4}")) {
             throw new DataInvalidaException(errorMessage);
         }
     }
