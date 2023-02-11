@@ -4,6 +4,8 @@
     Author     : penna
 --%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Lista de Roupas</title>
-        <link rel="stylesheet" type="text/css" href="../css/funcionarioinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/funcionarioinicio.css'/>">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
@@ -23,20 +25,15 @@
     </head>
     
     <body>
-        <%@ include file="header.jsp" %>
+        <fmt:setLocale value="pt_BR"/>
         
-        <% if (request.getParameter("roupa") != null && request.getParameter("roupa").equals("adicionar")) { %>
-            <%@ include file="../popup/roupaConfirmada.jsp" %>
-        <% } %>  
+        <c:if test="${empty sessionScope.login or login.role == \"Cliente\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de funcionario para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
         
-        <% if (request.getParameter("roupa") != null && request.getParameter("roupa").equals("remover")) { %>
-            <%@ include file="../popup/roupaRemovida.jsp" %>
-        <% } %>  
-        
-        <%@ include file="../popup/aceitar.jsp" %>
-
-        <%@ include file="../popup/remover.jsp" %>
-
+        <c:import url="header.jsp"/>
         
         <div class="content">
             <div class="container mt-5">
@@ -54,17 +51,19 @@
                         </thead>   
 
                         <tbody class="table-body">
-                            <tr class="cell-1">
-                                <td>Camiseta Social "Pollo"</td>
-                                <td>R$ 10,00</td>
-                                <td>1 dia(s)</td>
-                                <td><img src="../images/item-4.png" width="42" height="42"></td>
-                                <td class="text-center">
-                                    <a href="cadastrarRoupa.jsp?update=true"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                    <button class="btn btn-danger btn-sm remover">Remover</button>
-                                    <div class="inner-circle"></div>
-                                </td>
-                            </tr>
+                            <c:forEach var="roupa" items="${roupas}">
+                                <tr class="cell-1">
+                                    <td>${roupa.nome}</td>
+                                    <td><fmt:formatNumber value="${roupa.preco}" type="currency"/></td>
+                                    <td>${roupa.tempo} dia(s)</td>
+                                    <td><img src="<c:url value='${roupa.imagem}'/>" width="42" height="42"></td>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/roupa?action=formRoupa&id=${roupa.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
+                                        <a href="<c:url value='/roupa?action=delete&id=${roupa.id}'/>"><button class="btn btn-danger btn-sm remover">Remover</button></a>
+                                        <div class="inner-circle"></div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -72,25 +71,9 @@
         </div>
         <div class="clear"></div>
         <br/>
-        <%@ include file="../footer.jsp" %>       
+        
+        <c:import url="/footer.jsp"/>      
+        
     </body>
-    
-    <script type="text/javascript">
-        $(".acknowledge").on("click", function() {
-            location.href="listarRoupa.jsp";
-        });
-        
-        $(".remover").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-        
-        $(".confirmar").on("click", function() {
-            location.href="listarRoupa.jsp?roupa=remover";
-        });
-        
-        $(".cancelar").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-    </script>
     
 </html>

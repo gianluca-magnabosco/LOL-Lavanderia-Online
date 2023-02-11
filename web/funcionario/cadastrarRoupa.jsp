@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cadastro de Peça de Roupa</title>
-        <link rel="stylesheet" type="text/css" href="../css/funcionarioinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/funcionarioinicio.css'/>">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
@@ -27,11 +29,15 @@
     </head>
     
     <body>
-        <%@ include file="header.jsp" %>
+        <fmt:setLocale value="pt_BR"/>
         
-        <%@ include file="../popup/aceitar.jsp" %>
+        <c:if test="${empty sessionScope.login or login.role == \"Cliente\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de funcionario para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
         
-        <%@ include file="../popup/cancelar.jsp" %>
+        <c:import url="header.jsp"/>
         
         <div class="content">
 
@@ -41,40 +47,41 @@
                 <div class="d-flex justify-content-center row">
                     <div class="col-md-10">
                         <div class="container">
-                            <form class="border rounded p-3" action="listarRoupa.jsp?roupa=adicionar" method="post" id="formulario">
+                            <form class="border rounded p-3" action="roupa?action=update&id=${param.id}" method="post" id="formulario" enctype="multipart/form-data">
                                 <div class="mb-2">
                                     <label for="nomeRoupa" class="form-label">Nome da Roupa</label>
                                     <div class="control">
-                                        <input type="text" class="form-control input" placeholder="Insira o nome da peça de roupa" name="nome" id="nome"
-                                               <% if (request.getParameter("update") != null) {
-                                                    out.println("value='Camiseta Social \"Pollo\"'");
-                                                  }
-                                               %>
-                                               >
+                                        <input autofocus type="text" class="form-control input" placeholder="Insira o nome da peça de roupa" name="nome" id="nome"
+                                                <c:if test="${not empty roupa}">
+                                                    <c:out value="value=${roupa.nome}"/>
+                                                </c:if>
+                                                >
                                     </div>
                                 </div>
 
                                 <div class="mb-2">
                                     <label for="precoRoupa" class="form-label">Preço</label>
                                     <div class="control">
-                                        <input type="text" oninput="precoMask(this)" name="preco" placeholder="Insira o custo da lavagem da peça" class="form-control input" id="preco"
-                                               <% if (request.getParameter("update") != null) {
-                                                    out.println("value=\"R$ 10,00\"");
-                                                  }
-                                               %>
-                                               >
+                                        <input type="text" oninput="precoMask(this)" name="preco" placeholder="Insira o custo da lavagem da peça" class="form-control input" id="preco">
+                                        <c:if test="${not empty roupa}">
+                                            <script>
+                                                const preco = "${roupa.preco}";
+                                                const formattedPreco = "R$ " + parseFloat(preco).toFixed(2).replace(".", ",");
+                                                $("#preco").val(formattedPreco);
+                                            </script>
+                                        </c:if>
                                     </div>
                                 </div>    
 
                                 <div class="mb-2">
                                     <label for="prazoRoupa" class="form-label">Prazo de Entrega Estimado</label>
                                     <div class="control">
-                                        <input type="text" name="prazo" placeholder="Insira o prazo estimado para lavagem" class="form-control input" id="prazo"
-                                               <% if (request.getParameter("update") != null) {
-                                                    out.println("value=\"1 dia(s)\"");
-                                                  }
-                                               %>
-                                               >
+                                        <input type="text" name="tempo" placeholder="Insira o prazo estimado para lavagem" class="form-control input" id="prazo" value="">
+                                            <c:if test="${not empty roupa}">
+                                                <script>
+                                                    $("#prazo").val("${roupa.tempo} dia(s)");
+                                                </script>
+                                            </c:if>
                                     </div>
                                 </div>
 
@@ -84,14 +91,21 @@
                                     </div>
 
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input input" id="foto" name="foto" accept="image/*">
+                                        <input type="file" class="custom-file-input input" id="foto" name="imagem" accept="image/*">
                                         <label class="custom-file-label" for="fotoRoupa">Insira uma foto da peça de roupa</label>
                                     </div>
                                 </div>
 
                                 <div class="field is-grouped justify-content-center text-center"> 
                                     <div class="control">
-                                        <button class="btn btn-success btn-lg" type="button" id="cadastrar">Cadastrar</button>
+                                        <c:choose>
+                                            <c:when test="${not empty roupa}">
+                                                <button class="btn btn-warning text-light btn-lg" type="submit" id="atualizar">Atualizar</button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn btn-success btn-lg" type="submit" id="cadastrar">Cadastrar</button>
+                                            </c:otherwise>
+                                        </c:choose>
                                         <button class="btn btn-danger btn-lg" id="cancelar" type="button">Cancelar</button>
                                     </div>
                                 </div>
@@ -105,100 +119,13 @@
             <div class="clear"></div>
             <br/>
         </div>
-        <%@ include file="../footer.jsp" %>       
+                                
+        <c:import url="/footer.jsp"/>   
+        
     </body>
 
-    <script type="text/javascript" src="../js/cadastrarRoupa.js"></script>
-    
-    <script type="text/javascript">
-        
-        $("#cancelar").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-        
-        $(".cancelar").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-        
-        $("#cadastrar").on("click", function() {
-            $("#overlay.aceitarOverlay").toggle();
-        });
-        
-        $(".confirmar").on("click", function() {
-            location.href="funcionarioInicio.jsp";
-        });
-        
-        $(".aceitar").on("click", function() {
-            $("#formulario").submit();
-        });
-        
-        $("#prazo").on("input", function(event) {
-            var element = $(this);
-            var currentNumber = element.val()[element.val().length - 1];
-            var string = element.val().substring(0, element.val().search(/\s/));
-            
-            if (isNaN(currentNumber)) {
-                element.val(element.val().substring(0, element.val().length - 1));
-                if (element.val()[element.val().length - 1] != ")" && event.originalEvent.data == null) {
-                    string = string.substring(0, string.length - 1);
-                    element.val(string + " dia(s)");
-                }
-                return;
-            }
+    <script>
+        <c:import url="/js/cadastrarRoupa.js" charEncoding="UTF-8"/>
+    </script>
 
-            if (element.val()[0] == "0") {
-                element.val(Math.abs(currentNumber) + " dia(s)");
-                return;
-            }
-
-            string += currentNumber;
-
-            element.val(string + " dia(s)");
-        });
-        
-        
-        function validatePrazo(value) {
-            return value.match(/\d+\sdia\(s\)/);
-        }
-
-        function validateFormulario() {
-            $("#formulario").validate({
-                rules: {
-                    nome: "required",
-
-                    preco: "required",
-
-                    prazo: {
-                        required: true,
-                        prazoValido: true
-                    },
-
-                    foto: "required"
-                },
-
-                messages: {
-                    nome: "<b style='color: red'>Por favor insira um nome</b>",
-
-                    preco: "<b style='color: red'>Por favor insira um preço</b>",
-
-                    prazo: {
-                        required: "<b style='color: red'>Por favor insira um prazo</b>",
-                        prazoValido: "<b style='color: red'>Por favor insira um prazo válido</b>"
-                    },
-
-                    foto: "<b style='color: red; display: block; margin-top: 100px;'>Por favor insira uma foto da peça de roupa</b>"
-                }
-                
-            });
-  
-        }
-      
-        $(document).ready(validateFormulario());
-
-        $.validator.addMethod("prazoValido", function(value, element, param) {
-            return validatePrazo(value);
-        });
-    </script>       
-
-    
 </html>
