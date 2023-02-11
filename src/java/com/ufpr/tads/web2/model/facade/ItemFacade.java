@@ -9,14 +9,14 @@ import com.ufpr.tads.web2.model.dao.ItemDAO;
 import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.util.Validacao;
 import jakarta.servlet.http.Part;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.nio.file.Paths;
-import org.apache.commons.io.IOUtils;
+
 
 
 public class ItemFacade {
@@ -39,11 +39,12 @@ public class ItemFacade {
     }
     
 
-    public static void insert(String nome, String preco, String tempo, Part imagem) throws DAOException, ArquivoInvalidoException, ErroInserindoArquivoException, DadoInvalidoException {
+    public static void insert(String nome, String preco, String tempo, Part imagem, String path) throws DAOException, ArquivoInvalidoException, ErroInserindoArquivoException, DadoInvalidoException {
         
         validarParametros(nome, tempo);
+        String imagemPath = validarArquivo(imagem, path);
         double precoUnitario = validarConverterPreco(preco);
-        String imagemPath = validarArquivo(imagem);
+        tempo = tempo.replace(" dia(s)", "");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             Item item = new Item();
@@ -58,12 +59,13 @@ public class ItemFacade {
     }
 
     
-    public static void update(String id, String nome, String preco, String tempo, Part imagem) throws DAOException, DadoInvalidoException, ArquivoInvalidoException, ErroInserindoArquivoException {
+    public static void update(String id, String nome, String preco, String tempo, Part imagem, String path) throws DAOException, DadoInvalidoException, ArquivoInvalidoException, ErroInserindoArquivoException {
         
         Validacao.validarInteiro(id, "O id de roupa inserido é inválido!");
         validarParametros(nome, tempo);
+        String imagemPath = validarArquivo(imagem, path);
         double precoUnitario = validarConverterPreco(preco);
-        String imagemPath = validarArquivo(imagem);
+        tempo = tempo.replace(" dia(s)", "");
 
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
@@ -78,7 +80,6 @@ public class ItemFacade {
             dao.update(item);
         }
     }
-
     
     public static void delete(String id) throws DAOException, DadoInvalidoException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
@@ -91,6 +92,13 @@ public class ItemFacade {
     
     private static void validarParametros(String nome, String tempo) throws DadoInvalidoException {    
         Validacao.validarVazio(nome, "O nome é obrigatório!");
+        
+        if (!tempo.matches("\\d+\\sdia\\(s\\)")) {
+            throw new DadoInvalidoException("O tempo de lavagem inserido é inválido!");
+        }
+
+        tempo = tempo.replace(" dia(s)", "");
+
         Validacao.validarInteiro(tempo, "O tempo de lavagem inserido é inválido!");
     }
     
@@ -100,7 +108,7 @@ public class ItemFacade {
     }
     
     
-    private static String validarArquivo(Part imagem) throws ArquivoInvalidoException, ErroInserindoArquivoException {
+    private static String validarArquivo(Part imagem, String path) throws ArquivoInvalidoException, ErroInserindoArquivoException {
         
         if (imagem == null) {
             throw new ArquivoInvalidoException("O arquivo inserido é inválido!");
@@ -111,19 +119,37 @@ public class ItemFacade {
         if (!imagem.getContentType().startsWith("image/")) {
             throw new ArquivoInvalidoException("O arquivo deve ser uma imagem!");
         }
-
-        String imagemPath = "images" + File.separator + nomeDoArquivo;
-
-        try (InputStream input = imagem.getInputStream();
-                OutputStream output = new FileOutputStream(imagemPath)) {
+  
+        String imagemPath = path + File.separator + "images" + File.separator;
+        
+        File arquivoImagem = new File(imagemPath + nomeDoArquivo);
+        if (arquivoImagem.exists()) {
+            int i = 1;
+            String extensao = nomeDoArquivo.substring(nomeDoArquivo.length() - 4);
+            String novoNomeArquivo = new String();
+            while (arquivoImagem.exists()) {
+                novoNomeArquivo = nomeDoArquivo.substring(0, nomeDoArquivo.length() - 4) + i + extensao;
+                arquivoImagem = new File(imagemPath + novoNomeArquivo);
+                i++;
+            }
             
-            IOUtils.copy(input, output);
+            nomeDoArquivo = novoNomeArquivo;
+        }
+        
+        try (BufferedInputStream input = new BufferedInputStream(imagem.getInputStream());
+                BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(arquivoImagem))) {
+            
+            int read;
+            while ((read = input.read()) != -1) {
+                output.write(read);
+            }
             
         } catch (IOException e) {
+            e.printStackTrace();
             throw new ErroInserindoArquivoException("Erro ao inserir arquivo!");
         }
         
-        return imagemPath;
+        return "images/" + nomeDoArquivo;
     }
 
 }

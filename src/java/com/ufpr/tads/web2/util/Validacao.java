@@ -32,7 +32,7 @@ public class Validacao {
         double actual_content; 
         
         try { 
-            preco = preco.replaceAll("\\,", ".").replaceAll("[Rr]?\\$\\s*", "");
+            preco = preco.replaceAll("\\,", ".").replaceAll("[Rr]\\$\\s*", "");
             actual_content = Double.parseDouble(preco);
         } catch (NumberFormatException e) {
             throw new DadoInvalidoException(errorMessage);

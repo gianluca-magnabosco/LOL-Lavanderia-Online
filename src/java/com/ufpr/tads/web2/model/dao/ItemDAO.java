@@ -11,11 +11,11 @@ import java.util.List;
 
 
 public class ItemDAO implements DAO<Item> {
-    private static final String INSERT_QUERY = "INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES (?, ?, ?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE tb_item SET descricao_item = ?, preco_uni = ?, tempo_item = ?, imagem_item = ? WHERE id_item = ?";
-    private static final String DELETE_QUERY = "DELETE FROM tb_item WHERE id_item = ?";
-    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT descricao_item, preco_uni, tempo_item, imagem_item FROM tb_item WHERE id_item = ?";
-    private static final String SEARCH_QUERY = "SELECT id_item, descricao_item, preco_uni, tempo_item, imagem_item FROM tb_item";
+    private static final String INSERT_QUERY = "INSERT INTO tb_item (descricao_item, preco_uni, tempo_item, imagem_item) VALUES (?, ?, ?, ?);";
+    private static final String UPDATE_QUERY = "UPDATE tb_item SET descricao_item = ?, preco_uni = ?, tempo_item = ?, imagem_item = ? WHERE id_item = ?;";
+    private static final String DELETE_QUERY = "DELETE FROM tb_item WHERE id_item = ?;";
+    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT id_item, descricao_item, preco_uni, tempo_item, imagem_item FROM tb_item WHERE id_item = ?;";
+    private static final String SEARCH_QUERY = "SELECT id_item, id_item, descricao_item, preco_uni, tempo_item, imagem_item FROM tb_item;";
 
     private Connection connection = null;
 
@@ -70,7 +70,7 @@ public class ItemDAO implements DAO<Item> {
             statement.executeUpdate();
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao remover item: " + DELETE_QUERY, e);
+            throw new DAOException("Voce nao pode remover este item pois ele faz parte de um pedido!", e);
         }
     }
     
@@ -88,6 +88,7 @@ public class ItemDAO implements DAO<Item> {
                     item.setId(resultSet.getInt("id_item"));
                     item.setNome(resultSet.getString("descricao_item"));
                     item.setPreco(resultSet.getDouble("preco_uni"));
+                    item.setTempo(resultSet.getInt("tempo_item"));
                     item.setImagem(resultSet.getString("imagem_item"));
                 }
             }

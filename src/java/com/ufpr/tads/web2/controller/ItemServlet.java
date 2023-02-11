@@ -12,15 +12,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.ufpr.tads.web2.model.domain.Item;
 import com.ufpr.tads.web2.model.facade.ItemFacade;
 import com.ufpr.tads.web2.util.Validacao;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 
 @WebServlet(name = "ItemServlet", urlPatterns = {"/roupa"})
+@MultipartConfig
 public class ItemServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, DadoInvalidoException {
+        
+        response.setCharacterEncoding("UTF-8");
         
         HttpSession session = request.getSession();
         
@@ -36,25 +40,29 @@ public class ItemServlet extends HttpServlet {
             switch (action) {
                 case "listar" -> {
                     List<Item> items = ItemFacade.listAll();
-                    request.setAttribute("items", items);
+                    request.setAttribute("roupas", items);
                     
                     String message = request.getParameter("message");
                     if (message != null) {
                         request.setAttribute("message", message);
                     }
 
-                    request.getRequestDispatcher("listarRoupa.jsp").forward(request, response);
+                    request.getRequestDispatcher("funcionario/listarRoupa.jsp").forward(request, response);
                     return;
                 }
-
-                case "insert" -> {
-                    String nome = request.getParameter("nome");
-                    String preco = request.getParameter("preco");
-                    String tempo = request.getParameter("tempo");
-                    Part imagem = request.getPart("imagem");
-                    ItemFacade.insert(nome, preco, tempo, imagem);
+                
+                case "formRoupa" -> {
+                    String id = request.getParameter("id");
                     
-                    response.sendRedirect("roupa?action=listar");
+                    if (id == null || id.equals("")) {
+                        request.getRequestDispatcher("funcionario/cadastrarRoupa.jsp").forward(request, response); 
+                        return;
+                    }
+                    
+                    Item roupa = ItemFacade.searchById(id);
+                                        
+                    request.setAttribute("roupa", roupa);
+                    request.getRequestDispatcher("funcionario/cadastrarRoupa.jsp").forward(request, response); 
                     return;
                 }
 
@@ -63,13 +71,20 @@ public class ItemServlet extends HttpServlet {
                     String nome = request.getParameter("nome");
                     String preco = request.getParameter("preco");
                     String tempo = request.getParameter("tempo");
-                    Part imagem = request.getPart("imagem");                  
-                    ItemFacade.update(id, nome, preco, tempo, imagem);
+                    Part imagem = request.getPart("imagem");
+                         
+                    String path = getServletContext().getRealPath("");
+                    
+                    if (id == null || id.equals("")) {
+                        ItemFacade.insert(nome, preco, tempo, imagem, path);
+                    } else {
+                        ItemFacade.update(id, nome, preco, tempo, imagem, path);
+                    }
                     
                     response.sendRedirect("roupa?action=listar");
                     return;
                 }
-
+                
                 case "delete" -> {
                     String id = request.getParameter("id");
                     ItemFacade.delete(id);

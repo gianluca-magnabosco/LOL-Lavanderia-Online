@@ -149,11 +149,12 @@
                                                     </c:when>
                                                 </c:choose>
                                                 <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                <td><fmt:formatDate value="${pedido.dataInicio}"/></td>
+                                                <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
                                                 <td class="text-center">
+                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
                                                     <c:choose>
                                                         <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
-                                                            <button class="btn btn-success btn-sm pagar pagar${pedido.id}">Pagar</button></a>
+                                                            <button class="btn btn-success btn-sm pagar pagar${pedido.id}">Pagar Pedido</button></a>
                                                             <script>
                                                                 $(".pagar${pedido.id}").on("click", () => {
                                                                     // fazer script pra mostrar popup e ai se confirmar manda pra servlet
@@ -161,7 +162,7 @@
                                                             </script>
                                                         </c:when>
                                                         <c:when test="${pedido.status == \"EM ABERTO\"}">
-                                                            <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}">Cancelar</button>
+                                                            <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}">Cancelar Pedido</button>
                                                             <script>
                                                                 $(".cancelar${pedido.id}").on("click", () => {
                                                                     // fazer script pra mostrar popup e ai se confirmar manda pra servlet
@@ -170,7 +171,6 @@
                                                         </c:when>
                                                     </c:choose>
                                                             
-                                                    <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
                                                     <div class="inner-circle"></div>
                                                     <script>
                                                         $(".consultar${pedido.id}").on("click", () => {
