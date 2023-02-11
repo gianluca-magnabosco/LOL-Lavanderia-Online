@@ -33,10 +33,11 @@ public class ItemServlet extends HttpServlet {
         }
         
         String action = request.getParameter("action");
-        
-        Validacao.validarVazio(action, "É necessário enviar um parametro action!");
 
         try {
+            
+            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
+            
             switch (action) {
                 case "listar" -> {
                     List<Item> items = ItemFacade.listAll();

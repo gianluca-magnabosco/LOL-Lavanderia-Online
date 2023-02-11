@@ -104,6 +104,7 @@ public class PedidoServlet extends HttpServlet {
                 case "realizar" -> {
                     if (login.getRole().equals("Cliente")) {
                         
+                        String descricao = request.getParameter("descricao");
                         String orcamento = request.getParameter("totalAmount");
                         String tempo = request.getParameter("finalDeadLine");
 
@@ -125,7 +126,6 @@ public class PedidoServlet extends HttpServlet {
                             itens.add(item);
                         }
                         
-                        String descricao = request.getParameter("descricao");
                         int idUser = login.getId();
                         
                         PedidoFacade.insert(descricao, orcamento, tempo, itens, idUser);

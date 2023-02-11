@@ -4,6 +4,8 @@
     Author     : penna
 --%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Lista de Funcionários</title>
-        <link rel="stylesheet" type="text/css" href="../css/funcionarioinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/funcionarioinicio.css'/>">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
@@ -23,20 +25,15 @@
     </head>
 
     <body>
-        <%@ include file="header.jsp" %>
-
-        <% if (request.getParameter("funcionario") != null && request.getParameter("funcionario").equals("adicionar")) { %>
-            <%@ include file="../popup/funcionarioConfirmado.jsp" %>
-        <% } %>  
+        <fmt:setLocale value="pt_BR"/>
+                        
+        <c:if test="${empty sessionScope.login or login.role == \"Cliente\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de funcionario para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
         
-        <% if (request.getParameter("funcionario") != null && request.getParameter("funcionario").equals("remover")) { %>
-            <%@ include file="../popup/funcionarioRemovido.jsp" %>
-        <% } %>  
-        
-        <%@ include file="../popup/aceitar.jsp" %> 
-
-        <%@ include file="../popup/remover.jsp" %>
-
+        <c:import url="header.jsp"/>
 
         <div class="content">
             <div class="container mt-5">
@@ -53,17 +50,18 @@
                         </thead>
 
                         <tbody class="table-body">
-                            <tr class="cell-1">
-                                <td>Geovanna Alberti Correia de Freitas</td>
-                                <td>geovanna.alberti@ufpr.br</td>
-                                <td>20/11/2002</td>
-                                <td class="text-center">
-                                    <a href="consultarFuncionario.jsp"><button class="btn btn-info btn-sm text-light">Consultar</button></a>
-                                    <a href="cadastrarFuncionario.jsp?update=true"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                    <button class="btn btn-danger btn-sm remover">Excluir</button>
-                                    <div class="inner-circle"></div>
-                                </td>
-                            </tr>
+                            <c:forEach var="funcionario" items="${funcionarios}">
+                                <tr class="cell-1">
+                                    <td>${funcionario.nome}</td>
+                                    <td>${funcionario.email}</td>
+                                    <td><fmt:formatDate value="${funcionario.dataNascimento}" pattern="dd/MM/yyyy"/></td>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/funcionarioController?action=formFuncionario&id=${funcionario.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
+                                        <a href="<c:url value='/funcionarioController?action=delete&id=${funcionario.id}'/>"><button class="btn btn-danger btn-sm remover">Excluir</button></a>
+                                        <div class="inner-circle"></div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>  
                 </div>
@@ -73,25 +71,8 @@
         <div class="clear"></div>
         <br/>
         
-        <%@ include file="../footer.jsp" %>    
+        <c:import url="/footer.jsp"/>    
         
     </body>
-    
-    <script type="text/javascript">
-        $(".acknowledge").on("click", function() {
-            location.href="listarFuncionario.jsp";
-        });
-        
-        $(".remover").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-        
-        $(".confirmar").on("click", function() {
-            location.href="listarFuncionario.jsp?funcionario=remover";
-        });
-        
-        $(".cancelar").on("click", function() {
-            $("#overlay.cancelarOverlay").toggle();
-        });
-    </script>
+
 </html>

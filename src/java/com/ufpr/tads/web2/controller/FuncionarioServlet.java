@@ -30,9 +30,11 @@ public class FuncionarioServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         
-        Validacao.validarVazio(action, "É necessário enviar um parametro action!");
         
         try {
+            
+            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
+            
             switch (action) {
                 case "listar" -> {
                     List<Funcionario> funcionarios = FuncionarioFacade.listAll();
@@ -43,18 +45,32 @@ public class FuncionarioServlet extends HttpServlet {
                         request.setAttribute("message", message);
                     }
                     
-                    request.getRequestDispatcher("listarFuncionario.jsp").forward(request, response);
+                    request.getRequestDispatcher("funcionario/listarFuncionario.jsp").forward(request, response);
                     return;
                 }
                 
-                case "insert" -> {
-                    String nome = request.getParameter("nome");
-                    String dataNascimento = request.getParameter("dataNascimento");
-                    String email = request.getParameter("email");
-                    String senha = request.getParameter("senha");
-                    FuncionarioFacade.insert(nome, dataNascimento, email, senha);
+                case "consultar" -> {
+                    String id = request.getParameter("id");
                     
-                    response.sendRedirect("funcionario?action=listar");
+                    Funcionario funcionario = FuncionarioFacade.searchById(id);     
+
+                    request.setAttribute("funcionario", funcionario);
+                        
+                    request.getRequestDispatcher("funcionario/detalhesFuncionario.jsp").forward(request, response); 
+                }
+                
+                case "formFuncionario" -> {
+                    String id = request.getParameter("id");
+                    
+                    if (id == null || id.equals("")) {
+                        request.getRequestDispatcher("funcionario/cadastrarFuncionario.jsp").forward(request, response); 
+                        return;
+                    }
+                    
+                    Funcionario funcionario = FuncionarioFacade.searchById(id);
+                                        
+                    request.setAttribute("funcionario", funcionario);
+                    request.getRequestDispatcher("funcionario/cadastrarFuncionario.jsp").forward(request, response); 
                     return;
                 }
                 
@@ -64,9 +80,14 @@ public class FuncionarioServlet extends HttpServlet {
                     String dataNascimento = request.getParameter("dataNascimento");
                     String email = request.getParameter("email");
                     String senha = request.getParameter("senha");
-                    FuncionarioFacade.update(id, nome, dataNascimento, email, senha);
                     
-                    response.sendRedirect("funcionario?action=listar");
+                    if (id == null || id.equals("")) {
+                        FuncionarioFacade.insert(nome, dataNascimento, email, senha);
+                    } else {
+                        FuncionarioFacade.update(id, nome, dataNascimento, email, senha);
+                    }
+                    
+                    response.sendRedirect("funcionarioController?action=listar");
                     return;
                 }
                 
@@ -74,7 +95,7 @@ public class FuncionarioServlet extends HttpServlet {
                     String id = request.getParameter("id");
                     FuncionarioFacade.delete(id);
                     
-                    response.sendRedirect("funcionario?action=listar");
+                    response.sendRedirect("funcionarioController?action=listar");
                     return;
                 }
 
@@ -84,7 +105,7 @@ public class FuncionarioServlet extends HttpServlet {
             }
         } catch (AppException e) {
             e.printStackTrace();
-            response.sendRedirect("funcionario?action=listar&message=" + e.getMessage());
+            response.sendRedirect("funcionarioController?action=listar&message=" + e.getMessage());
             return;
         }
     }

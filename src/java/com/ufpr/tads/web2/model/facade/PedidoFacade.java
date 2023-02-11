@@ -7,6 +7,7 @@ import com.ufpr.tads.web2.model.dao.ConnectionFactory;
 import com.ufpr.tads.web2.model.dao.ItemDAO;
 import com.ufpr.tads.web2.model.dao.PedidoDAO;
 import com.ufpr.tads.web2.model.domain.Item;
+import com.ufpr.tads.web2.model.domain.ItemPedido;
 import com.ufpr.tads.web2.model.domain.Pedido;
 import com.ufpr.tads.web2.model.domain.User;
 import com.ufpr.tads.web2.util.Validacao;

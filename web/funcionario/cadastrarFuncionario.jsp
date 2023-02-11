@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cadastrar Funcionário</title>
-        <link rel="stylesheet" type="text/css" href="../css/funcionarioinicio.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value='/css/funcionarioinicio.css'/>">
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         >
@@ -31,11 +32,14 @@
     </head>
     
     <body>
-        <%@ include file="header.jsp" %>
-
-        <%@ include file="../popup/aceitar.jsp" %>
+                
+        <c:if test="${empty sessionScope.login or login.role == \"Cliente\"}">
+            <c:redirect url="/login">
+                <c:param name="message" value="Voce precisa estar logado em uma conta de funcionario para acessar esta pagina!"/>
+            </c:redirect>
+        </c:if>
         
-        <%@ include file="../popup/cancelar.jsp" %>
+        <c:import url="header.jsp"/>
         
         <div class="content">
             

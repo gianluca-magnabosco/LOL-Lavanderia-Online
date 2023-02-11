@@ -15,8 +15,8 @@ public class FuncionarioDAO implements DAO<Funcionario> {
     private static final String INSERT_QUERY = "INSERT INTO tb_funcionario (nome_funcionario, data_nascimento, email_funcionario, senha_funcionario) VALUES (?, ?, ?, ?)";
     private static final String UPDATE_QUERY = "UPDATE tb_funcionario SET nome_funcionario = ?, data_nascimento email_funcionario = ?, senha_funcionario = ? WHERE id_funcionario = ?";
     private static final String DELETE_QUERY = "DELETE FROM tb_funcionario WHERE id_funcionario = ?";
-    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT nome_funcionario, data_nascimento, email_funcionario, senha_funcionario FROM tb_funcionario WHERE id_funcionario = ?";
-    private static final String SEARCH_QUERY = "SELECT nome_funcionario, data_nascimento, email_funcionario, senha_funcionario FROM tb_funcionario";
+    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT id_funcionario, nome_funcionario, data_nascimento, email_funcionario, senha_funcionario FROM tb_funcionario WHERE id_funcionario = ?";
+    private static final String SEARCH_QUERY = "SELECT id_funcionario, nome_funcionario, data_nascimento, email_funcionario, senha_funcionario FROM tb_funcionario";
     private static final String VALIDATE_LOGIN_QUERY = "SELECT id_funcionario, nome_funcionario, data_nascimento, email_funcionario, senha_funcionario FROM tb_funcionario WHERE email_funcionario = ? AND senha_funcionario = ?";
     
     private Connection connection = null;
