@@ -1,25 +1,65 @@
+function enviarRequest() {
+    let selectedRows = [];
+    let totalValue = document.getElementById("totalAmount").innerHTML;
+    let prazoValue = document.getElementById("finalDeadLine").innerHTML;
+
+    let rows = document.querySelectorAll("tbody tr");
+    for (let i = 0; i < rows.length; i++) {
+        let checkbox = rows[i].querySelector("input[type='checkbox']");
+        let quantidade = rows[i].querySelector("input[id='itemQuantidade']").value;
+        if (checkbox.checked && quantidade > 0) {
+            selectedRows.push({
+                "id": rows[i].querySelector("p[id='idItem']").innerHTML,
+                "nome": rows[i].querySelector("p[id='itemName']").innerHTML,
+                "quantidade": quantidade
+            });
+        }
+    }
+
+    if (selectedRows.length === 0) {
+        document.getElementById("errormsg").innerHTML = "Nenhum item selecionado ou quantidade igual a zero";
+        return;
+    }
+    
+    let request = new XMLHttpRequest();
+    request.open("POST", "pedido?action=realizar");
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.send(JSON.stringify({ "prazo": prazoValue, "total": totalValue, "itens": selectedRows }));
+    
+    request.addEventListener("load", function() {
+        if (request.status === 200) {
+            window.location.href = "pedido?action=insertSuccess";
+        } else {
+            document.getElementById("errormsg").innerHTML = "Erro ao realizar pedido: " + request.status;
+        }
+    });
+}
+
+
 $("#aceitar").on("click", function() {
     $("#errormsg").text("");
     let check = 0;
-    if ($("input:checkbox:checked").length > 0) {
-        $("input:checkbox:checked").each(function() {
-            currentAmount = $(this).closest('tr').find('input[type=number]').val();
-            if (currentAmount == 0) {
-                check++;
-                return;  
-            }
-        });
-
-        if (check > 0) {
-            $("#errormsg").text("Algum item selecionado está com quantidade 0!");
-            return;
-        }
-
-        $("#overlay.aceitarOverlay").toggle();
+    if ($("input:checkbox:checked").length === 0) {
+        $("#errormsg").text("Selecione ao menos um item!");
         return;
     }
+    
+    $("input:checkbox:checked").each(function() {
+        currentAmount = $(this).closest('tr').find('input[type=number]').val();
+        if (currentAmount == 0) {
+            check++;
+            return;  
+        }
+    });
 
-    $("#errormsg").text("Selecione ao menos um item!");
+    if (check > 0) {
+        $("#errormsg").text("Algum item selecionado está com quantidade 0!");
+        return;
+    }
+    
+    
+    enviarRequest();
+    return;
 });
 
 
@@ -60,20 +100,3 @@ $("body").on("click keydown keyup", function() {
     $("#finalDeadLine").text(deadLine + " dia(s)");
 });
 
-
-$("#recusar").on("click", function() {               
-    $("#overlay.cancelarOverlay").toggle();
-});
-
-$(".cancelar").on("click", function() {
-    $("#overlay.cancelarOverlay").toggle();
-});
-
-$(".confirmar").on("click", function() {
-    location.href="clienteInicio.jsp";
-});
-
-
-$(".aceitar").on("click", () => {
-    location.href="<c:url value='/pedido?action=realizar'/>";
-});

@@ -145,7 +145,7 @@
                                                         </c:when>
                                                     </c:choose>
                                                     <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                    <td class="data"><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                                    <td class="data"><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy"/></td>
                                                     <td class="text-center">
                                                         <button class="btn btn-info btn-sm consultar consultar${pedido.id}">Consultar</button>
                                                         <c:choose>

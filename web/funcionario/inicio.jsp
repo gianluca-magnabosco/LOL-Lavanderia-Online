@@ -69,7 +69,7 @@
                                                     <td>#LOL-${pedido.id}</td>
                                                     <td><span class="badge badge-warning">${pedido.status}</span></td>
                                                     <td><fmt:formatNumber value="${pedido.orcamento}" type="currency"/></td>
-                                                    <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                                    <td><fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy"/></td>
                                                     <td class="text-center">
                                                         <button class="btn btn-info btn-sm consultar consultar${pedido.id}" type="button">Consultar</button>
                                                         <button class="btn btn-success btn-sm confirmar confirmar${pedido.id}">Confirmar recolhimento</button>

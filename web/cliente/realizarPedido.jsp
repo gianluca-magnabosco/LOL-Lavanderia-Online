@@ -97,6 +97,7 @@
 
                                                 <td class="d-">
                                                     <input id="itemQuantidade" class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
+                                                    <p id="idItem" style="display: none;">${item.id}</p>
                                                 </td>
 
                                                 <td>

@@ -1,11 +1,10 @@
- package com.ufpr.tads.web2.controller;
+package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.exception.PermissaoNegadaException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.model.domain.Item;
-import com.ufpr.tads.web2.model.domain.ItemPedido;
 import com.ufpr.tads.web2.model.domain.Pedido;
 import com.ufpr.tads.web2.model.facade.PedidoFacade;
 import com.ufpr.tads.web2.util.Validacao;
@@ -16,8 +15,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import org.apache.commons.io.IOUtils;
+
 
 /**
  *
@@ -103,32 +104,11 @@ public class PedidoServlet extends HttpServlet {
                 
                 case "realizar" -> {
                     if (login.getRole().equals("Cliente")) {
-                        
-                        String descricao = request.getParameter("descricao");
-                        String orcamento = request.getParameter("totalAmount");
-                        String tempo = request.getParameter("finalDeadLine");
+                        String body = IOUtils.toString(request.getInputStream(), StandardCharsets.UTF_8);
 
-                        List<ItemPedido> itens = new ArrayList<>();
-                        
-                        String[] itemNames = request.getParameterValues("itemName");
-                        
-                        String[] stringQuantidades = request.getParameterValues("itemQuantidade");
-                        int[] itemQuantidades = new int[stringQuantidades.length];
-
-                        for (int i = 0; i < stringQuantidades.length; i++) {
-                            itemQuantidades[i] = Integer.parseInt(stringQuantidades[i]);
-                        }
-                        
-                        for (int i = 0; i < itemNames.length; i++) {
-                            ItemPedido item = new ItemPedido();
-                            item.setNome(itemNames[i]);
-                            item.setQuantidade(itemQuantidades[i]);
-                            itens.add(item);
-                        }
-                        
                         int idUser = login.getId();
                         
-                        PedidoFacade.insert(descricao, orcamento, tempo, itens, idUser);
+                        PedidoFacade.insert(body, idUser);
 
                         response.sendRedirect("pedido?action=listar");
                         return;
@@ -137,6 +117,12 @@ public class PedidoServlet extends HttpServlet {
                     }
                 }
                 
+                case "insertSuccess" -> {
+                    int id = PedidoFacade.getLastInserted();
+                    response.sendRedirect("pedido?action=listar&realizado=true&id=" + id);
+                    return;
+                }
+    
                 case "pesquisar" -> {
                     request.getRequestDispatcher("cliente/consultarPedido.jsp").forward(request, response); 
                     return;

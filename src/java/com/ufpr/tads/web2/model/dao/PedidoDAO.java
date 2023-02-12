@@ -15,7 +15,6 @@ import java.util.List;
 
 public class PedidoDAO implements DAO<Pedido> {
     
-    
     private static final String INSERT_QUERY = "INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido) VALUES (?, ?, ?);";
     private static final String INSERT_UHP_QUERY = "INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio) VALUES (?, ?, ?, ?);";
     private static final String INSERT_PHI_QUERY = "INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES (?, ?, ?);";
@@ -87,8 +86,7 @@ public class PedidoDAO implements DAO<Pedido> {
                 "ORDER BY uhp.data_inicio ASC, p.id_pedido ASC;";
 
     
-    
-    
+
     private Connection con = null;
     
     
@@ -125,8 +123,7 @@ public class PedidoDAO implements DAO<Pedido> {
         } catch (SQLException e) {
             throw new DAOException("Erro ao inserir pedido: " + SEARCH_ID , e);
         }
-        
-        
+
         try (PreparedStatement st = con.prepareStatement(INSERT_UHP_QUERY)) {
             st.setInt(1, pedido.getUser().getId());
             st.setInt(2, pedido.getId());
@@ -138,8 +135,8 @@ public class PedidoDAO implements DAO<Pedido> {
         } catch (SQLException e) {
             throw new DAOException("Erro ao inserir pedido: " + INSERT_UHP_QUERY , e);
         }
-        
-        
+                
+
         try (PreparedStatement st = con.prepareStatement(INSERT_PHI_QUERY)) {
             for (ItemPedido item : pedido.getItens()) {
                 st.setInt(1, pedido.getId());
@@ -465,6 +462,21 @@ public class PedidoDAO implements DAO<Pedido> {
         }
     }   
 
+    
+    public int getLastInserted() throws DAOException {
+        try (PreparedStatement st = con.prepareStatement(SEARCH_ID);
+                ResultSet rs = st.executeQuery()) {  
+            
+            if (rs.next()) {
+                return rs.getInt("id_pedido");
+            }
+
+        } catch (SQLException e) {
+            throw new DAOException("Erro ao inserir pedido: " + SEARCH_ID , e);
+        }
+        
+        throw new DAOException("Erro ao inserir pedido: " + SEARCH_ID);
+    }
 
     @Override
     public Pedido search(String name) throws DAOException {
