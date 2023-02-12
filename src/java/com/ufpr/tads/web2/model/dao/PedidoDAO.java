@@ -195,6 +195,9 @@ public class PedidoDAO implements DAO<Pedido> {
                 item.setQuantidade(rs.getInt("qtd_item"));
                 pedido.addItem(item);
             }
+            
+            pedidos.add(pedido);
+            
         } catch (SQLException e) {
             throw new DAOException("Erro ao buscar pedidos: " + SEARCH_QUERY , e);
         }
