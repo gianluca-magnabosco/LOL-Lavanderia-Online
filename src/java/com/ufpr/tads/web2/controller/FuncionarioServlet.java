@@ -84,10 +84,20 @@ public class FuncionarioServlet extends HttpServlet {
                     String email = request.getParameter("email");
                     String senha = request.getParameter("senha");
                     
+                    
+                    String param = null;
+                    
                     if (id == null || id.equals("")) {
                         FuncionarioFacade.insert(nome, dataNascimento, email, senha);
+                        param = "&cadastrado=true&funcionario=" + nome;
                     } else {
                         FuncionarioFacade.update(id, nome, dataNascimento, email, senha);
+                    }
+
+                    
+                    if (param != null) {
+                        response.sendRedirect("funcionarioController?action=listar" + param);
+                        return;
                     }
                     
                     response.sendRedirect("funcionarioController?action=listar");

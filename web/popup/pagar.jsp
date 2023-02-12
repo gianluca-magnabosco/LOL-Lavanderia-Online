@@ -1,10 +1,11 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="../css/pagarpopup.css">
-<div id="overlay" class="pagarOverlay">
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/pagarpopup.css'/>">
+<div id="overlay" class="pagarOverlay" style="display: none;">
     <div id="content">
         <center id="centertext">
-            <img id="close" src="../images/icons8-close-28.png"/>
+            <img id="close" src="<c:url value='/images/icons8-close-28.png'/>"/>
             <h2>Pagamento</h2>
             <div id="bottomtext">
                 <form class="checkout">
@@ -20,15 +21,10 @@
                     <p>
                         <input type="button" value="Pagar" class="checkout-btn pagar pagamento">
                     </p>
-                </form>   
-                <script>
-                    $(".pagamento").on("click", () => {
-                        <jsp:forward page="PedidoServlet?action=pagar&id=${param.id}"/>
-                    });
-                </script>                
+                </form>                 
             </div>
         </center>
     </div>
 </div>
 
-<script type="text/javascript" src="../js/pagarPopup.js"></script>
+<script type="text/javascript" src="<c:url value='/js/pagarPopup.js'/>"></script>

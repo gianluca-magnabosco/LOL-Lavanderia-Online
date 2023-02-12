@@ -35,10 +35,8 @@
         </c:if>
         
         <c:import url="header.jsp"/>
-        
-        <c:if test="${not empty param.pedido}">
-            <c:import url="/popup/pedidoConfirmado.jsp"/>
-        </c:if>
+
+        <c:import url="/popup/cancelar.jsp"/>
         
         <div class="content">
             <div class="jumbotron">
@@ -89,8 +87,11 @@
                                                     });
 
                                                     $(".cancelar${pedido.id}").on("click", () => {
-                                                        // ajeitar isso aqui
-                                                        // location.href = "<c:url value='/popup/cancelar.jsp?id=${pedido.id}'/>";
+                                                        $("#overlay.cancelarOverlay").show();
+                                                        
+                                                        $(".confirmarCancelamento").on("click", () => {
+                                                            location.href="<c:url value='/pedido?action=cancelar&id=${pedido.id}'/>";
+                                                        });
                                                     });
                                                 </script>
                                             </c:if>

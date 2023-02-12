@@ -73,6 +73,14 @@ public class PedidoServlet extends HttpServlet {
                             request.setAttribute("message", message);
                         }
                         
+                        String realizado = request.getParameter("realizado");
+                        String id = request.getParameter("id");
+                        
+                        if (realizado != null && realizado.equals("true") && id != null && !id.equals("")) {
+                            request.setAttribute("realizado", realizado);
+                            request.setAttribute("id", id);
+                        }
+                        
                         request.setAttribute("pedidos", pedidos);
                         request.getRequestDispatcher("cliente/listarPedidos.jsp").forward(request, response); 
                         return;
@@ -104,11 +112,14 @@ public class PedidoServlet extends HttpServlet {
                 
                 case "realizar" -> {
                     if (login.getRole().equals("Cliente")) {
+                        
+                        String status = request.getParameter("status");
+                        
                         String body = IOUtils.toString(request.getInputStream(), StandardCharsets.UTF_8);
 
                         int idUser = login.getId();
                         
-                        PedidoFacade.insert(body, idUser);
+                        PedidoFacade.insert(body, idUser, status);
 
                         response.sendRedirect("pedido?action=listar");
                         return;

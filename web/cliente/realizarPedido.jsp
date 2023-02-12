@@ -34,6 +34,8 @@
         
         <c:import url="header.jsp"/>
         
+        <c:import url="/popup/rejeitarPedido.jsp"/>
+        
         <div class="content">
 
             <div class="jumbotron">
@@ -138,8 +140,24 @@
                             </div>
                             
                             <div class="control">
-                                <button class="btn btn-danger btn-lg" id="recusar">Rejeitar</button>
+                                <button class="btn btn-danger btn-lg" id="rejeitar">Rejeitar</button>
                             </div>
+                            
+                            <script>
+                                
+                                $("#rejeitar").on("click", function() {
+                                    if (!validateData()) {
+                                        return;
+                                    }
+                                    
+                                    $("#overlay.rejeitarOverlay").show();
+                                    $(".confirmarRejeicao").on("click", () => {
+                                        enviarRequest("rejeitado");
+                                        return;
+                                    });
+                                });
+
+                            </script>
                         </div>
                     </div>
                 </div>

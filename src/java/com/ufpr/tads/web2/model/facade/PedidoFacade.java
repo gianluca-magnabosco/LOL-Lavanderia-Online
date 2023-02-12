@@ -78,7 +78,13 @@ public class PedidoFacade {
     }
     
     
-    public static void insert(String body, int idUser) throws DAOException, DadoInvalidoException { 
+    public static void insert(String body, int idUser, String status) throws DAOException, DadoInvalidoException { 
+        
+        Validacao.validarVazio(status, "O status deve ser inserido!");
+        
+        if (!(status.equals("confirmado") || status.equals("rejeitado"))) {
+            throw new DadoInvalidoException("O status deve ser inserido!");
+        }
         
         Pedido pedido = null;
         
@@ -119,7 +125,8 @@ public class PedidoFacade {
             pedido.setUser(new User(idUser));
             pedido.setDataInicio(new Date());
             pedido.setItens(itens);
-            pedido.setStatus("EM ABERTO");
+            
+            pedido.setStatus(status.equals("confirmado") ? "EM ABERTO" : "REJEITADO");
         } catch (Exception e) {
             throw new DadoInvalidoException("Algum dado do pedido ta incorreto!");
         }

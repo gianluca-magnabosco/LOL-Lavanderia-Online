@@ -5,7 +5,7 @@ $("#overlay.pagarOverlay").on("click", () => {
 });
 
 $(document).keyup(e => {
-    if (e.key === "Escape" || e.key === "Enter") {
+    if (e.key === "Escape") {
         $("#overlay.pagarOverlay").hide();
     }
 });

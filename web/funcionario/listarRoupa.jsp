@@ -35,6 +35,14 @@
         
         <c:import url="header.jsp"/>
         
+        <c:import url="/popup/removerRoupa.jsp"/>
+        
+        <c:if test="${not empty param.cadastrado}">
+            <c:import url="/popup/roupaConfirmada.jsp">
+                <c:param name="roupa" value="${param.roupa}"/>
+            </c:import>
+        </c:if>
+        
         <div class="content">
             
             <c:if test="${not empty param.message}">
@@ -67,7 +75,16 @@
                                         <td><img src="<c:url value='${roupa.imagem}'/>" width="42" height="42"></td>
                                         <td class="text-center">
                                             <a href="<c:url value='/roupa?action=formRoupa&id=${roupa.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                            <a href="<c:url value='/roupa?action=delete&id=${roupa.id}'/>"><button class="btn btn-danger btn-sm remover">Remover</button></a>
+                                            <button class="btn btn-danger btn-sm remover${roupa.id}">Excluir</button>
+                                            <script>
+                                                $(".remover${roupa.id}").on("click", () => {
+                                                    $("#overlay.removerOverlay").show();
+
+                                                    $(".confirmarRemocao").on("click", () => {
+                                                        location.href="<c:url value='/roupa?action=delete&id=${roupa.id}'/>";
+                                                    });
+                                                });
+                                            </script>
                                             <div class="inner-circle"></div>
                                         </td>
                                     </tr>

@@ -78,10 +78,18 @@ public class ItemServlet extends HttpServlet {
                          
                     String path = getServletContext().getRealPath("");
                     
+                    String param = null;
+                    
                     if (id == null || id.equals("")) {
                         ItemFacade.insert(nome, preco, tempo, imagem, path);
+                        param = "&cadastrado=true&roupa=" + nome;
                     } else {
                         ItemFacade.update(id, nome, preco, tempo, imagem, path);
+                    }
+                    
+                    if (param != null) {
+                        response.sendRedirect("roupa?action=listar" + param);
+                        return;
                     }
                     
                     response.sendRedirect("roupa?action=listar");

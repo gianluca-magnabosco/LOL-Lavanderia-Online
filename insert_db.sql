@@ -5776,9 +5776,9 @@ INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES
 (13, 4, 1);
 --14
 INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido)
-VALUES ('Duas meias e uma cueca', 8.99, 1);
+VALUES ('Duas calças e uma cueca', 23.49, 3);
 INSERT INTO pedido_has_item (id_pedido, id_item, qtd_item) VALUES 
-(14, 4, 2),
+(14, 1, 2),
 (14, 5, 1);
 --15
 INSERT INTO tb_pedido (descricao_pedido, orcamento_pedido, tempo_pedido)
@@ -5799,7 +5799,7 @@ VALUES (3, 12, 'RECOLHIDO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as 
 --2 Aguardando Pagamento
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim) VALUES
 (3, 13, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3)),
-(3, 14, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE)), (SELECT CAST(now() as DATE) + 3));
+(3, 14, 'AGUARDANDO PAGAMENTO', (SELECT CAST(now() as DATE) + 25), (SELECT CAST(now() as DATE) + 4));
 --Pago
 INSERT INTO user_has_pedido (id_user, id_pedido, status, data_inicio, data_fim)
 VALUES (3, 15, 'PAGO', (SELECT CAST(now() as DATE) - 5), (SELECT CAST(now() as DATE) - 2));

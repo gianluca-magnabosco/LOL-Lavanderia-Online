@@ -34,6 +34,14 @@
         </c:if>
         
         <c:import url="header.jsp"/>
+        
+        <c:import url="/popup/removerFuncionario.jsp"/>
+        
+        <c:if test="${not empty param.cadastrado}">
+            <c:import url="/popup/funcionarioConfirmado.jsp">
+                <c:param name="funcionario" value="${param.funcionario}"/>
+            </c:import>
+        </c:if>
 
         <div class="content">
             <c:if test="${not empty param.message}">
@@ -64,7 +72,16 @@
                                         <td><fmt:formatDate value="${funcionario.dataNascimento}" pattern="dd/MM/yyyy"/></td>
                                         <td class="text-center">
                                             <a href="<c:url value='/funcionarioController?action=formFuncionario&id=${funcionario.id}'/>"><button class="btn btn-warning btn-sm text-light alterar">Alterar</button></a>
-                                            <a href="<c:url value='/funcionarioController?action=delete&id=${funcionario.id}'/>"><button class="btn btn-danger btn-sm remover">Excluir</button></a>
+                                            <button class="btn btn-danger btn-sm remover${funcionario.id}">Excluir</button>
+                                            <script>
+                                                $(".remover${funcionario.id}").on("click", () => {
+                                                    $("#overlay.removerOverlay").show();
+
+                                                    $(".confirmarRemocao").on("click", () => {
+                                                        location.href="<c:url value='/funcionarioController?action=delete&id=${funcionario.id}'/>";
+                                                    });
+                                                });
+                                            </script>
                                             <div class="inner-circle"></div>
                                         </td>
                                     </tr>

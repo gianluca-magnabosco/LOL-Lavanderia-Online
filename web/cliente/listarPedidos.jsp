@@ -38,6 +38,16 @@
         
         <c:import url="header.jsp"/>
         
+        <c:import url="/popup/cancelar.jsp"/>
+        <c:import url="/popup/pagar.jsp"/>
+        
+        <c:if test="${not empty param.realizado}">
+            <c:import url="/popup/pedidoConfirmado.jsp">
+                <c:param name="id" value="${param.id}"/>
+            </c:import>
+        </c:if>
+        
+        
         <div class="content">
             
             <div class="jumbotron">
@@ -164,7 +174,11 @@
                                                                 <button class="btn btn-success btn-sm pagar pagar${pedido.id}">Pagar Pedido</button></a>
                                                                 <script>
                                                                     $(".pagar${pedido.id}").on("click", () => {
-                                                                        // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                        $("#overlay.pagarOverlay").show();
+
+                                                                        $(".pagamento").on("click", () => {
+                                                                            location.href="<c:url value='/pedido?action=pagar&id=${pedido.id}'/>";
+                                                                        });
                                                                     });
                                                                 </script>
                                                             </c:when>
@@ -172,7 +186,11 @@
                                                                 <button class="btn btn-danger btn-sm cancelar cancelar${pedido.id}">Cancelar Pedido</button>
                                                                 <script>
                                                                     $(".cancelar${pedido.id}").on("click", () => {
-                                                                        // fazer script pra mostrar popup e ai se confirmar manda pra servlet
+                                                                        $("#overlay.cancelarOverlay").show();
+
+                                                                        $(".confirmarCancelamento").on("click", () => {
+                                                                            location.href="<c:url value='/pedido?action=cancelar&id=${pedido.id}'/>";
+                                                                        });
                                                                     });
                                                                 </script>
                                                             </c:when>

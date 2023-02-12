@@ -54,7 +54,7 @@
                             <form id="formulario" class="border rounded p-3" action="funcionarioController?action=update&id=${param.id}" method="post">
                                 <div class="mb-2">
                                     <label for="nome" class="form-label">Nome Completo</label>
-                                    <input type="text" class="form-control" placeholder="Insira o nome" name="nome" id="nome"
+                                    <input type="text" autofocus class="form-control" placeholder="Insira o nome" name="nome" id="nome"
                                                 <c:if test="${not empty funcionario}">
                                                     <c:out value="value=${funcionario.nome}"/>
                                                 </c:if>
@@ -110,7 +110,7 @@
         <c:import url="/footer.jsp"/>  
         
         <script>
-            <c:import url="/js/cadastrarFuncionario.js"/>
+            <c:import url="/js/cadastrarFuncionario.js" charEncoding="UTF-8"/>
         </script>
   
     </body>

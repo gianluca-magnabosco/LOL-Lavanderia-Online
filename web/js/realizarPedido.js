@@ -1,4 +1,4 @@
-function enviarRequest() {
+function enviarRequest(status) {
     let selectedRows = [];
     let totalValue = document.getElementById("totalAmount").innerHTML;
     let prazoValue = document.getElementById("finalDeadLine").innerHTML;
@@ -22,12 +22,14 @@ function enviarRequest() {
     }
     
     let request = new XMLHttpRequest();
-    request.open("POST", "pedido?action=realizar");
+    request.open("POST", "pedido?action=realizar&status=" + status);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.send(JSON.stringify({ "prazo": prazoValue, "total": totalValue, "itens": selectedRows }));
     
     request.addEventListener("load", function() {
-        if (request.status === 200) {
+        if (request.status === 200 && status === "rejeitado") {
+            window.location.href = "pedido?action=listar";
+        } else if (request.status === 200 && status === "confirmado") {
             window.location.href = "pedido?action=insertSuccess";
         } else {
             document.getElementById("errormsg").innerHTML = "Erro ao realizar pedido: " + request.status;
@@ -35,30 +37,37 @@ function enviarRequest() {
     });
 }
 
-
-$("#aceitar").on("click", function() {
+function validateData() {
     $("#errormsg").text("");
     let check = 0;
     if ($("input:checkbox:checked").length === 0) {
         $("#errormsg").text("Selecione ao menos um item!");
-        return;
+        return false;
     }
     
     $("input:checkbox:checked").each(function() {
         currentAmount = $(this).closest('tr').find('input[type=number]').val();
         if (currentAmount == 0) {
             check++;
-            return;  
+            return false;  
         }
     });
 
     if (check > 0) {
         $("#errormsg").text("Algum item selecionado está com quantidade 0!");
-        return;
+        return false;
     }
     
-    
-    enviarRequest();
+    return true;
+}
+
+
+$("#aceitar").on("click", function() {
+    if (!validateData()) {
+        return;
+    }
+
+    enviarRequest("confirmado");
     return;
 });
 

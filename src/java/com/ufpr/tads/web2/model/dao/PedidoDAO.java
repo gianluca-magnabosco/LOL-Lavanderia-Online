@@ -136,7 +136,6 @@ public class PedidoDAO implements DAO<Pedido> {
             throw new DAOException("Erro ao inserir pedido: " + INSERT_UHP_QUERY , e);
         }
                 
-
         try (PreparedStatement st = con.prepareStatement(INSERT_PHI_QUERY)) {
             for (ItemPedido item : pedido.getItens()) {
                 st.setInt(1, pedido.getId());
