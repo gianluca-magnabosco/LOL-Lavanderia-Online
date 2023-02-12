@@ -1,7 +1,9 @@
 package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
+import com.ufpr.tads.web2.exception.DAOException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
+import com.ufpr.tads.web2.model.facade.RelatorioFacade;
 import com.ufpr.tads.web2.util.Validacao;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -10,6 +12,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.OutputStream;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -46,19 +50,87 @@ public class RelatorioServlet extends HttpServlet {
                 }
                 
                 case "receitas" -> {
-                    
+                    try {
+                        String jasper = request.getContextPath() + "/relatorios/receitas.jasper";
+                        String host = "http://" + request.getServerName() + ":" + request.getServerPort();
+                        
+                        response.setContentType("application/pdf");
+                        OutputStream output = response.getOutputStream();
+                        
+                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    } catch (JRException | IOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    }
                 }
                 
                 case "clientes" -> {
-                    
+                    try {
+                        String jasper = request.getContextPath() + "/relatorios/clientes.jasper";
+                        String host = "http://" + request.getServerName() + ":" + request.getServerPort();
+
+                        response.setContentType("application/pdf");
+                        OutputStream output = response.getOutputStream();
+                        
+                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    } catch (JRException | IOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    }
                 }
                 
                 case "clientesFieis" -> {
-                    
+                    try {
+                        String jasper = request.getContextPath() + "/relatorios/clientesFieis.jasper";
+                        String host = "http://" + request.getServerName() + ":" + request.getServerPort();
+
+                        response.setContentType("application/pdf");
+                        OutputStream output = response.getOutputStream();
+                        
+                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    } catch (JRException | IOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    }
                 }
                 
                 case "pedidos" -> {
-                    
+                    try {
+                        String jasper = request.getContextPath() + "/relatorios/pedidos.jasper";
+                        String host = "http://" + request.getServerName() + ":" + request.getServerPort();
+
+                        response.setContentType("application/pdf");
+                        OutputStream output = response.getOutputStream();
+                        
+                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    } catch (JRException | IOException e) {
+                        e.printStackTrace();
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                    }
                 }
                 
                 default -> {

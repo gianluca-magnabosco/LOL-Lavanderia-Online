@@ -260,11 +260,11 @@ thead {
 }    
 
 #content {
-    position: fixed; 
-    top: 30%; 
+    position: relative; 
+    top: 15%; 
     left: 50%; 
     margin-left: -275px; 
-    width: 550px; 
+    width: 700px; 
     height: 400px; 
     padding: 20px; 
     border-radius: 15px; 
@@ -300,4 +300,3 @@ h2 {
     top: 4px;
     right: 6px;
 }
-
