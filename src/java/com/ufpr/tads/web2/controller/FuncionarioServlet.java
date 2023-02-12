@@ -2,6 +2,7 @@ package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
+import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.model.domain.Funcionario;
 import com.ufpr.tads.web2.model.facade.FuncionarioFacade;
 import com.ufpr.tads.web2.util.Validacao;
@@ -24,12 +25,14 @@ public class FuncionarioServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        if (session.getAttribute("login") == null) {
-            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado");
+        LoginBean login = (LoginBean) session.getAttribute("login");
+        
+        if (login == null || login.getRole().equals("Cliente")) {
+            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado+em+uma+conta+de+funcionario+para+acessar+esta+pagina");
+            return;
         }
-        
+         
         String action = request.getParameter("action");
-        
         
         try {
             

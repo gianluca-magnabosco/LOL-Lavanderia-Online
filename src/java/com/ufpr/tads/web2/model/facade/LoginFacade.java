@@ -22,7 +22,7 @@ public class LoginFacade {
     public static LoginBean login(String userEmail, String userPassword) throws UsuarioOuSenhaInvalidosException, EmailInvalidoException, DadoInvalidoException {
         
         Validacao.validarVazio(userPassword, "A senha deve ser informada!");
-        Validacao.validarEmail(userEmail, "O e-mail inserido é inválido!");
+        Validacao.validarEmail(userEmail, "O e-mail inserido eh invalido!");
         
         String hashedUserPassword = HashFunction.getHash(userPassword);
                      

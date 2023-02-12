@@ -19,5 +19,4 @@
         <img class="icone" src="<c:url value='/images/logo-icone.png'/>" alt="Ícone da LOL">
         <img class="nome" src="<c:url value='/images/logo-nome.png'/>" alt="Lavanderia On-Line" title="Lavanderia On-Line">
     </div>
-
 </header>

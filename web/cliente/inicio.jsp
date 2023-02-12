@@ -41,12 +41,13 @@
         </c:if>
         
         <div class="content">
-            
             <div class="jumbotron">
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
                 <button onclick="location.href='<c:url value='/pedido?action=formPedido'/>'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
+            
             <hr class="gradient">
+            
             <h3 class="pedidos-aberto">Seus pedidos em aberto:</h3>
             <div class="container mt-5">
                 <div class="d-flex justify-content-center row">
@@ -107,8 +108,7 @@
         </div>
         
         <c:import url="/footer.jsp"/>
-        
-        <script type="text/javascript" src="<c:url value='/js/clienteInicio.js'/>"></script>
+
     </body>     
     
 </html>

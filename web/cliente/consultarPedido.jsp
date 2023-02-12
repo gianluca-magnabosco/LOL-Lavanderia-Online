@@ -22,6 +22,7 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script> 
+        <script type="text/javascript" defer src="<c:url value='/js/consultarPedido.js'/>"></script>
     </head>
     
     <body>
@@ -31,7 +32,6 @@
                 <c:param name="message" value="Voce precisa estar logado em uma conta de cliente para acessar esta pagina!"/>
             </c:redirect>
         </c:if>
-        
         
         <c:import url="header.jsp"/>
         
@@ -45,8 +45,18 @@
                     <button type="button" class="btn btn-outline-primary consultar">Pesquisar</button>
                 </div> 
                 
-                <b id="errorMsg" style="color: red;"></b>
-                <b id="message" style="color: red;">${message}</b>
+                <c:if test="${not empty param.message or not empty message}">
+                    <div class="d-flex align-items-center">
+                        <c:choose>
+                            <c:when test="${not empty param.message}>">
+                                <h4 style="color: red; font-weight: 1000">${param.message}</h4>
+                            </c:when>
+                            <c:otherwise>
+                                <h4 style="color: red; font-weight: 1000">${message}</h4>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:if>
             </div>
         </div>    
 
@@ -108,7 +118,5 @@
         <c:import url="/footer.jsp"/>
            
     </body>
-    
-    <script type="text/javascript" defer src="<c:url value='/js/consultarPedido.js'/>"></script>
     
 </html>

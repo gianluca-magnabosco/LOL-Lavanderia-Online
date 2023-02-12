@@ -1,6 +1,7 @@
 package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
+import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.util.Validacao;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -8,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -20,6 +22,15 @@ public class RelatorioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        
+        LoginBean login = (LoginBean) session.getAttribute("login");
+        
+        if (login == null || login.getRole().equals("Cliente")) {
+            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado+em+uma+conta+de+funcionario+para+acessar+esta+pagina");
+            return;
+        }
         
         
         String action = request.getParameter("action");

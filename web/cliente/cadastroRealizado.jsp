@@ -15,7 +15,6 @@
             <div id="maindiv">
                 <table id="maintable" align="center" cellpadding="0">
                     <tbody>
-                        
                         <tr>
                             <td align="center" id="logo">
                                 <a href="<c:url value='/index'/>">
@@ -33,6 +32,7 @@
                                                 <img id="emailimg" alt="Cadastro confirmado" src="<c:url value='/images/email-sent.png'/>">
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <td id="textbox">
                                                 <center>
@@ -62,13 +62,8 @@
                         
                         <tr>
                             <td style="height: 25px;">
-                                <p style="line-height: 25px; padding: 0 0 0 0; margin: 0 0 0 0;">
-                                    &nbsp;
-                                </p>
-
-                                <p>
-                                    &nbsp;
-                                </p>
+                                <p style="line-height: 25px; padding: 0 0 0 0; margin: 0 0 0 0;">&nbsp;</p>
+                                <p>&nbsp;</p>
                             </td>
                         </tr>
                         
@@ -89,15 +84,11 @@
                         
                         <tr>
                             <td height="40">
-                                <p style="line-height: 40px; padding: 0 0 0 0; margin: 0 0 0 0;">
-                                    &nbsp;
-                                </p>
-
-                                <p>
-                                    &nbsp;
-                                </p>
+                                <p style="line-height: 40px; padding: 0 0 0 0; margin: 0 0 0 0;">&nbsp;</p>
+                                <p>&nbsp;</p>
                             </td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>

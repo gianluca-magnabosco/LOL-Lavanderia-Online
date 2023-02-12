@@ -7,7 +7,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.net.URLEncoder;
 import com.ufpr.tads.web2.model.facade.RegistroFacade;
 
 
@@ -18,8 +17,6 @@ public class RegistroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.setCharacterEncoding("UTF-8");
         
         String userNome = request.getParameter("nome");
         String userCpf = request.getParameter("cpf");
@@ -48,13 +45,12 @@ public class RegistroServlet extends HttpServlet {
                                      userAddressComplemento);
             
         } catch (AppException e) {
-            String errorMessage = URLEncoder.encode(e.getMessage(), "UTF-8");
-            response.sendRedirect("registrar?message=" + errorMessage);
+            e.printStackTrace();
+            response.sendRedirect("registrar?message=" + e.getMessage());
             return;
         }
         
-        String userEmailParameter = URLEncoder.encode(userEmail, "UTF-8");
-        response.sendRedirect("cliente/cadastroRealizado.jsp?email=" + userEmailParameter);
+        response.sendRedirect("cliente/cadastroRealizado.jsp?email=" + userEmail);
         return;
     }
     

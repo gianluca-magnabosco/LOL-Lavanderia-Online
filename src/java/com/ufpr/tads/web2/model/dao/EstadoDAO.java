@@ -21,7 +21,7 @@ public class EstadoDAO implements DAO<Estado> {
     
     public EstadoDAO(Connection con) throws DAOException {
         if (con == null) {
-            throw new DAOException("Conexão nula ao criar EstadoDAO.");
+            throw new DAOException("Conexao nula ao criar EstadoDAO.");
         }
         
         this.con = con;
@@ -48,7 +48,7 @@ public class EstadoDAO implements DAO<Estado> {
             return null;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar estado: " + SEARCH_ONE_BY_NAME_QUERY, e);
+            throw new DAOException("Erro ao buscar estado por nome: " + SEARCH_ONE_BY_NAME_QUERY, e);
         }          
     }
 
@@ -72,7 +72,7 @@ public class EstadoDAO implements DAO<Estado> {
             return null;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar estado: " + SEARCH_ONE_BY_ID_QUERY, e);
+            throw new DAOException("Erro ao buscar estado por id: " + SEARCH_ONE_BY_ID_QUERY, e);
         }        
     }
 

@@ -55,7 +55,7 @@ public class PedidoFacade {
     
     public static Pedido listById(String id) throws DAOException, DadoInvalidoException {
         
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh invalido");
         
         Pedido pedido = null;
         
@@ -67,7 +67,7 @@ public class PedidoFacade {
         
                     
         if (pedido == null) {
-            throw new DadoInvalidoException("Id inserido não encontrado!");
+            throw new DadoInvalidoException("Id inserido nao encontrado!");
         }
 
         return pedido;
@@ -95,7 +95,7 @@ public class PedidoFacade {
     
     public static void cancelar(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
         
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh invalido");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -103,7 +103,7 @@ public class PedidoFacade {
             Pedido pedido = dao.searchById(Integer.parseInt(id));
             
             if (!pedido.getStatus().equals("EM ABERTO")) {
-                throw new StatusIncompativelException("O pedido só pode ser cancelado se ainda não tiver sido recolhido!");
+                throw new StatusIncompativelException("O pedido so pode ser cancelado se ainda nao tiver sido recolhido!");
             }
             
             dao.terminarPedido(Integer.parseInt(id), "CANCELADO");
@@ -113,7 +113,7 @@ public class PedidoFacade {
     
     public static void pagar(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
         
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh inválido");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -121,7 +121,7 @@ public class PedidoFacade {
             Pedido pedido = dao.searchById(Integer.parseInt(id));
             
             if (!pedido.getStatus().equals("AGUARDANDO PAGAMENTO")) {
-                throw new StatusIncompativelException("O pedido só pode ser pago se estiver aguardando pagamento!");
+                throw new StatusIncompativelException("O pedido so pode ser pago se estiver aguardando pagamento!");
             }
             
             dao.pagarPedido(Integer.parseInt(id));
@@ -131,7 +131,7 @@ public class PedidoFacade {
     
     public static void recolher(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
 
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh invalido");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -139,7 +139,7 @@ public class PedidoFacade {
             Pedido pedido = dao.searchById(Integer.parseInt(id));
             
             if (!pedido.getStatus().equals("EM ABERTO")) {
-                throw new StatusIncompativelException("O pedido só pode ser recolhido se estiver em aberto!");
+                throw new StatusIncompativelException("O pedido so pode ser recolhido se estiver em aberto!");
             }
             
             dao.updateStatusPedido(Integer.parseInt(id), "RECOLHIDO");
@@ -149,7 +149,7 @@ public class PedidoFacade {
     
     public static void confirmar(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
 
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh invalido");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -157,7 +157,7 @@ public class PedidoFacade {
             Pedido pedido = dao.searchById(Integer.parseInt(id));
             
             if (!pedido.getStatus().equals("RECOLHIDO")) {
-                throw new StatusIncompativelException("O pedido só pode ser confirmado se tiver sido recolhido!");
+                throw new StatusIncompativelException("O pedido so pode ser confirmado se tiver sido recolhido!");
             }
             
             dao.updateStatusPedido(Integer.parseInt(id), "AGUARDANDO PAGAMENTO");
@@ -167,7 +167,7 @@ public class PedidoFacade {
     
     public static void finalizar(String id) throws DadoInvalidoException, DAOException, StatusIncompativelException {
 
-        Validacao.validarInteiro(id, "Id de pedido inserido é inválido");
+        Validacao.validarInteiro(id, "Id de pedido inserido eh invalido");
         
         try (ConnectionFactory factory = new ConnectionFactory()) {
             PedidoDAO dao = new PedidoDAO(factory.getConnection());
@@ -175,7 +175,7 @@ public class PedidoFacade {
             Pedido pedido = dao.searchById(Integer.parseInt(id));
             
             if (!pedido.getStatus().equals("PAGO")) {
-                throw new StatusIncompativelException("O pedido só pode ser finalizado se já tiver sido pago!");
+                throw new StatusIncompativelException("O pedido so pode ser finalizado se ja tiver sido pago!");
             }
             
             dao.terminarPedido(Integer.parseInt(id), "FINALIZADO");

@@ -32,7 +32,7 @@ public class ItemFacade {
     
     public static Item searchById(String id) throws DAOException, DadoInvalidoException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
-            Validacao.validarInteiro(id, "O id de roupa inserido é inválido!");
+            Validacao.validarInteiro(id, "O id de roupa inserido eh invalido!");
             ItemDAO dao = new ItemDAO(factory.getConnection());
             return dao.searchById(Integer.parseInt(id));
         }
@@ -61,7 +61,7 @@ public class ItemFacade {
     
     public static void update(String id, String nome, String preco, String tempo, Part imagem, String path) throws DAOException, DadoInvalidoException, ArquivoInvalidoException, ErroInserindoArquivoException {
         
-        Validacao.validarInteiro(id, "O id de roupa inserido é inválido!");
+        Validacao.validarInteiro(id, "O id de roupa inserido eh invalido!");
         validarParametros(nome, tempo);
         String imagemPath = validarArquivo(imagem, path);
         double precoUnitario = validarConverterPreco(preco);
@@ -83,7 +83,7 @@ public class ItemFacade {
     
     public static void delete(String id) throws DAOException, DadoInvalidoException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
-            Validacao.validarInteiro(id, "O id de roupa inserido é inválido!");
+            Validacao.validarInteiro(id, "O id de roupa inserido eh invalido!");
             ItemDAO dao = new ItemDAO(factory.getConnection());
             dao.deleteById(Integer.parseInt(id));
         }
@@ -91,15 +91,15 @@ public class ItemFacade {
     
     
     private static void validarParametros(String nome, String tempo) throws DadoInvalidoException {    
-        Validacao.validarVazio(nome, "O nome é obrigatório!");
+        Validacao.validarVazio(nome, "O nome eh obrigatorio!");
         
         if (!tempo.matches("\\d+\\sdia\\(s\\)")) {
-            throw new DadoInvalidoException("O tempo de lavagem inserido é inválido!");
+            throw new DadoInvalidoException("O tempo de lavagem inserido eh invalido!");
         }
 
         tempo = tempo.replace(" dia(s)", "");
 
-        Validacao.validarInteiro(tempo, "O tempo de lavagem inserido é inválido!");
+        Validacao.validarInteiro(tempo, "O tempo de lavagem inserido eh invalido!");
     }
     
     
@@ -111,7 +111,7 @@ public class ItemFacade {
     private static String validarArquivo(Part imagem, String path) throws ArquivoInvalidoException, ErroInserindoArquivoException {
         
         if (imagem == null) {
-            throw new ArquivoInvalidoException("O arquivo inserido é inválido!");
+            throw new ArquivoInvalidoException("O arquivo inserido eh invalido!");
         }
         
         String nomeDoArquivo = Paths.get(imagem.getSubmittedFileName()).getFileName().toString();

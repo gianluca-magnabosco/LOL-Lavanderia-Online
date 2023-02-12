@@ -28,7 +28,7 @@ public class FuncionarioFacade {
        
     public static Funcionario searchById(String id) throws DadoInvalidoException, DAOException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
-            Validacao.validarInteiro(id, "O id de funcionario inserido é inválido!");
+            Validacao.validarInteiro(id, "O id de funcionario inserido eh invalido!");
             FuncionarioDAO dao = new FuncionarioDAO(factory.getConnection());
             return dao.searchById(Integer.parseInt(id));
         }
@@ -55,7 +55,7 @@ public class FuncionarioFacade {
 
     
     public static void update(String id, String nome, String dataNascimento, String email, String senha) throws DAOException, DadoInvalidoException, EmailInvalidoException, DataInvalidaException {
-        Validacao.validarInteiro(id, "O id de funcionario informado é inválido!");
+        Validacao.validarInteiro(id, "O id de funcionario informado eh invalido!");
         validarParametros(nome, email, senha);
         Date data = validarConverterData(dataNascimento);
         
@@ -77,7 +77,7 @@ public class FuncionarioFacade {
         
     public static void delete(String id) throws DadoInvalidoException, DAOException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
-            Validacao.validarInteiro(id, "O id de funcionario inserido é inválido!");
+            Validacao.validarInteiro(id, "O id de funcionario inserido eh invalido!");
             FuncionarioDAO dao = new FuncionarioDAO(factory.getConnection());
             dao.deleteById(Integer.parseInt(id));
         }
@@ -85,21 +85,21 @@ public class FuncionarioFacade {
 
     
     private static void validarParametros(String nome, String email, String senha) throws EmailInvalidoException, DadoInvalidoException {
-        Validacao.validarVazio(nome, "O nome é obrigatório!");
-        Validacao.validarEmail(email, "O e-mail inserido é inválido!");
-        Validacao.validarVazio(senha, "A senha é obrigatória!");
+        Validacao.validarVazio(nome, "O nome eh obrigatorio!");
+        Validacao.validarEmail(email, "O e-mail inserido eh invalido!");
+        Validacao.validarVazio(senha, "A senha eh obrigatoria!");
     }
     
     
     private static Date validarConverterData(String dataNascimento) throws DadoInvalidoException, DataInvalidaException {
-        Validacao.validarData(dataNascimento, "A data inserida é inválida!");
+        Validacao.validarData(dataNascimento, "A data inserida eh invalida!");
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
         try {
             return dateFormat.parse(dataNascimento);
         } catch (ParseException e) {
-            throw new DataInvalidaException("A data inserida é inválida!");
+            throw new DataInvalidaException("A data inserida eh invalida!");
         }
     }
 

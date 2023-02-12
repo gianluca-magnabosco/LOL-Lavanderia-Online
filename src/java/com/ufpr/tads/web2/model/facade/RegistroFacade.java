@@ -64,51 +64,51 @@ public class RegistroFacade {
                                        String userAddressBairro) throws DadoInvalidoException {
         
         if (userNome == null || !userNome.matches(".+")) {
-            throw new DadoInvalidoException("O nome é inválido!");
+            throw new DadoInvalidoException("O nome eh invalido!");
         }
 
         if (userCpf == null || !validateCpf(userCpf)) {
-            throw new DadoInvalidoException("O CPF é inválido!");
+            throw new DadoInvalidoException("O CPF eh invalido!");
         }
 
         if (userEmail == null
                 || !userEmail.matches("[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\\.){1,125}[a-zA-Z]{2,63}")) {
-            throw new DadoInvalidoException("O e-mail é inválido!");
+            throw new DadoInvalidoException("O e-mail eh invalido!");
         }
 
         if (userPhoneNumber == null
                 || !userPhoneNumber.matches("\\(\\d{2}\\)\\s\\d{5}-\\d{4}")) {
-            throw new DadoInvalidoException("O telefone é inválido!");
+            throw new DadoInvalidoException("O telefone eh invalido!");
         }
 
         if (userAddressCep == null
                 || !userAddressCep.matches("\\d{5}-\\d{3}")) {
-            throw new DadoInvalidoException("O CEP é inválido!");
+            throw new DadoInvalidoException("O CEP eh invalido!");
         }
 
         if (userAddressLogradouro == null
                 || !userAddressLogradouro.matches(".+")) {
-            throw new DadoInvalidoException("O Logradouro é inválido!");
+            throw new DadoInvalidoException("O logradouro eh invalido!");
         }
 
         if (userAddressNumero == null
                 || !userAddressNumero.matches("\\d+")) {
-            throw new DadoInvalidoException("O Número do endereço é inválido!");
+            throw new DadoInvalidoException("O numero do endereco eh invalido!");
         }
 
         if (userAddressCidade == null
                 || !userAddressCidade.matches(".+")) {
-            throw new DadoInvalidoException("A cidade é inválida!");
+            throw new DadoInvalidoException("A cidade eh invalida!");
         }
 
         if (userAddressEstado == null
                 || !userAddressEstado.matches("[a-zA-Z]{2}")) {
-            throw new DadoInvalidoException("O estado é inválido!");
+            throw new DadoInvalidoException("O estado eh invalido!");
         }
 
         if (userAddressBairro == null
                 || !userAddressBairro.matches(".+")) {
-            throw new DadoInvalidoException("O bairro é inválido!");
+            throw new DadoInvalidoException("O bairro eh invalido!");
         }  
 
     }
@@ -122,7 +122,7 @@ public class RegistroFacade {
             User user = dao.search(userEmail);
             
             if (user != null) {
-                throw new DadoInvalidoException("Você já está cadastrado no sistema, realize o <a href='login.jsp'>login</a>");
+                throw new DadoInvalidoException("Voca ja esta cadastrado no sistema, realize o login");
             }       
         }
         catch (DAOException e) {
@@ -151,7 +151,7 @@ public class RegistroFacade {
             Cidade cidade = cidadeDao.search(capitalizeCidade(userAddressCidade));
             
             if (cidade == null) {
-                throw new DadoInvalidoException("Cidade não encontrada!");               
+                throw new DadoInvalidoException("Cidade nao encontrada!");               
             }
             
             endereco.setCidade(cidade);
@@ -170,7 +170,7 @@ public class RegistroFacade {
         }
         catch (DAOException e) {
             e.printStackTrace();
-            throw new DadoInvalidoException("Erro ao adicionar endereço!");
+            throw new DadoInvalidoException("Erro ao adicionar endereco!");
         }    
     }
     

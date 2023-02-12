@@ -37,7 +37,6 @@
         </c:if>
         
         <c:import url="header.jsp"/>
-
         
         <div class="content">
             
@@ -45,11 +44,19 @@
                 <h1 class="display-4">Faça agora mesmo o seu pedido!</h1>
                 <button onclick="location.href='<c:url value='pedido?action=formPedido'/>'" id="botao-sucesso" class="btn btn-success btn-lg" role="button">Realizar pedido!</button>
             </div>
+            
             <hr class="gradient">
+            
+            <c:if test="${not empty param.message}">
+                <div class="d-flex align-items-center">
+                    <h4 class="mx-auto mt-5" style="color: red; font-weight: 1000">${param.message}</h4>
+                </div>
+            </c:if>
+            
             <h2 class="pedidos-aberto" style="margin-top: 50px;">Seus pedidos:</h2>
 
             <div class="container mt-5">
-
+                         
                 <div class="row" style="margin: -10px 0px 10px 46px;  width: 1000px;">
                     <div class="col-sm-2" style="padding: 0px; z-index: 0;"><h4>Filtrar por: </h4></div>
                     <div class="btn-group" data-toggle="buttons" style="z-index: 0;">
@@ -195,10 +202,10 @@
         
         </div>   
         
+        <c:import url="/footer.jsp"/>
+        
         <script type="text/javascript" defer src="<c:url value='/js/listarPedidosCliente.js'/>"></script>
         
-        <c:import url="/footer.jsp"/>
-                
     </body>
     
 </html>

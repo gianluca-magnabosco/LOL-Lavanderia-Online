@@ -94,7 +94,7 @@ public class PedidoDAO implements DAO<Pedido> {
     
     public PedidoDAO(Connection con) throws DAOException {
         if (con == null) {
-            throw new DAOException("Conexão nula ao criar PedidoDAO.");
+            throw new DAOException("Conexao nula ao criar PedidoDAO.");
         }
         
         this.con = con;
@@ -200,7 +200,7 @@ public class PedidoDAO implements DAO<Pedido> {
                 pedido.addItem(item);
             }
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar pedidos: " + SEARCH_QUERY , e);
+            throw new DAOException("Erro ao buscar pedidos: " + SEARCH_QUERY , e);
         }
 
         return pedidos;
@@ -255,7 +255,7 @@ public class PedidoDAO implements DAO<Pedido> {
             pedidos.add(pedido);
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar pedidos em aberto: " + SEARCH_ALL_EM_ABERTO_QUERY , e);
+            throw new DAOException("Erro ao buscar pedidos em aberto: " + SEARCH_ALL_EM_ABERTO_QUERY , e);
         }
 
         return pedidos;
@@ -314,7 +314,7 @@ public class PedidoDAO implements DAO<Pedido> {
             }
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar pedidos do usuário: " + SEARCH_BY_USER_QUERY , e);
+            throw new DAOException("Erro ao buscar pedidos do usuario: " + SEARCH_BY_USER_QUERY , e);
         }
 
         return pedidos;
@@ -373,7 +373,7 @@ public class PedidoDAO implements DAO<Pedido> {
             }
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar pedidos em aberto do usuário: " + SEARCH_BY_USER_EM_ABERTO_QUERY , e);
+            throw new DAOException("Erro ao buscar pedidos em aberto do usuario: " + SEARCH_BY_USER_EM_ABERTO_QUERY , e);
         }
 
         return pedidos;

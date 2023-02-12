@@ -25,7 +25,7 @@ public class ConnectionFactory implements AutoCloseable {
                 con = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             }
             catch(ClassNotFoundException e) {
-                throw new DAOException("Driver do banco de dados não encontrado: " + DRIVER, e);
+                throw new DAOException("Driver do banco de dados nao encontrado: " + DRIVER, e);
             }
             catch(SQLException e) {
                 throw new DAOException("Erro conectando ao BD: " + URL + "/" + LOGIN + "/" + PASSWORD, e);
@@ -44,7 +44,7 @@ public class ConnectionFactory implements AutoCloseable {
                 con = null;
             }
             catch(Exception e) {
-                System.out.println("Erro fechando a conexão. IGNORADO");
+                System.out.println("Erro fechando a conexao. IGNORADO");
                 e.printStackTrace();
             }
             finally {

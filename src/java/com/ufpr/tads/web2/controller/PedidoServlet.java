@@ -31,18 +31,18 @@ public class PedidoServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        if (session.getAttribute("login") == null) {
-            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado");
+        LoginBean login = (LoginBean) session.getAttribute("login");
+        
+        if (login == null) {
+            response.sendRedirect("login.jsp?message=Voce+precisa+estar+logado+para+acessar+esta+pagina");
+            return;
         }
         
         String action = request.getParameter("action");
-        
 
         try {
             
-            Validacao.validarVazio(action, "É necessário enviar um parametro action!");
-
-            LoginBean login = (LoginBean) session.getAttribute("login");
+            Validacao.validarVazio(action, "Eh necessario enviar um parametro action!");
             
             switch (action) {
                 case "inicio" -> {
@@ -149,7 +149,7 @@ public class PedidoServlet extends HttpServlet {
                         Pedido pedido = PedidoFacade.listById(id);     
                         
                         if (login.getRole().equals("Cliente") && pedido.getUser().getId() != login.getId()) {
-                            throw new PermissaoNegadaException("Esse pedido não foi feito por você!");
+                            throw new PermissaoNegadaException("Esse pedido nao foi feito por voce!");
                         }
                         
                         request.setAttribute("pedido", pedido);
@@ -242,7 +242,7 @@ public class PedidoServlet extends HttpServlet {
                 }
                 
                 default -> {
-                    throw new DadoInvalidoException("É necessário enviar um parametro action válido!");
+                    throw new DadoInvalidoException("Eh necessario enviar um parametro action valido!");
                 }
                 
             }

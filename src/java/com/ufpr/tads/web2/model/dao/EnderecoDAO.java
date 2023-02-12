@@ -14,7 +14,7 @@ import java.util.List;
 
 
 public class EnderecoDAO implements DAO<Endereco> {
-    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado) WHERE id_endereco = ?;";
+    private static final String SEARCH_ONE_BY_ID_QUERY = "SELECT en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado) WHERE en.id_endereco = ?;";
     private static final String SEARCH_ALL_QUERY = "SELECT en.id_endereco, en.cep_endereco, en.logradouro_endereco, en.numero_endereco, en.complemento_endereco, en.bairro_endereco, c.id_cidade, c.nome_cidade, es.id_estado, es.nome_estado, es.uf_estado FROM tb_endereco en JOIN tb_cidade c ON (en.id_cidade = c.id_cidade) JOIN tb_estado es ON (c.id_estado = es.id_estado);";
     private static final String INSERT_QUERY = "INSERT INTO tb_endereco (id_cidade, cep_endereco, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco) VALUES (?, ?, ?, ?, ?, ?);";
     
@@ -25,7 +25,7 @@ public class EnderecoDAO implements DAO<Endereco> {
     
     public EnderecoDAO(Connection con) throws DAOException {
         if (con == null) {
-            throw new DAOException("Conexão nula ao criar EnderecoDAO.");
+            throw new DAOException("Conexao nula ao criar EnderecoDAO.");
         }
         
         this.con = con;
@@ -75,7 +75,7 @@ public class EnderecoDAO implements DAO<Endereco> {
             return null;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar endereço: " + SEARCH_ONE_BY_ID_QUERY, e);
+            throw new DAOException("Erro ao buscar endereco: " + SEARCH_ONE_BY_ID_QUERY, e);
         }  
     }
 
@@ -113,7 +113,7 @@ public class EnderecoDAO implements DAO<Endereco> {
             return list;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar endereços: " + SEARCH_ALL_QUERY, e);
+            throw new DAOException("Erro ao buscar enderecos: " + SEARCH_ALL_QUERY, e);
         }   
     }
 
@@ -135,7 +135,7 @@ public class EnderecoDAO implements DAO<Endereco> {
             this.setCurrentId(keys.getInt(1));
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao inserir endereço: " + INSERT_QUERY, e);
+            throw new DAOException("Erro ao inserir endereco: " + INSERT_QUERY, e);
         }
     }
 

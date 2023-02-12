@@ -22,7 +22,7 @@ public class ItemDAO implements DAO<Item> {
     
     public ItemDAO(Connection connection) throws DAOException{
         if (connection == null){
-            throw new DAOException("Conexão nula ao criar ItemDAO");
+            throw new DAOException("Conexao nula ao criar ItemDAO");
         }
         
         this.connection = connection;
@@ -120,7 +120,7 @@ public class ItemDAO implements DAO<Item> {
             }
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar itens: " + SEARCH_QUERY, e);
+            throw new DAOException("Erro ao buscar itens: " + SEARCH_QUERY, e);
         }
         
         return itens;

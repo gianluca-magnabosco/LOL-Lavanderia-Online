@@ -24,7 +24,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
     
     public FuncionarioDAO(Connection connection) throws DAOException {
         if (connection == null) {
-            throw new DAOException("Conexão nula ao criar FuncionarioDAO");
+            throw new DAOException("Conexao nula ao criar FuncionarioDAO");
         }
 
         this.connection = connection;
@@ -51,7 +51,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
                 
             }
         } catch(SQLException e) {
-            throw new DAOException("Erro ao buscar funcionário: " + VALIDATE_LOGIN_QUERY, e);
+            throw new DAOException("Erro ao validar login de funcionario: " + VALIDATE_LOGIN_QUERY, e);
         }
         
         return funcionario;
@@ -69,7 +69,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
             statement.executeUpdate();
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao inserir funcionário: " + INSERT_QUERY , e);
+            throw new DAOException("Erro ao inserir funcionario: " + INSERT_QUERY , e);
         }
     }
 
@@ -93,7 +93,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
             }
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao listar funcionários: " + SEARCH_QUERY , e);
+            throw new DAOException("Erro ao listar funcionarios: " + SEARCH_QUERY , e);
         }
         
         return funcionarios;
@@ -119,7 +119,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
             }
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao buscar funcionário: " + SEARCH_ONE_BY_ID_QUERY, e);
+            throw new DAOException("Erro ao buscar funcionario: " + SEARCH_ONE_BY_ID_QUERY, e);
         } 
         
         return funcionario;
@@ -139,7 +139,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DAOException("Erro ao atualizar funcionário: " + UPDATE_QUERY , e);
+            throw new DAOException("Erro ao atualizar funcionario: " + UPDATE_QUERY , e);
         }
     }
     
@@ -151,7 +151,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
             statement.executeUpdate();
             
         } catch (SQLException e) {
-            throw new DAOException("Erro ao excluir funcionário: " + DELETE_QUERY , e);
+            throw new DAOException("Erro ao excluir funcionario: " + DELETE_QUERY , e);
         }
     }
 

@@ -22,12 +22,11 @@ public class CidadeDAO implements DAO<Cidade> {
     
     public CidadeDAO(Connection con) throws DAOException {
         if (con == null) {
-            throw new DAOException("Conexão nula ao criar CidadeDAO.");
+            throw new DAOException("Conexao nula ao criar CidadeDAO.");
         }
         
         this.con = con;
     }    
-    
     
     
     @Override
@@ -54,7 +53,7 @@ public class CidadeDAO implements DAO<Cidade> {
             return null;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar cidade: " + SEARCH_ONE_BY_NAME_QUERY, e);
+            throw new DAOException("Erro ao buscar cidade por nome: " + SEARCH_ONE_BY_NAME_QUERY, e);
         }    
     }
 
@@ -83,7 +82,7 @@ public class CidadeDAO implements DAO<Cidade> {
             return null;
         }
         catch(SQLException e) {
-            throw new DAOException("Erro ao buscar cidade: " + SEARCH_ONE_BY_ID_QUERY, e);
+            throw new DAOException("Erro ao buscar cidade por id: " + SEARCH_ONE_BY_ID_QUERY, e);
         }  
     }
 
@@ -133,5 +132,6 @@ public class CidadeDAO implements DAO<Cidade> {
     public void delete(Cidade t) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     
 }
