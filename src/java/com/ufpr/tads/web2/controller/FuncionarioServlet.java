@@ -2,6 +2,7 @@ package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DadoInvalidoException;
+import com.ufpr.tads.web2.exception.PermissaoNegadaException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.model.domain.Funcionario;
 import com.ufpr.tads.web2.model.facade.FuncionarioFacade;
@@ -106,6 +107,13 @@ public class FuncionarioServlet extends HttpServlet {
                 
                 case "delete" -> {
                     String id = request.getParameter("id");
+                    
+                    Validacao.validarInteiro(id, "O id de funcionario inserido eh invalido!");
+                    
+                    if (Integer.parseInt(id) == login.getId()) {
+                        throw new PermissaoNegadaException("Voce nao pode se remover do sistema!");
+                    }
+                    
                     FuncionarioFacade.delete(id);
                     
                     response.sendRedirect("funcionarioController?action=listar");

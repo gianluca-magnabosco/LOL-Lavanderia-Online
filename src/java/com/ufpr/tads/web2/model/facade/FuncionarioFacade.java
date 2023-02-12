@@ -77,7 +77,6 @@ public class FuncionarioFacade {
         
     public static void delete(String id) throws DadoInvalidoException, DAOException {
         try (ConnectionFactory factory = new ConnectionFactory()) {
-            Validacao.validarInteiro(id, "O id de funcionario inserido eh invalido!");
             FuncionarioDAO dao = new FuncionarioDAO(factory.getConnection());
             dao.deleteById(Integer.parseInt(id));
         }

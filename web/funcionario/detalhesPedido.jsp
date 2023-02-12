@@ -35,6 +35,7 @@
             <center id="centertext" style="padding-top: 0px;">
                 <h2>Pedido #LOL-${param.id}</h2>
                 <h3>Cliente: ${pedido.user.fullName}</h3>
+                <h4>Data de Criação do Pedido: <fmt:formatDate value="${pedido.dataInicio}" pattern="dd/MM/yyyy"/></h4>
                 <c:choose>
                     <c:when test="${pedido.status == \"AGUARDANDO PAGAMENTO\"}">
                         <td>Situação: <span class="badge badge-info">${pedido.status}</span></td>
