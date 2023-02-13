@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Receitas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7f21bc3-fca0-4238-90ed-25856d7a118a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Relatorio Trabalho FInal"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="data_inicio" class="java.util.Date"/>
+	<parameter name="data_fim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT DATE(USRPEDIDO.data_inicio) as data_agrupada,
+       SUM(PEDIDO.orcamento_pedido) as orcamento_total
+FROM tb_pedido PEDIDO
+    inner join user_has_pedido USRPEDIDO ON 
+     PEDIDO.id_pedido = USRPEDIDO.id_pedido 
+    inner join tb_user USR ON 
+     USRPEDIDO.id_user = USR.id_user 
+      WHERE (data_inicio BETWEEN COALESCE($P{data_inicio}, data_inicio) AND COALESCE($P{data_fim}, data_fim))
+GROUP BY DATE(USRPEDIDO.data_inicio)
+ORDER BY USRPEDIDO.data_inicio DESC;]]>
+	</queryString>
+	<field name="data_agrupada" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_agrupada"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_agrupada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user_has_pedido"/>
+	</field>
+	<field name="orcamento_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="orcamento_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="orcamento_total"/>
+	</field>
+	<variable name="orcamento_total1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{orcamento_total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="21" width="260" height="36" uuid="47b18503-805d-40e5-9ee7-486bc7607bcf"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Relatório de Receitas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="5" y="0" width="100" height="30" uuid="e19db0b1-c4ef-412d-b2fa-75921d935b87"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="50" height="30" uuid="55db7621-a056-41eb-90fd-b63c61a2eeae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b6fd9d1-4e6d-456e-a804-d907fc26d937"/>
+				</reportElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="3164405d-9e10-44ee-a410-e60d4fe3cab9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b46cffeb-21dc-4c51-bbd1-eacd021e6c7a"/>
+				</reportElement>
+				<text><![CDATA[Receita total do dia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="105" y="8" width="90" height="30" uuid="68536a1d-1119-4b1b-8fcb-5696ab6deea0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b6fd9d1-4e6d-456e-a804-d907fc26d937"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{data_agrupada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="8" width="100" height="30" uuid="2ab0b915-3d18-4901-a846-0851fcabf1eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b46cffeb-21dc-4c51-bbd1-eacd021e6c7a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["R$ " + $F{orcamento_total}.toString().replaceAll("\\.", ",")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="390" y="24" width="100" height="30" uuid="8fe0af99-2d05-4f2f-bb23-fb7243456a3f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="490" y="24" width="100" height="30" uuid="2466c3e6-6d37-46ac-bd52-7464d763487d"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

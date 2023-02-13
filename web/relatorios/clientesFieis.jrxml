@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Receitas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7f21bc3-fca0-4238-90ed-25856d7a118a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT u.nome_user, COUNT(uhp.id_pedido) as quantidade_pedidos, SUM(p.orcamento_pedido) as receita
+FROM tb_user u
+INNER JOIN user_has_pedido uhp ON u.id_user = uhp.id_user
+INNER JOIN tb_pedido p ON uhp.id_pedido = p.id_pedido
+GROUP BY u.nome_user
+ORDER BY quantidade_pedidos DESC
+LIMIT 5;]]>
+	</queryString>
+	<field name="nome_user" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_user"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_user"/>
+	</field>
+	<field name="quantidade_pedidos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="quantidade_pedidos"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantidade_pedidos"/>
+	</field>
+	<field name="receita" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="receita"/>
+		<property name="com.jaspersoft.studio.field.label" value="receita"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="21" width="320" height="36" uuid="47b18503-805d-40e5-9ee7-486bc7607bcf"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Relatório de Clientes Fiéis]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="0" width="100" height="30" uuid="4fcda28f-ebef-4b05-b130-db32652d20b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="acad3788-c230-478b-8c4f-c2d37b2f81e0"/>
+				</reportElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="100" height="30" uuid="8be5f826-78fe-4e72-b322-21be5817f4a1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb410e1f-0874-4f4e-b41b-a4f0fa174722"/>
+				</reportElement>
+				<text><![CDATA[Qtd. de pedidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="100" height="30" uuid="83f34b67-c533-4c77-8ffb-17c6253f714b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="987bd158-b94e-4eaa-83e8-3f4c649d727c"/>
+				</reportElement>
+				<text><![CDATA[Receita total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="10" width="160" height="50" uuid="e39e1f28-2852-46a2-8ed8-7b764f1a6dd3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="acad3788-c230-478b-8c4f-c2d37b2f81e0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nome_user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="10" width="100" height="30" uuid="0f86c4f3-aad2-4632-bff8-78d553760383">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb410e1f-0874-4f4e-b41b-a4f0fa174722"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{quantidade_pedidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="10" width="100" height="30" uuid="d9e671d2-58c0-4504-bcb6-57db0e608082">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="987bd158-b94e-4eaa-83e8-3f4c649d727c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["R$ " + $F{receita}.toString().replaceAll("\\.", ",")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="390" y="24" width="100" height="30" uuid="8fe0af99-2d05-4f2f-bb23-fb7243456a3f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="490" y="24" width="100" height="30" uuid="2466c3e6-6d37-46ac-bd52-7464d763487d"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

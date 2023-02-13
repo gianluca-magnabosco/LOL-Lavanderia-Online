@@ -2,6 +2,7 @@ package com.ufpr.tads.web2.controller;
 
 import com.ufpr.tads.web2.exception.AppException;
 import com.ufpr.tads.web2.exception.DAOException;
+import com.ufpr.tads.web2.exception.DadoInvalidoException;
 import com.ufpr.tads.web2.model.beans.LoginBean;
 import com.ufpr.tads.web2.model.facade.RelatorioFacade;
 import com.ufpr.tads.web2.util.Validacao;
@@ -13,6 +14,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -45,6 +49,16 @@ public class RelatorioServlet extends HttpServlet {
             switch (action) {
                 
                 case "redirect" -> {
+                    String dataInicio = request.getParameter("dataInicio");
+                    String dataFim = request.getParameter("dataFim");
+                    String tipo = request.getParameter("tipo");
+                    
+                    if ((dataInicio != null && !dataInicio.isEmpty()) && (dataFim != null && !dataFim.isEmpty()) && (tipo != null && !tipo.isEmpty())) {
+                        request.setAttribute("tipo", tipo);
+                        request.setAttribute("dataInicio", dataInicio);
+                        request.setAttribute("dataFim", dataFim);
+                    }
+                    
                     request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response); 
                     return;
                 }
@@ -54,19 +68,30 @@ public class RelatorioServlet extends HttpServlet {
                         String jasper = request.getContextPath() + "/relatorios/receitas.jasper";
                         String host = "http://" + request.getServerName() + ":" + request.getServerPort();
                         
+                        String dataInicio = request.getParameter("dataInicio");
+                        String dataFim = request.getParameter("dataFim");
+                        
                         response.setContentType("application/pdf");
                         OutputStream output = response.getOutputStream();
                         
-                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        RelatorioFacade.gerarRelatorioComData(jasper, host, output, dataInicio, dataFim);
+                        
+                        return;
                         
                     } catch (DAOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     } catch (JRException | IOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
+                    } catch (ParseException e) {
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     }
                 }
                 
@@ -80,14 +105,18 @@ public class RelatorioServlet extends HttpServlet {
                         
                         RelatorioFacade.gerarRelatorio(jasper, host, output);
                         
+                        return;
+                        
                     } catch (DAOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     } catch (JRException | IOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     }
                 }
                 
@@ -101,14 +130,18 @@ public class RelatorioServlet extends HttpServlet {
                         
                         RelatorioFacade.gerarRelatorio(jasper, host, output);
                         
+                        return;
+                        
                     } catch (DAOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     } catch (JRException | IOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     }
                 }
                 
@@ -116,21 +149,33 @@ public class RelatorioServlet extends HttpServlet {
                     try {
                         String jasper = request.getContextPath() + "/relatorios/pedidos.jasper";
                         String host = "http://" + request.getServerName() + ":" + request.getServerPort();
+                        
+                        String dataInicio = request.getParameter("dataInicio");
+                        String dataFim = request.getParameter("dataFim");
 
                         response.setContentType("application/pdf");
                         OutputStream output = response.getOutputStream();
                         
-                        RelatorioFacade.gerarRelatorio(jasper, host, output);
+                        
+                        RelatorioFacade.gerarRelatorioComData(jasper, host, output, dataInicio, dataFim);
+                        
+                        return;
                         
                     } catch (DAOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro de DAO: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
                     } catch (JRException | IOException e) {
                         e.printStackTrace();
                         request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
                         request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
-                    }
+                        return;
+                    } catch (ParseException e) {
+                        request.setAttribute("mensagem", "Erro no Jasper: " + e.getMessage());
+                        request.getRequestDispatcher("funcionario/relatorios.jsp").forward(request, response);
+                        return;
+                    } 
                 }
                 
                 default -> {
